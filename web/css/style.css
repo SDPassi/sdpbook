@@ -1,4 +1,4 @@
-/*--A Design by W3layouts 
+﻿/*--A Design by W3layouts 
 Author: W3layout
 Author URL: http://w3layouts.com
 License: Creative Commons Attribution 3.0 Unported
@@ -91,7 +91,7 @@ a.item_add {
   background-color: #fff;
     margin-top: 11px;
 }
-.search input[type="text"] {
+.search input[type=text] {
 	outline: none;
   padding: 3px 15px;
   background: none;
@@ -101,7 +101,7 @@ a.item_add {
   color: #000; 
    font-weight: 700; 	
 }
-.search input[type="submit"] {	
+.search input[type=submit] {	
 	border: none;
 	cursor: pointer;
 	position: absolute;
@@ -114,7 +114,7 @@ a.item_add {
   padding: 3px;
   font-weight: 700;
 }
-.search input[type="submit"]:hover {
+.search input[type=submit]:hover {
   background: #EF5F21;  
   color: #fff;
     transition: 0.5s all;
@@ -562,7 +562,7 @@ ul.nav-bottom li  a:hover{
 .amet-sed form{
 padding:1em 0 0;
 }
-.amet-sed input[type="text"], .amet-sed input[type="submit"] {
+.amet-sed input[type=text], .amet-sed input[type=submit] {
   width: 69%;
   padding: 0.5em;
   outline: none;
@@ -571,7 +571,7 @@ padding:1em 0 0;
   background: #fff;
   border: none;
  }
- .amet-sed input[type="submit"] {
+ .amet-sed input[type=submit] {
   width: 20%;
   color: #FFF;
   font-size: 1em;
@@ -580,7 +580,7 @@ padding:1em 0 0;
   outline:none;
   padding: 0.5em;
 }
-.amet-sed input[type="submit"]:hover {
+.amet-sed input[type=submit]:hover {
 background: #fff;
 color:#EF5F21;
 }
@@ -637,7 +637,7 @@ ul.social li i:hover{
 	border:none;
 	padding: 0 15px;
 }
-.contact-grid input[type="text"],.contact-grid textarea{
+.contact-grid input[type=text], .contact-grid textarea{
 	width: 100%;
 	padding: 1em;
 	margin: 0.5em 0;
@@ -651,7 +651,7 @@ ul.social li i:hover{
 .contact-grid textarea{
 	resize:none;
 }
-.send input[type="submit"]{
+.send input[type=submit]{
 	width: 14%;
 	font-size: 1.1em;
 	background:#EF5F21;
@@ -662,7 +662,7 @@ ul.social li i:hover{
 	outline:none;
 	-webkit-appearance: none;
 }
-.send input[type="submit"]:hover{
+.send input[type=submit]:hover{
 	background:#2d2d2d;
 }
 .contact-form {
@@ -1323,7 +1323,7 @@ a.add-re:hover{
   font-weight: 600;
   margin-bottom: 1em;
 }
-.register-top-grid h3, .register-bottom-grid h3 {
+.register-top-grid h3 {
 	font-size: 1.5em;
   font-family: 'Lato', sans-serif;
   color: #000;
@@ -1331,12 +1331,12 @@ a.add-re:hover{
   text-transform: uppercase;
   font-weight: 600;
 }
-.register-top-grid span, .register-bottom-grid span {
+.register-top-grid span {
 	  font-size: 1em;
   display: block;
   color: #A09F9F;
 }
-.register-top-grid input[type="text"], .register-bottom-grid input[type="password"] {
+.register-top-grid input[type=text], .register-top-grid input[type=password],.register-top-grid input[type=email] ,.register-top-grid input[type=tel] {
 	width: 100%;
 	padding: 1em;
 	margin: 1em 0;
@@ -1404,7 +1404,7 @@ a.add-re:hover{
 .news-letter:hover {
 	color:#000;
 }
-.register-bottom-grid input[type="submit"] {
+.register-top-grid input[type=submit],.register-top-grid input[type=reset] {
 	background: #EF5F21;
 	padding: 0.4em 1em;
 	color: #fff;
@@ -1417,7 +1417,7 @@ a.add-re:hover{
 	border:none;
 	outline:none;
 }
-.register-bottom-grid input[type="submit"]:hover{
+.register-bottom-grid input[type=submit]:hover{
 	background:#000;
 	
 }
@@ -1440,8 +1440,7 @@ a.add-re:hover{
 .account-top div{
 	padding:0.5em 0;
 }
-.account-top input[type="text"],
-.account-top textarea,.account-top input[type="password"]{
+.account-top input[type=text], .account-top textarea, .account-top input[type=password], .account-top input[type=email], {
 	padding:1em;
 	width:100%;
 	background:none;
@@ -1451,11 +1450,13 @@ a.add-re:hover{
 	font-size:1em;	
 }
 
+
+
 .account-top textarea{
 	resize:none;
 	height:60px;		
 }
-.account-top input[type="submit"]{
+.account-top input[type=submit]{
 	outline:none;
 	padding:7px 20px;
 	color:#FFF;
@@ -1471,7 +1472,7 @@ a.add-re:hover{
 	-ms-transition: 0.5s all;	
 	font-size: 1.2em;
 }
-.account-top input[type="submit"]:hover{
+.account-top input[type=submit]:hover{
 	background:#000;
 }
 
@@ -1522,7 +1523,7 @@ a.create {
 .single-bottom {
   padding: 0em 0 4em;
 }
-.single-bottom input[type="text"], .single-bottom textarea {
+.single-bottom input[type=text], .single-bottom textarea {
   width: 100%;
   padding: 1em;
   background: none;
@@ -1533,7 +1534,7 @@ a.create {
   -webkit-appearance: none;
   margin: 0 0 1em;
 }
-.single-bottom  input[type="submit"]{
+.single-bottom input[type=submit]{
 	width: 10%;
 	font-size: 1.3em;
 	background: #EF5F21;
@@ -1545,7 +1546,7 @@ a.create {
 	-webkit-appearance: none;
 	 
 }
-.single-bottom  input[type="submit"]:hover{
+.single-bottom input[type=submit]:hover{
 	background:#000;
 }
  .single-bottom textarea {
@@ -2112,7 +2113,7 @@ a.item_add p.number {
 .single-bottom h3 {
   font-size: 2em;
 }
-.single-bottom input[type="submit"] {
+.single-bottom input[type=submit] {
   width: 18%;
 }
 .contact h1 {
@@ -2197,7 +2198,7 @@ a.item_add p.number {
 ul.nav-bottom li a {
   font-size: 0.9em;
 }
-.amet-sed input[type="submit"] {
+.amet-sed input[type=submit] {
   width: 24%;
 }
 .content-bottom {
@@ -2287,13 +2288,13 @@ a.item_add p.number {
 .single-bottom h3 {
   font-size: 1.5em;
 }
-.single-bottom input[type="text"], .single-bottom textarea {
+.single-bottom input[type=text], .single-bottom textarea {
   padding: 0.6em;
 }
 .single-bottom textarea {
   min-height: 100px;
 }
-.single-bottom input[type="submit"] {
+.single-bottom input[type=submit] {
   width: 25%;
 }
 .single-bottom {
@@ -2302,17 +2303,16 @@ a.item_add p.number {
 .contact-grid ,.contact-in{
   padding: 0;
 }
-.contact-grid input[type="text"], .contact-grid textarea {
+.contact-grid input[type=text], .contact-grid textarea {
   padding: 0.8em;
 }
-.send input[type="submit"] {
+.send input[type=submit] {
   width: 24%;
 }
-.account-top input[type="text"], .account-top textarea, .account-top input[type="password"]
-,.register-top-grid input[type="text"], .register-bottom-grid input[type="password"] {
+.account-top input[type=email], .account-top textarea, .account-top input[type=password], .register-top-grid input[type=text], .register-bottom-grid input[type=password] {
   padding: 0.5em;
 }
-.account-top input[type="submit"] {
+.account-top input[type=submit] {
   width: 33%;
 }
 .register-top-grid h3, .register-bottom-grid h3 {
@@ -2343,7 +2343,7 @@ a.item_add p.number {
 .cart-items,.cart-total {
   padding: 0;
 }
-.account-top input[type="submit"],.register-bottom-grid input[type="submit"] {
+.account-top input[type=submit], .register-bottom-grid input[type=submit] {
   font-size: 1em;
 }
 .account-top,.left-account,.register-top-grid,.register-bottom-grid {
