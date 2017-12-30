@@ -651,8 +651,8 @@ ul.social li i:hover{
 .contact-grid textarea{
 	resize:none;
 }
-.send input[type=submit]{
-	width: 14%;
+.send input[type=submit],.send input[type=reset]{
+	width: ;
 	font-size: 1.1em;
 	background:#EF5F21;
 	padding: 0.4em 0.8em;
