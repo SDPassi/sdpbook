@@ -184,7 +184,6 @@ a.item_add {
 /*--banner--*/
 
 .banner{
-	background: url(../images/1.jpg) no-repeat ;
 	background-size: cover;
 	width:100%;
 	min-height: 560px;
@@ -233,6 +232,7 @@ a.item_add {
 	border: 1px solid #fff;
 	background:none;
 	border-radius:50px;
+	
 }
 .callbacks_here a:after{
 	background:#fff;
@@ -280,10 +280,12 @@ height: 35px;
   text-transform: uppercase;
   letter-spacing: 6px;
   line-height: 1.2em;
+  color:black;
 }
 .banner-text p{
 	font-size:1.2em;
 	margin: 0.3em 0 1em;
+	color:black;
 }
 .banner-text a{
 	text-decoration: none;
