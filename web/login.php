@@ -1,8 +1,37 @@
-<!--A Design by W3layouts 
-Author: W3layout
-Author URL: http://w3layouts.com
-License: Creative Commons Attribution 3.0 Unported
-License URL: http://creativecommons.org/licenses/by/3.0/
+<?php
+
+session start();
+
+include(conn.php);
+
+if (isset($_POST["email"], $_POST["password"])){
+
+	$myusername = mysqli_real_escape_string ($con,$_POST["email"]);
+	$mypassword = mysqli_real_escape_string ($con,$_POST["password"]);
+	
+	$sql = "SELECT email FROM member WHERE email = '$myusername' and password = '$mypassword'";
+	$result = mysqli_query($con,$sql);
+	$row = mysqli_fetch_array ($result, Mysqli_ASSOC);
+	mysqli_store_result($con)
+	$count = mysqli_num_rows($result);
+	
+	if ($count == 1)
+	{ 
+		$_session['login_user'] = $myusername;
+		
+		header ["location: ."];
+	}
+	else
+	{
+	
+	 $error = "Invalid username and password !";
+	 
+	}
+
+}
+
+
+?>
 -->
 <!DOCTYPE html>
 <html>

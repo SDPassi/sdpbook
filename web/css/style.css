@@ -187,7 +187,9 @@ a.item_add {
 	background-size: cover;
 	width:100%;
 	min-height: 560px;
-	  position: relative;
+	position: relative;
+	
+	  
 }
 /*--- slider-css --*/
 
@@ -280,12 +282,12 @@ height: 35px;
   text-transform: uppercase;
   letter-spacing: 6px;
   line-height: 1.2em;
-  color:black;
+  color:white;
 }
 .banner-text p{
 	font-size:1.2em;
 	margin: 0.3em 0 1em;
-	color:black;
+	color:white;
 }
 .banner-text a{
 	text-decoration: none;

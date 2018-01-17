@@ -82,7 +82,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 
 	</div>
 
-	<div class="banner" style = "background-color:white">
+	<div class="banner" style = "background-color:black;">
 		<div class="container">
 			  <script src="js/responsiveslides.min.js"></script>
   <script>
@@ -100,18 +100,18 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			<ul class="rslides" id="slider">
 			    <li>
 					
-						<div class="banner-text">
-						<div class="slidetxt" style="float:left;width:50%;">
+						<div class="banner-text" style="width: 100%; overflow: hidden;">
+						<div class="slidetxt" style="width: 600px; float: left;">
 							<h3>Lorem Ipsum is not simply dummy  </h3>
 						<p>Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor .</p>
 						<a href="single.html">Learn More</a>
 						</div>
 						
-						<div class="slideimg" style = "float:right";>
+						<div class="slideimg" style="margin-left: 620px;">
 						<img src ="images/13.jpg" alt="">
 						</div>
 						</div>
-				
+		
 				</li>
 				<li>
 					
@@ -145,7 +145,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		<h1>OUR PRODUCTS</h1>
 		<div class="grid-in">
 			<div class="col-md-4 grid-top">
-				<a href="single.html" class="b-link-stripe b-animate-go  thickbox"><img class="img-responsive" src="images/pi.jpg" alt="">
+				<a href="single.html" class="b-link-stripe b-animate-go  thickbox"><img class="img-responsive" src="images/16.jpg" alt="">
 							<div class="b-wrapper">
 									<h3 class="b-animate b-from-left    b-delay03 ">
 										<span>Basic Constal Engineering</span>	
@@ -157,7 +157,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			<p><a href="single.html">Popular</a></p>
 			</div>
 			<div class="col-md-4 grid-top">
-				<a href="single.html" class="b-link-stripe b-animate-go  thickbox"><img class="img-responsive" src="images/pi1.jpg" alt="">
+				<a href="single.html" class="b-link-stripe b-animate-go  thickbox"><img class="img-responsive" src="images/2.jpg" alt="">
 					<div class="b-wrapper">
 									<h3 class="b-animate b-from-left    b-delay03 ">
 										<span>C Programming to beginners</span>	
@@ -167,10 +167,10 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			<p><a href="single.html">Top Sales</a></p>
 			</div>
 			<div class="col-md-4 grid-top">
-				<a href="single.html" class="b-link-stripe b-animate-go  thickbox"><img class="img-responsive" src="images/pi2.jpg" alt="">
+				<a href="single.html" class="b-link-stripe b-animate-go  thickbox"><img class="img-responsive" src="images/3.jpg" alt="">
 					<div class="b-wrapper">
 									<h3 class="b-animate b-from-left    b-delay03 ">
-										<span>Operating System</span>	
+										<span>Software Development Techniques</span>	
 									</h3>
 								</div>
 				</a>
@@ -180,7 +180,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		</div>
 		<div class="grid-in">
 			<div class="col-md-4 grid-top">
-				<a href="single.html" class="b-link-stripe b-animate-go  thickbox"><img class="img-responsive" src="images/pi3.jpg" alt="">
+				<a href="single.html" class="b-link-stripe b-animate-go  thickbox"><img class="img-responsive" src="images/1.jpg" alt="">
 					<div class="b-wrapper">
 									<h3 class="b-animate b-from-left    b-delay03 ">
 										<span>The effective engineer</span>	
@@ -190,17 +190,17 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			<p><a href="single.html">Must Get</a></p>
 			</div>
 			<div class="col-md-4 grid-top">
-				<a href="single.html" class="b-link-stripe b-animate-go  thickbox"><img class="img-responsive" src="images/pi4.jpg" alt="">
+				<a href="single.html" class="b-link-stripe b-animate-go  thickbox"><img class="img-responsive" src="images/7.jpg" alt="">
 					<div class="b-wrapper">
 									<h3 class="b-animate b-from-left    b-delay03 ">
-										<span>Software Development Technique</span>	
+										<span>Journey to the West</span>	
 									</h3>
 								</div>
 				</a>
 			<p><a href="single.html">Top Rate</a></p>
 			</div>
 			<div class="col-md-4 grid-top">
-				<a href="single.html" class="b-link-stripe b-animate-go  thickbox"><img class="img-responsive" src="images/pi5.jpg" alt="">
+				<a href="single.html" class="b-link-stripe b-animate-go  thickbox"><img class="img-responsive" src="images/4.jpg" alt="">
 					<div class="b-wrapper">
 									<h3 class="b-animate b-from-left    b-delay03 ">
 										<span>History is all you left me</span>	
