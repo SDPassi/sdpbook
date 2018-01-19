@@ -1,9 +1,29 @@
-<!--A Design by W3layouts 
-Author: W3layout
-Author URL: http://w3layouts.com
-License: Creative Commons Attribution 3.0 Unported
-License URL: http://creativecommons.org/licenses/by/3.0/
--->
+<?php
+include("conn.php");
+
+if (isset($_POST['First_Name'],$_POST['Phone_Number'],$_POST['Email_Address'],$_POST['Password'],$_POST['Confirm_Password'],$_POST['Address'])) { 
+
+
+$sql = "INSERT INTO member(name, phone, email, password, address)
+
+VALUES
+
+('$_POST[First_Name]', '$_POST[Phone_Number]','$_POST[Email_Address]','$_POST[Password]','$_POST[Confirm_Password]','$_POST[Address]')";
+
+
+if (!mysqli_query($con,$sql))
+{
+mysqli_close($con);
+die ('Error:'.mysqli_error($con));
+}
+echo'<script text="text/javascript">
+alert("You have successfully registered!")
+window.location.replace ("login.php");
+</script>';
+}
+?>
+
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -54,8 +74,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			</div>
 			<div class="header-left">		
 					<ul>
-						<li ><a class="lock"  href="login.html"  >Login</a></li>
-						<li><a class="lock" href="register.html"  >Register</a></li>
+						<li ><a href="login.php"  >Login</a></li>
+						<li><a  href="register.php"  >Register</a></li>
 						<li>
 </li>
 

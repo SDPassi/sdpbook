@@ -12,7 +12,7 @@ if (isset($_POST["email"], $_POST["password"])){
 	$sql = "SELECT email FROM member WHERE email = '$myusername' and password = '$mypassword'";
 	$result = mysqli_query($con,$sql);
 	$row = mysqli_fetch_array ($result, Mysqli_ASSOC);
-	mysqli_store_result($con)
+	mysqli_store_result($con);
 	$count = mysqli_num_rows($result);
 	
 	if ($count == 1)
@@ -32,7 +32,7 @@ if (isset($_POST["email"], $_POST["password"])){
 
 
 ?>
--->
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -71,8 +71,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			</div>
 			<div class="header-left">		
 					<ul>
-						<li ><a class="lock"  href="login.html"  >Login</a></li>
-						<li><a class="lock" href="register.html"  >Register</a></li>
+						<li ><a href="login.php"  >Login</a></li>
+						<li><a  href="register.php"  >Register</a></li>
 						<li>
 </li>
 
@@ -98,11 +98,12 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				</div>
 		  <div class=" h_menu4">
 				<ul class="memenu skyblue">
-					  <li class="active grid"><a class="color8" href="index.html">Home</a></li>	
-				    <li><a class="color1" href="activity.html">Activity</a></li>
-				    <li class="grid"><a class="color2" href="order.html">Order</a></li>
-					<li><a class="color4" href="products.html">Product</a> 	
-			    </li>					<li><a class="color6" href="contact.html">Profile</a></li>
+					  <li class="active grid"><a class="color8" href="index.php">Home</a></li>	
+				      <li><a class="color1" href="activity.php">Activity</a></li>
+				    <li class="grid"><a class="color2" href="order.php">Order</a></li>
+					<li><a class="color4" href="products.php">Product</a> 	
+			    </li>		
+				<li><a class="color6" href="contact.php">Profile</a></li>
 			  </ul> 
 			</div>
 				
