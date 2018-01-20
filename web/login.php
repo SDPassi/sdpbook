@@ -1,8 +1,8 @@
 <?php
 
-session start();
+session_start();
 
-include(conn.php);
+include "conn.php";
 
 if (isset($_POST["email"], $_POST["password"])){
 

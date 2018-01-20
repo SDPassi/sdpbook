@@ -1,9 +1,13 @@
-<!--A Design by W3layouts 
-Author: W3layout
-Author URL: http://w3layouts.com
-License: Creative Commons Attribution 3.0 Unported
-License URL: http://creativecommons.org/licenses/by/3.0/
--->
+<?php
+session_start();
+
+include "conn.php";
+?>
+
+
+
+
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -222,7 +226,32 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 							</div>
 					
 				</div>
-<div class=" per1">
+				
+				
+<?php
+$sql = "SELECT* FROM inventory";
+$row = mysql_query($con,$sql);
+for (i = 0;$productshow = mysql_fetch_array($row);i++){
+	
+	echo'<div class=" per1">
+		<img src Images/'.$productshow['product_image'].'.jpg>
+		<p>'.$productshow['product_name'].'</p>
+		<a href="#" class="item_add"><p class="number item_price"><i> </i>RM'.$productshow['product_price'].'</p></a>
+		<p>'.$productshow['product_description'].'</p>
+		
+		<form action = "product.php" method = "post">
+		<input onclick = "atc(-1.'$i.')" type = "button" value = "-"/>
+		<input style = "width:175px;" id = "quantity'.$i.'" name = "quantity" type = "text" value = "1"/>
+		<input onclick = "atc(1.'$i.')" type = "button" value = "+"/>
+
+		<input type = "submit" value = "Add To Cart"/>
+		</form>
+		</div>';
+	
+}
+
+?>
+
 				<a href="single.html" ><img class="img-responsive" src="images/12.jpg" alt="">
 				<div class="six1">
 					<h4>DISCOUNT</h4>
