@@ -1,15 +1,18 @@
 <?php
+
 include("conn.php");
 
-if (isset($_POST['First_Name'],$_POST['Phone_Number'],$_POST['Email_Address'],$_POST['Password'],$_POST['Confirm_Password'],$_POST['Address'])) { 
+if (isset($_POST['name'],$_POST['num'],$_POST['email'],$_POST['psw'],$_POST['address'])) { 
+$npassword = password_hash($_POST['psw'],PASSWORD_DEFAULT);
 
 
 $sql = "INSERT INTO member(name, phone, email, password, address)
-
 VALUES
 
-('$_POST[First_Name]', '$_POST[Phone_Number]','$_POST[Email_Address]','$_POST[Password]','$_POST[Confirm_Password]','$_POST[Address]')";
+('$_POST[name]', '$_POST[num]','$_POST[email]','$npassword','$_POST[address]')";
 
+$result = mysqli_query($con,$sql);
+echo $npassword;
 
 if (!mysqli_query($con,$sql))
 {
@@ -20,6 +23,7 @@ echo'<script text="text/javascript">
 alert("You have successfully registered!")
 window.location.replace ("login.php");
 </script>';
+
 }
 ?>
 
@@ -101,11 +105,11 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				</div>
 		  <div class=" h_menu4">
 					<ul class="memenu skyblue">
-					   <li class="active grid"><a class="color8" href="index.html">Home</a></li>	
-				     <li><a class="color1" href="activity.html">Activity</a></li>
-					<li><a class="color4" href="products.html">Product</a> 	
+					   <li class="active grid"><a class="color8" href="index.php">Home</a></li>	
+				     <li><a class="color1" href="activity.php">Activity</a></li>
+					<li><a class="color4" href="products.php">Product</a> 	
 			    </li>					
-				<li><a class="color6" href="contact.html">Profile</a></li>
+				<li><a class="color6" href="profile.php">Profile</a></li>
 			  </ul> 
 			</div>
 				
@@ -119,30 +123,30 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <!--content-->
 <div class=" container">
 <div class=" register" >
-	<h1>Register an account</h1>
-		  	  <form> 
+	<h1>Create an account</h1>
+		  	  <form action="" method="post"> 
 				 <div class="col-md-6 register-top-grid"style="margin-left:270px;">
-					<h3>Personal infomation</h3>
+					<h3>Personal information</h3>
 					 <div>
-						<span>First Name</span>
-						<input name="name" type="text" required="required"> 
+						<span>Name</span>
+							<input name="name" type="text" required="required"> 
 					 </div>
 					 <div>
 						<span>Phone Number</span>
-						<input name="num" type="tel" required="required"> 
+							<input name="num" type="tel" required="required"> 
 					 </div>
 					 <div>
 						 <span>Email Address</span>
-						 <input name="email" type="email" required="required"> 
+						 	<input name="email" type="email" required="required"> 
 					 </div>
 					 <div>
-								<span>Password</span>
-								<input name="psw"  id="pass1" onchange="checkEqualPassword(this, document.getElementById('pass2'));" type="password" min="4" required="required" >
-							 </div>
-							 <div>
-								<span>Confirm Password</span>
-								<input name="psw"  id="pass2" onchange="checkEqualPassword(document.getElementById('pass1'), this);" type="password" min="4" required="required">
-							 </div>
+						<span>Password</span>
+							<input name="psw"  id="pass1" onchange="checkEqualPassword(this, document.getElementById('pass2'));" type="password" min="4" required="required" >
+					</div>
+					<div>
+						<span>Confirm Password</span>
+							<input name="cpsw"  id="pass2" onchange="checkEqualPassword(document.getElementById('pass1'), this);" type="password" min="4" required="required">
+					</div>
 					<div>
 						<span>Address</span>
 						<input name="address" type="text" required="required"> 
@@ -157,6 +161,11 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				</form>
 			</div>
 </div>
+
+<?php 
+mysqli_close($con); 
+?>
+
 <!--//content-->
 <div class="footer">
 				<div class="container">

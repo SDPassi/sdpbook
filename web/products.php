@@ -2,6 +2,34 @@
 session_start();
 
 include "conn.php";
+
+
+$sql1 = "SELECT ID FROM member WHERE email = '$_SESSION[login_user]'";
+$result1 = mysqli_query ($con,$sql1);
+$row = mysqli_fetch_array ($result1);
+
+
+if (isset($_POST['quantity'])) {
+
+$sql = "INSERT INTO cart(product_id, user_id,product_quantity) 
+
+
+VALUES
+
+('$_POST[product_id]', '$row[user_id]','$_POST[quantity]')";
+
+
+if (mysqli_query ($con,$sql)) 
+
+
+	echo '<script text="text/javascript">
+	alert("1 record added!")
+	windows.location.replace ("product.php");
+	</script>';
+
+}
+
+
 ?>
 
 
@@ -46,11 +74,13 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			</div>
 			<div class="header-left">		
 					<ul>
-						<li ><a href="login.php"  >Login</a></li>
-						<li><a  href="register.php"  >Register</a></li>
-						<li>
-</li>
-
+						<?php if (isset($_SESSION['login_user'])): ?>
+						<li ><a href="profile.php"  ><?php echo($_SESSION['login_user']); ?><a href="logout.php">(LOGOUT)</a></li>
+						
+					<?php else: ?>
+						<li><a href="login.php">Login</a></li>
+						<li><a href="register.php">Register</a></li>
+					<?php endif; ?>
 					</ul>
 					<div class="cart box_1">
 						<a href="checkout.html">
@@ -78,7 +108,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				    <li class="grid"><a class="color2" href="order.php">Order</a></li>
 					<li><a class="color4" href="products.php">Product</a> 	
 			    </li>		
-				<li><a class="color6" href="contact.php">Profile</a></li>
+				<li><a class="color6" href="profile.php">Profile</a></li>
 			  </ul> 
 			</div>
 				
@@ -230,19 +260,19 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				
 <?php
 $sql = "SELECT* FROM inventory";
-$row = mysql_query($con,$sql);
-for (i = 0;$productshow = mysql_fetch_array($row);i++){
+$row = mysql_query ($con, $sql);
+for (i = 0;$productshow = mysql_fetch_array($row);i++) {
 	
 	echo'<div class=" per1">
-		<img src Images/'.$productshow['product_image'].'.jpg>
+		<img src images/'.$productshow['product_image'].'.jpg>
 		<p>'.$productshow['product_name'].'</p>
 		<a href="#" class="item_add"><p class="number item_price"><i> </i>RM'.$productshow['product_price'].'</p></a>
 		<p>'.$productshow['product_description'].'</p>
 		
 		<form action = "product.php" method = "post">
-		<input onclick = "atc(-1.'$i.')" type = "button" value = "-"/>
+		<input onclick = "atc(-1,'.$i.')" type = "button" value = "-"/>
 		<input style = "width:175px;" id = "quantity'.$i.'" name = "quantity" type = "text" value = "1"/>
-		<input onclick = "atc(1.'$i.')" type = "button" value = "+"/>
+		<input onclick = "atc(1,'.$i.')" type = "button" value = "+"/>
 
 		<input type = "submit" value = "Add To Cart"/>
 		</form>

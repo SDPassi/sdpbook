@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <!--A Design by W3layouts 
 Author: W3layout
 Author URL: http://w3layouts.com
@@ -42,9 +45,13 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			</div>
 			<div class="header-left">		
 					<ul>
-						<li ><a href="login.php"  >Login</a></li>
-						<li><a  href="register.php"  >Register</a></li>
-
+					<?php if (isset($_SESSION['login_user'])): ?>
+						<li ><a href="profile.php"  ><?php echo($_SESSION['login_user']); ?><a href="logout.php">(LOGOUT)</a></li>
+						
+					<?php else: ?>
+						<li><a href="login.php">Login</a></li>
+						<li><a href="register.php">Register</a></li>
+					<?php endif; ?>
 					</ul>
 					<div class="cart box_1">
 						<a href="checkout.html">
@@ -102,33 +109,43 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 					
 						<div class="banner-text" style="width: 100%; overflow: hidden;">
 						<div class="slidetxt" style="width: 600px; float: left;">
-							<h3>Lorem Ipsum is not simply dummy  </h3>
-						<p>Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor .</p>
-						<a href="single.html">Learn More</a>
+							<h3>Books are the knowledge source from the ansions </h3>
+								<p>Diverse of books have been kept safely from 2000 years ago by human ancester as books are the equipment that ancestor records their experience and used to share to the new generation.</p>
+									<a href="single.html">Learn More</a>
 						</div>
 						
 						<div class="slideimg" style="margin-left: 620px;">
-						<img src ="images/13.jpg" alt="">
+							<img src ="images/13.jpg" alt="">
 						</div>
 						</div>
 		
 				</li>
 				<li>
 					
-						<div class="banner-text">
-							<h3>There are many variations </h3>
-						<p>Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor .</p>
-												<a href="single.html">Learn More</a>
-
+						<div class="banner-text" style="width: 100%; overflow: hidden;">
+						<div class="slidetxt" style="width: 600px; float: left;">
+							<h3>There are many variations of books that all human</h3>
+								<p>Consists of medication books for medic, education books such as geogoly, history, physics and programming books that helps programmer to improve themselves.</p>
+									<a href="single.html">Learn More</a>
 						</div>
+						<div class="slideimg" style="margin-left: 620px;">
+							<img src ="images/27.jpg" alt="">
+						</div>
+						</div>
+						
+						
 					
 				</li>
 				<li>
-						<div class="banner-text">
-							<h3>Sed ut perspiciatis unde omnis</h3>
-						<p>Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor .</p>
-								<a href="single.html">Learn More</a>
-
+						<div class="banner-text" style="width: 100%; overflow: hidden;">
+						<div class="slidetxt" style="width: 600px; float: left;">
+							<h3>Knowledge is important to human and the new generation world</h3>
+								<p>Humans will gain more knowledge from the books and this will improve the quality of this new generation of IT.</p>
+									<a href="single.html">Learn More</a>
+						</div>	
+						<div class="slideimg" style="margin-left: 620px;">
+							<img src ="images/28.jpg" alt="">
+						</div>
 						</div>
 					
 				</li>
@@ -217,7 +234,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 	<div class="content-top-bottom">
 		<h2>Featured Collections</h2>
 		<div class="col-md-6 men">
-			<a href="single.html" class="b-link-stripe b-animate-go  thickbox"><img class="img-responsive" src="images/t1.jpg" alt="">
+			<a href="single.html" class="b-link-stripe b-animate-go  thickbox"><img class="img-responsive" src="images/23.jpg" alt="">
 				<div class="b-wrapper">
 									<h3 class="b-animate b-from-top top-in   b-delay03 ">
 										<span>Lorem</span>	
@@ -229,7 +246,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		</div>
 		<div class="col-md-6">
 			<div class="col-md1 ">
-				<a href="single.html" class="b-link-stripe b-animate-go  thickbox"><img class="img-responsive" src="images/t2.jpg" alt="">
+				<a href="single.html" class="b-link-stripe b-animate-go  thickbox"><img class="img-responsive" src="images/24.jpg" alt="">
 					<div class="b-wrapper">
 									<h3 class="b-animate b-from-top top-in1   b-delay03 ">
 										<span>Lorem</span>	
@@ -240,7 +257,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			</div>
 			<div class="col-md2">
 				<div class="col-md-6 men1">
-					<a href="single.html" class="b-link-stripe b-animate-go  thickbox"><img class="img-responsive" src="images/t3.jpg" alt="">
+					<a href="single.html" class="b-link-stripe b-animate-go  thickbox"><img class="img-responsive" src="images/25.jpg" alt="">
 							<div class="b-wrapper">
 									<h3 class="b-animate b-from-top top-in2   b-delay03 ">
 										<span>Lorem</span>	
@@ -250,7 +267,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 					
 				</div>
 				<div class="col-md-6 men2">
-					<a href="single.html" class="b-link-stripe b-animate-go  thickbox"><img class="img-responsive" src="images/t4.jpg" alt="">
+					<a href="single.html" class="b-link-stripe b-animate-go  thickbox"><img class="img-responsive" src="images/26.jpg" alt="">
 							<div class="b-wrapper">
 									<h3 class="b-animate b-from-top top-in2   b-delay03 ">
 										<span>Lorem</span>	

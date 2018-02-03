@@ -1,9 +1,6 @@
-<!--A Design by W3layouts 
-Author: W3layout
-Author URL: http://w3layouts.com
-License: Creative Commons Attribution 3.0 Unported
-License URL: http://creativecommons.org/licenses/by/3.0/
--->
+<?php
+session_start();
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -42,10 +39,13 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			</div>
 			<div class="header-left">		
 					<ul>
-						<li ><a href="login.php"  >Login</a></li>
-						<li><a  href="register.php"  >Register</a></li>
-						<li>
-</li>
+						<?php if (isset($_SESSION['login_user'])): ?>
+						<li ><a href="profile.php"  ><?php echo($_SESSION['login_user']); ?><a href="logout.php">(LOGOUT)</a></li>
+						
+					<?php else: ?>
+						<li><a href="login.php">Login</a></li>
+						<li><a href="register.php">Register</a></li>
+					<?php endif; ?>
 
 					</ul>
 					<div class="cart box_1">

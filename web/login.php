@@ -4,22 +4,24 @@ session_start();
 
 include "conn.php";
 
-if (isset($_POST["email"], $_POST["password"])){
+if (isset($_POST["email"], $_POST["psw"])){
 
-	$myusername = mysqli_real_escape_string ($con,$_POST["email"]);
-	$mypassword = mysqli_real_escape_string ($con,$_POST["password"]);
+	$myusername = mysqli_real_escape_string ($con,$_POST["email"]);	
 	
-	$sql = "SELECT email FROM member WHERE email = '$myusername' and password = '$mypassword'";
+	
+	$sql = "SELECT email,password FROM member WHERE email = '$myusername'";
 	$result = mysqli_query($con,$sql);
-	$row = mysqli_fetch_array ($result, Mysqli_ASSOC);
+	$row = mysqli_fetch_array ($result, MYSQLI_ASSOC);
+	$npassword = password_verify($_POST['psw'],$row['password']);
+	
 	mysqli_store_result($con);
 	$count = mysqli_num_rows($result);
 	
-	if ($count == 1)
+	if ($npassword)
 	{ 
-		$_session['login_user'] = $myusername;
+		$_SESSION['login_user'] = $myusername;
 		
-		header ["location: ."];
+		header("location: index.php");
 	}
 	else
 	{
@@ -64,18 +66,19 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 	<div class="header-top">
 		<div class="container">
 			<div class="search">
-					<form>
+					<form action="" method="post">
 						<input type="text" value="Search " onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Search';}">
 						<input type="submit" value="Go">
 					</form>
 			</div>
 			<div class="header-left">		
 					<ul>
+						<?php if (isset($_SESSION['login_user'])): ?>
+						<li ><a href="login.php"  ><?php echo($_SESSION['login_user']); ?></a></li>
+					<?php else: ?>
 						<li ><a href="login.php"  >Login</a></li>
 						<li><a  href="register.php"  >Register</a></li>
-						<li>
-</li>
-
+					<?php endif; ?>
 					</ul>
 					<div class="cart box_1">
 						<a href="checkout.html">
@@ -120,7 +123,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		<h1>Login to your account</h1>
 		<div class="account-pass">
 		<div class="col-md-8 account-top" style="margin-left:200px;">
-			<form>
+			<form method="post">
 				
 			<div > 	
 				<span>Email Address</span>
