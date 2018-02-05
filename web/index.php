@@ -61,7 +61,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 					<?php endif; ?>
 					</ul>
 					<div class="cart box_1">
-						<a href="checkout.html">
+						<a href="checkout.php">
 						<h3> <div class="total">
 							<span class="simpleCart_total"></span> (<span id="simpleCart_quantity" class="simpleCart_quantity"></span> items)</div>
 							<img src="images/cart.png" alt=""/></h3>
@@ -77,7 +77,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		<div class="container">
 			<div class="head-top">
 				<div class="logo">
-					<a href="index.html"><img src="images/bookicon.png" style="width:10%;height:10%" alt="">TPM Bookstore</a>	
+					<a href="index.php"><img src="images/bookicon.png" style="width:10%;height:10%" alt="">TPM Bookstore</a>	
 				</div>
 		  <div class=" h_menu4">
 				<ul class="memenu skyblue">
@@ -86,7 +86,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				    <li class="grid"><a class="color2" href="order.php">Order</a></li>
 					<li><a class="color4" href="products.php">Product</a> 	
 			    </li>		
-				<li><a class="color6" href="contact.php">Profile</a></li>
+				<li><a class="color6" href="profile.php">Profile</a></li>
 			  </ul> 
 			</div>
 				
@@ -118,7 +118,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 						<div class="slidetxt" style="width: 600px; float: left;">
 							<h3>Books are the knowledge source from the ansions </h3>
 								<p>Diverse of books have been kept safely from 2000 years ago by human ancester as books are the equipment that ancestor records their experience and used to share to the new generation.</p>
-									<a href="single.html">Learn More</a>
+									<a href="single.php">Learn More</a>
 						</div>
 						
 						<div class="slideimg" style="margin-left: 620px;">
@@ -133,7 +133,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 						<div class="slidetxt" style="width: 600px; float: left;">
 							<h3>There are many variations of books that all human</h3>
 								<p>Consists of medication books for medic, education books such as geogoly, history, physics and programming books that helps programmer to improve themselves.</p>
-									<a href="single.html">Learn More</a>
+									<a href="single.php">Learn More</a>
 						</div>
 						<div class="slideimg" style="margin-left: 620px;">
 							<img src ="images/27.jpg" alt="">
@@ -148,7 +148,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 						<div class="slidetxt" style="width: 600px; float: left;">
 							<h3>Knowledge is important to human and the new generation world</h3>
 								<p>Humans will gain more knowledge from the books and this will improve the quality of this new generation of IT.</p>
-									<a href="single.html">Learn More</a>
+									<a href="single.php">Learn More</a>
 						</div>	
 						<div class="slideimg" style="margin-left: 620px;">
 							<img src ="images/28.jpg" alt="">
@@ -169,7 +169,11 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		<h1>New Arrival</h1>
 		<div class="grid-in">
 			<div class="col-md-4 grid-top">
+<<<<<<< HEAD
 				<a href="single.html" class="b-link-stripe b-animate-go  thickbox"><img class="img-responsive" src="images/16a.jpg" alt="">
+=======
+				<a href="single.php" class="b-link-stripe b-animate-go  thickbox"><img class="img-responsive" src="images/16.jpg" alt="">
+>>>>>>> 32a3475e343ffbe3ccf546e6b47948a07a866625
 							<div class="b-wrapper">
 									<h3 class="b-animate b-from-left    b-delay03 ">
 										<span>Read More</span>	
@@ -180,14 +184,22 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			</div>
 			
 			<div class="col-md-4 grid-top">
+<<<<<<< HEAD
 				<a href="single.html" class="b-link-stripe b-animate-go  thickbox"><img class="img-responsive" src="images/17b.jpg" alt="">
+=======
+				<a href="single.php" class="b-link-stripe b-animate-go  thickbox"><img class="img-responsive" src="images/17.jpg" alt="">
+>>>>>>> 32a3475e343ffbe3ccf546e6b47948a07a866625
 					<div class="b-wrapper">
 									<h3 class="b-animate b-from-left    b-delay03 ">
 										<span>Read More</span>	
 									</h3>
 								</div>
 				</a>
+<<<<<<< HEAD
 			<p><a href="single.html">Add to cart</a></p>
+=======
+			<p><a href="single.php">Top Sales</a></p>
+>>>>>>> 32a3475e343ffbe3ccf546e6b47948a07a866625
 			</div>
 			
 			<div class="col-md-4 grid-top">
@@ -205,24 +217,39 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		</div>
 		<div class="grid-in">
 			<div class="col-md-4 grid-top">
+<<<<<<< HEAD
 				<a href="single.html" class="b-link-stripe b-animate-go  thickbox"><img class="img-responsive" src="images/19a.jpg" alt="">
+=======
+				<a href="single.php" class="b-link-stripe b-animate-go  thickbox"><img class="img-responsive" src="images/19.jpg" alt="">
+>>>>>>> 32a3475e343ffbe3ccf546e6b47948a07a866625
 					<div class="b-wrapper">
 									<h3 class="b-animate b-from-left    b-delay03 ">
 										<span>Read More</span>	
 									</h3>
 								</div>
 				</a>
+<<<<<<< HEAD
 			<p><a href="single.html">Add to cart</a></p>
 			</div>
 			<div class="col-md-4 grid-top">
 				<a href="single.html" class="b-link-stripe b-animate-go  thickbox"><img class="img-responsive" src="images/20a.jpg" alt="">
+=======
+			<p><a href="single.php">Must Get</a></p>
+			</div>
+			<div class="col-md-4 grid-top">
+				<a href="single.php" class="b-link-stripe b-animate-go  thickbox"><img class="img-responsive" src="images/20.jpg" alt="">
+>>>>>>> 32a3475e343ffbe3ccf546e6b47948a07a866625
 					<div class="b-wrapper">
 									<h3 class="b-animate b-from-left    b-delay03 ">
 										<span>Read More</span>	
 									</h3>
 								</div>
 				</a>
+<<<<<<< HEAD
 			<p><a href="single.html">Add to cart</a></p>
+=======
+			<p><a href="single.php">Top Rate</a></p>
+>>>>>>> 32a3475e343ffbe3ccf546e6b47948a07a866625
 			</div>
 			<div class="col-md-4 grid-top">
 				<a href="single.html" class="b-link-stripe b-animate-go  thickbox"><img class="img-responsive" src="images/21a.jpg" alt="">
@@ -232,7 +259,11 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 									</h3>
 								</div>
 				</a>
+<<<<<<< HEAD
 			<p><a href="single.html">Add to cart</a></p>
+=======
+			<p><a href="single.php">Recommended</a></p>
+>>>>>>> 32a3475e343ffbe3ccf546e6b47948a07a866625
 			</div>
 					<div class="clearfix"> </div>
 		</div>
@@ -242,7 +273,11 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 	<div class="content-top-bottom">
 		<h2>Featured Collections</h2>
 		<div class="col-md-6 men">
+<<<<<<< HEAD
 			<a href="single.html" class="b-link-stripe b-animate-go  thickbox"><img class="img-responsive" src="images/23a.jpg" alt="">
+=======
+			<a href="single.php" class="b-link-stripe b-animate-go  thickbox"><img class="img-responsive" src="images/23.jpg" alt="">
+>>>>>>> 32a3475e343ffbe3ccf546e6b47948a07a866625
 				<div class="b-wrapper">
 									<h3 class="b-animate b-from-top top-in   b-delay03 ">
 										<span>Lorem</span>	
@@ -254,7 +289,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		</div>
 		<div class="col-md-6">
 			<div class="col-md1 ">
-				<a href="single.html" class="b-link-stripe b-animate-go  thickbox"><img class="img-responsive" src="images/24.jpg" alt="">
+				<a href="single.php" class="b-link-stripe b-animate-go  thickbox"><img class="img-responsive" src="images/24.jpg" alt="">
 					<div class="b-wrapper">
 									<h3 class="b-animate b-from-top top-in1   b-delay03 ">
 										<span>Lorem</span>	
@@ -265,7 +300,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			</div>
 			<div class="col-md2">
 				<div class="col-md-6 men1">
-					<a href="single.html" class="b-link-stripe b-animate-go  thickbox"><img class="img-responsive" src="images/25.jpg" alt="">
+					<a href="single.php" class="b-link-stripe b-animate-go  thickbox"><img class="img-responsive" src="images/25.jpg" alt="">
 							<div class="b-wrapper">
 									<h3 class="b-animate b-from-top top-in2   b-delay03 ">
 										<span>Lorem</span>	
@@ -275,7 +310,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 					
 				</div>
 				<div class="col-md-6 men2">
-					<a href="single.html" class="b-link-stripe b-animate-go  thickbox"><img class="img-responsive" src="images/26.jpg" alt="">
+					<a href="single.php" class="b-link-stripe b-animate-go  thickbox"><img class="img-responsive" src="images/26.jpg" alt="">
 							<div class="b-wrapper">
 									<h3 class="b-animate b-from-top top-in2   b-delay03 ">
 										<span>Lorem</span>	
