@@ -1,5 +1,33 @@
 <?php
+
 session_start();
+
+include "conn.php";
+
+if (isset($_POST['name'],$_POST['num'],$_POST['email'],$_POST['psw'],$_POST['address'])) { 
+
+$sql = 
+
+"UPDATE member SET name = '$_POST[name]', phone = '$_POST[num]', password = '$_POST[psw]', email = '$_POST[email]', address = '$_POST[address]' WHERE email = '$_SESSION[login_user]'";
+
+mysqli_query($con,$sql);
+
+echo'<script text="text/javascript">
+alert("Your profile is updated!")
+windows.location.replace ("profile.php");
+</script>';
+}
+
+
+if (isset($_SESSION['login_user'])) {
+
+$sql = "SELECT * FROM member WHERE email =  '$_SESSION[login_user]'";
+
+$result = mysqli_query ($con,$sql);
+
+$row = mysqli_fetch_array ($result);
+}
+
 ?>
 <!DOCTYPE html>
 <html>
@@ -51,7 +79,16 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			<div class="header-left">		
 					<ul>
 						<?php if (isset($_SESSION['login_user'])): ?>
-						<li ><a href="logout.php"  ><?php echo($_SESSION['login_user']); ?></a></li>
+						
+						<li class="dropdown"><a href="#"><?php echo($_SESSION['login_user']); ?></a>
+						<div class="dropdown-content">
+							<a href="order.php">My Purchase</a>
+							<a href="logout.php">Logout</a>
+						
+						</div>
+						
+						</li>
+
 					<?php else: ?>
 						<li ><a href="login.php"  >Login</a></li>
 						<li><a  href="register.php"  >Register</a></li>
@@ -78,12 +115,12 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				</div>
 		  <div class=" h_menu4">
 					<ul class="memenu skyblue">
-					   <<li class="active grid"><a class="color8" href="index.php">Home</a></li>	
+					   <li class="active grid"><a class="color8" href="index.php">Home</a></li>	
 				      <li><a class="color1" href="activity.php">Activity</a></li>
 				    <li class="grid"><a class="color2" href="order.php">Order</a></li>
 					<li><a class="color4" href="products.php">Product</a> 	
 			    </li>		
-				<li><a class="color6" href="contact.php">Profile</a></li>
+				<li><a class="color6" href="profile.php">Profile</a></li>
 			  </ul> 
 			</div>
 				
@@ -103,41 +140,33 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			<div class="col-md-6 register-top-grid"style="margin-left:270px;">
 					<div>
 						<span>First Name</span>
-						<input name="name" type="text" required="required"> 
+						<input name="name" type="text" value="<?php echo $row['name']?>" required="required"> 
 					 </div>
 					 <div>
 						<span>Phone Number</span>
-						<input name="num" type="tel" required="required"> 
+						<input name="num" type="tel" value="<?php echo $row['phone']?>" required="required"> 
 					 </div>
 					 <div>
 						 <span>Email Address</span>
-						 <input name="email" type="email" required="required"> 
+						 <input name="email" type="email" value="<?php echo $row['email']?>" required="required"> 
 					 </div>
 					 <div>
-								<span>Password</span>
-								<input name="psw"  id="pass1" onchange="checkEqualPassword(this, document.getElementById('pass2'));" type="password" min="4" required="required" >
-							 </div>
-							 <div>
-								<span>Confirm Password</span>
-								<input name="psw"  id="pass2" onchange="checkEqualPassword(document.getElementById('pass1'), this);" type="password" min="4" required="required">
-							 </div>
-					<div>
 						<span>Address</span>
-						<input name="address" type="text" required="required"> 
+						<input name="address" type="text" value="<?php echo $row['address']?>" required="required"> 
 						
 						
 					 </div>
 					 <div class="send">
 							<input type="submit" value="Update" style="float:right;">
-							
-							<input type="reset" value="Reset" style="float:left;">		 
+							<a href="fgtpsw.php">Change Password</a>
+		 
 						</div>	
 		 
 					 </div>
 					</form>
-				</div>
+				
 								<div class="clearfix"> </div>
-			</div>
+			
 				</div>
 		
 	</div>

@@ -46,7 +46,14 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			<div class="header-left">		
 					<ul>
 					<?php if (isset($_SESSION['login_user'])): ?>
-						<li ><a href="profile.php"  ><?php echo($_SESSION['login_user']); ?><a href="logout.php">(LOGOUT)</a></li>
+						<li class="dropdown"><a href="#"><?php echo($_SESSION['login_user']); ?></a>
+						<div class="dropdown-content">
+							<a href="order.php">My Purchase</a>
+							<a href="logout.php">Logout</a>
+						
+						</div>
+						
+						</li>
 						
 					<?php else: ?>
 						<li><a href="login.php">Login</a></li>
@@ -159,72 +166,73 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <div class="content">
 	<div class="container">
 	<div class="content-top">
-		<h1>OUR PRODUCTS</h1>
+		<h1>New Arrival</h1>
 		<div class="grid-in">
 			<div class="col-md-4 grid-top">
-				<a href="single.html" class="b-link-stripe b-animate-go  thickbox"><img class="img-responsive" src="images/16.jpg" alt="">
+				<a href="single.html" class="b-link-stripe b-animate-go  thickbox"><img class="img-responsive" src="images/16a.jpg" alt="">
 							<div class="b-wrapper">
 									<h3 class="b-animate b-from-left    b-delay03 ">
-										<span>Basic Constal Engineering</span>	
+										<span>Read More</span>	
 									</h3>
 								</div>
 				</a>
-		
-
-			<p><a href="single.html">Popular</a></p>
+			<p><a href="single.html">Add to cart</a></p>
 			</div>
+			
 			<div class="col-md-4 grid-top">
-				<a href="single.html" class="b-link-stripe b-animate-go  thickbox"><img class="img-responsive" src="images/17.jpg" alt="">
+				<a href="single.html" class="b-link-stripe b-animate-go  thickbox"><img class="img-responsive" src="images/17b.jpg" alt="">
 					<div class="b-wrapper">
 									<h3 class="b-animate b-from-left    b-delay03 ">
-										<span>C Programming to beginners</span>	
+										<span>Read More</span>	
 									</h3>
 								</div>
 				</a>
-			<p><a href="single.html">Top Sales</a></p>
+			<p><a href="single.html">Add to cart</a></p>
 			</div>
+			
 			<div class="col-md-4 grid-top">
-				<a href="single.html" class="b-link-stripe b-animate-go  thickbox"><img class="img-responsive" src="images/18.jpg" alt="">
+				<a href="single.html" class="b-link-stripe b-animate-go  thickbox"><img class="img-responsive" src="images/18a.jpg" alt="">
 					<div class="b-wrapper">
 									<h3 class="b-animate b-from-left    b-delay03 ">
-										<span>Software Development Techniques</span>	
+										<span>Read More</span>	
 									</h3>
 								</div>
 				</a>
-			<p><a href="single.html">New Arrival</a></p>
+			<p><a href="single.html">Add to cart</a></p>
 			</div>
-					<div class="clearfix"> </div>
+			
+		<div class="clearfix"> </div>
 		</div>
 		<div class="grid-in">
 			<div class="col-md-4 grid-top">
-				<a href="single.html" class="b-link-stripe b-animate-go  thickbox"><img class="img-responsive" src="images/19.jpg" alt="">
+				<a href="single.html" class="b-link-stripe b-animate-go  thickbox"><img class="img-responsive" src="images/19a.jpg" alt="">
 					<div class="b-wrapper">
 									<h3 class="b-animate b-from-left    b-delay03 ">
-										<span>The effective engineer</span>	
+										<span>Read More</span>	
 									</h3>
 								</div>
 				</a>
-			<p><a href="single.html">Must Get</a></p>
+			<p><a href="single.html">Add to cart</a></p>
 			</div>
 			<div class="col-md-4 grid-top">
-				<a href="single.html" class="b-link-stripe b-animate-go  thickbox"><img class="img-responsive" src="images/20.jpg" alt="">
+				<a href="single.html" class="b-link-stripe b-animate-go  thickbox"><img class="img-responsive" src="images/20a.jpg" alt="">
 					<div class="b-wrapper">
 									<h3 class="b-animate b-from-left    b-delay03 ">
-										<span>Journey to the West</span>	
+										<span>Read More</span>	
 									</h3>
 								</div>
 				</a>
-			<p><a href="single.html">Top Rate</a></p>
+			<p><a href="single.html">Add to cart</a></p>
 			</div>
 			<div class="col-md-4 grid-top">
-				<a href="single.html" class="b-link-stripe b-animate-go  thickbox"><img class="img-responsive" src="images/21.jpg" alt="">
+				<a href="single.html" class="b-link-stripe b-animate-go  thickbox"><img class="img-responsive" src="images/21a.jpg" alt="">
 					<div class="b-wrapper">
 									<h3 class="b-animate b-from-left    b-delay03 ">
-										<span>History is all you left me</span>	
+										<span>Read More</span>	
 									</h3>
 								</div>
 				</a>
-			<p><a href="single.html">Recommended</a></p>
+			<p><a href="single.html">Add to cart</a></p>
 			</div>
 					<div class="clearfix"> </div>
 		</div>
@@ -234,7 +242,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 	<div class="content-top-bottom">
 		<h2>Featured Collections</h2>
 		<div class="col-md-6 men">
-			<a href="single.html" class="b-link-stripe b-animate-go  thickbox"><img class="img-responsive" src="images/23.jpg" alt="">
+			<a href="single.html" class="b-link-stripe b-animate-go  thickbox"><img class="img-responsive" src="images/23a.jpg" alt="">
 				<div class="b-wrapper">
 									<h3 class="b-animate b-from-top top-in   b-delay03 ">
 										<span>Lorem</span>	

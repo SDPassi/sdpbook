@@ -3,11 +3,11 @@ session_start();
 
 include "conn.php";
 
-
-$sql1 = "SELECT ID FROM member WHERE email = '$_SESSION[login_user]'";
+if (isset($_POST['login_user'])) {
+$sql1 = "SELECT ID FROM member WHERE email = '".$_SESSION['login_user']."'";
 $result1 = mysqli_query ($con,$sql1);
 $row = mysqli_fetch_array ($result1);
-
+}
 
 if (isset($_POST['quantity'])) {
 
@@ -27,7 +27,19 @@ if (mysqli_query ($con,$sql))
 	windows.location.replace ("product.php");
 	</script>';
 
+
+
+
 }
+if(isset($_POST['book_id'],$_POST['quantity'])){
+
+		if(!isset($_SESSION['cart'] )){
+		$_SESSION['cart']=array();
+		}
+		$_SESSION['cart'][$_POST['book_id']] = $_POST['quantity'];
+
+}
+
 
 
 ?>
@@ -75,8 +87,15 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			<div class="header-left">		
 					<ul>
 						<?php if (isset($_SESSION['login_user'])): ?>
-						<li ><a href="profile.php"  ><?php echo($_SESSION['login_user']); ?><a href="logout.php">(LOGOUT)</a></li>
 						
+						<li class="dropdown"><a href="#"><?php echo($_SESSION['login_user']); ?></a>
+						<div class="dropdown-content">
+							<a href="order.php">My Purchase</a>
+							<a href="logout.php">Logout</a>
+						
+						</div>
+						
+						</li>
 					<?php else: ?>
 						<li><a href="login.php">Login</a></li>
 						<li><a href="register.php">Register</a></li>
@@ -90,18 +109,20 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 						</a>
 						<p><a href="javascript:;" class="simpleCart_empty">Empty Cart</a></p>
 
-					</div>
-					<div class="clearfix"> </div>
 			</div>
-				<div class="clearfix"> </div>
+		<div class="clearfix"> </div>
 		</div>
+	<div class="clearfix"> </div>
+	</div>
+</div>
+		
+<div class="container">
+	<div class="head-top">
+		<div class="logo">
+			<a href="index.html"><img src="images/bookicon.png" style="width:10%;height:10%" alt="">TPM Bookstore</a>
 		</div>
-		<div class="container">
-			<div class="head-top">
-				<div class="logo">
-					<a href="index.html"><img src="images/bookicon.png" style="width:10%;height:10%" alt="">TPM Bookstore</a>
-				</div>
-		  <div class=" h_menu4">
+		
+		<div class=" h_menu4">
 				<ul class="memenu skyblue">
 					   <li class="active grid"><a class="color8" href="index.php">Home</a></li>	
 				      <li><a class="color1" href="activity.php">Activity</a></li>
@@ -110,314 +131,64 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			    </li>		
 				<li><a class="color6" href="profile.php">Profile</a></li>
 			  </ul> 
-			</div>
+		</div>
 				
-				<div class="clearfix"> </div>
+		<div class="clearfix"> </div>
 		</div>
-		</div>
-
 	</div>
+</div>
 
 	
 <!--content-->
 <!---->
 		<div class="product">
 			<div class="container">
-				<div class="col-md-3 product-price">
-					  
-				<div class=" rsidebar span_1_of_left">
-					<div class="of-left">
-						<h3 class="cate">Categories</h3>
-					</div>
-		 <ul class="menu">
-		<li class="item1"><a href="#">Men </a>
-			<ul class="cute">
-				<li class="subitem1"><a href="single.html">Cute Kittens </a></li>
-				<li class="subitem2"><a href="single.html">Strange Stuff </a></li>
-				<li class="subitem3"><a href="single.html">Automatic Fails </a></li>
-			</ul>
-		</li>
-		<li class="item2"><a href="#">Women </a>
-			<ul class="cute">
-				<li class="subitem1"><a href="single.html">Cute Kittens </a></li>
-				<li class="subitem2"><a href="single.html">Strange Stuff </a></li>
-				<li class="subitem3"><a href="single.html">Automatic Fails </a></li>
-			</ul>
-		</li>
-		<li class="item3"><a href="#">Kids</a>
-			<ul class="cute">
-				<li class="subitem1"><a href="single.html">Cute Kittens </a></li>
-				<li class="subitem2"><a href="single.html">Strange Stuff </a></li>
-				<li class="subitem3"><a href="single.html">Automatic Fails</a></li>
-			</ul>
-		</li>
-		<li class="item4"><a href="#">Accesories</a>
-			<ul class="cute">
-				<li class="subitem1"><a href="single.html">Cute Kittens </a></li>
-				<li class="subitem2"><a href="single.html">Strange Stuff </a></li>
-				<li class="subitem3"><a href="single.html">Automatic Fails</a></li>
-			</ul>
-		</li>
+														
 				
-		<li class="item4"><a href="#">Shoes</a>
-			<ul class="cute">
-				<li class="subitem1"><a href="product.html">Cute Kittens </a></li>
-				<li class="subitem2"><a href="product.html">Strange Stuff </a></li>
-				<li class="subitem3"><a href="product.html">Automatic Fails </a></li>
-			</ul>
-		</li>
-	</ul>
-					</div>
-				<!--initiate accordion-->
-		<script type="text/javascript">
-			$(function() {
-			    var menu_ul = $('.menu > li > ul'),
-			           menu_a  = $('.menu > li > a');
-			    menu_ul.hide();
-			    menu_a.click(function(e) {
-			        e.preventDefault();
-			        if(!$(this).hasClass('active')) {
-			            menu_a.removeClass('active');
-			            menu_ul.filter(':visible').slideUp('normal');
-			            $(this).addClass('active').next().stop(true,true).slideDown('normal');
-			        } else {
-			            $(this).removeClass('active');
-			            $(this).next().stop(true,true).slideUp('normal');
-			        }
-			    });
-			
-			});
-		</script>
-<!---->
-	<div class="product-middle">
-		
-					<div class="fit-top">
-						<h6 class="shop-top">Lorem Ipsum</h6>
-						<a href="single.html" class="shop-now">SHOP NOW</a>
-<div class="clearfix"> </div>
-	</div>
-				</div>	 
-						<div class="sellers">
-							<div class="of-left-in">
-								<h3 class="tag">Tags</h3>
-							</div>
-								<div class="tags">
-									<ul>
-										<li><a href="#">design</a></li>
-										<li><a href="#">fashion</a></li>
-										<li><a href="#">lorem</a></li>
-										<li><a href="#">dress</a></li>
-										<li><a href="#">fashion</a></li>
-										<li><a href="#">dress</a></li>
-										<li><a href="#">design</a></li>
-										<li><a href="#">dress</a></li>
-										<li><a href="#">design</a></li>
-										<li><a href="#">fashion</a></li>
-										<li><a href="#">lorem</a></li>
-										<li><a href="#">dress</a></li>
-										
-										<div class="clearfix"> </div>
-									</ul>
-								
-								</div>
-								
-		</div>
-				<!---->
-				<div class="product-bottom">
-					<div class="of-left-in">
-								<h3 class="best">Best Sellers</h3>
-							</div>
-					<div class="product-go">
-						<div class=" fashion-grid">
-						
-									<a href="single.html"><img class="img-responsive " src="images/10.jpg" alt=""></a>
-									
-								</div>
-							<div class=" fashion-grid1">
-								<h6 class="best2"><a href="single.html" >Key Stage Two Math  </a></h6>
-								
-								<span class=" price-in1"> $59.99</span>
-							</div>
-								
-							<div class="clearfix"> </div>
-							</div>
-							<div class="product-go">
-						<div class=" fashion-grid">
-									<a href="single.html"><img class="img-responsive " src="images/11.jpg" alt=""></a>
-									
-								</div>
-							<div class="fashion-grid1">
-								<h6 class="best2"><a href="single.html" >Tatting Collage </a></h6>
-								
-								<span class=" price-in1"> $59.99</span>
-							</div>
-								
-							<div class="clearfix"> </div>
-							</div>
-					
-				</div>
-				
-				
-<?php
-$sql = "SELECT* FROM inventory";
-$row = mysql_query ($con, $sql);
-for (i = 0;$productshow = mysql_fetch_array($row);i++) {
-	
-	echo'<div class=" per1">
-		<img src images/'.$productshow['product_image'].'.jpg>
-		<p>'.$productshow['product_name'].'</p>
-		<a href="#" class="item_add"><p class="number item_price"><i> </i>RM'.$productshow['product_price'].'</p></a>
-		<p>'.$productshow['product_description'].'</p>
-		
-		<form action = "product.php" method = "post">
-		<input onclick = "atc(-1,'.$i.')" type = "button" value = "-"/>
-		<input style = "width:175px;" id = "quantity'.$i.'" name = "quantity" type = "text" value = "1"/>
-		<input onclick = "atc(1,'.$i.')" type = "button" value = "+"/>
 
-		<input type = "submit" value = "Add To Cart"/>
-		</form>
+				
+
+<div class="product" style="width:100%; margin:auto; overflow:auto;">
+	<div class="productflow" style="display:block;">
+<?php
+$sql = "SELECT * FROM inventory";
+$row = mysqli_query($con, $sql);
+for ($i = 0;$productshow = mysqli_fetch_array($row);$i++) {
+	
+	echo'<div class = "prod" style="width:30%;border:1px solid black;float:right;margin-left:5px;margin-bottom:100px;">
+		 	<center>
+				<img src = images/'.$productshow['product_image'].'.jpg>
+					<p>'.$productshow['product_name'].'</p>
+					<p>'.$productshow['product_description'].'</p>
+					<a href="#" class="item_add"><p class="number item_price"><i> </i>RM'.$productshow['product_price'].'</p></a>
+					<br>
+		
+				<form method = "post" style="margin-bottom:20px;">
+					<input type="hidden" name="book_id" value="'.$productshow['product_id'].'">
+					<input style = "width:25px;" name = "quantity" type = "hidden" value = "1"/>
+					<input type = "submit" value = "Add To Cart" style = width:185px;>
+				</form>
+			</center>
 		</div>';
 	
 }
 
 ?>
+		
+</div>
+			
 
-				<a href="single.html" ><img class="img-responsive" src="images/12.jpg" alt="">
-				<div class="six1">
-					<h4>DISCOUNT</h4>
-					<p>Up to</p>
-					<span>60%</span>
-				</div></a>
-			</div>
-				</div>
 				<div class="col-md-9 product1">
 				<div class=" bottom-product">
 					<div class="col-md-4 bottom-cd simpleCart_shelfItem">
-						<div class="product-at ">
-						<center>
-							<a href="single.html"><img class="img-responsive" src="images/1.jpg" alt="">
-							</center>
-							<div class="pro-grid">
-										<span class="buy-in">Buy Now</span>
-							</div>
-						</a>	
-						</div>
-						<p class="tun">The Effective Engineer (Edmond Lau)</p>
-						<a href="#" class="item_add"><p class="number item_price"><i> </i>$49.99</p></a>						
-					</div>
-					<div class="col-md-4 bottom-cd simpleCart_shelfItem">
-						<div class="product-at ">
-						<center>
-							<a href="single.html"><img class="img-responsive" src="images/2.jpg" alt="">
-							</center>
-							<div class="pro-grid">
-										<span class="buy-in">Buy Now</span>
-							</div>
-						</a>	
-						</div>
-						<p class="tun">C Programming For Beginners</p>
-<a href="#" class="item_add"><p class="number item_price"><i> </i>$49.99</p></a>					</div>
-					<div class="col-md-4 bottom-cd simpleCart_shelfItem">
-						<div class="product-at ">
-						<center>
-							<a href="single.html"><img class="img-responsive" src="images/3.jpg" alt="">
-							</center>
-							<div class="pro-grid">
-										<span class="buy-in">Buy Now</span>
-							</div>
-						</a>	
-						</div>
-						<p class="tun">Software Development Techniques</p>
-<a href="#" class="item_add"><p class="number item_price"><i> </i>$49.99</p></a>					</div>
-					<div class="clearfix"> </div>
+														
+						<div class="clearfix"> </div>
 				</div>
-					<div class=" bottom-product">
-					<div class="col-md-4 bottom-cd simpleCart_shelfItem">
-						<div class="product-at ">
-						<center>
-							<a href="single.html"><img class="img-responsive" src="images/4.jpg" alt="">
-							</center>
-							<div class="pro-grid">
-										<span class="buy-in">Buy Now</span>
-							</div>
-						</a>	
-						</div>
-						<p class="tun">History Is All You Left Me</p>
-<a href="#" class="item_add"><p class="number item_price"><i> </i>$49.99</p></a>					</div>
-					<div class="col-md-4 bottom-cd simpleCart_shelfItem">
-						<div class="product-at ">
-						<center>
-							<a href="single.html"><img class="img-responsive" src="images/5.jpg" alt="">
-							</center>
-							<div class="pro-grid">
-										<span class="buy-in">Buy Now</span>
-							</div>
-						</a>	
-						</div>
-						<p class="tun">Basic Caostal Engineering</p>
-<a href="#" class="item_add"><p class="number item_price"><i> </i>$49.99</p></a>					
-</div>
-					<div class="col-md-4 bottom-cd simpleCart_shelfItem">
-						<div class="product-at ">
-						<center>
-							<a href="single.html"><img class="img-responsive" src="images/6.jpg" alt="">
-							</center>
-							<div class="pro-grid">
-										<span class="buy-in">Buy Now</span>
-							</div>
-						</a>	
-						</div>
-						<p class="tun">Advance Business Analytics</p>
-<a href="#" class="item_add"><p class="number item_price"><i> </i>$49.99</p></a>					</div>
-					<div class="clearfix"> </div>
 				</div>
-					<div class=" bottom-product">
-					<div class="col-md-4 bottom-cd simpleCart_shelfItem">
-						<div class="product-at ">
-						<center>
-							<a href="single.html"><img class="img-responsive" src="images/7.jpg" alt="">
-							</center>
-							<div class="pro-grid">
-										<span class="buy-in">Buy Now</span>
-							</div>
-						</a>	
-						</div>
-						<p class="tun">Journey To The East (Baird T.Spalding)</p>
-					<a href="#" class="item_add"><p class="number item_price"><i> </i>$49.99</p></a>					
-
-					</div>
-					<div class="col-md-4 bottom-cd simpleCart_shelfItem">
-						<div class="product-at ">
-						<center>
-							<a href="single.html"><img class="img-responsive" src="images/8.jpg" alt="">
-							</center>
-							<div class="pro-grid">
-										<span class="buy-in">Buy Now</span>
-							</div>
-						</a>	
-						</div>
-						<p class="tun">UNIX AND SHELL PROGRAMMING</p>
-<a href="#" class="item_add"><p class="number item_price"><i> </i>$49.99</p></a>					
-</div>
-					<div class="col-md-4 bottom-cd simpleCart_shelfItem">
-						<div class="product-at ">
-						<center>
-							<a href="single.html"><img class="img-responsive" src="images/9.jpg" alt="">
-							</center>
-							<div class="pro-grid">
-										<span class="buy-in">Buy Now</span>
-							</div>
-						</a>	
-						</div>
-						<p class="tun">Handbook of Computer</p>
-<a href="#" class="item_add"><p class="number item_price"><i> </i>$49.99</p></a>					
-</div>
-					<div class="clearfix"> </div>
 				</div>
 				
-				</div>
 		<div class="clearfix"> </div>
-		<nav class="in">
+			<nav class="in">
 				  <ul class="pagination">
 					<li class="disabled"><a href="#" aria-label="Previous"><span aria-hidden="true">«</span></a></li>
 					<li class="active"><a href="#">1 <span class="sr-only">(current)</span></a></li>
@@ -427,7 +198,7 @@ for (i = 0;$productshow = mysql_fetch_array($row);i++) {
 					<li><a href="#">5 <span class="sr-only"></span></a></li>
 					 <li> <a href="#" aria-label="Next"><span aria-hidden="true">»</span> </a> </li>
 				  </ul>
-				</nav>
+			</nav>
 		</div>
 		
 		</div>

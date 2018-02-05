@@ -40,9 +40,17 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 						<input type="submit" value="Go">
 					</form>
 			</div>
-			<div class="header-left">		
+			<div class="header-left">
+					<ul>		
 					<?php if (isset($_SESSION['login_user'])): ?>
-						<li ><a href="logout.php"  ><?php echo($_SESSION['login_user']); ?></a></li>
+						<li class="dropdown"><a href="#"><?php echo($_SESSION['login_user']); ?></a>
+						<div class="dropdown-content">
+							<a href="order.php">My Purchase</a>
+							<a href="logout.php">Logout</a>
+						
+						</div>
+						
+						</li>
 					<?php else: ?>
 						<li ><a href="login.php"  >Login</a></li>
 						<li><a  href="register.php"  >Register</a></li>
@@ -240,10 +248,7 @@ amet consectetuer </a></h6>
 <div class=" per1">
 				<a href="#" ><img class="img-responsive" src="images/pro.jpg" alt="">
 				<div class="six1">
-					<h4>DISCOUNT</h4>
-					<p>Up to</p>
-					<span>60%</span>
-				</div></a>
+									</div></a>
 			</div>
 				</div>
 				<div class="col-md-9 product-price1">

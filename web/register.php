@@ -1,30 +1,37 @@
 <?php
 
+session_start();
+
 include("conn.php");
 
 if (isset($_POST['name'],$_POST['num'],$_POST['email'],$_POST['psw'],$_POST['address'])) { 
 $npassword = password_hash($_POST['psw'],PASSWORD_DEFAULT);
 
+$check = mysqli_query($con, "SELECT email,name FROM member WHERE email = '".$_POST['email']."' and name ='". $_POST['name']."'");
+$checkrows = mysqli_num_rows($check);
 
-$sql = "INSERT INTO member(name, phone, email, password, address)
-VALUES
+if ($checkrows > 0){
+echo '<script text="text/javascript">
+alert("Member exists!")
+</script>';
+}
 
-('$_POST[name]', '$_POST[num]','$_POST[email]','$npassword','$_POST[address]')";
+else{
+$sql = "INSERT INTO member(name, phone, email, password, address) VALUES ('$_POST[name]', '$_POST[num]','$_POST[email]','$npassword','$_POST[address]')";
 
 $result = mysqli_query($con,$sql);
-echo $npassword;
 
-if (!mysqli_query($con,$sql))
-{
 mysqli_close($con);
-die ('Error:'.mysqli_error($con));
-}
+
 echo'<script text="text/javascript">
 alert("You have successfully registered!")
 window.location.replace ("login.php");
 </script>';
+}
 
 }
+
+
 ?>
 
 
@@ -101,12 +108,13 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		<div class="container">
 			<div class="head-top">
 				<div class="logo">
-					<a href="index.html"><img src="images/bookicon.png" style="width:10%;height:10%" alt="">TPM Bookstore</a>	
+					<a href="index.php"><img src="images/bookicon.png" style="width:10%;height:10%" alt="">TPM Bookstore</a>	
 				</div>
 		  <div class=" h_menu4">
 					<ul class="memenu skyblue">
 					   <li class="active grid"><a class="color8" href="index.php">Home</a></li>	
 				     <li><a class="color1" href="activity.php">Activity</a></li>
+				     <li class="grid"><a class="color2" href="order.php">Order</a></li>
 					<li><a class="color4" href="products.php">Product</a> 	
 			    </li>					
 				<li><a class="color6" href="profile.php">Profile</a></li>
@@ -184,10 +192,9 @@ mysqli_close($con);
 				<div class="col-md-4 amet-sed ">
 				<h4>CONTACT US</h4>
 				
-					<p>
-Contrary to popular belief</p>
+					<p>Contrary to popular belief</p>
 					<p>The standard chunk</p>
-					<p>office:  +12 34 995 0792</p>
+					<p>office:+1300 - 88 - 2525</p>
 					<ul class="social">
 						<li><a href="#"><i> </i></a></li>						
 						<li><a href="#"><i class="twitter"> </i></a></li>
