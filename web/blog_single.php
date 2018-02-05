@@ -42,14 +42,14 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			</div>
 			<div class="header-left">		
 					<ul>
-						<li ><a class="lock"  href="login.html"  >Login</a></li>
-						<li><a class="lock" href="register.html"  >Register</a></li>
+						<li ><a class="lock"  href="login.php"  >Login</a></li>
+						<li><a class="lock" href="register.php"  >Register</a></li>
 						<li>
 </li>
 
 					</ul>
 					<div class="cart box_1">
-						<a href="checkout.html">
+						<a href="checkout.php">
 						<h3> <div class="total">
 							<span class="simpleCart_total"></span> (<span id="simpleCart_quantity" class="simpleCart_quantity"></span> items)</div>
 							<img src="images/cart.png" alt=""/></h3>
@@ -65,28 +65,28 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		<div class="container">
 			<div class="head-top">
 				<div class="logo">
-					<a href="index.html"><img src="images/logo.png" alt=""></a>	
+					<a href="index.php"><img src="images/logo.png" alt=""></a>	
 				</div>
 		  <div class=" h_menu4">
 				<ul class="memenu skyblue">
-					  <li class="active grid"><a class="color8" href="index.html">Home</a></li>	
+					  <li class="active grid"><a class="color8" href="index.php">Home</a></li>	
 				      <li><a class="color1" href="#">Shop</a>
 				      	<div class="mepanel">
 						<div class="row">
 							<div class="col1">
 								<div class="h_nav">
 									<ul>
-										<li><a href="products.html">Accessories</a></li>
-										<li><a href="products.html">Bags</a></li>
-										<li><a href="products.html">Caps & Hats</a></li>
-										<li><a href="products.html">Hoodies & Sweatshirts</a></li>
-										<li><a href="products.html">Jackets & Coats</a></li>
-										<li><a href="products.html">Jeans</a></li>
-										<li><a href="products.html">Jewellery</a></li>
-										<li><a href="products.html">Jumpers & Cardigans</a></li>
-										<li><a href="products.html">Leather Jackets</a></li>
-										<li><a href="products.html">Long Sleeve T-Shirts</a></li>
-										<li><a href="products.html">Loungewear</a></li>
+										<li><a href="products.php">Accessories</a></li>
+										<li><a href="products.php">Bags</a></li>
+										<li><a href="products.php">Caps & Hats</a></li>
+										<li><a href="products.php">Hoodies & Sweatshirts</a></li>
+										<li><a href="products.php">Jackets & Coats</a></li>
+										<li><a href="products.php">Jeans</a></li>
+										<li><a href="products.php">Jewellery</a></li>
+										<li><a href="products.php">Jumpers & Cardigans</a></li>
+										<li><a href="products.php">Leather Jackets</a></li>
+										<li><a href="products.php">Long Sleeve T-Shirts</a></li>
+										<li><a href="products.php">Loungewear</a></li>
 									</ul>	
 								</div>							
 							</div>
