@@ -4,24 +4,24 @@ session_start();
 
 include "conn.php";
 
-if (isset($_POST['name'],$_POST['num'],$_POST['email'],$_POST['psw'],$_POST['address'])) { 
+if (isset($_SESSION['login_user'])) {
+$npassword = password_verify($_POST['opsw'],$row['password']);
+}
+
+if (isset($_POST['psw'])) { 
+$npassword = password_hash($_POST['psw'],PASSWORD_DEFAULT);
 
 $sql = 
 
-"UPDATE member SET name = '$_POST[name]', phone = '$_POST[num]', password = '$_POST[psw]', email = '$_POST[email]', address = '$_POST[address]' WHERE email = '$_SESSION[login_user]'";
+"UPDATE member SET  password = '$_POST[psw]' WHERE email = '$_SESSION[login_user]'";
 
 mysqli_query($con,$sql);
 
+
 echo'<script text="text/javascript">
-alert("Your profile is updated!")
-windows.location.replace ("profile.php");
+alert("New password updated!")
+windows.location.replace ("index.php");
 </script>';
-}
-
-
-if (isset($_SESSION['login_user'])) {
-
-$sql = "SELECT * FROM member WHERE email =  '$_SESSION[login_user]'";
 
 $result = mysqli_query ($con,$sql);
 
@@ -140,17 +140,17 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			<div class="col-md-6 register-top-grid"style="margin-left:270px;">
 					 <div>
 						<span>Password</span>
-						<input name="psw"  id="pass1" type="password" value="<?php echo $row['password']?>" min="4" required="required" >
+						<input name="opsw"  id="pass1" type="password" value="<?php echo $row['password']?>" min="4" required="required" >
 					 </div>
 					 
 					 <div>
 						<span>Password</span>
-						<input name="psw"  id="pass1" onchange="checkEqualPassword(this, document.getElementById('pass2'));" type="password" value="<?php echo $row['password']?>" min="4" required="required" >
+						<input name="psw"  id="pass1" onchange="checkEqualPassword(this, document.getElementById('pass2'));" type="password" min="4" required="required" >
 					 </div>
 					 
 					<div>
 						<span>Confirm Password</span>
-						<input name="psw"  id="pass2" onchange="checkEqualPassword(document.getElementById('pass1'), this);" type="password" value="<?php echo $row['password']?>" min="4" required="required">
+						<input name="cpsw"  id="pass2" onchange="checkEqualPassword(document.getElementById('pass1'), this);" type="password" min="4" required="required">
 					</div>
 										 
 					 <div class="send">

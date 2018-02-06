@@ -169,11 +169,9 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		<h1>New Arrival</h1>
 		<div class="grid-in">
 			<div class="col-md-4 grid-top">
-<<<<<<< HEAD
-				<a href="single.html" class="b-link-stripe b-animate-go  thickbox"><img class="img-responsive" src="images/16a.jpg" alt="">
-=======
-				<a href="single.php" class="b-link-stripe b-animate-go  thickbox"><img class="img-responsive" src="images/16.jpg" alt="">
->>>>>>> 32a3475e343ffbe3ccf546e6b47948a07a866625
+
+				<a href="single.php" class="b-link-stripe b-animate-go  thickbox"><img class="img-responsive" src="images/16a.jpg" alt="">
+
 							<div class="b-wrapper">
 									<h3 class="b-animate b-from-left    b-delay03 ">
 										<span>Read More</span>	
@@ -184,22 +182,18 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			</div>
 			
 			<div class="col-md-4 grid-top">
-<<<<<<< HEAD
-				<a href="single.html" class="b-link-stripe b-animate-go  thickbox"><img class="img-responsive" src="images/17b.jpg" alt="">
-=======
-				<a href="single.php" class="b-link-stripe b-animate-go  thickbox"><img class="img-responsive" src="images/17.jpg" alt="">
->>>>>>> 32a3475e343ffbe3ccf546e6b47948a07a866625
+
+				<a href="single.php" class="b-link-stripe b-animate-go  thickbox"><img class="img-responsive" src="images/17b.jpg" alt="">
 					<div class="b-wrapper">
 									<h3 class="b-animate b-from-left    b-delay03 ">
 										<span>Read More</span>	
 									</h3>
 								</div>
 				</a>
-<<<<<<< HEAD
-			<p><a href="single.html">Add to cart</a></p>
-=======
-			<p><a href="single.php">Top Sales</a></p>
->>>>>>> 32a3475e343ffbe3ccf546e6b47948a07a866625
+
+			<p><a href="single.php">Add to cart</a></p>
+
+
 			</div>
 			
 			<div class="col-md-4 grid-top">
@@ -210,46 +204,39 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 									</h3>
 								</div>
 				</a>
-			<p><a href="single.html">Add to cart</a></p>
+			<p><a href="single.php">Add to cart</a></p>
 			</div>
 			
 		<div class="clearfix"> </div>
 		</div>
 		<div class="grid-in">
 			<div class="col-md-4 grid-top">
-<<<<<<< HEAD
-				<a href="single.html" class="b-link-stripe b-animate-go  thickbox"><img class="img-responsive" src="images/19a.jpg" alt="">
-=======
-				<a href="single.php" class="b-link-stripe b-animate-go  thickbox"><img class="img-responsive" src="images/19.jpg" alt="">
->>>>>>> 32a3475e343ffbe3ccf546e6b47948a07a866625
+
+				<a href="single.php" class="b-link-stripe b-animate-go  thickbox"><img class="img-responsive" src="images/19a.jpg" alt="">
+
 					<div class="b-wrapper">
 									<h3 class="b-animate b-from-left    b-delay03 ">
 										<span>Read More</span>	
 									</h3>
 								</div>
 				</a>
-<<<<<<< HEAD
-			<p><a href="single.html">Add to cart</a></p>
+
+			<p><a href="single.php">Add to cart</a></p>
 			</div>
 			<div class="col-md-4 grid-top">
-				<a href="single.html" class="b-link-stripe b-animate-go  thickbox"><img class="img-responsive" src="images/20a.jpg" alt="">
-=======
-			<p><a href="single.php">Must Get</a></p>
-			</div>
-			<div class="col-md-4 grid-top">
-				<a href="single.php" class="b-link-stripe b-animate-go  thickbox"><img class="img-responsive" src="images/20.jpg" alt="">
->>>>>>> 32a3475e343ffbe3ccf546e6b47948a07a866625
+				<a href="single.php" class="b-link-stripe b-animate-go  thickbox"><img class="img-responsive" src="images/20a.jpg" alt="">
+
+		
 					<div class="b-wrapper">
 									<h3 class="b-animate b-from-left    b-delay03 ">
 										<span>Read More</span>	
 									</h3>
 								</div>
 				</a>
-<<<<<<< HEAD
-			<p><a href="single.html">Add to cart</a></p>
-=======
-			<p><a href="single.php">Top Rate</a></p>
->>>>>>> 32a3475e343ffbe3ccf546e6b47948a07a866625
+
+			<p><a href="single.php">Add to cart</a></p>
+
+
 			</div>
 			<div class="col-md-4 grid-top">
 				<a href="single.html" class="b-link-stripe b-animate-go  thickbox"><img class="img-responsive" src="images/21a.jpg" alt="">
@@ -259,11 +246,11 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 									</h3>
 								</div>
 				</a>
-<<<<<<< HEAD
-			<p><a href="single.html">Add to cart</a></p>
-=======
-			<p><a href="single.php">Recommended</a></p>
->>>>>>> 32a3475e343ffbe3ccf546e6b47948a07a866625
+
+			<p><a href="single.php">Add to cart</a></p>
+
+			
+
 			</div>
 					<div class="clearfix"> </div>
 		</div>
@@ -273,11 +260,11 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 	<div class="content-top-bottom">
 		<h2>Featured Collections</h2>
 		<div class="col-md-6 men">
-<<<<<<< HEAD
+
 			<a href="single.html" class="b-link-stripe b-animate-go  thickbox"><img class="img-responsive" src="images/23a.jpg" alt="">
-=======
+
 			<a href="single.php" class="b-link-stripe b-animate-go  thickbox"><img class="img-responsive" src="images/23.jpg" alt="">
->>>>>>> 32a3475e343ffbe3ccf546e6b47948a07a866625
+
 				<div class="b-wrapper">
 									<h3 class="b-animate b-from-top top-in   b-delay03 ">
 										<span>Lorem</span>	
