@@ -79,9 +79,9 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 	<div class="header-top">
 		<div class="container">
 			<div class="search">
-					<form>
-						<input type="text" value="Search " onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Search';}">
-						<input type="submit" value="Go">
+					<form action="search.php" method="get">
+						<input type="text" value="" name="search1" >
+						<input type="submit" value="Go" name="go">
 					</form>
 			</div>
 			<div class="header-left">		
@@ -119,27 +119,17 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <div class="container">
 	<div class="head-top">
 		<div class="logo">
-			<a href="index.html"><img src="images/bookicon.png" style="width:10%;height:10%" alt="">TPM Bookstore</a>
+			<a href="index.php"><img src="images/bookicon.png" style="width:10%;height:10%" alt="">TPM Bookstore</a>
 		</div>
-<<<<<<< HEAD
 		
 		<div class=" h_menu4">
-=======
-		<div class="container">
-			<div class="head-top">
-				<div class="logo">
-					<a href="index.php"><img src="images/bookicon.png" style="width:10%;height:10%" alt="">TPM Bookstore</a>
-				</div>
-		  <div class=" h_menu4">
->>>>>>> 32a3475e343ffbe3ccf546e6b47948a07a866625
 				<ul class="memenu skyblue">
-					   <li class="active grid"><a class="color8" href="index.php">Home</a></li>	
-				      <li><a class="color1" href="activity.php">Activity</a></li>
-				    <li class="grid"><a class="color2" href="order.php">Order</a></li>
-					<li><a class="color4" href="products.php">Product</a> 	
-			    </li>		
-				<li><a class="color6" href="profile.php">Profile</a></li>
-			  </ul> 
+					 <li class="active grid"><a class="color8" href="index.php">Home</a></li>	
+				     <li><a class="color1" href="activity.php">Activity</a></li>
+				     <li class="grid"><a class="color2" href="order.php">Order</a></li>
+					 <li><a class="color4" href="products.php">Product</a></li>		
+				     <li><a class="color6" href="profile.php">Profile</a></li>
+			    </ul> 
 		</div>
 				
 		<div class="clearfix"> </div>
@@ -164,7 +154,7 @@ $sql = "SELECT * FROM inventory";
 $row = mysqli_query($con, $sql);
 for ($i = 0;$productshow = mysqli_fetch_array($row);$i++) {
 	
-	echo'<div class = "prod" style="width:30%;border:1px solid black;float:right;margin-left:5px;margin-bottom:100px;">
+	echo'<div class = "prod" style="width:30%;border:1px solid black;float:left;margin-left:5px;margin-bottom:100px;">
 		 	<center>
 				<img src = images/'.$productshow['product_image'].'.jpg>
 					<p>'.$productshow['product_name'].'</p>
