@@ -1,6 +1,8 @@
 <?php
-
+session_start();
 ?>
+
+
 
 
 
@@ -95,32 +97,38 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <h2 style="color:black;padding:30px;text-align:left">Search Result</h2>
  
 <div class="container" style="width:;float:left;">
-   <img src ="images/17.jpg" alt="">
+   <img src ="images/18a.jpg" alt="">
    
     <div class="" style="width:70%;float:right;padding-top:20px;">
+	
+	
 
-		<p>Database<br>
-			Database<br>
-			Database<br>
+		<p> insert Database<br>
+			insert Database<br>
+			insert Database<br>
 					<br>
 
 		</p>
+	
+		<input type="submit" style="padding:5px;" value="Add to Cart" />
+						
 	</div>
 
 </div>
    
 	
 <div class="container" style="width:;float:left;padding-top:20px;padding-bottom:20px;">
-   <img src ="images/17.jpg" alt="">
+   <img src ="images/18a.jpg" alt="">
    
     <div class="" style="width:70%;float:right;padding-top:20px;">
 
-		<p>Database<br>
-			Database<br>
-			Database<br>
-					
+		<p>insert Database<br>
+		   insert Database<br>
+		   insert Database<br>
+				<br>	
 
 		</p>
+		<input type="submit" style="padding:5px;" value="Add to Cart" />
 	</div>
 
 
@@ -163,8 +171,7 @@ Contrary to popular belief</p>
 				</div>
 				<div class="col-md-4 amet-sed">
 					<h4>Newsletter</h4>
-					<p>Sign Up to get all news update
-and promo</p>
+					<p>Sign Up to get all news update and promo</p>
 					<form>
 						<input type="text" value="" onfocus="this.value='';" onblur="if (this.value == '') {this.value ='';}">
 						<input type="submit" value="Sign up">
