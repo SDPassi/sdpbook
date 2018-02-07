@@ -87,7 +87,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 					<?php endif; ?>
 					</ul>
 					<div class="cart box_1">
-						<a href="checkout.php">
+						<a href="cart.php">
 						<h3> <div class="total">
 							<span class="simpleCart_total"></span> (<span id="simpleCart_quantity" class="simpleCart_quantity"></span> items)</div>
 							<img src="images/cart.png" alt=""/></h3>
@@ -142,8 +142,8 @@ for ($i = 0;$productshow = mysqli_fetch_array($row);$i++) {
 	
 	echo'<div class = "prod" style="width:30%;border:1px solid black;float:left;margin-left:20px;margin-bottom:100px;">
 		 	<center>
-				<img src = images/'.$productshow['product_image'].'.jpg>
-					<p>'.$productshow['product_name'].'</p>
+				<a href="details.php"><img src = images/'.$productshow['product_image'].'.jpg></a>
+					<p style="padding-bottom:10px;padding-top:10px;">'.$productshow['product_name'].'</p>
 					<a href="#" class="item_add"><p class="number item_price"><i> </i>RM'.$productshow['product_price'].'</p></a>
 					<br>
 		
@@ -152,6 +152,7 @@ for ($i = 0;$productshow = mysqli_fetch_array($row);$i++) {
 					<input style = "width:25px;" name = "quantity" type = "hidden" value = "1"/>
 					<input type = "submit" value = "Add To Cart" style = width:185px;>
 				</form>
+				
 			</center>
 		</div>';
 	

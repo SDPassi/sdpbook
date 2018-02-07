@@ -1,7 +1,8 @@
 <?php
+
 session_start();
 
-
+include "conn.php";
 
 if(isset($_POST['book_id'],$_POST['quantity'])){
 
@@ -73,7 +74,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 					<?php endif; ?>
 					</ul>
 					<div class="cart box_1">
-						<a href="checkout.php">
+						<a href="cart.php">
 						<h3> <div class="total">
 							<span class="simpleCart_total"></span> (<span id="simpleCart_quantity" class="simpleCart_quantity"></span> items)</div>
 							<img src="images/cart.png" alt=""/></h3>
@@ -183,12 +184,12 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			<div class="col-md-4 grid-top">
 
 
-				<a href="single.php" class="b-link-stripe b-animate-go  thickbox"><img class="img-responsive" src="images/16a.jpg" alt="">
+				<a href="details.php" class="b-link-stripe b-animate-go  thickbox"><img class="img-responsive" src="images/16a.jpg" alt="">
 
 				
 							<div class="b-wrapper">
 									<h3 class="b-animate b-from-left    b-delay03 ">
-										<span>Read More</span>	
+										<span>Read More</span>
 									</h3>
 								</div>
 				</a>

@@ -8,27 +8,27 @@ if (isset($_POST["email"], $_POST["psw"])){
 
 	$myusername = mysqli_real_escape_string ($con,$_POST["email"]);	
 	
-	
 	$sql = "SELECT email,password FROM member WHERE email = '$myusername'";
+	
 	$result = mysqli_query($con,$sql);
+	
 	$row = mysqli_fetch_array ($result, MYSQLI_ASSOC);
+	
 	$npassword = password_verify($_POST['psw'],$row['password']);
 	
 	mysqli_store_result($con);
+	
 	$count = mysqli_num_rows($result);
 	
-	if ($npassword)
-	{ 
-		$_SESSION['login_user'] = $myusername;
+if ($npassword) { 
+	$_SESSION['login_user'] = $myusername;
 		
-		header("location: .");
-	}
-	else
-	{
-	
-	 $error = "Invalid username and password !";
-	 
-	}
+	header("location: .");
+}
+else {
+	$error="Invalid username or password !";
+
+}
 
 }
 
@@ -80,8 +80,9 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 						<li><a  href="register.php"  >Register</a></li>
 					<?php endif; ?>
 					</ul>
+					
 					<div class="cart box_1">
-						<a href="checkout.html">
+						<a href="cart.php">
 						<h3> <div class="total">
 							<span class="simpleCart_total"></span> (<span id="simpleCart_quantity" class="simpleCart_quantity"></span> items)</div>
 							<img src="images/cart.png" alt=""/></h3>
@@ -100,15 +101,14 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 					<a href="index.php"><img src="images/bookicon.png" style="width:10%;height:10%" alt="">TPM Bookstore</a>	
 				</div>
 		  <div class=" h_menu4">
-				<ul class="memenu skyblue">
-					  <li class="active grid"><a class="color8" href="index.php">Home</a></li>	
-				      <li><a class="color1" href="activity.php">Activity</a></li>
-				    <li class="grid"><a class="color2" href="order.php">Order</a></li>
-					<li><a class="color4" href="products.php">Product</a> 	
-			    </li>		
+			<ul class="memenu skyblue">
+				<li class="active grid"><a class="color8" href="index.php">Home</a></li>
+				<li><a class="color4" href="products.php">Product</a></li>	
+				<li><a class="color1" href="activity.php">Activity</a></li>
+				<li class="grid"><a class="color2" href="order.php">Order</a></li>
 				<li><a class="color6" href="contact.php">Profile</a></li>
-			  </ul> 
-			</div>
+			</ul> 
+		  </div>
 				
 				<div class="clearfix"> </div>
 		</div>
@@ -123,18 +123,25 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		<h1>Login to your account</h1>
 		<div class="account-pass">
 		<div class="col-md-8 account-top" style="margin-left:200px;">
+		<center>
+		<h4 style="color:red;"><?php if (isset($error)) echo $error; ?></h4>
+		</center>
 			<form method="post">
 				
 			<div > 	
 				<span>Email Address</span>
 				<input name="email" type="email"  required="required" > 
 			</div>
+			
 			<div> 
 				<span >Password</span>
 				<input name="psw" type="password" min="4" required="required" >
-			</div>				
+			</div>	
+						
 			<span><a href="register.php">New? Register an account.</a><br>
+			
 			<input type="submit" value="Login" style="margin-left:585px;"> </span>
+		
 			</form>
 		</div>
 	<div class="clearfix"> </div>
