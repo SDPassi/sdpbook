@@ -32,9 +32,9 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 	<div class="header-top">
 		<div class="container">
 			<div class="search">
-					<form>
-						<input type="text" value="Search " onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Search';}">
-						<input type="submit" value="Go">
+					<form action="search.php" method="get">
+						<input type="text" value="" name="search1" >
+						<input type="submit" value="Go" name="go">
 					</form>
 			</div>
 			<div class="header-left">		
@@ -45,7 +45,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 						<li><a  href="register.php"  >Register</a></li>
 					<?php endif; ?>
 
-					</ul>
+					
 					<div class="cart box_1">
 						<a href="checkout.php">
 						<h3> <div class="total">

@@ -1,6 +1,14 @@
 <?php
+session_start();
+
+include("conn.php")
+
+ 
+            
 
 ?>
+
+
 
 
 
@@ -37,9 +45,9 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 	<div class="header-top">
 		<div class="container">
 			<div class="search">
-					<form>
-						<input type="text" value="Search " onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Search';}">
-						<input type="submit" value="Go">
+					<form action="search.php" method="get">
+						<input type="text" value="" name="search1" >
+						<input type="submit" value="Go" name="go">
 					</form>
 			</div>
 			<div class="header-left">		
@@ -91,43 +99,51 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 	
 <!--content-->
 <!---->
-<div class="container">
-<h2 style="color:black;padding:30px;text-align:left">Search Result</h2>
+<div class="container" style="margin-bottom:20px;">
+<h2 style="color:black;padding:28px;text-align:left">Search Result</h2>
  
-<div class="container" style="width:;float:left;">
-   <img src ="images/17.jpg" alt="">
+<?php
+if(isset($_GET['search1'])){ 
+         
+        $search =($_GET['search1']);
+
+        $result = mysqli_query($con,"SELECT * FROM inventory WHERE (product_name LIKE '%".$search."%') OR (product_description LIKE '%".$search."%')");
+             
+                if($search_result = mysqli_fetch_array ($result))
+                {
+                           echo '<div class="container" style="width:;float:left;">
+   								<a href="products/'.$search_result['product_id'].'" >
+						        <img src="images/'.$search_result['product_id'].'.jpg"/;></a>
    
-    <div class="" style="width:70%;float:right;padding-top:20px;">
-
-		<p>Database<br>
-			Database<br>
-			Database<br>
-					<br>
-
-		</p>
-	</div>
-
-</div>
-   
+   								 <div class="" style="width:70%;float:right;padding-top:20px;">
 	
-<div class="container" style="width:;float:left;padding-top:20px;padding-bottom:20px;">
-   <img src ="images/17.jpg" alt="">
+		  								<h3>'.$search_result['product_name'].'</h3>   <br>
+	      								<h4>RM '.$search_result['product_price'].'</h4><br>
+	      								'.$search_result['product_description'].' 
+	      								<br>
+	          
+		
+	
+							<input type="submit" style="padding:5px;margin-top:10px;" value="Add to Cart" />
+						
+							</div>
+	
+							</div>';
+                            }
+             
+        
+        else{ 
+            echo '<div class="container" style="width:;float:left;">No results
+            </div>';
+        }
+         
+    }
    
-    <div class="" style="width:70%;float:right;padding-top:20px;">
-
-		<p>Database<br>
-			Database<br>
-			Database<br>
-					
-
-		</p>
-	</div>
+?>
 
 
 
-   
-
-</div>
+ 
 </div>
 <!---->
 
@@ -163,8 +179,7 @@ Contrary to popular belief</p>
 				</div>
 				<div class="col-md-4 amet-sed">
 					<h4>Newsletter</h4>
-					<p>Sign Up to get all news update
-and promo</p>
+					<p>Sign Up to get all news update and promo</p>
 					<form>
 						<input type="text" value="" onfocus="this.value='';" onblur="if (this.value == '') {this.value ='';}">
 						<input type="submit" value="Sign up">
