@@ -1,9 +1,30 @@
 <?php
 session_start();
 
-include("conn.php")
+include("conn.php");
 
- 
+if (isset($_SESSION['login_user'])) {
+$sql1 = "SELECT ID FROM member WHERE email = '$_SESSION[login_user]'";
+$result1 = mysqli_query ($con,$sql1);
+$row = mysqli_fetch_array ($result1);
+}
+
+if(isset($_POST['book_id'],$_POST['quantity'])){
+
+		if(!isset($_SESSION['cart'] )){
+		$_SESSION['cart']=array();
+		}
+		if(isset($_SESSION['cart'][$_POST['book_id']])){
+			$_SESSION['cart'][$_POST['book_id']] += $_POST['quantity'];
+					}
+		else{
+		$_SESSION['cart'][$_POST['book_id']] = $_POST['quantity'];
+		}
+				
+		echo '<script text="text/javascript">
+	alert("1 item added to cart!")
+	</script>';
+}
             
 
 ?>
@@ -122,10 +143,11 @@ if(isset($_GET['search1'])){
 	      								'.$search_result['product_description'].' 
 	      								<br>
 	          
-		
-	
-							<input type="submit" style="padding:5px;margin-top:10px;" value="Add to Cart" />
-						
+				<form method = "post" style="margin-bottom:20px;">
+					<input type="hidden" name="book_id" value="'.$search_result['product_id'].'">
+					<input style = "width:25px;" name = "quantity" type = "hidden" value = "1"/>
+					<input type = "submit" value = "Add To Cart" style = width:185px;>
+				</form>
 							</div>
 	
 							</div>';
