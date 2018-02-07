@@ -3,44 +3,29 @@ session_start();
 
 include "conn.php";
 
-if (isset($_POST['login_user'])) {
-$sql1 = "SELECT ID FROM member WHERE email = '".$_SESSION['login_user']."'";
+if (isset($_SESSION['login_user'])) {
+$sql1 = "SELECT ID FROM member WHERE email = '$_SESSION[login_user]'";
 $result1 = mysqli_query ($con,$sql1);
 $row = mysqli_fetch_array ($result1);
 }
 
-if (isset($_POST['quantity'])) {
-
-$sql = "INSERT INTO cart(product_id, user_id,product_quantity) 
-
-
-VALUES
-
-('$_POST[product_id]', '$row[user_id]','$_POST[quantity]')";
-
-
-if (mysqli_query ($con,$sql)) 
-
-
-	echo '<script text="text/javascript">
-	alert("1 record added!")
-	windows.location.replace ("product.php");
-	</script>';
-
-
-
-
-}
 if(isset($_POST['book_id'],$_POST['quantity'])){
 
 		if(!isset($_SESSION['cart'] )){
 		$_SESSION['cart']=array();
 		}
+		if(isset($_SESSION['cart'][$_POST['book_id']])){
+			$_SESSION['cart'][$_POST['book_id']] += $_POST['quantity'];
+					}
+		else{
 		$_SESSION['cart'][$_POST['book_id']] = $_POST['quantity'];
+		}
+				
+		echo '<script text="text/javascript">
+	alert("1 item added to cart!")
+	</script>';
 
 }
-
-
 
 ?>
 
@@ -115,23 +100,12 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 	<div class="clearfix"> </div>
 	</div>
 </div>
-		
-<div class="container">
-	<div class="head-top">
-		<div class="logo">
-			<a href="index.html"><img src="images/bookicon.png" style="width:10%;height:10%" alt="">TPM Bookstore</a>
-		</div>
-<<<<<<< HEAD
-		
-		<div class=" h_menu4">
-=======
 		<div class="container">
 			<div class="head-top">
 				<div class="logo">
 					<a href="index.php"><img src="images/bookicon.png" style="width:10%;height:10%" alt="">TPM Bookstore</a>
 				</div>
 		  <div class=" h_menu4">
->>>>>>> 32a3475e343ffbe3ccf546e6b47948a07a866625
 				<ul class="memenu skyblue">
 					   <li class="active grid"><a class="color8" href="index.php">Home</a></li>	
 				      <li><a class="color1" href="activity.php">Activity</a></li>
@@ -164,7 +138,7 @@ $sql = "SELECT * FROM inventory";
 $row = mysqli_query($con, $sql);
 for ($i = 0;$productshow = mysqli_fetch_array($row);$i++) {
 	
-	echo'<div class = "prod" style="width:30%;border:1px solid black;float:right;margin-left:5px;margin-bottom:100px;">
+	echo'<div class = "prod" style="width:28%;border:1px solid black;float:right;margin-left:5px;margin-bottom:100px;">
 		 	<center>
 				<img src = images/'.$productshow['product_image'].'.jpg>
 					<p>'.$productshow['product_name'].'</p>

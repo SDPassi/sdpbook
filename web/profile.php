@@ -4,13 +4,13 @@ session_start();
 
 include "conn.php";
 
-if (isset($_POST['name'],$_POST['num'],$_POST['email'],$_POST['psw'],$_POST['address'])) { 
+if (isset($_POST['name'],$_POST['num'],$_POST['email'],$_POST['address'])) { 
 
-$sql = 
+$sql2 = 
 
-"UPDATE member SET name = '$_POST[name]', phone = '$_POST[num]', password = '$_POST[psw]', email = '$_POST[email]', address = '$_POST[address]' WHERE email = '$_SESSION[login_user]'";
+"UPDATE member SET name = '$_POST[name]', phone = '$_POST[num]', email = '$_POST[email]', address = '$_POST[address]' WHERE email = '$_SESSION[login_user]'";
 
-mysqli_query($con,$sql);
+mysqli_query($con,$sql2);
 
 echo'<script text="text/javascript">
 alert("Your profile is updated!")
@@ -136,7 +136,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			
 			<div class="container">
 				<h1>Your Profile</h1>
-				<form>
+				<form method="post">
 			<div class="col-md-6 register-top-grid"style="margin-left:270px;">
 					<div>
 						<span>First Name</span>
@@ -158,7 +158,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 					 </div>
 					 <div class="send">
 							<input type="submit" value="Update" style="float:right;">
-							<a href="fgtpsw.php">Change Password</a>
+							<a href="chgpsw.php">Change Password</a>
 		 
 						</div>	
 		 

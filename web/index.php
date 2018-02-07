@@ -1,5 +1,17 @@
 <?php
 session_start();
+
+
+
+if(isset($_POST['book_id'],$_POST['quantity'])){
+
+		if(!isset($_SESSION['cart'] )){
+		$_SESSION['cart']=array();
+		}
+		$_SESSION['cart'][$_POST['book_id']] = $_POST['quantity'];
+
+}
+
 ?>
 <!--A Design by W3layouts 
 Author: W3layout
@@ -170,8 +182,10 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		<div class="grid-in">
 			<div class="col-md-4 grid-top">
 
+
 				<a href="single.php" class="b-link-stripe b-animate-go  thickbox"><img class="img-responsive" src="images/16a.jpg" alt="">
 
+				
 							<div class="b-wrapper">
 									<h3 class="b-animate b-from-left    b-delay03 ">
 										<span>Read More</span>	
@@ -183,13 +197,17 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			
 			<div class="col-md-4 grid-top">
 
+
 				<a href="single.php" class="b-link-stripe b-animate-go  thickbox"><img class="img-responsive" src="images/17b.jpg" alt="">
+				
+
 					<div class="b-wrapper">
 									<h3 class="b-animate b-from-left    b-delay03 ">
 										<span>Read More</span>	
 									</h3>
 								</div>
 				</a>
+
 
 			<p><a href="single.php">Add to cart</a></p>
 
@@ -210,7 +228,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		<div class="clearfix"> </div>
 		</div>
 		<div class="grid-in">
-			<div class="col-md-4 grid-top">
+		<div class="col-md-4 grid-top">
 
 				<a href="single.php" class="b-link-stripe b-animate-go  thickbox"><img class="img-responsive" src="images/19a.jpg" alt="">
 
@@ -222,11 +240,13 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				</a>
 
 			<p><a href="single.php">Add to cart</a></p>
+
+
 			</div>
 			<div class="col-md-4 grid-top">
+
 				<a href="single.php" class="b-link-stripe b-animate-go  thickbox"><img class="img-responsive" src="images/20a.jpg" alt="">
 
-		
 					<div class="b-wrapper">
 									<h3 class="b-animate b-from-left    b-delay03 ">
 										<span>Read More</span>	
@@ -247,6 +267,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 								</div>
 				</a>
 
+
 			<p><a href="single.php">Add to cart</a></p>
 
 			
@@ -262,8 +283,6 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		<div class="col-md-6 men">
 
 			<a href="single.html" class="b-link-stripe b-animate-go  thickbox"><img class="img-responsive" src="images/23a.jpg" alt="">
-
-			<a href="single.php" class="b-link-stripe b-animate-go  thickbox"><img class="img-responsive" src="images/23.jpg" alt="">
 
 				<div class="b-wrapper">
 									<h3 class="b-animate b-from-top top-in   b-delay03 ">

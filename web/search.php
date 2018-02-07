@@ -1,15 +1,15 @@
 <?php
 
-session_start();
-
-include "conn.php";
-
-
 ?>
+
+
+
+
+
 <!DOCTYPE html>
 <html>
 <head>
-<title>CART: TPM Bookstore</title>
+<title>New Store A Ecommerce Category Flat Bootstarp Resposive Website Template | Products :: w3layouts</title>
 <link href="css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 <script src="js/jquery.min.js"></script>
@@ -45,20 +45,12 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			<div class="header-left">		
 					<ul>
 						<?php if (isset($_SESSION['login_user'])): ?>
-						<li class="dropdown"><a href="#"><?php echo($_SESSION['login_user']); ?></a>
-						<div class="dropdown-content">
-							<a href="order.php">My Purchase</a>
-							<a href="logout.php">Logout</a>
-						
-						</div>
-						
-						</li>
+						<li ><a href="profile.php"  ><?php echo($_SESSION['login_user']); ?><a href="logout.php">(LOGOUT)</a></li>
 						
 					<?php else: ?>
 						<li><a href="login.php">Login</a></li>
 						<li><a href="register.php">Register</a></li>
 					<?php endif; ?>
-
 					</ul>
 					<div class="cart box_1">
 						<a href="checkout.php">
@@ -66,7 +58,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 							<span class="simpleCart_total"></span> (<span id="simpleCart_quantity" class="simpleCart_quantity"></span> items)</div>
 							<img src="images/cart.png" alt=""/></h3>
 						</a>
-												<p><a href="javascript:;" class="simpleCart_empty">Empty Cart</a></p>
+						<p><a href="javascript:;" class="simpleCart_empty">Empty Cart</a></p>
 
 					</div>
 					<div class="clearfix"> </div>
@@ -77,10 +69,10 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		<div class="container">
 			<div class="head-top">
 				<div class="logo">
-					<a href="profile.html"><img src="images/bookicon.png" style="width:10%;height:10%" alt="">TPM Bookstore</a>
+					<a href="index.php"><img src="images/bookicon.png" style="width:10%;height:10%" alt="">TPM Bookstore</a>
 				</div>
 		  <div class=" h_menu4">
-					<ul class="memenu skyblue">
+				<ul class="memenu skyblue">
 					   <li class="active grid"><a class="color8" href="index.php">Home</a></li>	
 				      <li><a class="color1" href="activity.php">Activity</a></li>
 				    <li class="grid"><a class="color2" href="order.php">Order</a></li>
@@ -97,117 +89,47 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 	</div>
 
 	
+<!--content-->
+<!---->
 <div class="container">
-	<div class="check">	 
-			 <h1>My Cart</h1>
-		 <div class="col-md-9 cart-items">
-			
-				<script>$(document).ready(function(c) {
-					$('.close1').on('click', function(c){
-						$('.cart-header').fadeOut('slow', function(c){
-							$('.cart-header').remove();
-						});
-						});	  
-					});
-			   </script>
-			 <div class="cart-header">
-				 <div class="close1"> </div>
-				 <div class="cart-sec simpleCart_shelfItem">
-<?php
-if(isset($_SESSION['cart'])){
-foreach($_SESSION['cart'] as $book_id => $carts){
-$sql = "SELECT * FROM inventory WHERE product_id = $book_id";
-$result1 = mysqli_query($con, $sql);
-while($result_book = mysqli_fetch_array($result1)){
+<h2 style="color:black;padding:30px;text-align:left">Search Result</h2>
+ 
+<div class="container" style="width:;float:left;">
+   <img src ="images/17.jpg" alt="">
+   
+    <div class="" style="width:70%;float:right;padding-top:20px;">
 
-				echo '		<div class="cart-item cyc">
-							 <img src="images/'.$result_book['product_image'].'.jpg" class="img-responsive" alt=""/>
-						</div>
-					   <div class="cart-item-info">
-						<h3>'.$result_book['product_name'].'<span>'.$result_book['product_description'].'</span></h3>
-						<ul class="qty">
-							<li><p>Qty : '.$carts.'</p></li>
-						</ul>
-						
-							 <div class="delivery">
-							 <p>Service Charges : Rs.100.00</p>
-							 <span>Delivered in 2-3 bussiness days</span>
-							 <div class="clearfix"></div>
-				        </div>	
-					   </div>
-					   <div class="clearfix"></div>
-											
-				  </div>
-			 </div>';
-	}	
-}
+		<p>Database<br>
+			Database<br>
+			Database<br>
+					<br>
 
-}
+		</p>
+	</div>
 
-?>
-			 <script>$(document).ready(function(c) {
-					$('.close2').on('click', function(c){
-							$('.cart-header2').fadeOut('slow', function(c){
-						$('.cart-header2').remove();
-					});
-					});	  
-					});
-			 </script>
-			 <div class="cart-header2">
-				 <div class="close2"> </div>
-				  <div class="cart-sec simpleCart_shelfItem">
-						<div class="cart-item cyc">
-							 <img src="images/pic2.jpg" class="img-responsive" alt=""/>
-						</div>
-					   <div class="cart-item-info">
-						<h3><a href="#">Mountain Hopper(XS R034)</a><span>Model No: 3578</span></h3>
-						<ul class="qty">
-							<li><p>Size : 5</p></li>
-							<li><p>Qty : 1</p></li>
-						</ul>
-							 <div class="delivery">
-							 <p>Service Charges : Rs.100.00</p>
-							 <span>Delivered in 2-3 bussiness days</span>
-							 <div class="clearfix"></div>
-				        </div>	
-					   </div>
-					   <div class="clearfix"></div>
-											
-				  </div>
-			  </div>		
-		 </div>
-		  <div class="col-md-3 cart-total">
-			 <a class="continue" href="#">Continue to basket</a>
-			 <div class="price-details">
-				 <h3>Price Details</h3>
-				 <span>Total</span>
-				 <span class="total1">6200.00</span>
-				 <span>Discount</span>
-				 <span class="total1">---</span>
-				 <span>Delivery Charges</span>
-				 <span class="total1">150.00</span>
-				 <div class="clearfix"></div>				 
-			 </div>	
-			 <ul class="total_price">
-			   <li class="last_price"> <h4>TOTAL</h4></li>	
-			   <li class="last_price"><span>6350.00</span></li>
-			   <div class="clearfix"> </div>
-			 </ul>
-			
-			 
-			 <div class="clearfix"></div>
-			 <a class="order" href="#">Place Order</a>
-			 <div class="total-item">
-				 <h3>OPTIONS</h3>
-				 <h4>COUPONS</h4>
-				 <a class="cpns" href="#">Apply Coupons</a>
-			</div>
-			</div>
-		
-			<div class="clearfix"> </div>
-	 </div>
-	 </div>
+</div>
+   
+	
+<div class="container" style="width:;float:left;padding-top:20px;padding-bottom:20px;">
+   <img src ="images/17.jpg" alt="">
+   
+    <div class="" style="width:70%;float:right;padding-top:20px;">
 
+		<p>Database<br>
+			Database<br>
+			Database<br>
+					
+
+		</p>
+	</div>
+
+
+
+   
+
+</div>
+</div>
+<!---->
 
 <!--//content-->
 <div class="footer">

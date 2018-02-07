@@ -5,29 +5,29 @@ session_start();
 include "conn.php";
 
 if (isset($_SESSION['login_user'])) {
-$npassword = password_verify($_POST['opsw'],$row['password']);
-}
+;
 
-if (isset($_POST['psw'])) { 
-$npassword = password_hash($_POST['psw'],PASSWORD_DEFAULT);
+$sql1 = "SELECT password FROM member WHERE email = '$_SESSION[login_user]'";
 
-$sql = 
-
-"UPDATE member SET  password = '$_POST[psw]' WHERE email = '$_SESSION[login_user]'";
-
-mysqli_query($con,$sql);
-
-
-echo'<script text="text/javascript">
-alert("New password updated!")
-windows.location.replace ("index.php");
-</script>';
-
-$result = mysqli_query ($con,$sql);
+$result = mysqli_query ($con,$sql1);
 
 $row = mysqli_fetch_array ($result);
-}
 
+}
+if (isset($_POST['opsw'],$_POST['psw'])){
+if (password_verify($_POST['opsw'],$row['password'])) { 
+$npassword = password_hash($_POST['psw'],PASSWORD_DEFAULT);
+$sql = 
+"UPDATE member SET password = '$npassword' WHERE email = '$_SESSION[login_user]'";
+$a = mysqli_query($con,$sql);
+
+echo'<script text="text/javascript">
+alert("New password updated!");
+window.location.replace ("index.php");
+</script>';
+
+}
+}
 ?>
 <!DOCTYPE html>
 <html>
@@ -136,15 +136,15 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			
 			<div class="container">
 				<h1>Change Password</h1>
-				<form>
+				<form method="post">
 			<div class="col-md-6 register-top-grid"style="margin-left:270px;">
 					 <div>
 						<span>Password</span>
-						<input name="opsw"  id="pass1" type="password" value="<?php echo $row['password']?>" min="4" required="required" >
+						<input name="opsw"  id="oldpassword" type="password" value="" min="4" required="required" >
 					 </div>
 					 
 					 <div>
-						<span>Password</span>
+						<span>New Password</span>
 						<input name="psw"  id="pass1" onchange="checkEqualPassword(this, document.getElementById('pass2'));" type="password" min="4" required="required" >
 					 </div>
 					 
