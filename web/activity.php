@@ -1,5 +1,7 @@
 <?php
 session_start();
+include ("conn.php");
+
 ?>
 <!DOCTYPE html>
 <html>
@@ -96,31 +98,34 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			<th>Price </th>
 			<th>Date Purchase </th>
 			<th>Rating</th>
-
-
-		</tr>
+</tr>
 		</thead>		
 		<tbody>
-			<tr>
-			<td>Insert database</td>
-			<td>insert database 1</td>
-			<td>insert database 2</td>
-			<td>insert database 3</td>
-			<td>insert database 4</td>
-			</tr>
-		
-			<tr>
-			<td>Insert database</td>
-			<td>insert database 1</td>
-			<td>insert database 2</td>
-			<td>insert database 3</td>
-			<td>insert database 4</td>
-			</tr>
+<!--php show activity-->
+<?php
+	$customer_id = isset($_SESSION['login_user']) ? $_SESSION['login_user'] : ''; 
+ 	$result = mysqli_query($con,"SELECT * FROM orders INNER JOIN member ON orders.member_id = member.id 
+ 	INNER JOIN orders_details ON orders.order_id = orders_details.order_id 
+ 	INNER JOIN inventory ON orders_details.product_id = inventory.product_id
+ 	INNER JOIN feedback ON inventory.product_id = feedback.product_id
+ 	WHERE orders.member_id='$customer_id'");
+	while($activity = mysqli_fetch_array($result)){
+?>
 
+		
+			<tr>
+			<td><?php echo $activity['product_name'] ?></td>
+			<td><?php echo $activity['product_quantity']?> </td>
+			<td><?php echo $activity['product_price']?> </td>
+			<td><?php echo $activity['payment_date']?> </td>
+			<td><?php echo $activity['rating']?> </td>
+			</tr>
+		
+			
+		
+		
+		<?php }?> 
 		</tbody>
-		
-		
-		
 		</table>
 		<div class="activity-button">
 							<input type="button" value="Clear activity " style="float:right;margin-left:10px;">
