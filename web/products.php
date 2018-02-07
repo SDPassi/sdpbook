@@ -110,7 +110,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		<div class=" h_menu4">
 
 				<ul class="memenu skyblue">
-					 <li class="active grid"><a class="color8" href="index.php">Home</a></li>	
+					<li class="grid"><a class="color3" href="index.php">Home</a></li>	
 				     <li><a class="color1" href="activity.php">Activity</a></li>
 				     <li class="grid"><a class="color2" href="order.php">Order</a></li>
 					 <li><a class="color4" href="products.php">Product</a></li>		
@@ -140,11 +140,10 @@ $sql = "SELECT * FROM inventory";
 $row = mysqli_query($con, $sql);
 for ($i = 0;$productshow = mysqli_fetch_array($row);$i++) {
 	
-	echo'<div class = "prod" style="width:30%;border:1px solid black;float:left;margin-left:5px;margin-bottom:100px;">
+	echo'<div class = "prod" style="width:30%;border:1px solid black;float:left;margin-left:20px;margin-bottom:100px;">
 		 	<center>
 				<img src = images/'.$productshow['product_image'].'.jpg>
 					<p>'.$productshow['product_name'].'</p>
-					<p>'.$productshow['product_description'].'</p>
 					<a href="#" class="item_add"><p class="number item_price"><i> </i>RM'.$productshow['product_price'].'</p></a>
 					<br>
 		

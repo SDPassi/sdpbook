@@ -18,7 +18,6 @@ windows.location.replace ("profile.php");
 </script>';
 }
 
-
 if (isset($_SESSION['login_user'])) {
 
 $sql = "SELECT * FROM member WHERE email =  '$_SESSION[login_user]'";
@@ -27,6 +26,7 @@ $result = mysqli_query ($con,$sql);
 
 $row = mysqli_fetch_array ($result);
 }
+
 
 ?>
 <!DOCTYPE html>
@@ -115,7 +115,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				</div>
 		  <div class=" h_menu4">
 					<ul class="memenu skyblue">
-					   <li class="active grid"><a class="color8" href="index.php">Home</a></li>	
+					   <li class="grid"><a class="color3" href="index.php">Home</a></li>	
 				      <li><a class="color1" href="activity.php">Activity</a></li>
 				    <li class="grid"><a class="color2" href="order.php">Order</a></li>
 					<li><a class="color4" href="products.php">Product</a> 	
@@ -139,7 +139,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				<form method="post">
 			<div class="col-md-6 register-top-grid"style="margin-left:270px;">
 					<div>
-						<span>First Name</span>
+						<span>Name</span>
 						<input name="name" type="text" value="<?php echo $row['name']?>" required="required"> 
 					 </div>
 					 <div>

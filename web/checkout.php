@@ -69,11 +69,10 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 												<p><a href="javascript:;" class="simpleCart_empty">Empty Cart</a></p>
 
 					</div>
-					<div class="clearfix"> </div>
-			</div>
-				<div class="clearfix"> </div>
+			</div>	
 		</div>
 		</div>
+		
 		<div class="container">
 			<div class="head-top">
 				<div class="logo">
@@ -81,7 +80,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				</div>
 		  <div class=" h_menu4">
 					<ul class="memenu skyblue">
-					   <li class="active grid"><a class="color8" href="index.php">Home</a></li>	
+					   <li class="grid"><a class="color3" href="index.php">Home</a></li>	
 				      <li><a class="color1" href="activity.php">Activity</a></li>
 				    <li class="grid"><a class="color2" href="order.php">Order</a></li>
 					<li><a class="color4" href="products.php">Product</a> 	
@@ -227,8 +226,7 @@ while($result_book = mysqli_fetch_array($result1)){
 				<div class="col-md-4 amet-sed ">
 				<h4>CONTACT US</h4>
 				
-					<p>
-Contrary to popular belief</p>
+					<p>Contrary to popular belief</p>
 					<p>The standard chunk</p>
 					<p>office:  +12 34 995 0792</p>
 					<ul class="social">
@@ -241,8 +239,7 @@ Contrary to popular belief</p>
 				</div>
 				<div class="col-md-4 amet-sed">
 					<h4>Newsletter</h4>
-					<p>Sign Up to get all news update
-and promo</p>
+					<p>Sign Up to get all news update and promo</p>
 					<form>
 						<input type="text" value="" onfocus="this.value='';" onblur="if (this.value == '') {this.value ='';}">
 						<input type="submit" value="Sign up">
