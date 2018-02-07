@@ -128,17 +128,17 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		</tbody>
 		</table>
 		<div class="activity-button">
-							<input type="button" value="Clear activity " style="float:right;margin-left:10px;">
-							
-							<input type="button" value="Print" style="float:right;margin-left:10px;">		 
-						</div>	
+		
+			 <input type="reset" name="delete" value="Clear activity " style="float:right;margin-left:10px;">			
+			<input  type="button" value="Print" style="float:right;margin-left:10px;">		 
+		</div>	
 			
 		</div>
 		</div>
 		
 		
 	<div class="clearfix"> </div>
-	</div>
+	
 
 <!--//content-->
 <div class="footer">
