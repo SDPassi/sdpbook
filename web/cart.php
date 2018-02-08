@@ -4,6 +4,20 @@ session_start();
 
 include "conn.php";
 
+if (isset($_GET['product_id'])) {
+
+$id = intval($_GET['user_id']);
+
+}
+
+if (isset($_POST['delete'])) {
+unset($_SESSION['cart'][$_POST['delete']]);
+header("Refresh: 0");
+}
+
+
+
+
 
 ?>
 <!DOCTYPE html>
@@ -72,7 +86,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			</div>	
 		</div>
 		</div>
-		
+<!--navbar-->		
 		<div class="container">
 			<div class="head-top">
 				<div class="logo">
@@ -95,107 +109,79 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 
 	</div>
 
-	
+<!--content-->	
+<div class="cart">
 <div class="container">
 	<div class="check">	 
 			 <h1>My Cart</h1>
-		 <div class="col-md-9 cart-items">
+		 <div class="col-md-9 cart-items" style="background-color:white;">
 			
-				<script>$(document).ready(function(c) {
-					$('.close1').on('click', function(c){
-						$('.cart-header').fadeOut('slow', function(c){
-							$('.cart-header').remove();
-						});
-						});	  
-					});
-			   </script>
 			 <div class="cart-header">
-				 <div class="close1"> </div>
+				
 				 <div class="cart-sec simpleCart_shelfItem">
 <?php
 if(isset($_SESSION['cart'])){
+$total = 0;
 foreach($_SESSION['cart'] as $book_id => $carts){
 $sql = "SELECT * FROM inventory WHERE product_id = $book_id";
-$result1 = mysqli_query($con, $sql);
-while($result_book = mysqli_fetch_array($result1)){
 
-				echo '		<div class="cart-item cyc">
-							 <img src="images/'.$result_book['product_image'].'.jpg" class="img-responsive" alt=""/>
-						</div>
-					   <div class="cart-item-info">
-						<h3>'.$result_book['product_name'].'<span>RM '.$result_book['product_price'].'</span></h3>
+
+$result1 = mysqli_query($con, $sql);
+while($row = mysqli_fetch_array($result1)) {
+
+$subtotal = $carts * $row['product_price'] ;
+$total += $subtotal;
+				
+				echo '<div class="cart-item cyc" style="width: 100%; border-bottom: groove;margin-top:40px;">
+							 <img style="float: left; width:200px;" src="images/'.$row['product_image'].'.jpg" class="img-responsive" alt="" >
+					   <div style="float: left;padding-left:100px;padding-bottom:100px;" class="cart-item-info">
+						<h3>'.$row['product_name'].'<span>RM '.$subtotal.'</span></h3>
 						<ul class="qty">
 							<li><p>Qty : '.$carts.'</p></li>
 						</ul>
-						
-							 <div class="delivery">
-							 
-							 <span>Delivered in 2-3 bussiness days</span>
-							 <div class="clearfix"></div>
-				        </div>	
-					   </div>
-					   <div class="clearfix"></div>
-											
-				  </div>
-			 </div>';
-	}	
-}
+						<br>
+					<form action="" method="post">
+						<input type="hidden" name="delete" value="'.$row['product_id'].'">
+						<input type="submit" name="submit" value="Delete" style="width:80px;">
+					</form>
+					
 
+						
+				        </div>	
+					   					   
+											
+				
+			 </div> ';
+			
+
+	}
+		
+}
 }
 
 ?>
-			 <script>$(document).ready(function(c) {
-					$('.close2').on('click', function(c){
-							$('.cart-header2').fadeOut('slow', function(c){
-						$('.cart-header2').remove();
-					});
-					});	  
-					});
-			 </script>
-			 <div class="cart-header2">
-				 <div class="close2"> </div>
-				  <div class="cart-sec simpleCart_shelfItem">
-						<div class="cart-item cyc">
-							 <img src="images/pic2.jpg" class="img-responsive" alt=""/>
-						</div>
-					   <div class="cart-item-info">
-						<h3><a href="#">Mountain Hopper(XS R034)</a><span>Model No: 3578</span></h3>
-						<ul class="qty">
-							<li><p>Size : 5</p></li>
-							<li><p>Qty : 1</p></li>
-						</ul>
-							 <div class="delivery">
-							 <p>Service Charges : Rs.100.00</p>
-							 <span>Delivered in 2-3 bussiness days</span>
-							 <div class="clearfix"></div>
-				        </div>	
-					   </div>
-					   <div class="clearfix"></div>
-											
-				  </div>
-			  </div>		
-		 </div>
+</div>
+</div>
+				<br>	 
 		  <div class="col-md-3 cart-total">
-			 <a class="continue" href="#">Continue to basket</a>
-			 <div class="price-details">
+		  
+		  <br>
+						 <div class="price-details">
 				 <h3>Price Details</h3>
 				 <span>Total</span>
-				 <span class="total1">6200.00</span>
+				 <span class="total1">RM <?php echo $total; ?></span>
 				 <span>Discount</span>
 				 <span class="total1">---</span>
-				 <span>Delivery Charges</span>
-				 <span class="total1">150.00</span>
-				 <div class="clearfix"></div>				 
+		   <div class="clearfix"></div>				 
 			 </div>	
 			 <ul class="total_price">
-			   <li class="last_price"> <h4>TOTAL</h4></li>	
-			   <li class="last_price"><span>6350.00</span></li>
+			   <li class="last_price"> <h4>RM <?php echo $total; ?></h4></li>	
 			   <div class="clearfix"> </div>
 			 </ul>
 			
 			 
 			 <div class="clearfix"></div>
-			 <a class="order" href="#">Place Order</a>
+			 <a class="order" href="checkout.php">Check Out</a>
 			 <div class="total-item">
 				 <h3>OPTIONS</h3>
 				 <h4>COUPONS</h4>
@@ -208,9 +194,9 @@ while($result_book = mysqli_fetch_array($result1)){
 	 </div>
 
 
-<!--//content-->
-<div class="footer">
-				<div class="container">
+<!--//footer-->
+<div class="footer" >
+				<div class="container" >
 			<div class="footer-top-at">
 			
 				<div class="col-md-4 amet-sed">
@@ -226,7 +212,8 @@ while($result_book = mysqli_fetch_array($result1)){
 				<div class="col-md-4 amet-sed ">
 				<h4>CONTACT US</h4>
 				
-					<p>Contrary to popular belief</p>
+					<p>
+Contrary to popular belief</p>
 					<p>The standard chunk</p>
 					<p>office:  +12 34 995 0792</p>
 					<ul class="social">
@@ -239,7 +226,8 @@ while($result_book = mysqli_fetch_array($result1)){
 				</div>
 				<div class="col-md-4 amet-sed">
 					<h4>Newsletter</h4>
-					<p>Sign Up to get all news update and promo</p>
+					<p>Sign Up to get all news update
+and promo</p>
 					<form>
 						<input type="text" value="" onfocus="this.value='';" onblur="if (this.value == '') {this.value ='';}">
 						<input type="submit" value="Sign up">
@@ -249,9 +237,10 @@ while($result_book = mysqli_fetch_array($result1)){
 			</div>
 		</div>
 		<div class="footer-class">
-		<p >?2015 New store All Rights Reserved | Design by  <a href="http://w3layouts.com/" target="_blank">W3layouts</a> </p>
+		<p >© 2015 New store All Rights Reserved | Design by  <a href="http://w3layouts.com/" target="_blank">W3layouts</a> </p>
 		</div>
 		</div>
 </body>
+
 </html>
 			

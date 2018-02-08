@@ -1688,6 +1688,7 @@ a.order:hover{
 .total-item,.cart-items{
 	margin-top:0em;
 	padding-bottom:2em;
+	width:100%;
 }
 
 .total-item h3 {

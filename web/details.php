@@ -1,5 +1,27 @@
 <?php
 session_start();
+
+include "conn.php";
+
+if(isset($_POST['book_id'],$_POST['quantity'])){
+
+		if(!isset($_SESSION['cart'] )){
+		$_SESSION['cart']=array();
+		}
+		if(isset($_SESSION['cart'][$_POST['book_id']])){
+			$_SESSION['cart'][$_POST['book_id']] += $_POST['quantity'];
+					}
+		else{
+		$_SESSION['cart'][$_POST['book_id']] = $_POST['quantity'];
+		}
+				
+	echo '<script text="text/javascript">
+	alert("1 item added to cart!")
+	</script>';
+
+}
+
+
 ?>
 <!DOCTYPE html>
 <html>
@@ -58,7 +80,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 					</ul>
 
 					<div class="cart box_1">
-						<a href="checkout.php">
+						<a href="cart.php">
 						<h3> <div class="total">
 							<span class="simpleCart_total"></span> (<span id="simpleCart_quantity" class="simpleCart_quantity"></span> items)</div>
 							<img src="images/cart.png" alt=""/></h3>
@@ -136,29 +158,49 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 	</div>
 
 					</div>	
-					<div class="col-md-7 single-top-in simpleCart_shelfItem">
+					<div class="descrip" style="width:50%;">
 						<div class="single-para ">
-						<h4>Lorem Ipsum</h4>
-							<div class="star-on">
-								<ul class="star-footer">
-										<li><a href="#"><i> </i></a></li>
-										<li><a href="#"><i> </i></a></li>
-										<li><a href="#"><i> </i></a></li>
-										<li><a href="#"><i> </i></a></li>
-										<li><a href="#"><i> </i></a></li>
-									</ul>
-								<div class="review">
-									<a href="#"> 1 customer review </a>
-									
-								</div>
-							<div class="clearfix"> </div>
-							</div>
-							
-							<h5 class="item_price">$ 95.00</h5>
-							<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed 
-diam nonummy nibh euismod tincidunt ut laoreet dolore 
-magna aliquam erat </p>
-								<a href="#" class="add-cart item_add">ADD TO CART</a>
+						
+						
+<script>
+	function atc(i) {
+		if (parseInt(document.getElementById("quantity").value) + i > 0) {
+			document.getElementById("quantity").value = parseInt(document.getElementById("quantity").value) + i;
+		}
+	}
+
+</script>
+				
+						
+<?php
+$sql = "SELECT * FROM inventory WHERE product_id = '$_GET[book_id]'";
+$row = mysqli_query($con, $sql);
+$productshow = mysqli_fetch_array($row);
+	
+	echo'<div class = "prod" style="width:100%;float:left;margin-left:20px;margin-bottom:100px;">
+		 	
+				<img src = images/'.$productshow['product_image'].'.jpg>					
+				<h3 style="padding-bottom:10px;padding-top:10px;">'.$productshow['product_name'].'</h3>
+				<p>'.$productshow['product_description'].'</p>
+					<a href="" class="item_add" ><p class="number item_price" style="width:300px;"><i> </i>RM'.$productshow['product_price'].'</p></a>
+					<br>
+						
+				<form action ="" method ="post">
+		<input onclick = "atc(-1)" type = "button" value = "-" style="width:25px;">
+			<input style="width:50px;" id = "quantity" name = "quantity" type = "text" value = "1">
+		<input onclick = "atc(1)" type = "button" value = "+" style="width:25px;">
+		<input type="hidden" name="book_id" value="'.$productshow['product_id'].'">
+					<input style = "width:25px;" name = "quantity" type = "hidden" value = "1"/>
+					<input type = "submit" value = "Add To Cart" style = width:185px;>
+		
+			</form>
+
+			
+		</div>';
+	
+
+
+?>
 								
 						
 						</div>
@@ -267,7 +309,7 @@ magna aliquam erat </p>
 
 		<div class="clearfix"> </div>
 		</div>
-		</div>
+		
 <!--//content-->
 <div class="footer">
 				<div class="container">

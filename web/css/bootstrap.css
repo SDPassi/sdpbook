@@ -1086,7 +1086,6 @@ th {
   -webkit-box-sizing: border-box;
      -moz-box-sizing: border-box;
           box-sizing: border-box;
-          width:35%;
 }
 *:before,
 *:after {
@@ -1606,10 +1605,8 @@ pre code {
     width: 970px;
   }
 }
-@media (min-width: 1200px) {
   .container {
     width: 1170px;
-  }
 }
 .container-fluid {
   padding-right: 15px;
