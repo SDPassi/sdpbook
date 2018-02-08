@@ -1,16 +1,51 @@
 <?php
+
 session_start();
+
+include "conn.php";
+
+if (isset($_POST["email"], $_POST["psw"])){
+
+	$myusername = mysqli_real_escape_string ($con,$_POST["email"]);	
+	
+	$mypassword = mysqli_real_escape_string ($con,$_POST["psw"]);	
+
+	
+	$sql = "SELECT admin_email,admin_password FROM admin WHERE admin_email = '$myusername'AND admin_password =$mypassword";
+	
+	$result = mysqli_query($con,$sql);
+	
+	$row = mysqli_fetch_array ($result, MYSQLI_ASSOC);
+	
+	mysqli_store_result($con);
+	
+	$count = mysqli_num_rows($result);
+	
+if($count ==1) { 
+	$_SESSION['login_user'] = $myusername;
+		
+	header("location: admin_index.php");
+}
+else {
+	$error="Invalid username or password !";
+
+}
+
+}
+
+
 ?>
+
 <!DOCTYPE html>
 <html>
 <head>
-<title>REPORT: TPM Bookstore</title>
+<title>Admin Login: TPM Bookstore</title>
 <link href="css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 <script src="js/jquery.min.js"></script>
 <!-- Custom Theme files -->
 <!--theme-style-->
-<link href="style.css" rel="stylesheet" type="text/css" media="all" />	
+<link href="css/style.css" rel="stylesheet" type="text/css" media="all" />	
 <!--//theme-style-->
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -38,16 +73,16 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 					</form>
 			</div>
 			<div class="header-left">		
-					<?php if (isset($_SESSION['login_user'])): ?>
-						<li ><a href="logout.php"  ><?php echo($_SESSION['login_user']); ?></a></li>
+					<ul>
+						<?php if (isset($_SESSION['login_user'])): ?>
+						<li ><a href="admin_login.php"  ><?php echo($_SESSION['login_user']); ?></a></li>
 					<?php else: ?>
-						<li ><a href="login.php"  >Login</a></li>
-						<li><a  href="register.php"  >Register</a></li>
+						<li ><a href="admin_login.php"  >Admin Login</a></li>
 					<?php endif; ?>
-
+					</ul>
 					
 					<div class="cart box_1">
-						<a href="checkout.php">
+						<a href="cart.php">
 						<h3> <div class="total">
 							<span class="simpleCart_total"></span> (<span id="simpleCart_quantity" class="simpleCart_quantity"></span> items)</div>
 							<img src="images/cart.png" alt=""/></h3>
@@ -63,18 +98,17 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		<div class="container">
 			<div class="head-top">
 				<div class="logo">
-					<a href="index.php"><img src="images/bookicon.png" style="width:10%;height:10%" alt="">TPM Bookstore</a>	
+					<a href="admin_index.php"><img src="images/bookicon.png" style="width:10%;height:10%" alt="">Admin</a>	
 				</div>
 		  <div class=" h_menu4">
-				<ul class="memenu skyblue">
-					  <li class="active grid"><a class="color8" href="index.php">Home</a></li>	
-				      <li><a class="color1" href="activity.php">Activity</a></li>
-				    <li class="grid"><a class="color2" href="order.php">Order</a></li>
-					<li><a class="color4" href="products.php">Product</a> 	
-			    </li>		
-				<li><a class="color6" href="profile.php">Profile</a></li>
-			  </ul> 
-			</div>
+			<ul class="memenu skyblue">
+				<li class="active grid"><a class="color8" href="admin_index.php">Main</a></li>
+				<li><a class="color4" href="admin_stock.php">Stock</a></li>	
+				<li><a class="color1" href="admin_order.php">Order</a></li>
+				<li class="grid"><a class="color2" href="admin_report.php">Report</a></li>
+				<li><a class="color6" href="admin_profile.php">Profile</a></li>
+			</ul> 
+		  </div>
 				
 				<div class="clearfix"> </div>
 		</div>
@@ -86,54 +120,35 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <!--content-->
 <div class="container">
 		<div class="account">
-		<h1>Report</h1>
-		
-		<div class="activity-button">
-				<input type="button" value="View monthly or weekly report " style=margin-left:170px;">
-		</div>			
-		<table class="activity-table">
-		<thead>
-		<tr class="activity-table-main">
-			<th>ID</th>
-			<th>Date</th>
-			<th>Product </th>
-			<th>Quantity </th>
-			<th>Price </th>
+		<h1>Admin Login</h1>
+		<div class="account-pass">
+		<div class="col-md-8 account-top" style="margin-left:200px;">
+		<center>
+		<h4 style="color:red;"><?php if (isset($error)) echo $error; ?></h4>
+		</center>
+			<form method="post">
+				
+			<div > 	
+				<span>Email Address</span>
+				<input name="email" type="email"  required="required" > 
+			</div>
 			
+			<div> 
+				<span >Password</span>
+				<input name="psw" type="password" min="4" required="required" >
+			</div>	
+						
+			<span>
 			
-
-
-		</tr>
-		</thead>		
-		<tbody>
-			<tr>
-			<td>Insert database</td>
-			<td>insert database 1</td>
-			<td>insert database 2</td>
-			<td>insert database 3</td>
-			<td>insert database 4</td>
-			</tr>
+			<input type="submit" value="Login" style="margin-left:585px;"> </span>
 		
-			<tr>
-			<td>Insert database</td>
-			<td>insert database 1</td>
-			<td>insert database 2</td>
-			<td>insert database 3</td>
-			<td>insert database 4</td>
-			</tr>
-
-		</tbody>
-		
-		
-		
-		</table>
+			</form>
 		</div>
-		</div>
-		
-		
-		
 	<div class="clearfix"> </div>
-	
+	</div>
+	</div>
+
+</div>
 
 <!--//content-->
 <div class="footer">
@@ -141,13 +156,13 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			<div class="footer-top-at">
 			
 				<div class="col-md-4 amet-sed">
-				<h4>MORE INFO</h4>
+				<h4>ADMIN</h4>
 				<ul class="nav-bottom">
-						<li><a href="index.php">Home</a></li>
-						<li><a href="activity.php">Activity</a></li>
-						<li><a href="order.php">Order</a></li>
-						<li><a href="products.php">Product</a></li>
-						<li><a href="profile.php">Profile</a></li>	
+						<li><a href="admin_index.php">Home</a></li>
+						<li><a href="admin_stock.php">Stock</a></li>
+						<li><a href="admin_order.php">Order</a></li>
+						<li><a href="admin_.php">Report</a></li>
+						<li><a href="admin_profile.php">Profile</a></li>	
 					</ul>	
 					
 			</div>		
@@ -158,7 +173,6 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		<p >© 2015 New store All Rights Reserved | Design by  <a href="http://w3layouts.com/" target="_blank">W3layouts</a> </p>
 		</div>
 		</div>
-
 </body>
 </html>
 			

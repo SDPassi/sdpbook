@@ -4,7 +4,7 @@ session_start();
 <!DOCTYPE html>
 <html>
 <head>
-<title>STOCK: TPM Bookstore</title>
+<title>REPORT: TPM Bookstore</title>
 <link href="css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 <script src="js/jquery.min.js"></script>
@@ -38,15 +38,14 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 					</form>
 			</div>
 			<div class="header-left">		
-					<ul>
-						<?php if (isset($_SESSION['login_user'])): ?>
+					<?php if (isset($_SESSION['login_user'])): ?>
 						<li ><a href="logout.php"  ><?php echo($_SESSION['login_user']); ?></a></li>
 					<?php else: ?>
 						<li ><a href="login.php"  >Login</a></li>
 						<li><a  href="register.php"  >Register</a></li>
 					<?php endif; ?>
 
-					</ul>
+					
 					<div class="cart box_1">
 						<a href="checkout.php">
 						<h3> <div class="total">
@@ -64,18 +63,17 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		<div class="container">
 			<div class="head-top">
 				<div class="logo">
-					<a href="index.php"><img src="images/bookicon.png" style="width:10%;height:10%" alt="">TPM Bookstore</a>	
+					<a href="admin_index.php"><img src="images/bookicon.png" style="width:10%;height:10%" alt="">Admin</a>	
 				</div>
 		  <div class=" h_menu4">
-				<ul class="memenu skyblue">
-					  <li class="active grid"><a class="color8" href="index.php">Home</a></li>	
-				      <li><a class="color1" href="activity.php">Activity</a></li>
-				    <li class="grid"><a class="color2" href="order.php">Order</a></li>
-					<li><a class="color4" href="products.php">Product</a> 	
-			    </li>		
-				<li><a class="color6" href="contact.php">Profile</a></li>
-			  </ul> 
-			</div>
+			<ul class="memenu skyblue">
+				<li class="active grid"><a class="color8" href="admin_index.php">Main</a></li>
+				<li><a class="color4" href="admin_stock.php">Stock</a></li>	
+				<li><a class="color1" href="admin_order.php">Order</a></li>
+				<li class="grid"><a class="color2" href="admin_report.php">Report</a></li>
+				<li><a class="color6" href="admin_profile.php">Profile</a></li>
+			</ul> 
+		  </div>
 				
 				<div class="clearfix"> </div>
 		</div>
@@ -87,14 +85,20 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <!--content-->
 <div class="container">
 		<div class="account">
-		<h1>Stock</h1>
+		<h1>Report</h1>
+		
+		<div class="activity-button">
+				<input type="button" value="View monthly or weekly report " style=margin-left:170px;">
+		</div>			
 		<table class="activity-table">
 		<thead>
 		<tr class="activity-table-main">
-			<th>ID </th>
+			<th>ID</th>
+			<th>Date</th>
 			<th>Product </th>
 			<th>Quantity </th>
 			<th>Price </th>
+			
 			
 
 
@@ -106,7 +110,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			<td>insert database 1</td>
 			<td>insert database 2</td>
 			<td>insert database 3</td>
-			
+			<td>insert database 4</td>
 			</tr>
 		
 			<tr>
@@ -114,7 +118,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			<td>insert database 1</td>
 			<td>insert database 2</td>
 			<td>insert database 3</td>
-			
+			<td>insert database 4</td>
 			</tr>
 
 		</tbody>
@@ -122,14 +126,9 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		
 		
 		</table>
-		<div class="activity-button">
-							<input type="button" value="Update Stock " style="float:right;margin-left:10px;">
-							
-							<input type="button" value="Edit" style="float:right;margin-left:10px;">		 
-						</div>	
-			
 		</div>
 		</div>
+		
 		
 		
 	<div class="clearfix"> </div>
@@ -141,13 +140,13 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			<div class="footer-top-at">
 			
 				<div class="col-md-4 amet-sed">
-				<h4>MORE INFO</h4>
+				<h4>ADMIN</h4>
 				<ul class="nav-bottom">
-						<li><a href="index.php">Home</a></li>
-						<li><a href="activity.php">Activity</a></li>
-						<li><a href="order.php">Order</a></li>
-						<li><a href="products.php">Product</a></li>
-						<li><a href="profile.php">Profile</a></li>	
+						<li><a href="admin_index.php">Home</a></li>
+						<li><a href="admin_stock.php">Stock</a></li>
+						<li><a href="admin_order.php">Order</a></li>
+						<li><a href="admin_.php">Report</a></li>
+						<li><a href="admin_profile.php">Profile</a></li>	
 					</ul>	
 					
 			</div>		
@@ -158,6 +157,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		<p >© 2015 New store All Rights Reserved | Design by  <a href="http://w3layouts.com/" target="_blank">W3layouts</a> </p>
 		</div>
 		</div>
+
 </body>
 </html>
 			
