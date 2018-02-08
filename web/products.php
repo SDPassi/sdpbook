@@ -87,7 +87,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 					<?php endif; ?>
 					</ul>
 					<div class="cart box_1">
-						<a href="cart.php">
+						<a href="checkout.php">
 						<h3> <div class="total">
 						
 							<span class="simpleCart_total"></span> (<span id="simpleCart_quantity" class="simpleCart_quantity"></span> items)</div>
@@ -111,7 +111,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		<div class=" h_menu4">
 
 				<ul class="memenu skyblue">
-					<li class="grid"><a class="color3" href="index.php">Home</a></li>	
+					 <li class="active grid"><a class="color8" href="index.php">Home</a></li>	
 				     <li><a class="color1" href="activity.php">Activity</a></li>
 				     <li class="grid"><a class="color2" href="order.php">Order</a></li>
 					 <li><a class="color4" href="products.php">Product</a></li>		
@@ -141,8 +141,9 @@ $sql = "SELECT * FROM inventory";
 $row = mysqli_query($con, $sql);
 for ($i = 0;$productshow = mysqli_fetch_array($row);$i++) {
 	
-	echo'<div class = "prod" style="width:30%;border:1px solid black;float:left;margin-left:20px;margin-bottom:100px;">
+	echo'<div class = "prod" style="width:30%;border:1px solid black;float:left;margin-left:5px;margin-bottom:100px;">
 		 	<center>
+
 				<a href="details.php?book_id='.$productshow['product_id'].'"><img src = images/'.$productshow['product_image'].'.jpg></a>
 					<p style="padding-bottom:10px;padding-top:10px;">'.$productshow['product_name'].'</p>
 					<a href="#" class="item_add"><p class="number item_price"><i> </i>RM'.$productshow['product_price'].'</p></a>
@@ -153,7 +154,6 @@ for ($i = 0;$productshow = mysqli_fetch_array($row);$i++) {
 					<input style = "width:25px;" name = "quantity" type = "hidden" value = "1"/>
 					<input type = "submit" value = "Add To Cart" style = width:185px;>
 				</form>
-				
 			</center>
 		</div>';
 	
@@ -200,37 +200,15 @@ for ($i = 0;$productshow = mysqli_fetch_array($row);$i++) {
 				<div class="col-md-4 amet-sed">
 				<h4>MORE INFO</h4>
 				<ul class="nav-bottom">
-						<li><a href="#">How to order</a></li>
-						<li><a href="#">FAQ</a></li>
-						<li><a href="contact.html">Location</a></li>
-						<li><a href="#">Shipping</a></li>
-						<li><a href="#">Membership</a></li>	
+						<li><a href="index.php">Home</a></li>
+						<li><a href="activity.php">Activity</a></li>
+						<li><a href="order.php">Order</a></li>
+						<li><a href="products.php">Product</a></li>
+						<li><a href="profile.php">Profile</a></li>	
 					</ul>	
-				</div>
-				<div class="col-md-4 amet-sed ">
-				<h4>CONTACT US</h4>
-				
-					<p>
-Contrary to popular belief</p>
-					<p>The standard chunk</p>
-					<p>office:  +12 34 995 0792</p>
-					<ul class="social">
-						<li><a href="#"><i> </i></a></li>						
-						<li><a href="#"><i class="twitter"> </i></a></li>
-						<li><a href="#"><i class="rss"> </i></a></li>
-						<li><a href="#"><i class="gmail"> </i></a></li>
-						
-					</ul>
-				</div>
-				<div class="col-md-4 amet-sed">
-					<h4>Newsletter</h4>
-					<p>Sign Up to get all news update and promo</p>
-					<form>
-						<input type="text" value="" onfocus="this.value='';" onblur="if (this.value == '') {this.value ='';}">
-						<input type="submit" value="Sign up">
-					</form>
-				</div>
-				<div class="clearfix"> </div>
+					
+			</div>		
+								<div class="clearfix"> </div>
 			</div>
 		</div>
 		<div class="footer-class">
