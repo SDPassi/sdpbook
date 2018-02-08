@@ -1,55 +1,17 @@
 <?php
-
 session_start();
-
-include "conn.php";
-
-if (isset($_POST['name'],$_POST['num'],$_POST['email'],$_POST['address'])) { 
-
-$sql2 = 
-
-"UPDATE admin SET admin_name = '$_POST[name]', phone = '$_POST[num]', email = '$_POST[email]' WHERE email = '$_SESSION[login_user]'";
-
-mysqli_query($con,$sql2);
-
-echo'<script text="text/javascript">
-alert("Your profile is updated!")
-windows.location.replace ("admin_profile.php");
-</script>';
-}
-
-if (isset($_SESSION['login_user'])) {
-
-$sql = "SELECT * FROM admin WHERE admin_email =  '$_SESSION[login_user]'";
-
-$result = mysqli_query ($con,$sql);
-
-$row = mysqli_fetch_array ($result);
-}
-
-
+include("conn.php");
 ?>
 <!DOCTYPE html>
 <html>
 <head>
-<title>PROFILE : TPM Bookstore</title>
+<title>STOCK: TPM Bookstore</title>
 <link href="css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
-<!-- self add query-->
-<script type="text/javascript">
-	function checkEqualPassword(input1, input2) {
-    if (input1.value !== input2.value) {
-        input2.setCustomValidity('Passwords does not match.');
-    } else {
-        // input is valid -- reset the error message
-        input2.setCustomValidity('');
-    }
-}
-</script>
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 <script src="js/jquery.min.js"></script>
 <!-- Custom Theme files -->
 <!--theme-style-->
-<link href="css/style.css" rel="stylesheet" type="text/css" media="all" />	
+<link href="style.css" rel="stylesheet" type="text/css" media="all" />	
 <!--//theme-style-->
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -79,20 +41,23 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			<div class="header-left">		
 					<ul>
 						<?php if (isset($_SESSION['login_user'])): ?>
-						
-						<li class="dropdown"><a href="#"><?php echo($_SESSION['login_user']); ?></a>
-						<div class="dropdown-content">
-							<a href="logout.php">Logout</a>
-						
-						</div>
-						
-						</li>
-
+						<li ><a href="logout.php"  ><?php echo($_SESSION['login_user']); ?></a></li>
 					<?php else: ?>
-						<li ><a href="admin_login.php"  >Admin Login</a></li>
+						<li ><a href="login.php"  >Login</a></li>
+						<li><a  href="register.php"  >Register</a></li>
 					<?php endif; ?>
+
 					</ul>
-				<div class="clearfix"> </div>
+					<div class="cart box_1">
+						<a href="checkout.php">
+						<h3> <div class="total">
+							<span class="simpleCart_total"></span> (<span id="simpleCart_quantity" class="simpleCart_quantity"></span> items)</div>
+							<img src="images/cart.png" alt=""/></h3>
+						</a>
+						<p><a href="javascript:;" class="simpleCart_empty">Empty Cart</a></p>
+
+					</div>
+					<div class="clearfix"> </div>
 			</div>
 				<div class="clearfix"> </div>
 		</div>
@@ -119,45 +84,69 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 
 	
 <!--content-->
-<div class="contact">
+<div class="container">
+		<div class="account">
+		<h1>Stock</h1>
+		<form action="admin_updatestock.php" method="post">	
+		<table class="activity-table">
+		<thead>
+		<tr class="activity-table-main">
+			<th>ID </th>
+			<th>Product </th>
+			<th>Description</th>
+			<th>Quantity </th>
+			<th>Price(RM) </th>
 			
-			<div class="container">
-				<h1>Your Profile</h1>
-				<form method="post">
-			<div class="col-md-6 register-top-grid"style="margin-left:270px;">
-					<div>
-						<span>Name</span>
-						<input name="name" type="text" value="<?php echo $row['admin_name']?>" required="required"> 
-					 </div>
-					 <div>
-						<span>Phone Number</span>
-						<input name="num" type="tel" value="<?php echo $row['admin_phone']?>" required="required"> 
-					 </div>
-					 <div>
-						 <span>Email Address</span>
-						 <input name="email" type="email" value="<?php echo $row['admin_email']?>" required="required"> 
-					 </div>
-					 	<div class="send">
-							<input type="submit" value="Update" style="float:right;">
-							<a href="admin_chgpsw.php">Change Password</a>
-		 
-						</div>	
-		 
-					 </div>
-					</form>
-				
-								<div class="clearfix"> </div>
-			
-				</div>
+		</tr>
 		
-	</div>
+		<?php
+				 
+ 				$result = mysqli_query($con,"SELECT * FROM inventory");
+ 				while($order = mysqli_fetch_array($result)){
+	?>
+
+
+		
+		</thead>		
+		<tbody>
+			
+			<tr>
+			<td id="productid"><?php echo $order['product_id'] ?></td>
+			<input type="hidden" name="productid" value="<?php echo $order['product_id'] ?>"/>
+			<td><input name="productname" value="<?php echo $order['product_name']?>"/></td>
+			<td><input name="productdescription" value="<?php echo $order['product_description'] ?>"/></td>
+			<td><input name="productquantity" value="<?php echo $order['product_quantity']?>"/></td>
+			<td><input name="productprice" value="<?php echo $order['product_price']?>"/></td>
+			</tr>
+			
+			
+		
+		<?php }?> 
+
+		</tbody>
+		
+		
+		
+		</table>
+		<div class="send">
+							
+							<input type="submit" value="Update Stock " style="float:right;margin-left:10px;">			
+		</div>	
+		</form>		
+		</div>
+		</div>
+		
+		
+	<div class="clearfix"> </div>
+	
+
 <!--//content-->
 <div class="footer">
 				<div class="container">
 			<div class="footer-top-at">
 			
 				<div class="col-md-4 amet-sed">
-				<h4>ADMIN</h4>
+			<h4>ADMIN</h4>
 				<ul class="nav-bottom">
 						<li><a href="admin_index.php">Home</a></li>
 						<li><a href="admin_stock.php">Stock</a></li>

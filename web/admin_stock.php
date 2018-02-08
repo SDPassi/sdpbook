@@ -1,5 +1,6 @@
 <?php
 session_start();
+include("conn.php");
 ?>
 <!DOCTYPE html>
 <html>
@@ -92,40 +93,44 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			<th>ID </th>
 			<th>Product </th>
 			<th>Quantity </th>
-			<th>Price </th>
-			
+			<th>Price</th>
+		</tr>	
+		<?php
+				 
+ 				$result = mysqli_query($con,"SELECT * FROM inventory");
+ 				while($order = mysqli_fetch_array($result)){
+	?>
 
 
-		</tr>
+		
 		</thead>		
 		<tbody>
+			<form action="" method="post">
 			<tr>
-			<td>Insert database</td>
-			<td>insert database 1</td>
-			<td>insert database 2</td>
-			<td>insert database 3</td>
-			
+			<td id="productid"><?php echo $order['product_id'] ?></td>
+			<td id="productname"><?php echo $order['product_name'] ?></td>
+			<td id="productquantity"><?php echo $order['product_quantity']?> </td>
+			<td id="productprice"><?php echo $order['product_price']?> </td>
 			</tr>
-		
-			<tr>
-			<td>Insert database</td>
-			<td>insert database 1</td>
-			<td>insert database 2</td>
-			<td>insert database 3</td>
-			
-			</tr>
+			</form>	
+					
+		<?php }?> 
 
 		</tbody>
 		
 		
 		
 		</table>
+		<div class="container">
 		<div class="activity-button">
-							<input type="button" value="Update Stock " style="float:right;margin-left:10px;">
+							<form action="admin_editstock.php">
 							
-							<input type="button" value="Edit" style="float:right;margin-left:10px;">		 
-						</div>	
-			
+							<input  type="submit" value="Edit" style="float:right;margin-left:10px;background:#EF5F21;width:auto;font-size: 1.1em;
+							padding: 0.4em 0.8em;text-align: center;color: #fff;border: none;outline: none;-webkit-appearance: none;">
+							
+							</form>		 
+		</div>					
+		</div>	
 		</div>
 		</div>
 		

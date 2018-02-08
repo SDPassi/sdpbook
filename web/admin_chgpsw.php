@@ -5,9 +5,9 @@ session_start();
 include "conn.php";
 
 if (isset($_SESSION['login_user'])) {
-;
 
-$sql1 = "SELECT password FROM member WHERE email = '$_SESSION[login_user]'";
+
+$sql1 = "SELECT admin_password FROM admin WHERE admin_email = '$_SESSION[login_user]'";
 
 $result = mysqli_query ($con,$sql1);
 
@@ -15,18 +15,18 @@ $row = mysqli_fetch_array ($result);
 
 }
 if (isset($_POST['opsw'],$_POST['psw'])){
-if (password_verify($_POST['opsw'],$row['password'])) { 
-$npassword = password_hash($_POST['psw'],PASSWORD_DEFAULT);
-$sql = 
-"UPDATE member SET password = '$npassword' WHERE email = '$_SESSION[login_user]'";
-$a = mysqli_query($con,$sql);
+
+$sql = "UPDATE admin SET admin_password='$_POST[psw]' 
+WHERE admin_email = '$_SESSION[login_user]';";
+
+
+
+$change = mysqli_query($con,$sql);
 
 echo'<script text="text/javascript">
 alert("New password updated!");
-window.location.replace ("index.php");
+window.location.replace ("admin_index.php");
 </script>';
-
-}
 }
 ?>
 <!DOCTYPE html>
@@ -71,39 +71,28 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 	<div class="header-top">
 		<div class="container">
 			<div class="search">
-					<form>
-						<input type="text" value="Search " onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Search';}">
-						<input type="submit" value="Go">
+					<form action="search.php" method="get">
+						<input type="text" value="" name="search1" >
+						<input type="submit" value="Go" name="go">
 					</form>
 			</div>
 			<div class="header-left">		
 					<ul>
-						<?php if (isset($_SESSION['login_user'])): ?>
-						
+					<?php if (isset($_SESSION['login_user'])): ?>
 						<li class="dropdown"><a href="#"><?php echo($_SESSION['login_user']); ?></a>
 						<div class="dropdown-content">
-							<a href="order.php">My Purchase</a>
+							
 							<a href="logout.php">Logout</a>
 						
 						</div>
 						
 						</li>
-
+						
 					<?php else: ?>
-						<li ><a href="login.php"  >Login</a></li>
-						<li><a  href="register.php"  >Register</a></li>
+						<li><a href="admin_login.php">Login</a></li>
 					<?php endif; ?>
 					</ul>
-					<div class="cart box_1">
-						<a href="checkout.html">
-						<h3> <div class="total">
-							<span class="simpleCart_total"></span> (<span id="simpleCart_quantity" class="simpleCart_quantity"></span> items)</div>
-							<img src="images/cart.png" alt=""/></h3>
-						</a>
-												<p><a href="javascript:;" class="simpleCart_empty">Empty Cart</a></p>
-
-					</div>
-					<div class="clearfix"> </div>
+			<div class="clearfix"> </div>
 			</div>
 				<div class="clearfix"> </div>
 		</div>
@@ -111,24 +100,24 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		<div class="container">
 			<div class="head-top">
 				<div class="logo">
-					<a href="index.html"><img src="images/bookicon.png" style="width:10%;height:10%" alt="">TPM Bookstore</a>	
+					<a href="admin_index.php"><img src="images/bookicon.png" style="width:10%;height:10%" alt="">Admin</a>	
 				</div>
 		  <div class=" h_menu4">
-					<ul class="memenu skyblue">
-					   <li class="active grid"><a class="color8" href="index.php">Home</a></li>	
-				      <li><a class="color1" href="activity.php">Activity</a></li>
-				    <li class="grid"><a class="color2" href="order.php">Order</a></li>
-					<li><a class="color4" href="products.php">Product</a> 	
-			    </li>		
-				<li><a class="color6" href="profile.php">Profile</a></li>
-			  </ul> 
-			</div>
+			<ul class="memenu skyblue">
+				<li class="active grid"><a class="color8" href="admin_index.php">Main</a></li>
+				<li><a class="color4" href="admin_stock.php">Stock</a></li>	
+				<li><a class="color1" href="admin_order.php">Order</a></li>
+				<li class="grid"><a class="color2" href="admin_report.php">Report</a></li>
+				<li><a class="color6" href="admin_profile.php">Profile</a></li>
+			</ul> 
+		  </div>
 				
-				<div class="clearfix"> </div>
+				
+		</div>
 		</div>
 		</div>
 
-	</div>
+	
 
 	
 <!--content-->
