@@ -121,7 +121,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 						<div class="slidetxt" style="width: 600px; float: left;">
 							<h3>Books are the knowledge source from the ansions </h3>
 								<p>Diverse of books have been kept safely from 2000 years ago by human ancester as books are the equipment that ancestor records their experience and used to share to the new generation.</p>
-									<a href="single.php">Learn More</a>
+								
 						</div>
 						
 						<div class="slideimg" style="margin-left: 620px;">
@@ -136,8 +136,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 						<div class="slidetxt" style="width: 600px; float: left;">
 							<h3>There are many variations of books that all human</h3>
 								<p>Consists of medication books for medic, education books such as geogoly, history, physics and programming books that helps programmer to improve themselves.</p>
-									<a href="single.php">Learn More</a>
-						</div>
+															</div>
 						<div class="slideimg" style="margin-left: 620px;">
 							<img src ="images/27.jpg" alt="">
 						</div>
@@ -151,7 +150,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 						<div class="slidetxt" style="width: 600px; float: left;">
 							<h3>Knowledge is important to human and the new generation world</h3>
 								<p>Humans will gain more knowledge from the books and this will improve the quality of this new generation of IT.</p>
-									<a href="single.php">Learn More</a>
+									
 						</div>	
 						<div class="slideimg" style="margin-left: 620px;">
 							<img src ="images/28.jpg" alt="">
@@ -168,162 +167,13 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <!--content-->
 <div class="content">
 	<div class="container">
-	<div class="content-top">
-		<h1>New Arrival</h1>
-		<div class="grid-in">
-			<div class="col-md-4 grid-top">
-
-
-				<a href="details.php" class="b-link-stripe b-animate-go  thickbox"><img class="img-responsive" src="images/16a.jpg" alt="">
-
 				
-							<div class="b-wrapper">
-									<h3 class="b-animate b-from-left    b-delay03 ">
-										<span>Read More</span>
-									</h3>
-								</div>
-				</a>
-			<p><a href="single.html">Add to cart</a></p>
-			</div>
-			
-			<div class="col-md-4 grid-top">
-
-
-				<a href="single.php" class="b-link-stripe b-animate-go  thickbox"><img class="img-responsive" src="images/17b.jpg" alt="">
-				
-
-					<div class="b-wrapper">
-									<h3 class="b-animate b-from-left    b-delay03 ">
-										<span>Read More</span>	
-									</h3>
-								</div>
-				</a>
-
-
-			<p><a href="single.php">Add to cart</a></p>
-
-
-			</div>
-			
-			<div class="col-md-4 grid-top">
-				<a href="single.html" class="b-link-stripe b-animate-go  thickbox"><img class="img-responsive" src="images/18a.jpg" alt="">
-					<div class="b-wrapper">
-									<h3 class="b-animate b-from-left    b-delay03 ">
-										<span>Read More</span>	
-									</h3>
-								</div>
-				</a>
-			<p><a href="single.php">Add to cart</a></p>
-			</div>
-			
-		<div class="clearfix"> </div>
-		</div>
-		<div class="grid-in">
-		<div class="col-md-4 grid-top">
-
-				<a href="single.php" class="b-link-stripe b-animate-go  thickbox"><img class="img-responsive" src="images/19a.jpg" alt="">
-
-					<div class="b-wrapper">
-									<h3 class="b-animate b-from-left    b-delay03 ">
-										<span>Read More</span>	
-									</h3>
-								</div>
-				</a>
-
-			<p><a href="single.php">Add to cart</a></p>
-
-
-			</div>
-			<div class="col-md-4 grid-top">
-
-				<a href="single.php" class="b-link-stripe b-animate-go  thickbox"><img class="img-responsive" src="images/20a.jpg" alt="">
-
-					<div class="b-wrapper">
-									<h3 class="b-animate b-from-left    b-delay03 ">
-										<span>Read More</span>	
-									</h3>
-								</div>
-				</a>
-
-			<p><a href="single.php">Add to cart</a></p>
-
-
-			</div>
-			<div class="col-md-4 grid-top">
-				<a href="single.html" class="b-link-stripe b-animate-go  thickbox"><img class="img-responsive" src="images/21a.jpg" alt="">
-					<div class="b-wrapper">
-									<h3 class="b-animate b-from-left    b-delay03 ">
-										<span>Read More</span>	
-									</h3>
-								</div>
-				</a>
-
-
-			<p><a href="single.php">Add to cart</a></p>
-
-			
-
-			</div>
-					<div class="clearfix"> </div>
-		</div>
+	<div class="clearfix"> </div>
 	</div>
-	<!----->
 	
-	<div class="content-top-bottom">
-		<h2>Featured Collections</h2>
-		<div class="col-md-6 men">
-
-			<a href="single.html" class="b-link-stripe b-animate-go  thickbox"><img class="img-responsive" src="images/23a.jpg" alt="">
-
-				<div class="b-wrapper">
-									<h3 class="b-animate b-from-top top-in   b-delay03 ">
-										<span>Lorem</span>	
-									</h3>
-								</div>
-			</a>
-			
-			
-		</div>
-		<div class="col-md-6">
-			<div class="col-md1 ">
-				<a href="single.php" class="b-link-stripe b-animate-go  thickbox"><img class="img-responsive" src="images/24.jpg" alt="">
-					<div class="b-wrapper">
-									<h3 class="b-animate b-from-top top-in1   b-delay03 ">
-										<span>Lorem</span>	
-									</h3>
-								</div>
-				</a>
-				
-			</div>
-			<div class="col-md2">
-				<div class="col-md-6 men1">
-					<a href="single.php" class="b-link-stripe b-animate-go  thickbox"><img class="img-responsive" src="images/25.jpg" alt="">
-							<div class="b-wrapper">
-									<h3 class="b-animate b-from-top top-in2   b-delay03 ">
-										<span>Lorem</span>	
-									</h3>
-								</div>
-					</a>
-					
-				</div>
-				<div class="col-md-6 men2">
-					<a href="single.php" class="b-link-stripe b-animate-go  thickbox"><img class="img-responsive" src="images/26.jpg" alt="">
-							<div class="b-wrapper">
-									<h3 class="b-animate b-from-top top-in2   b-delay03 ">
-										<span>Lorem</span>	
-									</h3>
-								</div>
-					</a>
-					
-				</div>
-				<div class="clearfix"> </div>
-			</div>
-		</div>
-		<div class="clearfix"> </div>
-	</div>
-	</div>
-	<!---->
-	</div>
+	<!----->
+						<!---->
+</div>
 <div class="footer">
 				<div class="container">
 			<div class="footer-top-at">

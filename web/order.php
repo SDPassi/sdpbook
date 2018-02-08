@@ -120,7 +120,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			<td><?php echo $activity['product_quantity']?> </td>
 			<td><?php echo $activity['product_price']?> </td>
 			<td><?php echo $activity['payment_date']?> </td>
-			<td><?php echo $activity['rating']?> </td>
+			<td><?php echo $activity['orders_status']?> </td>
 			</tr>
 		
 			

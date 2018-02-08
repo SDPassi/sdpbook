@@ -5,7 +5,7 @@ include("conn.php")
 <!DOCTYPE html>
 <html>
 <head>
-<title>ORDER: TPM Bookstore</title>
+<title>ADMIN ORDER: TPM Bookstore</title>
 <link href="css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 <script src="js/jquery.min.js"></script>
@@ -42,24 +42,15 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			<div class="header-left">		
 					<ul>
 						<?php if (isset($_SESSION['login_user'])): ?>
-						<li ><a href="profile.php"  ><?php echo($_SESSION['login_user']); ?><a href="logout.php">(LOGOUT)</a></li>
+						<li ><a href="admin_profile.php"  ><?php echo($_SESSION['login_user']); ?><a href="logout.php">(LOGOUT)</a></li>
 						
 					<?php else: ?>
-						<li><a href="login.php">Login</a></li>
-						<li><a href="register.php">Register</a></li>
+						<li><a href="admin_login.php">Login</a></li>
+					
 					<?php endif; ?>
 
 					</ul>
-					<div class="cart box_1">
-						<a href="checkout.php">
-						<h3> <div class="total">
-							<span class="simpleCart_total"></span> (<span id="simpleCart_quantity" class="simpleCart_quantity"></span> items)</div>
-							<img src="images/cart.png" alt=""/></h3>
-						</a>
-						<p><a href="javascript:;" class="simpleCart_empty">Empty Cart</a></p>
-
-					</div>
-					<div class="clearfix"> </div>
+			<div class="clearfix"> </div>
 			</div>
 				<div class="clearfix"> </div>
 		</div>
@@ -93,6 +84,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		<table class="activity-table">
 		<thead>
 		<tr class="activity-table-main">
+			<th>Member Name</th>
 			<th>Product </th>
 			<th>Quantity </th>
 			<th>Price </th>
@@ -104,38 +96,48 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		</thead>		
 		<tbody>
 	<?php
-				$customer_id = isset($_SESSION['login_user']) ? $_SESSION['login_user'] : ''; 
+				 
  				$result = mysqli_query($con,"SELECT * FROM orders INNER JOIN member ON orders.member_id = member.id 
  				INNER JOIN orders_details ON orders.order_id = orders_details.order_id 
  				INNER JOIN inventory ON orders_details.product_id = inventory.product_id
- 				INNER JOIN feedback ON inventory.product_id = feedback.product_id
- 				WHERE orders.member_id='$customer_id'");
+ 				INNER JOIN feedback ON inventory.product_id = feedback.product_id");
 				while($activity = mysqli_fetch_array($result)){
 	?>
 
-		
+			<form action="admin_update.php" method="post">
 			<tr>
+			<td id="member_name"><?php echo $activity['name'] ?></td>
 			<td><?php echo $activity['product_name'] ?></td>
 			<td><?php echo $activity['product_quantity']?> </td>
 			<td><?php echo $activity['product_price']?> </td>
 			<td><?php echo $activity['payment_date']?> </td>
-			<td><?php echo $activity['rating']?> </td>
-			</tr>
+			<td>
 		
+				<select name="status"><option value="Processing">Processing</option>
+						<option value="Successful">Successful</option>
+						<option value="Cancel">Cancel</option>
+				</select>
 			
-		
-		
+ 			</td>
+ 			
+			</tr>
+			</form>			
 		<?php }?> 
 
 		</tbody>
-		
-		
-		
+	
 		</table>
+		<div class="activity-button">
+							<input type="button" value="Update Order " style="float:right;margin-left:10px;">
+							
+							
+								 
+						</div>	
+			
 		</div>
-		
-				</div>
-	<div class="clearfix"> </div>
+
+		</div>
+			<div class="clearfix"> </div>
 	
 
 <!--//content-->
