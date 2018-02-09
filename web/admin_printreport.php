@@ -5,7 +5,7 @@ include("conn.php");
 <!DOCTYPE html>
 <html>
 <head>
-<title>REPORT: TPM Bookstore</title>
+<title>STOCK: TPM Bookstore</title>
 <link href="css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 <script src="js/jquery.min.js"></script>
@@ -29,55 +29,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 </head>
 <body>
 <!--header-->
-<div class="header">
-	<div class="header-top">
-		<div class="container">
-			<div class="search">
-					<form action="search.php" method="get">
-						<input type="text" value="" name="search1" >
-						<input type="submit" value="Go" name="go">
-					</form>
-			</div>
-			<div class="header-left">		
-					<ul>
-						<?php if (isset($_SESSION['login_user'])): ?>
-						<li ><a href="admin_profile.php"  ><?php echo($_SESSION['login_user']); ?><a href="logout.php">(LOGOUT)</a></li>
-						
-					<?php else: ?>
-						<li><a href="admin_login.php">Login</a></li>
-					
-					<?php endif; ?>
 
-					</ul>
-					
-					<div class="clearfix"> </div>
-			</div>
-				<div class="clearfix"> </div>
-		</div>
-		</div>
-		<div class="container">
-			<div class="head-top">
-				<div class="logo">
-					<a href="admin_index.php"><img src="images/bookicon.png" style="width:10%;height:10%" alt="">Admin</a>	
-				</div>
-		  <div class=" h_menu4">
-			<ul class="memenu skyblue">
-				<li class="active grid"><a class="color8" href="admin_index.php">Main</a></li>
-				<li><a class="color4" href="admin_stock.php">Stock</a></li>	
-				<li><a class="color1" href="admin_order.php">Order</a></li>
-				<li class="grid"><a class="color2" href="admin_report.php">Report</a></li>
-				<li><a class="color6" href="admin_profile.php">Profile</a></li>
-			</ul> 
-		  </div>
-				
-				<div class="clearfix"> </div>
-		</div>
-		</div>
-
-	</div>
-
-	
-<!--content-->
 <div class="container">
 		<div class="account">
 		<h1>Monthly Report</h1>
@@ -135,51 +87,23 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 					
 						
 
-				
-<?php } ?>		
+					
+		<?php }?> 
 		</tbody>
+		
+		
+		
 		</table>
-		<div class="activity-button">
-		<form action="admin_printreport.php">
-							
-							<input  type="submit" value="Print Report" style="float:right;margin-left:10px;background:#EF5F21;width:auto;font-size: 1.1em;
-							padding: 0.4em 0.8em;text-align: center;color: #fff;border: none;outline: none;-webkit-appearance: none;">
-							
-							</form>			
-
-		</div>
+				
 		</div>
 		</div>
 		
-				
 		
 	<div class="clearfix"> </div>
 	
 
 <!--//content-->
-<div class="footer">
-				<div class="container">
-			<div class="footer-top-at">
-			
-				<div class="col-md-4 amet-sed">
-				<h4>ADMIN</h4>
-				<ul class="nav-bottom">
-						<li><a href="admin_index.php">Home</a></li>
-						<li><a href="admin_stock.php">Stock</a></li>
-						<li><a href="admin_order.php">Order</a></li>
-						<li><a href="admin_.php">Report</a></li>
-						<li><a href="admin_profile.php">Profile</a></li>	
-					</ul>	
-					
-			</div>		
-								<div class="clearfix"> </div>
-			</div>
-		</div>
-		<div class="footer-class">
-		<p >© 2015 New store All Rights Reserved | Design by  <a href="http://w3layouts.com/" target="_blank">W3layouts</a> </p>
-		</div>
-		</div>
-
+<script>window.print();</script>
 </body>
 </html>
 			
