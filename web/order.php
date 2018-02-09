@@ -1,17 +1,32 @@
 <?php
+
 session_start();
+
 include("conn.php")
+
 ?>
+
 <!DOCTYPE html>
 <html>
 <head>
-<title>ORDER: TPM Bookstore</title>
+<title>PROFILE : TPM Bookstore</title>
 <link href="css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
+<!-- self add query-->
+<script type="text/javascript">
+	function checkEqualPassword(input1, input2) {
+    if (input1.value !== input2.value) {
+        input2.setCustomValidity('Passwords does not match.');
+    } else {
+        // input is valid -- reset the error message
+        input2.setCustomValidity('');
+    }
+}
+</script>
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 <script src="js/jquery.min.js"></script>
 <!-- Custom Theme files -->
 <!--theme-style-->
-<link href="style.css" rel="stylesheet" type="text/css" media="all" />	
+<link href="css/style.css" rel="stylesheet" type="text/css" media="all" />	
 <!--//theme-style-->
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -37,21 +52,27 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 						<input type="text" value="" name="search1" >
 						<input type="submit" value="Go" name="go">
 					</form>
-
 			</div>
 			<div class="header-left">		
 					<ul>
 						<?php if (isset($_SESSION['login_user'])): ?>
-						<li ><a href="profile.php"  ><?php echo($_SESSION['login_user']); ?><a href="logout.php">(LOGOUT)</a></li>
 						
+						<li class="dropdown"><a href="#"><?php echo($_SESSION['login_user']); ?></a>
+						<div class="dropdown-content">
+							<a href="order.php">My Purchase</a>
+							<a href="logout.php">Logout</a>
+						
+						</div>
+						
+						</li>
+
 					<?php else: ?>
 						<li><a href="login.php">Login</a></li>
 						<li><a href="register.php">Register</a></li>
 					<?php endif; ?>
-
 					</ul>
 					<div class="cart box_1">
-						<a href="checkout.php">
+						<a href="cart.php">
 						<h3> <div class="total">
 							<span class="simpleCart_total"></span> (<span id="simpleCart_quantity" class="simpleCart_quantity"></span> items)</div>
 							<img src="images/cart.png" alt=""/></h3>
@@ -70,8 +91,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 					<a href="index.php"><img src="images/bookicon.png" style="width:10%;height:10%" alt="">TPM Bookstore</a>	
 				</div>
 		  <div class=" h_menu4">
-				<ul class="memenu skyblue">
-					 <li class="active grid"><a class="color8" href="index.php">Home</a></li>	
+					<ul class="memenu skyblue">
+					   <li class="grid"><a class="color3" href="index.php">Home</a></li>	
 				      <li><a class="color1" href="activity.php">Activity</a></li>
 				    <li class="grid"><a class="color2" href="order.php">Order</a></li>
 					<li><a class="color4" href="products.php">Product</a> 	
@@ -85,7 +106,6 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		</div>
 
 	</div>
-
 	
 <!--content-->
 <div class="container">

@@ -181,159 +181,43 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 	<div class="content-top">
 		<h1>New Arrival</h1>
 		<div class="grid-in">
-			<div class="col-md-4 grid-top">
-
-
-				<a href="details.php" class="b-link-stripe b-animate-go  thickbox"><img class="img-responsive" src="images/16a.jpg" alt="">
-
-				
-							<div class="b-wrapper">
-									<h3 class="b-animate b-from-left    b-delay03 ">
-										<span>Read More</span>
-									</h3>
-								</div>
-				</a>
-			<p><a href="single.html">Add to cart</a></p>
-			</div>
-			
-			<div class="col-md-4 grid-top">
-
-
-				<a href="single.php" class="b-link-stripe b-animate-go  thickbox"><img class="img-responsive" src="images/17b.jpg" alt="">
-				
-
-					<div class="b-wrapper">
-									<h3 class="b-animate b-from-left    b-delay03 ">
-										<span>Read More</span>	
-									</h3>
-								</div>
-				</a>
-
-
-			<p><a href="single.php">Add to cart</a></p>
-
-
-			</div>
-			
-			<div class="col-md-4 grid-top">
-				<a href="single.html" class="b-link-stripe b-animate-go  thickbox"><img class="img-responsive" src="images/18a.jpg" alt="">
-					<div class="b-wrapper">
-									<h3 class="b-animate b-from-left    b-delay03 ">
-										<span>Read More</span>	
-									</h3>
-								</div>
-				</a>
-			<p><a href="single.php">Add to cart</a></p>
-			</div>
-			
-		<div class="clearfix"> </div>
-		</div>
-		<div class="grid-in">
-		<div class="col-md-4 grid-top">
-
-				<a href="single.php" class="b-link-stripe b-animate-go  thickbox"><img class="img-responsive" src="images/19a.jpg" alt="">
-
-					<div class="b-wrapper">
-									<h3 class="b-animate b-from-left    b-delay03 ">
-										<span>Read More</span>	
-									</h3>
-								</div>
-				</a>
-
-			<p><a href="single.php">Add to cart</a></p>
-
-
-			</div>
-			<div class="col-md-4 grid-top">
-
-				<a href="single.php" class="b-link-stripe b-animate-go  thickbox"><img class="img-responsive" src="images/20a.jpg" alt="">
-
-					<div class="b-wrapper">
-									<h3 class="b-animate b-from-left    b-delay03 ">
-										<span>Read More</span>	
-									</h3>
-								</div>
-				</a>
-
-			<p><a href="single.php">Add to cart</a></p>
-
-
-			</div>
-			<div class="col-md-4 grid-top">
-				<a href="single.html" class="b-link-stripe b-animate-go  thickbox"><img class="img-responsive" src="images/21a.jpg" alt="">
-					<div class="b-wrapper">
-									<h3 class="b-animate b-from-left    b-delay03 ">
-										<span>Read More</span>	
-									</h3>
-								</div>
-				</a>
-
-
-			<p><a href="single.php">Add to cart</a></p>
-
-			
-
-			</div>
-					<div class="clearfix"> </div>
-		</div>
-	</div>
-	<!----->
 	
-	<div class="content-top-bottom">
-		<h2>Featured Collections</h2>
-		<div class="col-md-6 men">
+		<?php
+$sql = "SELECT * FROM inventory";
+$row = mysqli_query($con, $sql);
+for ($i = 0;$productshow = mysqli_fetch_array($row);$i++) {
+	
+	echo'<div class = "prod" style="width:30%;border:1px solid black;float:left;margin-left:30px;margin-bottom:100px;">
+		 	<center>
 
-			<a href="single.html" class="b-link-stripe b-animate-go  thickbox"><img class="img-responsive" src="images/23a.jpg" alt="">
+				<a href="details.php?book_id='.$productshow['product_id'].'"><img src = images/'.$productshow['product_image'].'.jpg></a>
+					<p style="padding-bottom:10px;padding-top:10px;">'.$productshow['product_name'].'</p>
+					<a href="#" class="item_add"><p class="number item_price"><i> </i>RM'.$productshow['product_price'].'</p></a>
+					<br>
+		
+				<form action = "products.php" method = "post" style="margin-bottom:20px;">
+					<input type="hidden" name="book_id" value="'.$productshow['product_id'].'">
+					<input style = "width:25px;" name = "quantity" type = "hidden" value = "1"/>
+					<input type = "submit" value = "Add To Cart" style = width:185px;>
+				</form>
+			</center>
+		</div>';
+	
+}
 
-				<div class="b-wrapper">
-									<h3 class="b-animate b-from-top top-in   b-delay03 ">
-										<span>Lorem</span>	
-									</h3>
-								</div>
-			</a>
-			
-			
-		</div>
-		<div class="col-md-6">
-			<div class="col-md1 ">
-				<a href="single.php" class="b-link-stripe b-animate-go  thickbox"><img class="img-responsive" src="images/24.jpg" alt="">
-					<div class="b-wrapper">
-									<h3 class="b-animate b-from-top top-in1   b-delay03 ">
-										<span>Lorem</span>	
-									</h3>
-								</div>
-				</a>
-				
-			</div>
-			<div class="col-md2">
-				<div class="col-md-6 men1">
-					<a href="single.php" class="b-link-stripe b-animate-go  thickbox"><img class="img-responsive" src="images/25.jpg" alt="">
-							<div class="b-wrapper">
-									<h3 class="b-animate b-from-top top-in2   b-delay03 ">
-										<span>Lorem</span>	
-									</h3>
-								</div>
-					</a>
-					
-				</div>
-				<div class="col-md-6 men2">
-					<a href="single.php" class="b-link-stripe b-animate-go  thickbox"><img class="img-responsive" src="images/26.jpg" alt="">
-							<div class="b-wrapper">
-									<h3 class="b-animate b-from-top top-in2   b-delay03 ">
-										<span>Lorem</span>	
-									</h3>
-								</div>
-					</a>
-					
-				</div>
-				<div class="clearfix"> </div>
-			</div>
-		</div>
+?>
+
+						
 		<div class="clearfix"> </div>
+		</div>
+		
+		
+			
+
+								
+		
 	</div>
-	</div>
-	<!---->
-	</div>
+		</div>
 <div class="footer">
 				<div class="container">
 			<div class="footer-top-at">
@@ -354,6 +238,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		</div>
 		<div class="footer-class">
 		<p >© 2015 New store All Rights Reserved | Design by  <a href="http://w3layouts.com/" target="_blank">W3layouts</a> </p>
+		</div>
 		</div>
 		</div>
 </body>

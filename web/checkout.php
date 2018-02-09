@@ -1,56 +1,24 @@
 <?php
+
 session_start();
 
 include "conn.php";
 
-if (isset($_POST['login_user'])) {
-$sql1 = "SELECT ID FROM member WHERE email = '".$_SESSION['login_user']."'";
-$result1 = mysqli_query ($con,$sql1);
-$row = mysqli_fetch_array ($result1);
+if (isset($_POST['delete'])) {
+unset($_SESSION['cart'][$_POST['delete']]);
+header("Refresh: 0");
 }
 
-if (isset($_POST['quantity'])) {
-
-$sql = "INSERT INTO cart(product_id, user_id,product_quantity) 
-
-
-VALUES
-
-('$_POST[product_id]', '$row[user_id]','$_POST[quantity]')";
-
-
-if (mysqli_query ($con,$sql)) 
-
-
-	echo '<script text="text/javascript">
-	alert("1 record added!")
-	windows.location.replace ("product.php");
-	</script>';
 
 
 
-if(iseet($_POST['book_id'],$_POST['quantity'])){
-
-		if(!isset($_SESSION['cart'] )){
-		$_SESSION['cart']=array();
-		}
-		$_SESSION['cart'][$_POST['book_id']] = $_POST['quantity'];
-
-}
-
-}
 
 
 ?>
-
-
-
-
-
 <!DOCTYPE html>
 <html>
 <head>
-<title>New Store A Ecommerce Category Flat Bootstarp Resposive Website Template | Products :: w3layouts</title>
+<title>CART: TPM Bookstore</title>
 <link href="css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 <script src="js/jquery.min.js"></script>
@@ -86,7 +54,6 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			<div class="header-left">		
 					<ul>
 						<?php if (isset($_SESSION['login_user'])): ?>
-						
 						<li class="dropdown"><a href="#"><?php echo($_SESSION['login_user']); ?></a>
 						<div class="dropdown-content">
 							<a href="order.php">My Purchase</a>
@@ -95,10 +62,12 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 						</div>
 						
 						</li>
+						
 					<?php else: ?>
 						<li><a href="login.php">Login</a></li>
 						<li><a href="register.php">Register</a></li>
 					<?php endif; ?>
+
 					</ul>
 					<div class="cart box_1">
 						<a href="checkout.php">
@@ -106,104 +75,148 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 							<span class="simpleCart_total"></span> (<span id="simpleCart_quantity" class="simpleCart_quantity"></span> items)</div>
 							<img src="images/cart.png" alt=""/></h3>
 						</a>
-						<p><a href="javascript:;" class="simpleCart_empty">Empty Cart</a></p>
+												<p><a href="javascript:;" class="simpleCart_empty">Empty Cart</a></p>
 
-			</div>
-		<div class="clearfix"> </div>
+					</div>
+			</div>	
 		</div>
-	<div class="clearfix"> </div>
-	</div>
-</div>
-		
-<div class="container">
-	<div class="head-top">
-		<div class="logo">
-			<a href="index.php"><img src="images/bookicon.png" style="width:10%;height:10%" alt="">TPM Bookstore</a>
 		</div>
-		
-		<div class=" h_menu4">
-				<ul class="memenu skyblue">
-					   <li class="active grid"><a class="color8" href="index.php">Home</a></li>	
+<!--navbar-->		
+		<div class="container">
+			<div class="head-top">
+				<div class="logo">
+					<a href="index.php"><img src="images/bookicon.png" style="width:10%;height:10%" alt="">TPM Bookstore</a>
+				</div>
+		  <div class=" h_menu4">
+					<ul class="memenu skyblue">
+					   <li class="grid"><a class="color3" href="index.php">Home</a></li>	
 				      <li><a class="color1" href="activity.php">Activity</a></li>
 				    <li class="grid"><a class="color2" href="order.php">Order</a></li>
 					<li><a class="color4" href="products.php">Product</a> 	
 			    </li>		
 				<li><a class="color6" href="profile.php">Profile</a></li>
 			  </ul> 
-		</div>
+			</div>
 				
-		<div class="clearfix"> </div>
+				<div class="clearfix"> </div>
 		</div>
+		</div>
+
 	</div>
-</div>
 
-	
-<!--content-->
-<!---->
-		<div class="product">
-			<div class="container">
-														
+<!--content-->	
+<div class="cart">
+<div class="container">
+	<div class="check">	 
+			 <h1>Order Summary</h1>
+		 <div class="col-md-9 cart-items" style="background-color:white;">
+			
+			 <div class="cart-header">
 				
-
-				
-
-<div class="product" style="width:100%; margin:auto; overflow:auto;">
-	<div class="productflow" style="display:block;">
+				 <div class="cart-sec simpleCart_shelfItem">
 <?php
-$sql = "SELECT * FROM inventory";
-$row = mysqli_query($con, $sql);
-for ($i = 0;$productshow = mysqli_fetch_array($row);$i++) {
-	
-	echo'<div class = "prod" style="width:30%;border:1px solid black;float:right;margin-left:5px;margin-bottom:100px;">
-		<center>
-		<img src = images/'.$productshow['product_image'].'.jpg>
-			<p>'.$productshow['product_name'].'</p>
-			<a href="#" class="item_add"><p class="number item_price"><i> </i>RM'.$productshow['product_price'].'</p></a>
-			<br>
+if(isset($_SESSION['cart'])){
+$total = 0;
+foreach($_SESSION['cart'] as $book_id => $carts){
+$sql = "SELECT * FROM inventory WHERE product_id = $book_id";
+
+
+$result1 = mysqli_query($con, $sql);
+while($row = mysqli_fetch_array($result1)) {
+
+$subtotal = $carts * $row['product_price'] ;
+$total += $subtotal;
+				
+				echo '<div class="cart-item cyc" style="width: 100%; border-bottom: groove;margin-top:40px;margin-bottom:30px;">
+							 <img style="float: left; width:200px;" src="images/'.$row['product_image'].'.jpg" class="img-responsive" alt="" >
+					   <div style="float: left;padding-left:100px;padding-bottom:100px;" class="cart-item-info">
+						<h3>'.$row['product_name'].'<span>RM '.$subtotal.'</span></h3>
+						<ul class="qty">
+							<li><p>Qty : '.$carts.'</p></li>
+							<br>
+							<br>
+							<li><p style="color:green;">CONFIRMED</p></li>
+						</ul>
+						<br>
+		        </div>	
+			 </div> ';		
+	}
 		
-		<form action = "product.php" method = "post" style="margin-bottom:20px;">
-			<input type="hidden" name="book_id" value="'.$productshow['product_id'].'">
-			<input style = "width:25px;" name = "quantity" type = "hidden" value = "1"/>
-			<input type = "submit" value = "Add To Cart"/ style = width:185px;>
-		</form>
-		</center>
-	</div>';
-	
+}
 }
 
 ?>
-		
 </div>
-			
+</div>
+</div>
+</div>
 
-				<div class="col-md-9 product1">
-				<div class=" bottom-product">
-					<div class="col-md-4 bottom-cd simpleCart_shelfItem">
-														
-						<div class="clearfix"> </div>
-				</div>
-				</div>
-				</div>
+
+
+				<br>	
 				
-		<div class="clearfix"> </div>
-			<nav class="in">
-				  <ul class="pagination">
-					<li class="disabled"><a href="#" aria-label="Previous"><span aria-hidden="true">«</span></a></li>
-					<li class="active"><a href="#">1 <span class="sr-only">(current)</span></a></li>
-					<li><a href="#">2 <span class="sr-only"></span></a></li>
-					<li><a href="#">3 <span class="sr-only"></span></a></li>
-					<li><a href="#">4 <span class="sr-only"></span></a></li>
-					<li><a href="#">5 <span class="sr-only"></span></a></li>
-					 <li> <a href="#" aria-label="Next"><span aria-hidden="true">»</span> </a> </li>
-				  </ul>
-			</nav>
-		</div>
-		
-		</div>
-			
-				<!---->
+<?php
+if (isset($_SESSION['login_user'])) {
+$sql1 = "SELECT * FROM member WHERE email = '$_SESSION[login_user]'";
 
-<!--//content-->
+$result2 = mysqli_query($con, $sql1);
+
+$row1 = mysqli_fetch_array($result2);
+}
+
+?> 
+		  <div class="col-md-3 cart-total" style="width:100%;">
+		  
+		  <br>
+						 <div class="price-details">
+				 <h3>Personal Details</h3>		 
+				 
+				 <span>Name:</span>
+				 <span>Email:</span>
+				 <br>
+				 <span class="details"><b><?php echo $row1['name'] ?></b></span>
+				 <span class="details"><b><?php echo $row1['email'] ?></b></span>
+
+				 <span>Contact Number:</span>
+				 <span>Shipping Address:</span>
+				 <br>
+				 <span class="total1"><b><?php echo $row1['phone'] ?></b></span>
+				 <span class="total1"><b><?php echo $row1['address'] ?></b></span>
+
+	
+ 					<br><br>
+				
+		   <div class="clearfix"></div>				 
+			 </div>	
+			 <br>
+			 <div class="price-details">
+			  <h3>Price Details</h3>
+			 	<span class="last_price">
+			 	<span><h6>TOTAL: RM <?php echo $total; ?></h6></span>
+			 	<br>
+			 	<br>
+			 	<span><h6 style="color:green;">DELIVERY: FREE</h6></span>
+
+			 	</span>	
+			 <div class="clearfix"> </div>
+			 </div>
+			
+			 
+			 <div class="clearfix"></div>
+			 
+			 <div class="total-item" style="margin-top:50px;">
+				 
+				 <div class="order">
+				 <input type="submit" style="width:100%;background: #EF5F21;padding: 0.4em 1em;color: #fff; font-size: 1.2em;transition:0.5s all;display:block;border: none;outline: none;"value="Review &amp; Pay"></div>
+			</div>
+			</div>
+		
+			<div class="clearfix"> </div>
+	 </div>
+	 </div>
+
+
+<!--//footer-->
 <div class="footer">
 				<div class="container">
 			<div class="footer-top-at">
@@ -211,44 +224,23 @@ for ($i = 0;$productshow = mysqli_fetch_array($row);$i++) {
 				<div class="col-md-4 amet-sed">
 				<h4>MORE INFO</h4>
 				<ul class="nav-bottom">
-						<li><a href="#">How to order</a></li>
-						<li><a href="#">FAQ</a></li>
-						<li><a href="contact.html">Location</a></li>
-						<li><a href="#">Shipping</a></li>
-						<li><a href="#">Membership</a></li>	
+						<li><a href="index.php">Home</a></li>
+						<li><a href="activity.php">Activity</a></li>
+						<li><a href="order.php">Order</a></li>
+						<li><a href="products.php">Product</a></li>
+						<li><a href="profile.php">Profile</a></li>	
 					</ul>	
-				</div>
-				<div class="col-md-4 amet-sed ">
-				<h4>CONTACT US</h4>
-				
-					<p>
-Contrary to popular belief</p>
-					<p>The standard chunk</p>
-					<p>office:  +12 34 995 0792</p>
-					<ul class="social">
-						<li><a href="#"><i> </i></a></li>						
-						<li><a href="#"><i class="twitter"> </i></a></li>
-						<li><a href="#"><i class="rss"> </i></a></li>
-						<li><a href="#"><i class="gmail"> </i></a></li>
-						
-					</ul>
-				</div>
-				<div class="col-md-4 amet-sed">
-					<h4>Newsletter</h4>
-					<p>Sign Up to get all news update
-and promo</p>
-					<form>
-						<input type="text" value="" onfocus="this.value='';" onblur="if (this.value == '') {this.value ='';}">
-						<input type="submit" value="Sign up">
-					</form>
-				</div>
-				<div class="clearfix"> </div>
+					
+			</div>		
+								<div class="clearfix"> </div>
 			</div>
 		</div>
 		<div class="footer-class">
-		<p >© 2015 New store All Rights Reserved | Design by  <a href="http://w3layouts.com/" target="_blank">W3layouts</a> </p>
+		<p >© 2018 TPM Bookstore </p>
 		</div>
 		</div>
+		
 </body>
+
 </html>
 			

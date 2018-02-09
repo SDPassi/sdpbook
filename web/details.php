@@ -16,7 +16,7 @@ if(isset($_POST['book_id'],$_POST['quantity'])){
 		}
 				
 	echo '<script text="text/javascript">
-	alert("1 item added to cart!")
+	alert("Items added to cart!")
 	</script>';
 
 }
@@ -186,11 +186,14 @@ $productshow = mysqli_fetch_array($row);
 					<br>
 						
 				<form action ="" method ="post">
-		<input onclick = "atc(-1)" type = "button" value = "-" style="width:25px;">
-			<input style="width:50px;" id = "quantity" name = "quantity" type = "text" value = "1">
-		<input onclick = "atc(1)" type = "button" value = "+" style="width:25px;">
-		<input type="hidden" name="book_id" value="'.$productshow['product_id'].'">
-					<input style = "width:25px;" name = "quantity" type = "hidden" value = "1"/>
+					<input onclick = "atc(-1)" type = "button" value = "-" style="width:25px;">
+					
+					<input style="width:50px;" id = "quantity" name = "quantity" type = "text" value = "1">
+					
+					<input onclick = "atc(1)" type = "button" value = "+" style="width:25px;">
+					
+					<input type="hidden" name="book_id" value="'.$productshow['product_id'].'">
+					
 					<input type = "submit" value = "Add To Cart" style = width:185px;>
 		
 			</form>

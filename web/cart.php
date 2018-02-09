@@ -4,17 +4,10 @@ session_start();
 
 include "conn.php";
 
-if (isset($_GET['product_id'])) {
-
-$id = intval($_GET['user_id']);
-
-}
-
 if (isset($_POST['delete'])) {
 unset($_SESSION['cart'][$_POST['delete']]);
 header("Refresh: 0");
 }
-
 
 
 
@@ -132,7 +125,7 @@ while($row = mysqli_fetch_array($result1)) {
 $subtotal = $carts * $row['product_price'] ;
 $total += $subtotal;
 				
-				echo '<div class="cart-item cyc" style="width: 100%; border-bottom: groove;margin-top:40px;">
+				echo '<div class="cart-item cyc" style="width: 100%; border-bottom: groove;margin-top:40px;margin-bottom:30px;">
 							 <img style="float: left; width:200px;" src="images/'.$row['product_image'].'.jpg" class="img-responsive" alt="" >
 					   <div style="float: left;padding-left:100px;padding-bottom:100px;" class="cart-item-info">
 						<h3>'.$row['product_name'].'<span>RM '.$subtotal.'</span></h3>
@@ -162,8 +155,13 @@ $total += $subtotal;
 ?>
 </div>
 </div>
+</div>
+</div>
+
+
+
 				<br>	 
-		  <div class="col-md-3 cart-total">
+		  <div class="col-md-3 cart-total" style="width:100%;">
 		  
 		  <br>
 						 <div class="price-details">
@@ -171,21 +169,31 @@ $total += $subtotal;
 				 <span>Total</span>
 				 <span class="total1">RM <?php echo $total; ?></span>
 				 <span>Discount</span>
-				 <span class="total1">---</span>
+				 <span class="total1"><form action="/action_page.php">
+				 
+ 					<select name="cars">
+ 						<option value="NONE">NONE</option>
+    					<option value="RM 20">150 points (RM 20)</option>
+   				 		<option value="RM 30">250 points (RM 30)</option>
+   				 		<option value="Rm 50">400 points (RM 50)</option>
+   				 		<option value="RM 100">550 points (RM 100)</option>
+  					</select>
+<br><br>
+				</form></span>
 		   <div class="clearfix"></div>				 
 			 </div>	
 			 <ul class="total_price">
-			   <li class="last_price"> <h4>RM <?php echo $total; ?></h4></li>	
+			   <li class="last_price"> <h4>RM <?php echo $total; ?></h4></li>
+				 <a class="cpns" href="#" style="float:right;">Apply Coupons</a>	
 			   <div class="clearfix"> </div>
 			 </ul>
 			
 			 
 			 <div class="clearfix"></div>
-			 <a class="order" href="checkout.php">Check Out</a>
-			 <div class="total-item">
-				 <h3>OPTIONS</h3>
-				 <h4>COUPONS</h4>
-				 <a class="cpns" href="#">Apply Coupons</a>
+			 
+			 <div class="total-item" style="margin-top:50px;">
+				 
+				 <a class="order" href="checkout.php">Check Out</a>
 			</div>
 			</div>
 		
@@ -195,51 +203,29 @@ $total += $subtotal;
 
 
 <!--//footer-->
-<div class="footer" >
-				<div class="container" >
+<div class="footer">
+				<div class="container">
 			<div class="footer-top-at">
 			
 				<div class="col-md-4 amet-sed">
 				<h4>MORE INFO</h4>
 				<ul class="nav-bottom">
-						<li><a href="#">How to order</a></li>
-						<li><a href="#">FAQ</a></li>
-						<li><a href="contact.html">Location</a></li>
-						<li><a href="#">Shipping</a></li>
-						<li><a href="#">Membership</a></li>	
+						<li><a href="index.php">Home</a></li>
+						<li><a href="activity.php">Activity</a></li>
+						<li><a href="order.php">Order</a></li>
+						<li><a href="products.php">Product</a></li>
+						<li><a href="profile.php">Profile</a></li>	
 					</ul>	
-				</div>
-				<div class="col-md-4 amet-sed ">
-				<h4>CONTACT US</h4>
-				
-					<p>
-Contrary to popular belief</p>
-					<p>The standard chunk</p>
-					<p>office:  +12 34 995 0792</p>
-					<ul class="social">
-						<li><a href="#"><i> </i></a></li>						
-						<li><a href="#"><i class="twitter"> </i></a></li>
-						<li><a href="#"><i class="rss"> </i></a></li>
-						<li><a href="#"><i class="gmail"> </i></a></li>
-						
-					</ul>
-				</div>
-				<div class="col-md-4 amet-sed">
-					<h4>Newsletter</h4>
-					<p>Sign Up to get all news update
-and promo</p>
-					<form>
-						<input type="text" value="" onfocus="this.value='';" onblur="if (this.value == '') {this.value ='';}">
-						<input type="submit" value="Sign up">
-					</form>
-				</div>
-				<div class="clearfix"> </div>
+					
+			</div>		
+								<div class="clearfix"> </div>
 			</div>
 		</div>
 		<div class="footer-class">
 		<p >© 2015 New store All Rights Reserved | Design by  <a href="http://w3layouts.com/" target="_blank">W3layouts</a> </p>
 		</div>
 		</div>
+		
 </body>
 
 </html>

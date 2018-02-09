@@ -134,7 +134,7 @@ if(isset($_GET['search1'])){
                 {
                            echo '<div class="container" style="width:;float:left;">
    								<a href="products/'.$search_result['product_id'].'" >
-						        <img src="images/'.$search_result['product_id'].'.jpg"/;></a>
+						        <img src="images/'.$search_result['product_id'].'a.jpg"/;></a>
    
    								 <div class="" style="width:70%;float:right;padding-top:20px;">
 	
@@ -142,7 +142,8 @@ if(isset($_GET['search1'])){
 	      								<h4>RM '.$search_result['product_price'].'</h4><br>
 	      								'.$search_result['product_description'].' 
 	      								<br>
-	          
+	          							<br>
+	          							<br>
 				<form method = "post" style="margin-bottom:20px;">
 					<input type="hidden" name="book_id" value="'.$search_result['product_id'].'">
 					<input style = "width:25px;" name = "quantity" type = "hidden" value = "1"/>
