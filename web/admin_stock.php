@@ -1,50 +1,17 @@
 <?php
-
 session_start();
-
-include "conn.php";
-
-if (isset($_POST["email"], $_POST["psw"])){
-
-	$myusername = mysqli_real_escape_string ($con,$_POST["email"]);	
-	
-	$sql = "SELECT email,password FROM member WHERE email = '$myusername'";
-	
-	$result = mysqli_query($con,$sql);
-	
-	$row = mysqli_fetch_array ($result, MYSQLI_ASSOC);
-	
-	$npassword = password_verify($_POST['psw'],$row['password']);
-	
-	mysqli_store_result($con);
-	
-	$count = mysqli_num_rows($result);
-	
-if ($npassword) { 
-	$_SESSION['login_user'] = $myusername;
-		
-	header("location: .");
-}
-else {
-	$error="Invalid username or password !";
-
-}
-
-}
-
-
+include("conn.php");
 ?>
-
 <!DOCTYPE html>
 <html>
 <head>
-<title>LOGIN: TPM Bookstore</title>
+<title>STOCK: TPM Bookstore</title>
 <link href="css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 <script src="js/jquery.min.js"></script>
 <!-- Custom Theme files -->
 <!--theme-style-->
-<link href="css/style.css" rel="stylesheet" type="text/css" media="all" />	
+<link href="style.css" rel="stylesheet" type="text/css" media="all" />	
 <!--//theme-style-->
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -66,23 +33,23 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 	<div class="header-top">
 		<div class="container">
 			<div class="search">
-					<form action="" method="post">
-						<input type="text" value="Search " onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Search';}">
-						<input type="submit" value="Go">
+					<form action="search.php" method="get">
+						<input type="text" value="" name="search1" >
+						<input type="submit" value="Go" name="go">
 					</form>
 			</div>
 			<div class="header-left">		
 					<ul>
 						<?php if (isset($_SESSION['login_user'])): ?>
-						<li ><a href="login.php"  ><?php echo($_SESSION['login_user']); ?></a></li>
+						<li ><a href="logout.php"  ><?php echo($_SESSION['login_user']); ?></a></li>
 					<?php else: ?>
 						<li ><a href="login.php"  >Login</a></li>
 						<li><a  href="register.php"  >Register</a></li>
 					<?php endif; ?>
+
 					</ul>
-					
 					<div class="cart box_1">
-						<a href="cart.php">
+						<a href="checkout.php">
 						<h3> <div class="total">
 							<span class="simpleCart_total"></span> (<span id="simpleCart_quantity" class="simpleCart_quantity"></span> items)</div>
 							<img src="images/cart.png" alt=""/></h3>
@@ -98,18 +65,17 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		<div class="container">
 			<div class="head-top">
 				<div class="logo">
-					<a href="index.php"><img src="images/bookicon.png" style="width:10%;height:10%" alt="">TPM Bookstore</a>	
+					<a href="admin_index.php"><img src="images/bookicon.png" style="width:10%;height:10%" alt="">Admin</a>	
 				</div>
 		  <div class=" h_menu4">
 			<ul class="memenu skyblue">
-				<li class="active grid"><a class="color8" href="index.php">Home</a></li>
-				<li><a class="color4" href="products.php">Product</a></li>	
-				<li><a class="color1" href="activity.php">Activity</a></li>
-				<li class="grid"><a class="color2" href="order.php">Order</a></li>
-				<li><a class="color6" href="contact.php">Profile</a></li>
+				<li class="active grid"><a class="color8" href="admin_index.php">Main</a></li>
+				<li><a class="color4" href="admin_stock.php">Stock</a></li>	
+				<li><a class="color1" href="admin_order.php">Order</a></li>
+				<li class="grid"><a class="color2" href="admin_report.php">Report</a></li>
+				<li><a class="color6" href="admin_profile.php">Profile</a></li>
 			</ul> 
 		  </div>
-				
 				<div class="clearfix"> </div>
 		</div>
 		</div>
@@ -120,35 +86,57 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <!--content-->
 <div class="container">
 		<div class="account">
-		<h1>Login to your account</h1>
-		<div class="account-pass">
-		<div class="col-md-8 account-top" style="margin-left:200px;">
-		<center>
-		<h4 style="color:red;"><?php if (isset($error)) echo $error; ?></h4>
-		</center>
-			<form method="post">
-				
-			<div > 	
-				<span>Email Address</span>
-				<input name="email" type="email"  required="required" > 
-			</div>
-			
-			<div> 
-				<span >Password</span>
-				<input name="psw" type="password" min="4" required="required" >
-			</div>	
-						
-			<span><a href="register.php">New? Register an account.</a><br>
-			<a href="admin_login.php">Admin login?Click here.</a><br>
-			<input type="submit" value="Login" style="margin-left:585px;"> </span>
-		
-			</form>
-		</div>
-	<div class="clearfix"> </div>
-	</div>
-	</div>
+		<h1>Stock</h1>
+		<table class="activity-table">
+		<thead>
+		<tr class="activity-table-main">
+			<th>ID </th>
+			<th>Product </th>
+			<th>Quantity </th>
+			<th>Price</th>
+		</tr>	
+		<?php
+				 
+ 				$result = mysqli_query($con,"SELECT * FROM inventory");
+ 				while($order = mysqli_fetch_array($result)){
+	?>
 
-</div>
+
+		
+		</thead>		
+		<tbody>
+			<form action="" method="post">
+			<tr>
+			<td id="productid"><?php echo $order['product_id'] ?></td>
+			<td id="productname"><?php echo $order['product_name'] ?></td>
+			<td id="productquantity"><?php echo $order['product_quantity']?> </td>
+			<td id="productprice"><?php echo $order['product_price']?> </td>
+			</tr>
+			</form>	
+					
+		<?php }?> 
+
+		</tbody>
+		
+		
+		
+		</table>
+		<div class="container">
+		<div class="activity-button">
+							<form action="admin_editstock.php">
+							
+							<input  type="submit" value="Edit" style="float:right;margin-left:10px;background:#EF5F21;width:auto;font-size: 1.1em;
+							padding: 0.4em 0.8em;text-align: center;color: #fff;border: none;outline: none;-webkit-appearance: none;">
+							
+							</form>		 
+		</div>					
+		</div>	
+		</div>
+		</div>
+		
+		
+	<div class="clearfix"> </div>
+	
 
 <!--//content-->
 <div class="footer">
@@ -156,13 +144,13 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			<div class="footer-top-at">
 			
 				<div class="col-md-4 amet-sed">
-				<h4>MORE INFO</h4>
+			<h4>ADMIN</h4>
 				<ul class="nav-bottom">
-						<li><a href="index.php">Home</a></li>
-						<li><a href="activity.php">Activity</a></li>
-						<li><a href="order.php">Order</a></li>
-						<li><a href="products.php">Product</a></li>
-						<li><a href="profile.php">Profile</a></li>	
+						<li><a href="admin_index.php">Home</a></li>
+						<li><a href="admin_stock.php">Stock</a></li>
+						<li><a href="admin_order.php">Order</a></li>
+						<li><a href="admin_.php">Report</a></li>
+						<li><a href="admin_profile.php">Profile</a></li>	
 					</ul>	
 					
 			</div>		

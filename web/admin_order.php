@@ -1,10 +1,11 @@
 <?php
 session_start();
+include("conn.php")
 ?>
 <!DOCTYPE html>
 <html>
 <head>
-<title>REPORT: TPM Bookstore</title>
+<title>ADMIN ORDER: TPM Bookstore</title>
 <link href="css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 <script src="js/jquery.min.js"></script>
@@ -36,26 +37,20 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 						<input type="text" value="" name="search1" >
 						<input type="submit" value="Go" name="go">
 					</form>
+
 			</div>
 			<div class="header-left">		
-					<?php if (isset($_SESSION['login_user'])): ?>
-						<li ><a href="logout.php"  ><?php echo($_SESSION['login_user']); ?></a></li>
+					<ul>
+						<?php if (isset($_SESSION['login_user'])): ?>
+						<li ><a href="admin_profile.php"  ><?php echo($_SESSION['login_user']); ?><a href="logout.php">(LOGOUT)</a></li>
+						
 					<?php else: ?>
-						<li ><a href="login.php"  >Login</a></li>
-						<li><a  href="register.php"  >Register</a></li>
+						<li><a href="admin_login.php">Login</a></li>
+					
 					<?php endif; ?>
 
-					
-					<div class="cart box_1">
-						<a href="checkout.php">
-						<h3> <div class="total">
-							<span class="simpleCart_total"></span> (<span id="simpleCart_quantity" class="simpleCart_quantity"></span> items)</div>
-							<img src="images/cart.png" alt=""/></h3>
-						</a>
-						<p><a href="javascript:;" class="simpleCart_empty">Empty Cart</a></p>
-
-					</div>
-					<div class="clearfix"> </div>
+					</ul>
+			<div class="clearfix"> </div>
 			</div>
 				<div class="clearfix"> </div>
 		</div>
@@ -63,18 +58,17 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		<div class="container">
 			<div class="head-top">
 				<div class="logo">
-					<a href="index.php"><img src="images/bookicon.png" style="width:10%;height:10%" alt="">TPM Bookstore</a>	
+					<a href="admin_index.php"><img src="images/bookicon.png" style="width:10%;height:10%" alt="">Admin</a>	
 				</div>
 		  <div class=" h_menu4">
-				<ul class="memenu skyblue">
-					  <li class="active grid"><a class="color8" href="index.php">Home</a></li>	
-				      <li><a class="color1" href="activity.php">Activity</a></li>
-				    <li class="grid"><a class="color2" href="order.php">Order</a></li>
-					<li><a class="color4" href="products.php">Product</a> 	
-			    </li>		
-				<li><a class="color6" href="profile.php">Profile</a></li>
-			  </ul> 
-			</div>
+			<ul class="memenu skyblue">
+				<li class="active grid"><a class="color8" href="admin_index.php">Main</a></li>
+				<li><a class="color4" href="admin_stock.php">Stock</a></li>	
+				<li><a class="color1" href="admin_order.php">Order</a></li>
+				<li class="grid"><a class="color2" href="admin_report.php">Report</a></li>
+				<li><a class="color6" href="admin_profile.php">Profile</a></li>
+			</ul> 
+		  </div>
 				
 				<div class="clearfix"> </div>
 		</div>
@@ -86,53 +80,64 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <!--content-->
 <div class="container">
 		<div class="account">
-		<h1>Report</h1>
-		
-		<div class="activity-button">
-				<input type="button" value="View monthly or weekly report " style=margin-left:170px;">
-		</div>			
+		<h1>Order</h1>
 		<table class="activity-table">
 		<thead>
 		<tr class="activity-table-main">
-			<th>ID</th>
-			<th>Date</th>
+			<th>Member Name</th>
 			<th>Product </th>
 			<th>Quantity </th>
 			<th>Price </th>
-			
-			
+			<th>Date Purchase </th>
+			<th>Status</th>
 
 
 		</tr>
 		</thead>		
 		<tbody>
+	<?php
+				 
+ 				$result = mysqli_query($con,"SELECT * FROM orders INNER JOIN member ON orders.member_id = member.id 
+ 				INNER JOIN orders_details ON orders.order_id = orders_details.order_id 
+ 				INNER JOIN inventory ON orders_details.product_id = inventory.product_id
+ 				INNER JOIN feedback ON inventory.product_id = feedback.product_id");
+				while($activity = mysqli_fetch_array($result)){
+	?>
+
+			<form action="admin_update.php" method="post">
 			<tr>
-			<td>Insert database</td>
-			<td>insert database 1</td>
-			<td>insert database 2</td>
-			<td>insert database 3</td>
-			<td>insert database 4</td>
-			</tr>
+			<td id="member_name"><?php echo $activity['name'] ?></td>
+			<td><?php echo $activity['product_name'] ?></td>
+			<td><?php echo $activity['product_quantity']?> </td>
+			<td><?php echo $activity['product_price']?> </td>
+			<td><?php echo $activity['payment_date']?> </td>
+			<td>
 		
-			<tr>
-			<td>Insert database</td>
-			<td>insert database 1</td>
-			<td>insert database 2</td>
-			<td>insert database 3</td>
-			<td>insert database 4</td>
+				<select name="status"><option value="Processing">Processing</option>
+						<option value="Successful">Successful</option>
+						<option value="Cancel">Cancel</option>
+				</select>
+			
+ 			</td>
+ 			
 			</tr>
+			</form>			
+		<?php }?> 
 
 		</tbody>
-		
-		
-		
+	
 		</table>
+		<div class="activity-button">
+							<input type="button" value="Update Order " style="float:right;margin-left:10px;">
+							
+							
+								 
+						</div>	
+			
 		</div>
+
 		</div>
-		
-		
-		
-	<div class="clearfix"> </div>
+			<div class="clearfix"> </div>
 	
 
 <!--//content-->
@@ -141,14 +146,15 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			<div class="footer-top-at">
 			
 				<div class="col-md-4 amet-sed">
-				<h4>MORE INFO</h4>
+				<h4>ADMIN</h4>
 				<ul class="nav-bottom">
-						<li><a href="index.php">Home</a></li>
-						<li><a href="activity.php">Activity</a></li>
-						<li><a href="order.php">Order</a></li>
-						<li><a href="products.php">Product</a></li>
-						<li><a href="profile.php">Profile</a></li>	
+						<li><a href="admin_index.php">Home</a></li>
+						<li><a href="admin_stock.php">Stock</a></li>
+						<li><a href="admin_order.php">Order</a></li>
+						<li><a href="admin_.php">Report</a></li>
+						<li><a href="admin_profile.php">Profile</a></li>	
 					</ul>	
+	
 					
 			</div>		
 								<div class="clearfix"> </div>
@@ -158,7 +164,6 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		<p >© 2015 New store All Rights Reserved | Design by  <a href="http://w3layouts.com/" target="_blank">W3layouts</a> </p>
 		</div>
 		</div>
-
 </body>
 </html>
 			

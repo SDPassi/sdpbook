@@ -1,5 +1,6 @@
 <?php
 session_start();
+include("conn.php");
 ?>
 <!DOCTYPE html>
 <html>
@@ -64,19 +65,17 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		<div class="container">
 			<div class="head-top">
 				<div class="logo">
-					<a href="index.php"><img src="images/bookicon.png" style="width:10%;height:10%" alt="">TPM Bookstore</a>	
+					<a href="admin_index.php"><img src="images/bookicon.png" style="width:10%;height:10%" alt="">Admin</a>	
 				</div>
 		  <div class=" h_menu4">
-				<ul class="memenu skyblue">
-					  <li class="active grid"><a class="color8" href="index.php">Home</a></li>	
-				      <li><a class="color1" href="activity.php">Activity</a></li>
-				    <li class="grid"><a class="color2" href="order.php">Order</a></li>
-					<li><a class="color4" href="products.php">Product</a> 	
-			    </li>		
-				<li><a class="color6" href="contact.php">Profile</a></li>
-			  </ul> 
-			</div>
-				
+			<ul class="memenu skyblue">
+				<li class="active grid"><a class="color8" href="admin_index.php">Main</a></li>
+				<li><a class="color4" href="admin_stock.php">Stock</a></li>	
+				<li><a class="color1" href="admin_order.php">Order</a></li>
+				<li class="grid"><a class="color2" href="admin_report.php">Report</a></li>
+				<li><a class="color6" href="admin_profile.php">Profile</a></li>
+			</ul> 
+		  </div>
 				<div class="clearfix"> </div>
 		</div>
 		</div>
@@ -88,46 +87,52 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <div class="container">
 		<div class="account">
 		<h1>Stock</h1>
+		<form action="admin_updatestock.php" method="post">	
 		<table class="activity-table">
 		<thead>
 		<tr class="activity-table-main">
 			<th>ID </th>
 			<th>Product </th>
+			<th>Description</th>
 			<th>Quantity </th>
-			<th>Price </th>
+			<th>Price(RM) </th>
 			
-
-
 		</tr>
+		
+		<?php
+				 
+ 				$result = mysqli_query($con,"SELECT * FROM inventory");
+ 				while($order = mysqli_fetch_array($result)){
+	?>
+
+
+		
 		</thead>		
 		<tbody>
-			<tr>
-			<td>Insert database</td>
-			<td>insert database 1</td>
-			<td>insert database 2</td>
-			<td>insert database 3</td>
 			
+			<tr>
+			<td id="productid"><?php echo $order['product_id'] ?></td>
+			<input type="hidden" name="productid" value="<?php echo $order['product_id'] ?>"/>
+			<td><input name="productname" value="<?php echo $order['product_name']?>"/></td>
+			<td><input name="productdescription" value="<?php echo $order['product_description'] ?>"/></td>
+			<td><input name="productquantity" value="<?php echo $order['product_quantity']?>"/></td>
+			<td><input name="productprice" value="<?php echo $order['product_price']?>"/></td>
 			</tr>
+			
+			
 		
-			<tr>
-			<td>Insert database</td>
-			<td>insert database 1</td>
-			<td>insert database 2</td>
-			<td>insert database 3</td>
-			
-			</tr>
+		<?php }?> 
 
 		</tbody>
 		
 		
 		
 		</table>
-		<div class="activity-button">
-							<input type="button" value="Update Stock " style="float:right;margin-left:10px;">
+		<div class="send">
 							
-							<input type="button" value="Edit" style="float:right;margin-left:10px;">		 
-						</div>	
-			
+							<input type="submit" value="Update Stock " style="float:right;margin-left:10px;">			
+		</div>	
+		</form>		
 		</div>
 		</div>
 		
@@ -141,13 +146,13 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			<div class="footer-top-at">
 			
 				<div class="col-md-4 amet-sed">
-				<h4>MORE INFO</h4>
+			<h4>ADMIN</h4>
 				<ul class="nav-bottom">
-						<li><a href="index.php">Home</a></li>
-						<li><a href="activity.php">Activity</a></li>
-						<li><a href="order.php">Order</a></li>
-						<li><a href="products.php">Product</a></li>
-						<li><a href="profile.php">Profile</a></li>	
+						<li><a href="admin_index.php">Home</a></li>
+						<li><a href="admin_stock.php">Stock</a></li>
+						<li><a href="admin_order.php">Order</a></li>
+						<li><a href="admin_.php">Report</a></li>
+						<li><a href="admin_profile.php">Profile</a></li>	
 					</ul>	
 					
 			</div>		

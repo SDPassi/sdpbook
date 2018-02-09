@@ -8,22 +8,23 @@ if (isset($_POST["email"], $_POST["psw"])){
 
 	$myusername = mysqli_real_escape_string ($con,$_POST["email"]);	
 	
-	$sql = "SELECT email,password FROM member WHERE email = '$myusername'";
+	$mypassword = mysqli_real_escape_string ($con,$_POST["psw"]);	
+
+	
+	$sql = "SELECT admin_email,admin_password FROM admin WHERE admin_email = '$myusername'AND admin_password =$mypassword";
 	
 	$result = mysqli_query($con,$sql);
 	
 	$row = mysqli_fetch_array ($result, MYSQLI_ASSOC);
 	
-	$npassword = password_verify($_POST['psw'],$row['password']);
-	
 	mysqli_store_result($con);
 	
 	$count = mysqli_num_rows($result);
 	
-if ($npassword) { 
+if($count ==1) { 
 	$_SESSION['login_user'] = $myusername;
 		
-	header("location: .");
+	header("location: admin_index.php");
 }
 else {
 	$error="Invalid username or password !";
@@ -38,7 +39,7 @@ else {
 <!DOCTYPE html>
 <html>
 <head>
-<title>LOGIN: TPM Bookstore</title>
+<title>Admin Login: TPM Bookstore</title>
 <link href="css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 <script src="js/jquery.min.js"></script>
@@ -66,18 +67,17 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 	<div class="header-top">
 		<div class="container">
 			<div class="search">
-					<form action="" method="post">
-						<input type="text" value="Search " onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Search';}">
-						<input type="submit" value="Go">
+					<form action="search.php" method="get">
+						<input type="text" value="" name="search1" >
+						<input type="submit" value="Go" name="go">
 					</form>
 			</div>
 			<div class="header-left">		
 					<ul>
 						<?php if (isset($_SESSION['login_user'])): ?>
-						<li ><a href="login.php"  ><?php echo($_SESSION['login_user']); ?></a></li>
+						<li ><a href="admin_login.php"  ><?php echo($_SESSION['login_user']); ?></a></li>
 					<?php else: ?>
-						<li ><a href="login.php"  >Login</a></li>
-						<li><a  href="register.php"  >Register</a></li>
+						<li ><a href="admin_login.php"  >Admin Login</a></li>
 					<?php endif; ?>
 					</ul>
 					
@@ -98,15 +98,15 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		<div class="container">
 			<div class="head-top">
 				<div class="logo">
-					<a href="index.php"><img src="images/bookicon.png" style="width:10%;height:10%" alt="">TPM Bookstore</a>	
+					<a href="admin_index.php"><img src="images/bookicon.png" style="width:10%;height:10%" alt="">Admin</a>	
 				</div>
 		  <div class=" h_menu4">
 			<ul class="memenu skyblue">
-				<li class="active grid"><a class="color8" href="index.php">Home</a></li>
-				<li><a class="color4" href="products.php">Product</a></li>	
-				<li><a class="color1" href="activity.php">Activity</a></li>
-				<li class="grid"><a class="color2" href="order.php">Order</a></li>
-				<li><a class="color6" href="contact.php">Profile</a></li>
+				<li class="active grid"><a class="color8" href="admin_index.php">Main</a></li>
+				<li><a class="color4" href="admin_stock.php">Stock</a></li>	
+				<li><a class="color1" href="admin_order.php">Order</a></li>
+				<li class="grid"><a class="color2" href="admin_report.php">Report</a></li>
+				<li><a class="color6" href="admin_profile.php">Profile</a></li>
 			</ul> 
 		  </div>
 				
@@ -120,7 +120,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <!--content-->
 <div class="container">
 		<div class="account">
-		<h1>Login to your account</h1>
+		<h1>Admin Login</h1>
 		<div class="account-pass">
 		<div class="col-md-8 account-top" style="margin-left:200px;">
 		<center>
@@ -138,8 +138,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				<input name="psw" type="password" min="4" required="required" >
 			</div>	
 						
-			<span><a href="register.php">New? Register an account.</a><br>
-			<a href="admin_login.php">Admin login?Click here.</a><br>
+			<span>
+			
 			<input type="submit" value="Login" style="margin-left:585px;"> </span>
 		
 			</form>
@@ -156,13 +156,13 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			<div class="footer-top-at">
 			
 				<div class="col-md-4 amet-sed">
-				<h4>MORE INFO</h4>
+				<h4>ADMIN</h4>
 				<ul class="nav-bottom">
-						<li><a href="index.php">Home</a></li>
-						<li><a href="activity.php">Activity</a></li>
-						<li><a href="order.php">Order</a></li>
-						<li><a href="products.php">Product</a></li>
-						<li><a href="profile.php">Profile</a></li>	
+						<li><a href="admin_index.php">Home</a></li>
+						<li><a href="admin_stock.php">Stock</a></li>
+						<li><a href="admin_order.php">Order</a></li>
+						<li><a href="admin_.php">Report</a></li>
+						<li><a href="admin_profile.php">Profile</a></li>	
 					</ul>	
 					
 			</div>		
