@@ -22,19 +22,6 @@ License URL: http://creativecommons.org/licenses/by/3.0/
     background: #2d2d2d;
 }
 
-input.adminbutton input[type=submit] {
-    background: #EF5F21;
-    padding: 0.4em 1em;
-    color: #fff;
-    font-size: 1.2em;
-    transition: 0.5s all;
-    -webkit-transition: 0.5s all;
-    -moz-transition: 0.5s all;
-    -o-transition: 0.5s all;
-    display: inline-block;
-    border: none;
-    outline: none;
-}
 
 
 /*end*/

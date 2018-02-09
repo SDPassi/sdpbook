@@ -49,6 +49,15 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 					<?php endif; ?>
 
 					</ul>
+				<div class="cart box_1">
+						<a href="checkout.php">
+						<h3> <div class="total">
+							<span class="simpleCart_total"></span> (<span id="simpleCart_quantity" class="simpleCart_quantity"></span> items)</div>
+							<img src="images/cart.png" alt=""/></h3>
+						</a>
+						<p><a href="javascript:;" class="simpleCart_empty">Empty Cart</a></p>
+
+					</div>
 					<div class="clearfix"> </div>
 			</div>
 				<div class="clearfix"> </div>
@@ -78,51 +87,44 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <!--content-->
 <div class="container">
 		<div class="account">
-		<h1>Stock</h1>
+		<h1>Add New Stock</h1>
+		<form action="admin_add.php" method="post">	
 		<table class="activity-table">
 		<thead>
 		<tr class="activity-table-main">
 			<th>ID </th>
 			<th>Product </th>
+			<th>Description</th>
 			<th>Quantity </th>
-			<th>Price</th>
-		</tr>	
-		<?php
-				 
- 				$result = mysqli_query($con,"SELECT * FROM inventory");
- 				while($order = mysqli_fetch_array($result)){
-	?>
-
-
+			<th>Price(RM) </th>
+			<th>Product Image</th>
+		</tr>
 		
-		</thead>		
-		<tbody>
-			<form action="" method="post">
+		</thead>
+		<tbody>		
+		
 			<tr>
-			<td id="productid"><?php echo $order['product_id'] ?></td>
-			<td id="productname"><?php echo $order['product_name'] ?></td>
-			<td id="productquantity"><?php echo $order['product_quantity']?> </td>
-			<td id="productprice"><?php echo $order['product_price']?> </td>
+			<td><input name="productid1" size="5px" value=""/></td>
+			<td><input name="productname1" value=""/></td>
+			<td><input name="productdescription1" value=""/></td>
+			<td><input name="productquantity1" value=""/></td>
+			<td><input name="productprice1" value=""/></td>
+			<td><input name="productimage1" value=""/></td>
 			</tr>
-			</form>	
 					
-		<?php }?> 
-
+			
+		
+		
 		</tbody>
 		
 		
 		
 		</table>
-		<div class="container">
-		<div class="activity-button">
-							<form action="admin_editstock.php">
+		<div class="send">
 							
-							<input  type="submit" value="Edit" style="float:right;margin-left:10px;background:#EF5F21;width:auto;font-size: 1.1em;
-							padding: 0.4em 0.8em;text-align: center;color: #fff;border: none;outline: none;-webkit-appearance: none;">
-							
-							</form>		 
-		</div>					
+							<input type="submit" value="Add Stock " style="float:right;margin-left:10px;">			
 		</div>	
+		</form>		
 		</div>
 		</div>
 		

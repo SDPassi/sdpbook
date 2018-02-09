@@ -1,11 +1,10 @@
 <?php
 session_start();
-include("conn.php");
 ?>
 <!DOCTYPE html>
 <html>
 <head>
-<title>STOCK: TPM Bookstore</title>
+<title>REPORT: TPM Bookstore</title>
 <link href="css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 <script src="js/jquery.min.js"></script>
@@ -49,6 +48,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 					<?php endif; ?>
 
 					</ul>
+					
 					<div class="clearfix"> </div>
 			</div>
 				<div class="clearfix"> </div>
@@ -68,6 +68,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				<li><a class="color6" href="admin_profile.php">Profile</a></li>
 			</ul> 
 		  </div>
+				
 				<div class="clearfix"> </div>
 		</div>
 		</div>
@@ -78,53 +79,41 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <!--content-->
 <div class="container">
 		<div class="account">
-		<h1>Stock</h1>
+		<h1>Monthly Report</h1>
+		
+		<div class="activity-button">
+		<form action="admin_report.php">
+				<input type="submit" value="View weekly report " style=margin-left:170px;">
+		</form>		
+		</div>			
 		<table class="activity-table">
 		<thead>
 		<tr class="activity-table-main">
-			<th>ID </th>
-			<th>Product </th>
-			<th>Quantity </th>
-			<th>Price</th>
-		</tr>	
-		<?php
-				 
- 				$result = mysqli_query($con,"SELECT * FROM inventory");
- 				while($order = mysqli_fetch_array($result)){
-	?>
+			<th>Month</th>
+			<th>Sales</th>
+			<th>Quantity</th>
+			
+						
 
 
-		
+		</tr>
 		</thead>		
 		<tbody>
-			<form action="" method="post">
-			<tr>
-			<td id="productid"><?php echo $order['product_id'] ?></td>
-			<td id="productname"><?php echo $order['product_name'] ?></td>
-			<td id="productquantity"><?php echo $order['product_quantity']?> </td>
-			<td id="productprice"><?php echo $order['product_price']?> </td>
+			<tr><td><?php for($m=1; $m<=12; ++$m){
+    		echo date('F', mktime(0, 0, 0, $m, 1)).'<br>';} ?>			
+    		</td>	
 			</tr>
-			</form>	
 					
-		<?php }?> 
-
+			<tr class="activity-table-main"><td>Total<td>
+			</tr>
 		</tbody>
 		
-		
+			
 		
 		</table>
-		<div class="container">
-		<div class="activity-button">
-							<form action="admin_editstock.php">
-							
-							<input  type="submit" value="Edit" style="float:right;margin-left:10px;background:#EF5F21;width:auto;font-size: 1.1em;
-							padding: 0.4em 0.8em;text-align: center;color: #fff;border: none;outline: none;-webkit-appearance: none;">
-							
-							</form>		 
-		</div>					
-		</div>	
 		</div>
 		</div>
+		
 		
 		
 	<div class="clearfix"> </div>
@@ -136,7 +125,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			<div class="footer-top-at">
 			
 				<div class="col-md-4 amet-sed">
-			<h4>ADMIN</h4>
+				<h4>ADMIN</h4>
 				<ul class="nav-bottom">
 						<li><a href="admin_index.php">Home</a></li>
 						<li><a href="admin_stock.php">Stock</a></li>
@@ -153,6 +142,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		<p >© 2015 New store All Rights Reserved | Design by  <a href="http://w3layouts.com/" target="_blank">W3layouts</a> </p>
 		</div>
 		</div>
+
 </body>
 </html>
 			

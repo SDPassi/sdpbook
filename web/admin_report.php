@@ -1,5 +1,6 @@
 <?php
 session_start();
+include("conn.php");
 ?>
 <!DOCTYPE html>
 <html>
@@ -38,23 +39,17 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 					</form>
 			</div>
 			<div class="header-left">		
-					<?php if (isset($_SESSION['login_user'])): ?>
-						<li ><a href="logout.php"  ><?php echo($_SESSION['login_user']); ?></a></li>
+					<ul>
+						<?php if (isset($_SESSION['login_user'])): ?>
+						<li ><a href="admin_profile.php"  ><?php echo($_SESSION['login_user']); ?><a href="logout.php">(LOGOUT)</a></li>
+						
 					<?php else: ?>
-						<li ><a href="login.php"  >Login</a></li>
-						<li><a  href="register.php"  >Register</a></li>
+						<li><a href="admin_login.php">Login</a></li>
+					
 					<?php endif; ?>
 
+					</ul>
 					
-					<div class="cart box_1">
-						<a href="checkout.php">
-						<h3> <div class="total">
-							<span class="simpleCart_total"></span> (<span id="simpleCart_quantity" class="simpleCart_quantity"></span> items)</div>
-							<img src="images/cart.png" alt=""/></h3>
-						</a>
-						<p><a href="javascript:;" class="simpleCart_empty">Empty Cart</a></p>
-
-					</div>
 					<div class="clearfix"> </div>
 			</div>
 				<div class="clearfix"> </div>
@@ -85,42 +80,56 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <!--content-->
 <div class="container">
 		<div class="account">
-		<h1>Report</h1>
+		<h1>Weekly Report</h1>
 		
 		<div class="activity-button">
-				<input type="button" value="View monthly or weekly report " style=margin-left:170px;">
+		<form action="admin_mreport.php">
+				<input type="submit" value="View monthly report " style=margin-left:170px;">
+		</form>		
 		</div>			
 		<table class="activity-table">
 		<thead>
 		<tr class="activity-table-main">
-			<th>ID</th>
-			<th>Date</th>
-			<th>Product </th>
-			<th>Quantity </th>
-			<th>Price </th>
-			
-			
+			<th>Day</th>
+			<th>Sales</th>
+						
+						
 
 
 		</tr>
 		</thead>		
 		<tbody>
-			<tr>
-			<td>Insert database</td>
-			<td>insert database 1</td>
-			<td>insert database 2</td>
-			<td>insert database 3</td>
-			<td>insert database 4</td>
-			</tr>
 		
 			<tr>
-			<td>Insert database</td>
-			<td>insert database 1</td>
-			<td>insert database 2</td>
-			<td>insert database 3</td>
-			<td>insert database 4</td>
+			
+			<td><?php
+ 				$startOfWeek = date("Y-m-d", strtotime("Monday this week"));
+   				for ($i=0; $i<7;$i++){
+       			echo date("l (d M)", strtotime($startOfWeek . " + $i day"))."<br />";}?>
+       		<td>
+       		
+			<?php
+				$dailytotal=0 ;
+ 				$result ="SELECT * FROM orders ORDER BY payment_date";
+ 				$sql=mysqli_query($con,$result);
+				while($row = mysqli_fetch_array($sql)){
+				
+				$subtotal=$row['total_price'];
+				$dailytotal = $dailytotal +$subtotal;
+			?>
+			<td><?php echo $dailytotal;?></td>
+			<?php } 
+			?>
 			</tr>
-
+			
+			
+			<tr class="activity-table-main">
+			<th>Total</th>
+			<td></td>
+					
+			</tr>		
+					
+					
 		</tbody>
 		
 		

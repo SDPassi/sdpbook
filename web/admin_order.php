@@ -128,7 +128,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 	
 		</table>
 		<div class="activity-button">
-							<input type="button" value="Update Order " style="float:right;margin-left:10px;">
+							<input type="submit" value="Update Order " style="float:right;margin-left:10px;">
 							
 							
 								 
