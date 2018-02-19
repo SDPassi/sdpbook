@@ -73,11 +73,13 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 					</ul>
 					<div class="cart box_1">
 						<a href="cart.php">
-						<h3> <div class="total">
-							<span class="simpleCart_total"></span> (<span id="simpleCart_quantity" class="simpleCart_quantity"></span> items)</div>
-							<img src="images/cart.png" alt=""/></h3>
+						<h3><div class="total">
+							</div>
+							<a href="cart.php" style="padding-right:15px;"><img src="images/cart.png" alt=""/></a>
+							</h3>
 						</a>
-						<p><a href="javascript:;" class="simpleCart_empty">Empty Cart</a></p>
+
+						
 
 					</div>
 					<div class="clearfix"> </div>
@@ -92,12 +94,10 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				</div>
 		  <div class=" h_menu4">
 					<ul class="memenu skyblue">
-					   <li class="grid"><a class="color3" href="index.php">Home</a></li>	
+					  <li class="active grid"><a class="color2" href="index.php">Home</a></li>	
+					   <li><a class="color4" href="products.php">Product</a></li>	
 				      <li><a class="color1" href="activity.php">Activity</a></li>
-				    <li class="grid"><a class="color2" href="order.php">Order</a></li>
-					<li><a class="color4" href="products.php">Product</a> 	
-			    </li>		
-				<li><a class="color6" href="profile.php">Profile</a></li>
+				<li><a class="color6" href="profile.php">My Account</a></li>
 			  </ul> 
 			</div>
 				
@@ -108,6 +108,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 	</div>
 	
 <!--content-->
+<form method="post">
 <div class="container">
 		<div class="account">
 		<h1>Order</h1>
@@ -124,29 +125,40 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		</tr>
 		</thead>		
 		<tbody>
-	<?php
-				$customer_id = isset($_SESSION['login_user']) ? $_SESSION['login_user'] : ''; 
- 				$result = mysqli_query($con,"SELECT * FROM orders INNER JOIN member ON orders.member_id = member.id 
- 				INNER JOIN orders_details ON orders.order_id = orders_details.order_id 
- 				INNER JOIN inventory ON orders_details.product_id = inventory.product_id
- 				INNER JOIN feedback ON inventory.product_id = feedback.product_id
- 				WHERE orders.member_id='$customer_id'");
-				while($activity = mysqli_fetch_array($result)){
+<?php
+$customer_id = isset($_SESSION['login_user']) ? $_SESSION['login_user'] : ''; 
+$result = mysqli_query($con,"SELECT * FROM orders INNER JOIN member ON orders.member_id = member.id 
+INNER JOIN orders_details ON orders.order_id = orders_details.order_id 
+INNER JOIN inventory ON orders_details.product_id = inventory.product_id
+INNER JOIN feedback ON inventory.product_id = feedback.product_id
+WHERE orders.member_id='$customer_id'");
+while($activity = mysqli_fetch_array($result)){
 	?>
 
-		
+		echo'
 			<tr>
-			<td><?php echo $activity['product_name'] ?></td>
-			<td><?php echo $activity['product_quantity']?> </td>
-			<td><?php echo $activity['product_price']?> </td>
-			<td><?php echo $activity['payment_date']?> </td>
-			<td><?php echo $activity['orders_status']?> </td>
+				<td><?php echo $activity['product_name'] ?></td>
+				<td><?php echo $activity['product_quantity']?> </td>
+				<td><?php echo $activity['total_price']?> </td>
+				<td><?php echo $activity['payment_date']?> </td>
+				<td><?php echo $activity['rating']?> </td>
+				<td>
+					<form action="details.php" method="post">
+						<input type="submit" name="submit" value="rate">
+			
+			
+			
+			
+					</form>
+				</td>
 			</tr>
+			
 		
+			';
 			
 		
 		
-		<?php }?> 
+<?php }?> 
 
 		</tbody>
 		
@@ -158,7 +170,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				</div>
 	<div class="clearfix"> </div>
 	
-
+</form>
 <!--//content-->
 <div class="footer">
 				<div class="container">
@@ -179,7 +191,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			</div>
 		</div>
 		<div class="footer-class">
-		<p >© 2015 New store All Rights Reserved | Design by  <a href="http://w3layouts.com/" target="_blank">W3layouts</a> </p>
+		<p >© 2018 TPM Bookstore  </p>
 		</div>
 		</div>
 </body>

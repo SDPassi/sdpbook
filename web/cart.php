@@ -10,8 +10,6 @@ header("Refresh: 0");
 }
 
 
-
-
 ?>
 <!DOCTYPE html>
 <html>
@@ -68,14 +66,14 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 
 					</ul>
 					<div class="cart box_1">
-						<a href="checkout.php">
-						<h3> <div class="total">
-							<span class="simpleCart_total"></span> (<span id="simpleCart_quantity" class="simpleCart_quantity"></span> items)</div>
-							<img src="images/cart.png" alt=""/></h3>
+						<a href="cart.php">
+						<h3><div class="total">
+							</div>
+							<a href="cart.php" style="padding-right:15px;"><img src="images/cart.png" alt=""/></a>
+							</h3>
 						</a>
-												<p><a href="javascript:;" class="simpleCart_empty">Empty Cart</a></p>
 
-					</div>
+										</div>
 			</div>	
 		</div>
 		</div>
@@ -87,12 +85,10 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				</div>
 		  <div class=" h_menu4">
 					<ul class="memenu skyblue">
-					   <li class="grid"><a class="color3" href="index.php">Home</a></li>	
+					  <li class="active grid"><a class="color2" href="index.php">Home</a></li>	
+					   <li><a class="color4" href="products.php">Product</a></li>	
 				      <li><a class="color1" href="activity.php">Activity</a></li>
-				    <li class="grid"><a class="color2" href="order.php">Order</a></li>
-					<li><a class="color4" href="products.php">Product</a> 	
-			    </li>		
-				<li><a class="color6" href="profile.php">Profile</a></li>
+				<li><a class="color6" href="profile.php">My Account</a></li>
 			  </ul> 
 			</div>
 				
@@ -126,7 +122,7 @@ $subtotal = $carts * $row['product_price'] ;
 $total += $subtotal;
 				
 				echo '<div class="cart-item cyc" style="width: 100%; border-bottom: groove;margin-top:40px;margin-bottom:30px;">
-							 <img style="float: left; width:200px;" src="images/'.$row['product_image'].'.jpg" class="img-responsive" alt="" >
+							 <img  src="images/'.$row['product_image'].'.jpg" class="img-responsive" alt="" style="float: left; width:200px;">
 					   <div style="float: left;padding-left:100px;padding-bottom:100px;" class="cart-item-info">
 						<h3>'.$row['product_name'].'<span>RM '.$subtotal.'</span></h3>
 						<ul class="qty">
@@ -136,19 +132,10 @@ $total += $subtotal;
 					<form action="" method="post">
 						<input type="hidden" name="delete" value="'.$row['product_id'].'">
 						<input type="submit" name="submit" value="Delete" style="width:80px;">
-					</form>
-					
-
-						
-				        </div>	
-					   					   
-											
-				
+					</form>					
+			 	</div>		
 			 </div> ';
-			
-
-	}
-		
+	}	
 }
 }
 
@@ -157,34 +144,38 @@ $total += $subtotal;
 </div>
 </div>
 </div>
-
-
-
-				<br>	 
+		  <br>	 
+		  <form method="post" action="checkout.php">
 		  <div class="col-md-3 cart-total" style="width:100%;">
 		  
 		  <br>
+		  
 						 <div class="price-details">
+						 
 				 <h3>Price Details</h3>
 				 <span>Total</span>
 				 <span class="total1">RM <?php echo $total; ?></span>
-				 <span>Discount</span>
-				 <span class="total1"><form action="/action_page.php">
 				 
- 					<select name="cars">
- 						<option value="NONE">NONE</option>
-    					<option value="RM 20">150 points (RM 20)</option>
-   				 		<option value="RM 30">250 points (RM 30)</option>
-   				 		<option value="Rm 50">400 points (RM 50)</option>
-   				 		<option value="RM 100">550 points (RM 100)</option>
-  					</select>
+				 <span>Discount</span>
+				 
+				 <span class="total1">
+
+				  	<select name="cars" onchange="document.getElementById('total').innerHTML = parseFloat(document.getElementById('total-original').innerHTML) - this.value;">
+ 						<option value="0">NONE</option>
+    					<option value="10"  <?php if($total<100){echo "disabled";}else{} ?>>100 points (RM 10)</option>		
+   				 		<option value="20" <?php if($total<200){echo "disabled";}else{} ?>>200 points (RM 20)</option>
+   				 		<option value="30" <?php if($total<300){echo "disabled";}else{} ?>>300 points (RM 30)</option>
+   				 		<option value="40" <?php if($total<400){echo "disabled";}else{} ?>>400 points (RM 40)</option>
+ 	  				</select>
+  					 
 <br><br>
-				</form></span>
+				</span>
 		   <div class="clearfix"></div>				 
 			 </div>	
+			 
 			 <ul class="total_price">
-			   <li class="last_price"> <h4>RM <?php echo $total; ?></h4></li>
-				 <a class="cpns" href="#" style="float:right;">Apply Coupons</a>	
+			   <li class="last_price" ><h4>RM <span id="total"><?php echo $total; ?></span></h4></li>
+			   <div id="total-original" style="display:none"><?php echo $total;?></div>	
 			   <div class="clearfix"> </div>
 			 </ul>
 			
@@ -193,9 +184,12 @@ $total += $subtotal;
 			 
 			 <div class="total-item" style="margin-top:50px;">
 				 
-				 <a class="order" href="checkout.php">Check Out</a>
+			<input type="submit" name="submit" value="Check Out" style="width:100%;">
+			 
 			</div>
 			</div>
+			</form>
+			
 		
 			<div class="clearfix"> </div>
 	 </div>
@@ -222,7 +216,7 @@ $total += $subtotal;
 			</div>
 		</div>
 		<div class="footer-class">
-		<p >© 2015 New store All Rights Reserved | Design by  <a href="http://w3layouts.com/" target="_blank">W3layouts</a> </p>
+		<p >© 2018 TPM Bookstore </p>
 		</div>
 		</div>
 		

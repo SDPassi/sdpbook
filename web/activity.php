@@ -70,11 +70,12 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 					</ul>
 					<div class="cart box_1">
 						<a href="cart.php">
-						<h3> <div class="total">
-							<span class="simpleCart_total"></span> (<span id="simpleCart_quantity" class="simpleCart_quantity"></span> items)</div>
-							<img src="images/cart.png" alt=""/></h3>
+						<h3><div class="total">
+							</div>
+							<a href="cart.php" style="padding-right:15px;"><img src="images/cart.png" alt=""/></a>
+							</h3>
 						</a>
-						<p><a href="javascript:;" class="simpleCart_empty">Empty Cart</a></p>
+						
 
 					</div>
 					<div class="clearfix"> </div>
@@ -89,12 +90,10 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				</div>
 		  <div class=" h_menu4">
 					<ul class="memenu skyblue">
-					   <li class="grid"><a class="color3" href="index.php">Home</a></li>	
+					  <li class="active grid"><a class="color2" href="index.php">Home</a></li>	
+					   <li><a class="color4" href="products.php">Product</a></li>	
 				      <li><a class="color1" href="activity.php">Activity</a></li>
-				    <li class="grid"><a class="color2" href="order.php">Order</a></li>
-					<li><a class="color4" href="products.php">Product</a> 	
-			    </li>		
-				<li><a class="color6" href="profile.php">Profile</a></li>
+				<li><a class="color6" href="profile.php">My Account</a></li>
 			  </ul> 
 			</div>
 				
@@ -144,10 +143,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		 
 		</tbody>
 		</table>
-		<div class="activity-button">
 			
-			<input  type="button" value="Print" style="float:right;margin-left:10px;">		 
-		</div>	
 			
 		</div>
 		</div>
@@ -176,7 +172,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			</div>
 		</div>
 		<div class="footer-class">
-		<p >© 2015 New store All Rights Reserved | Design by  <a href="http://w3layouts.com/" target="_blank">W3layouts</a> </p>
+		<p >© 2018 TPM Bookstore </p>
 		</div>
 		</div>
 </body>

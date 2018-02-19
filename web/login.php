@@ -84,11 +84,12 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 					<div class="cart box_1">
 						<a href="cart.php">
 						<h3> <div class="total">
-							<span class="simpleCart_total"></span> (<span id="simpleCart_quantity" class="simpleCart_quantity"></span> items)</div>
+						<li class="trust" style="text-decoration:none;"><?php echo $row['trust']?></li>
+							<li class="trust"><?php echo $row['reward_point']?></li>
+
+							</div>
 							<img src="images/cart.png" alt=""/></h3>
 						</a>
-						<p><a href="javascript:;" class="simpleCart_empty">Empty Cart</a></p>
-
 					</div>
 					<div class="clearfix"> </div>
 			</div>
