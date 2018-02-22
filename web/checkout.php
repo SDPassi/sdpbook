@@ -96,7 +96,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				</div>
 		  <div class=" h_menu4">
 					<ul class="memenu skyblue">
-					   <li class="active grid"><a class="color2" href="index.php">Home</a></li>	
+					   <li class="active grid"><a class="color2" href="index.php" style="color:black;">Home</a></li>	
 					   <li><a class="color4" href="products.php">Product</a></li>	
 				      <li><a class="color1" href="activity.php">Activity</a></li>
 				<li><a class="color6" href="profile.php">My Account</a></li>

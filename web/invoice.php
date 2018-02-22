@@ -2,26 +2,19 @@
 
 session_start();
 
-include("conn.php")
+include "conn.php";
+
+
+}
+
 
 ?>
 
 <!DOCTYPE html>
 <html>
 <head>
-<title>PROFILE : TPM Bookstore</title>
+<title>LOGIN: TPM Bookstore</title>
 <link href="css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
-<!-- self add query-->
-<script type="text/javascript">
-	function checkEqualPassword(input1, input2) {
-    if (input1.value !== input2.value) {
-        input2.setCustomValidity('Passwords does not match.');
-    } else {
-        // input is valid -- reset the error message
-        input2.setCustomValidity('');
-    }
-}
-</script>
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 <script src="js/jquery.min.js"></script>
 <!-- Custom Theme files -->
@@ -48,39 +41,27 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 	<div class="header-top">
 		<div class="container">
 			<div class="search">
-					<form action="search.php" method="get">
-						<input type="text" value="" name="search1" >
-						<input type="submit" value="Go" name="go">
+					<form action="" method="post">
+						<input type="text" value="Search " onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Search';}">
+						<input type="submit" value="Go">
 					</form>
 			</div>
 			<div class="header-left">		
 					<ul>
 						<?php if (isset($_SESSION['login_user'])): ?>
-						
-						<li class="dropdown"><a href="#"><?php echo($_SESSION['login_user']); ?></a>
-						<div class="dropdown-content">
-							<a href="order.php">My Purchase</a>
-							<a href="logout.php">Logout</a>
-						
-						</div>
-						
-						</li>
-
+						<li ><a href="login.php"  ><?php echo($_SESSION['login_user']); ?></a></li>
 					<?php else: ?>
-						<li><a href="login.php">Login</a></li>
-						<li><a href="register.php">Register</a></li>
+						<li ><a href="login.php"  >Login</a></li>
+						<li><a  href="register.php"  >Register</a></li>
 					<?php endif; ?>
 					</ul>
+					
 					<div class="cart box_1">
 						<a href="cart.php">
-						<h3><div class="total">
+						<h3> <div class="total">
 							</div>
-							<a href="cart.php" style="padding-right:15px;"><img src="images/cart.png" alt=""/></a>
-							</h3>
+							<img src="images/cart.png" alt=""/></h3>
 						</a>
-
-						
-
 					</div>
 					<div class="clearfix"> </div>
 			</div>
@@ -93,87 +74,70 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 					<a href="index.php"><img src="images/bookicon.png" style="width:10%;height:10%" alt="">TPM Bookstore</a>	
 				</div>
 		  <div class=" h_menu4">
-					<ul class="memenu skyblue">
-					  <li class="active grid"><a class="color2" href="index.php" style="color:black;">Home</a></li>	
-					   <li><a class="color4" href="products.php">Product</a></li>	
-				      <li><a class="color1" href="activity.php">Activity</a></li>
-				<li><a class="color6" href="profile.php">My Account</a></li>
-			  </ul> 
-			</div>
+			<ul class="memenu skyblue">
+				<li class="active grid"><a class="color8" href="index.php">Home</a></li>
+				<li><a class="color4" href="products.php">Product</a></li>	
+				<li><a class="color1" href="activity.php">Activity</a></li>
+				<li class="grid"><a class="color2" href="order.php">Order</a></li>
+				<li><a class="color6" href="contact.php">Profile</a></li>
+			</ul> 
+		  </div>
 				
 				<div class="clearfix"> </div>
 		</div>
 		</div>
 
 	</div>
+
 	
 <!--content-->
-<form method="post">
+
 <div class="container">
 		<div class="account">
-		<h1>Order</h1>
-		<table class="activity-table">
-		<thead>
-		<tr class="activity-table-main">
-			<th>Product </th>
-			<th>Quantity </th>
-			<th>Price </th>
-			<th>Date Purchase </th>
-			<th>Status</th>
+		<h1>INVOICE</h1>
+		<div class="account-pass">
+		<div class="col-md-8 account-top" style="margin-left:200px;">
+		
+		<?php
+if (isset($_SESSION['login_user'])) {
+$sql1 = "SELECT * FROM member WHERE email = '$_SESSION[login_user]'";
 
 
-		</tr>
-		</thead>		
-		<tbody>
-<?php
-$customer_id = isset($_SESSION['login_user']) ? $_SESSION['login_user'] : ''; 
-$result = mysqli_query($con,"SELECT * FROM orders INNER JOIN member ON orders.member_id = member.id 
-INNER JOIN orders_details ON orders.order_id = orders_details.order_id 
-INNER JOIN inventory ON orders_details.product_id = inventory.product_id
-INNER JOIN feedback ON inventory.product_id = feedback.product_id
-WHERE orders.member_id='$customer_id'");
-while($activity = mysqli_fetch_array($result)){
-	?>
+$result4 = mysqli_query($con, $sql1);
 
-		echo'
-			<tr>
-				<td><?php echo $activity['product_name'] ?></td>
-				<td><?php echo $activity['product_quantity']?> </td>
-				<td><?php echo $activity['total_price']?> </td>
-				<td><?php echo $activity['payment_date']?> </td>
-				<td><?php echo $activity['rating']?> </td>
-				<td>
-					<form action="details.php" method="post">
-						<input type="submit" name="submit" value="rate">
-			
-			
-			
-			
-					</form>
-				</td>
-			</tr>
-			
-		
-			';
-			
-		
-		
-<?php }?> 
 
-		</tbody>
-		
-		
-		
-		</table>
-		<form action="invoice.php" method="post">
-		<input type="submit" name="submit" value="print">
-		</form>
-		</div>
+
+$row1 = mysqli_fetch_array($result4);
+}
+
+?> 
+		  <div class="col-md-3 cart-total" style="width:100%;">
+		  
+		  <br>
+						 <div class="price-details">
+				 <h3>Personal Details</h3>		 
+				 
+				 <span>Name:</span>
+				 <span>Email:</span>
+				 <br>
+				 <span class="details"><b><?php echo $row1['name'] ?></b></span>
+				 <span class="details"><b><?php echo $row1['email'] ?></b></span>
+				
+				 <span>Contact Number:</span>
+				 <span>Shipping Address:</span>
+				 <br>
+				 <span class="total1"><b><?php echo $row1['phone'] ?></b></span>
+				 <span class="total1"><b><?php echo $row1['address'] ?></b></span>
+
+
 		
 				</div>
 	<div class="clearfix"> </div>
-	
-</form>
+	</div>
+	</div>
+
+</div>
+
 <!--//content-->
 <div class="footer">
 				<div class="container">
@@ -194,7 +158,7 @@ while($activity = mysqli_fetch_array($result)){
 			</div>
 		</div>
 		<div class="footer-class">
-		<p >© 2018 TPM Bookstore  </p>
+		<p >© 2015 New store All Rights Reserved | Design by  <a href="http://w3layouts.com/" target="_blank">W3layouts</a> </p>
 		</div>
 		</div>
 </body>

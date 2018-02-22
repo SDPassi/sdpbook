@@ -107,7 +107,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				</div>
 		  <div class=" h_menu4">
 				<ul class="memenu skyblue">
-					   <li class="active grid"><a class="color2" href="index.php">Home</a></li>	
+					   <li class="active grid"><a class="color2" href="index.php" style="color:black;">Home</a></li>	
 					   <li><a class="color4" href="products.php">Product</a></li>	
 				      <li><a class="color1" href="activity.php">Activity</a></li>
 				<li><a class="color6" href="profile.php">My Account</a></li>
@@ -136,11 +136,8 @@ if(isset($_GET['search1'])){
                 if($search_result = mysqli_fetch_array ($result))
                 {
                            echo '<div class="container" style="width:;float:left;">
-   								<a href="products/'.$search_result['product_id'].'" >
-						        <img src="images/'.$search_result['product_id'].'a.jpg"/;></a>
-   
+   								<a href=details.php?book_id="products/'.$search_result['product_id'].'"><img src="images/'.$search_result['product_id'].'a.jpg"/;></a>
    								 <div class="" style="width:70%;float:right;padding-top:20px;">
-	
 		  								<h3>'.$search_result['product_name'].'</h3>   <br>
 	      								<h4>RM '.$search_result['product_price'].'</h4><br>
 	      								'.$search_result['product_description'].' 

@@ -96,7 +96,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				</div>
 		  <div class=" h_menu4">
 					<ul class="memenu skyblue">
-					   <li class="active grid"><a class="color2" href="index.php">Home</a></li>	
+					   <li class="active grid"><a class="color2" href="index.php" style="color:black;">Home</a></li>	
 					   <li><a class="color4" href="products.php">Product</a></li>	
 				      <li><a class="color1" href="activity.php">Activity</a></li>
 				<li><a class="color6" href="profile.php">My Account</a></li>
@@ -222,11 +222,15 @@ $row1 = mysqli_fetch_array($result4);
 				 <input type="hidden" name="post" value="<?php echo $total1; ?>"/>
 				 <input type="hidden" name="cars" value="<?php echo $_POST['cars']?>" />
 				 <input type="hidden" name="submit">
+				 <div class="pay" style="width:100%;">
 				 <input type="submit" name="submit" style="width:100%;background: #EF5F21;padding: 0.4em 1em;color: #fff; font-size: 1.2em;transition:0.5s all;display:block;border: none;outline: none;"value="Check my purhchased"></div>
+				 <input type="hidden" name="submit" value="<script>window.print();</script>">
+				 <input type="submit" name ="sbumit" value="Print" style="width:250px;float:right;margin-top:50px;margin-bottom:50px;">
+				 </div>
 			</div>
 			</form>
 
-			</div>
+			</div>   
 		
 			<div class="clearfix"> </div>
 	 </div>

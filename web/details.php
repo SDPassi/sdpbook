@@ -26,7 +26,7 @@ $sqlr = "INSERT INTO feedback(product_id,member_id,comment,rating) VALUES ('$_PO
 $result23 = mysqli_query($con,$sqlr);
 
 }
-print_r($result23);
+
 
 ?>
 <!DOCTYPE html>
@@ -207,7 +207,7 @@ $productshow = mysqli_fetch_array($row);
 					
 		
 					<div class="details-description">
-					<p style="font-size:14px;width:100%;"><h5>Description:</h5> <br>'.$productshow['product_description'].'</p>
+					<p style="font-size:14px;width:100%;"><h5>Description</h5> <br>'.$productshow['product_description'].'</p>
 					</div>
 				<br>
 					
@@ -217,20 +217,12 @@ $productshow = mysqli_fetch_array($row);
 	?>
 								
 						
-
-
-<?php 
-
+<?php
 $sqlp = "SELECT * FROM member WHERE email = '$_SESSION[login_user]'";
 $result22 = mysqli_query($con,$sqlp);
 $row10 = mysqli_fetch_array($result22);
-
-$sql1 = "SELECT * FROM feedback INNER JOIN member ON feedback.member_id = member.ID";
-$result1 = mysqli_query($con,$sql1);
-while($row1 = mysqli_fetch_array($result1)){}
-
-
-?>							<!---->
+?>
+				<!---->
 <form method="post" >
 
 					<div class="cd-tabs">
@@ -239,14 +231,16 @@ while($row1 = mysqli_fetch_array($result1)){}
 					<li><a data-content="fashion"  href="#0">Comments</a></li>
 					<li><a data-content="television" href="#0" class="selected ">Reviews</a></li>
 					
+					
 				</ul> 
 			</nav>
 	<ul class="cd-tabs-content">
 		<li data-content="fashion" >
 		<div class="facts">
 		<textarea style="width:100%;padding:55px;" name="comment"></textarea>
-		<br>s
-		<h5 style="margin-bottom:15px;"><?php echo $row1['date'];?></h5>
+		<div class="memrate">	
+		</div>
+		<br>
 					<input type="hidden" name="id" value="<?php echo $row10['ID']; ?>">
 					<input type="hidden" name="productid" value="<?php echo $_GET['book_id']; ?>">
 					<select class="star-footer" name="ratings">
@@ -262,6 +256,7 @@ while($row1 = mysqli_fetch_array($result1)){}
 						<option value="10">10 (Superb)</option>
 						</select>
 						<br>
+						<br>
 		<input type="submit" value="submit" name="submit1">
 		
 
@@ -274,10 +269,22 @@ while($row1 = mysqli_fetch_array($result1)){}
 <li data-content="television" class="selected">
 	<div class="comments-top-top">
 				<div class="top-comment-left">
-					<img class="img-responsive" src="images/co.png" alt="">
+					
 				</div>
 				<div class="top-comment-right">
-					
+				
+<?php 
+$sql1 = "SELECT * FROM feedback INNER JOIN member ON feedback.member_id = member.ID";
+$result1 = mysqli_query($con,$sql1);
+while($row1 = mysqli_fetch_array($result1)){
+
+
+?>			
+				<p><?php echo $_SESSION['login_user']; ?> - <?php echo $row1['date']?></p>
+					<p><?php echo $row1['comment'];?></p>
+					<p><?php echo $row1['rating'];?></p>
+				
+				<?php }?>
 				</div>
 				<div class="clearfix"> </div>
 				
