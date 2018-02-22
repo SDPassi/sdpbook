@@ -81,7 +81,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <div class="container">
 		<div class="account">
 		<h1>Order</h1>
-		<form action="admin_update.php" method="post">
+	
 		<table class="activity-table">
 		<thead>
 		
@@ -92,6 +92,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			<th>Price </th>
 			<th>Date Purchase </th>
 			<th>Status</th>
+			<th></th>
 
 
 		</tr>
@@ -105,7 +106,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				while($activity = mysqli_fetch_array($result)){
 	?>
 
-			
+			<form action="admin_update.php" method="post">	
 			<tr>
 			<td><?php echo $activity['name'] ?>
 			<input type="hidden" name="member_name" value="<?php echo $activity['name'] ?>"/></td>
@@ -114,7 +115,6 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			<td><?php echo $activity['product_price']?> </td>
 			<td><?php echo $activity['payment_date']?> </td>
 			<td>
-		
 				<select name="status">
 						<option value="Current"><?php echo $activity['orders_status']?></option>
 						<option value="Processing">Processing</option>
@@ -122,23 +122,24 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 						<option value="Cancel">Cancel</option>
 						<input type="hidden" name="memberid" value="<?php echo $activity['member_id'] ?>"/>
 				</select>
-			
+				
+		
  			</td>
+ 			<td><div class="activity-button">
+							<input type="submit" value="Update Order">
+							
+						
+								 
+						</div></td>
  			
 			</tr>
-					
+				</form>		
 		<?php }?> 
 
 		</tbody>
 	
 		</table>
-		<div class="activity-button">
-							<input type="submit" value="Update Order " style="float:right;margin-left:10px;">
-							
-							
-								 
-						</div>	
-		</form>
+		
 		<div class="activity-button">
 		<form action="admin_printorder.php">
 							
