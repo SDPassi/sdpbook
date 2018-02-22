@@ -4,16 +4,28 @@ session_start();
 
 include "conn.php";
 
-
+if (isset($_POST['delete'])) {
+unset($_SESSION['cart'][$_POST['delete']]);
+header("Refresh: 0");
 }
 
 
-?>
+if (isset($_POST['post'], $_POST['id'])) {
 
+$sql2 = "INSERT INTO orders(member_id, total_price) VALUES ('$_POST[id]', '$_POST[post]')";
+$sql3 = "INSERT INTO orders_details(order_id, product_id, product_quantity) VALUES ('$_SESSION[order_id]', $_SESSION[product_id]',$_SESSION[product_quantity]')";
+
+$result2 = mysqli_query($con, $sql2);
+$result3 = mysqli_quety($con, $sql3);
+}
+$success = "Your order have been confirmed!";
+
+
+?>
 <!DOCTYPE html>
 <html>
 <head>
-<title>LOGIN: TPM Bookstore</title>
+<title>CART: TPM Bookstore</title>
 <link href="css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 <script src="js/jquery.min.js"></script>
@@ -36,69 +48,56 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <script src="js/simpleCart.min.js"> </script>
 </head>
 <body>
-<!--header-->
-<div class="header">
-	<div class="header-top">
-		<div class="container">
-			<div class="search">
-					<form action="" method="post">
-						<input type="text" value="Search " onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Search';}">
-						<input type="submit" value="Go">
-					</form>
-			</div>
-			<div class="header-left">		
-					<ul>
-						<?php if (isset($_SESSION['login_user'])): ?>
-						<li ><a href="login.php"  ><?php echo($_SESSION['login_user']); ?></a></li>
-					<?php else: ?>
-						<li ><a href="login.php"  >Login</a></li>
-						<li><a  href="register.php"  >Register</a></li>
-					<?php endif; ?>
-					</ul>
-					
-					<div class="cart box_1">
-						<a href="cart.php">
-						<h3> <div class="total">
-							</div>
-							<img src="images/cart.png" alt=""/></h3>
-						</a>
-					</div>
-					<div class="clearfix"> </div>
-			</div>
-				<div class="clearfix"> </div>
-		</div>
-		</div>
-		<div class="container">
-			<div class="head-top">
-				<div class="logo">
-					<a href="index.php"><img src="images/bookicon.png" style="width:10%;height:10%" alt="">TPM Bookstore</a>	
-				</div>
-		  <div class=" h_menu4">
-			<ul class="memenu skyblue">
-				<li class="active grid"><a class="color8" href="index.php">Home</a></li>
-				<li><a class="color4" href="products.php">Product</a></li>	
-				<li><a class="color1" href="activity.php">Activity</a></li>
-				<li class="grid"><a class="color2" href="order.php">Order</a></li>
-				<li><a class="color6" href="contact.php">Profile</a></li>
-			</ul> 
-		  </div>
-				
-				<div class="clearfix"> </div>
-		</div>
-		</div>
-
-	</div>
-
-	
-<!--content-->
-
+<!--content-->	
+<div class="cart">
 <div class="container">
-		<div class="account">
-		<h1>INVOICE</h1>
-		<div class="account-pass">
-		<div class="col-md-8 account-top" style="margin-left:200px;">
+	<div class="check">	 
+			 <h1>Order Summary</h1>
+		 <div class="col-md-9 cart-items" style="background-color:white;">
+			
+			 <div class="cart-header">
+				
+				 <div class="cart-sec simpleCart_shelfItem">
+<?php
+if(isset($_SESSION['cart'])){
+$total = 0;
+foreach($_SESSION['cart'] as $book_id => $carts){
+$sql = "SELECT * FROM inventory WHERE product_id = $book_id";
+
+
+$result1 = mysqli_query($con, $sql);
+while($row = mysqli_fetch_array($result1)) {
+
+$subtotal = $carts * $row['product_price'] ;
+$total += $subtotal;
+				
+				echo '<div class="cart-item cyc" style="width: 100%; border-bottom: groove;margin-top:40px;margin-bottom:30px;">
+					   <div style="float: left;padding-left:100px;padding-bottom:100px;" class="cart-item-info">
+						<h3>'.$row['product_name'].'<span>RM '.$subtotal.'</span></h3>
+						<ul class="qty">
+							<li><p>Qty : '.$carts.'</p></li>
+							<br>
+							<br>
+						</ul>
+						<br>
+		        </div>	
+			 </div> ';		
+	}
 		
-		<?php
+}
+}
+
+?>
+</div>
+</div>
+</div>
+</div>
+
+
+
+				<br>	
+				
+<?php
 if (isset($_SESSION['login_user'])) {
 $sql1 = "SELECT * FROM member WHERE email = '$_SESSION[login_user]'";
 
@@ -129,16 +128,53 @@ $row1 = mysqli_fetch_array($result4);
 				 <span class="total1"><b><?php echo $row1['phone'] ?></b></span>
 				 <span class="total1"><b><?php echo $row1['address'] ?></b></span>
 
+	
+ 					<br><br>
+				
+		   <div class="clearfix"></div>				 
+			 </div>	
+			 <br>
+			 <div class="price-details">
+			  <h3>Price Details</h3>
+			 	<span class="last_price">
+			 	<span><h6>TOTAL: RM <?php $total1 = $total -$_POST['cars'];echo $total1; ?></h6></span>
+			 	<br>
+			 	<br>
+			 	<span><h6 style="color:green;">DELIVERY: FREE</h6></span>
 
+			 	</span>	
+			 <div class="clearfix"> </div>
+			 </div>
+			
+			 
+			 <div class="clearfix"></div>
+			 <center>
+			 <h3 style="color:green;margin-top:25px;"><?php if (isset($success)) echo $success; ?></h3>
+			 </center>
+			<form method="post">
+			 <div class="total-item" style="margin-top:50px;">
+
+				 <div class="order">
+				 <input type="hidden" name="id" value="<?php echo $row1['ID']; ?>"/>
+				 <input type="hidden" name="post" value="<?php echo $total1; ?>"/>
+				 <input type="hidden" name="cars" value="<?php echo $_POST['cars']?>" />
+				 <input type="hidden" name="submit">
+				 <div class="pay" style="width:100%;">
+				 <input type="submit" name="submit" style="width:100%;background: #EF5F21;padding: 0.4em 1em;color: #fff; font-size: 1.2em;transition:0.5s all;display:block;border: none;outline: none;"value="Check my purhchased"></div>
+				 <input type="hidden" name="submit" value="<script>window.print();</script>">
+				 <input type="submit" name ="sbumit" value="Print" style="width:250px;float:right;margin-top:50px;margin-bottom:50px;">
+				 </div>
+			</div>
+			</form>
+
+			</div>   
 		
-				</div>
-	<div class="clearfix"> </div>
-	</div>
-	</div>
+			<div class="clearfix"> </div>
+	 </div>
+	 </div>
 
-</div>
 
-<!--//content-->
+<!--//footer-->
 <div class="footer">
 				<div class="container">
 			<div class="footer-top-at">
@@ -158,9 +194,11 @@ $row1 = mysqli_fetch_array($result4);
 			</div>
 		</div>
 		<div class="footer-class">
-		<p >© 2015 New store All Rights Reserved | Design by  <a href="http://w3layouts.com/" target="_blank">W3layouts</a> </p>
+		<p >© 2018 TPM Bookstore </p>
 		</div>
 		</div>
+		
 </body>
+
 </html>
 			
