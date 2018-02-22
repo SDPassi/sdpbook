@@ -1,12 +1,6 @@
 <?php
 include("conn.php");
 
-echo $_POST['productid'];
-echo $_POST['productname'];
-echo $_POST['productdescription'];
-echo $_POST['productquantity'];
-echo $_POST['productprice'];
-
 if (isset($_POST['productid'],$_POST['productname'],$_POST['productdescription'],$_POST['productquantity'],$_POST['productprice'])){ 
 
 $sql = "UPDATE inventory SET 

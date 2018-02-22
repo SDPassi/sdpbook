@@ -41,22 +41,14 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			<div class="header-left">		
 					<ul>
 						<?php if (isset($_SESSION['login_user'])): ?>
-						<li ><a href="logout.php"  ><?php echo($_SESSION['login_user']); ?></a></li>
+						<li ><a href="admin_profile.php"  ><?php echo($_SESSION['login_user']); ?><a href="logout.php">(LOGOUT)</a></li>
+						
 					<?php else: ?>
-						<li ><a href="login.php"  >Login</a></li>
-						<li><a  href="register.php"  >Register</a></li>
+						<li><a href="admin_login.php">Login</a></li>
+					
 					<?php endif; ?>
 
 					</ul>
-					<div class="cart box_1">
-						<a href="checkout.php">
-						<h3> <div class="total">
-							<span class="simpleCart_total"></span> (<span id="simpleCart_quantity" class="simpleCart_quantity"></span> items)</div>
-							<img src="images/cart.png" alt=""/></h3>
-						</a>
-						<p><a href="javascript:;" class="simpleCart_empty">Empty Cart</a></p>
-
-					</div>
 					<div class="clearfix"> </div>
 			</div>
 				<div class="clearfix"> </div>
@@ -86,7 +78,11 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <!--content-->
 <div class="container">
 		<div class="account">
-		<h1>Stock</h1>
+		<h1>Update Stock</h1>
+		
+		
+		
+		
 		<form action="admin_updatestock.php" method="post">	
 		<table class="activity-table">
 		<thead>
@@ -132,7 +128,16 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 							
 							<input type="submit" value="Update Stock " style="float:right;margin-left:10px;">			
 		</div>	
-		</form>		
+		</form>
+		
+		<!--add stock-->
+		<div class="activity-button">
+		<form action="admin_addstock.php" method="post">
+		<input type="submit" value="Add stock" style="float:right;">
+		</form>
+		</div>
+		<!--end-->
+		
 		</div>
 		</div>
 		

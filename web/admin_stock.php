@@ -41,7 +41,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			<div class="header-left">		
 					<ul>
 						<?php if (isset($_SESSION['login_user'])): ?>
-						<li ><a href="logout.php"  ><?php echo($_SESSION['login_user']); ?></a></li>
+						<li ><a href="admin_profile.php"  ><?php echo($_SESSION['login_user']); ?><a href="logout.php">(LOGOUT)</a></li>
+						
 					<?php else: ?>
 						<li ><a href="login.php"  >Login</a></li>
 						
@@ -57,7 +58,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 					
 
 					</div>
-					<div class="clearfix"> </div>
+
+						<div class="clearfix"> </div>
 			</div>
 				<div class="clearfix"> </div>
 		</div>
@@ -126,6 +128,13 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 							<form action="admin_editstock.php">
 							
 							<input  type="submit" value="Edit" style="float:right;margin-left:10px;background:#EF5F21;width:auto;font-size: 1.1em;
+							padding: 0.4em 0.8em;text-align: center;color: #fff;border: none;outline: none;-webkit-appearance: none;">
+							
+							</form>	
+							
+							<form action="admin_printstock.php">
+							
+							<input  type="submit" value="Print" style="float:right;margin-left:10px;background:#EF5F21;width:auto;font-size: 1.1em;
 							padding: 0.4em 0.8em;text-align: center;color: #fff;border: none;outline: none;-webkit-appearance: none;">
 							
 							</form>		 

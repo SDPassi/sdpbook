@@ -1,22 +1,20 @@
 <?php
 include("conn.php");
 
-if (isset($_POST['status']) { 
+if (isset($_POST['status'],$_POST['memberid'])) { 
 
-$sql = "UPDATE orders SET INNER JOIN INNER JOIN member ON orders.member_id = member.id 
- 				INNER JOIN orders_details ON orders.order_id = orders_details.order_id 
- 				INNER JOIN inventory ON orders_details.product_id = inventory.product_id
- 				INNER JOIN feedback ON inventory.product_id = feedback.product_id
+$sql = "UPDATE orders SET 
 
+orders_status='$_POST[status]'
 
-orders_status='$_POST[status]',
+WHERE member_id='$_POST[memberid]'"; 
 
-WHERE name='$_POST[member_name]';"; 
-}
+$result=mysqli_query($con,$sql);
 
-if (mysqli_query($con, $sql)) {
-mysqli_close($con);
-header('Location: admin_order.php'); 
+echo'<script text="text/javascript">
+alert("Order Status updated!");
+window.location.replace ("admin_index.php");
+</script>';
 }
 
 ?>

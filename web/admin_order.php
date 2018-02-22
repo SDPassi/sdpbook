@@ -81,8 +81,10 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <div class="container">
 		<div class="account">
 		<h1>Order</h1>
+	
 		<table class="activity-table">
 		<thead>
+		
 		<tr class="activity-table-main">
 			<th>Member Name</th>
 			<th>Product </th>
@@ -90,6 +92,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			<th>Price </th>
 			<th>Date Purchase </th>
 			<th>Status</th>
+			<th></th>
 
 
 		</tr>
@@ -99,41 +102,53 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				 
  				$result = mysqli_query($con,"SELECT * FROM orders INNER JOIN member ON orders.member_id = member.id 
  				INNER JOIN orders_details ON orders.order_id = orders_details.order_id 
- 				INNER JOIN inventory ON orders_details.product_id = inventory.product_id
- 				INNER JOIN feedback ON inventory.product_id = feedback.product_id");
+ 				INNER JOIN inventory ON orders_details.product_id = inventory.product_id");
 				while($activity = mysqli_fetch_array($result)){
 	?>
 
-			<form action="admin_update.php" method="post">
+			<form action="admin_update.php" method="post">	
 			<tr>
-			<td id="member_name"><?php echo $activity['name'] ?></td>
+			<td><?php echo $activity['name'] ?>
+			<input type="hidden" name="member_name" value="<?php echo $activity['name'] ?>"/></td>
 			<td><?php echo $activity['product_name'] ?></td>
 			<td><?php echo $activity['product_quantity']?> </td>
 			<td><?php echo $activity['product_price']?> </td>
 			<td><?php echo $activity['payment_date']?> </td>
 			<td>
-		
-				<select name="status"><option value="Processing">Processing</option>
+				<select name="status">
+						<option value="Current"><?php echo $activity['orders_status']?></option>
+						<option value="Processing">Processing</option>
 						<option value="Successful">Successful</option>
 						<option value="Cancel">Cancel</option>
+						<input type="hidden" name="memberid" value="<?php echo $activity['member_id'] ?>"/>
 				</select>
-			
+				
+		
  			</td>
+ 			<td><div class="activity-button">
+							<input type="submit" value="Update Order">
+							
+						
+								 
+						</div></td>
  			
 			</tr>
-			</form>			
+				</form>		
 		<?php }?> 
 
 		</tbody>
 	
 		</table>
+		
 		<div class="activity-button">
-							<input type="button" value="Update Order " style="float:right;margin-left:10px;">
+		<form action="admin_printorder.php">
 							
+							<input  type="submit" value="Print" style="float:right;margin-left:10px;background:#EF5F21;width:auto;font-size: 1.1em;
+							padding: 0.4em 0.8em;text-align: center;color: #fff;border: none;outline: none;-webkit-appearance: none;">
 							
-								 
-						</div>	
-			
+							</form>			
+
+		</div>
 		</div>
 
 		</div>

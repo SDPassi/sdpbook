@@ -5,7 +5,7 @@ include("conn.php");
 <!DOCTYPE html>
 <html>
 <head>
-<title>REPORT: TPM Bookstore</title>
+<title>STOCK: TPM Bookstore</title>
 <link href="css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 <script src="js/jquery.min.js"></script>
@@ -41,26 +41,23 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			<div class="header-left">		
 					<ul>
 						<?php if (isset($_SESSION['login_user'])): ?>
-
-						<li ><a href="logout.php"  ><?php echo($_SESSION['login_user']); ?></a></li>
-					<?php else: ?>
-						<li ><a href="login.php"  >Login</a></li>
+						<li ><a href="admin_profile.php"  ><?php echo($_SESSION['login_user']); ?><a href="logout.php">(LOGOUT)</a></li>
 						
+					<?php else: ?>
+						<li><a href="admin_login.php">Login</a></li>
+					
 					<?php endif; ?>
 
 					</ul>
-
-					
-					<div class="cart box_1">
+				<div class="cart box_1">
 						<a href="checkout.php">
 						<h3> <div class="total">
-							</div>
-						</h3>
+							<span class="simpleCart_total"></span> (<span id="simpleCart_quantity" class="simpleCart_quantity"></span> items)</div>
+							<img src="images/cart.png" alt=""/></h3>
 						</a>
-						
+						<p><a href="javascript:;" class="simpleCart_empty">Empty Cart</a></p>
 
 					</div>
-					
 					<div class="clearfix"> </div>
 			</div>
 				<div class="clearfix"> </div>
@@ -73,14 +70,13 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				</div>
 		  <div class=" h_menu4">
 			<ul class="memenu skyblue">
-				<li class="active grid"><a class="color2" href="admin_index.php" style="color:black;">Main</a></li>
+				<li class="active grid"><a class="color8" href="admin_index.php">Main</a></li>
 				<li><a class="color4" href="admin_stock.php">Stock</a></li>	
 				<li><a class="color1" href="admin_order.php">Order</a></li>
 				<li class="grid"><a class="color2" href="admin_report.php">Report</a></li>
 				<li><a class="color6" href="admin_profile.php">Profile</a></li>
 			</ul> 
 		  </div>
-				
 				<div class="clearfix"> </div>
 		</div>
 		</div>
@@ -91,78 +87,47 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <!--content-->
 <div class="container">
 		<div class="account">
-		<h1>Monthly Report</h1>
-		
-		<div class="activity-button">
-		
-		</div>			
+		<h1>Add New Stock</h1>
+		<form action="admin_add.php" method="post">	
 		<table class="activity-table">
 		<thead>
 		<tr class="activity-table-main">
-			<th>Month</th>
-			<th>Total Sales(RM)</th>
+			<th>ID </th>
+			<th>Product </th>
+			<th>Description</th>
+			<th>Quantity </th>
+			<th>Price(RM) </th>
+			<th>Product Image</th>
+		</tr>
 		
-	</tr>
-		</thead>	
+		</thead>
 		<tbody>		
-	<?php 
-	$sql="SELECT SUBSTRING(payment_date,6,2) AS month,SUM(total_price) AS total1 FROM `orders` group by SUBSTRING(payment_date,6,2) 
-	order by SUBSTRING(payment_date,6,2) ASC";
-	$result=mysqli_query($con,$sql);
-	
-	while($result_month=mysqli_fetch_array($result)){
-	
-?>					
-            <tr>
-            <td><?php if($result_month['month']=="01"){
-            				echo "January";
-            		}elseif($result_month['month']=="02"){ 		
-            				echo "February";
-            		}elseif($result_month['month']=="03"){ 		
-            				echo "March";
-            		}elseif($result_month['month']=="04"){ 		
-            				echo "April";
-            		}elseif($result_month['month']=="05"){ 		
-            				echo "May";
-					}elseif($result_month['month']=="06"){ 		
-            				echo "June";
-					}elseif($result_month['month']=="07"){ 		
-            				echo "July";
-					}elseif($result_month['month']=="08"){ 		
-            				echo "August";
-					}elseif($result_month['month']=="09"){ 		
-            				echo "September";
-					}elseif($result_month['month']=="10"){ 		
-            				echo "October";
-					}elseif($result_month['month']=="11"){ 		
-            				echo "November";
-            		}else{
-            		echo "December"; 
-            		} 
-            	?>
-           	</td>	
-			<td><?php echo $result_month['total1']?></td>	
+		
+			<tr>
+			<td><input name="productid1" size="5px" value=""/></td>
+			<td><input name="productname1" value=""/></td>
+			<td><input name="productdescription1" value=""/></td>
+			<td><input name="productquantity1" value=""/></td>
+			<td><input name="productprice1" value=""/></td>
+			<td><input name="productimage1" value=""/></td>
 			</tr>
 					
-						
-
-				
-<?php } ?>		
+			
+		
+		
 		</tbody>
+		
+		
+		
 		</table>
-		<div class="activity-button">
-		<form action="admin_printreport.php">
+		<div class="send">
 							
-							<input  type="submit" value="Print Report" style="float:right;margin-left:10px;background:#EF5F21;width:auto;font-size: 1.1em;
-							padding: 0.4em 0.8em;text-align: center;color: #fff;border: none;outline: none;-webkit-appearance: none;">
-							
-							</form>			
-
-		</div>
+							<input type="submit" value="Add Stock " style="float:right;margin-left:10px;">			
+		</div>	
+		</form>		
 		</div>
 		</div>
 		
-				
 		
 	<div class="clearfix"> </div>
 	
@@ -173,7 +138,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			<div class="footer-top-at">
 			
 				<div class="col-md-4 amet-sed">
-				<h4>ADMIN</h4>
+			<h4>ADMIN</h4>
 				<ul class="nav-bottom">
 						<li><a href="admin_index.php">Home</a></li>
 						<li><a href="admin_stock.php">Stock</a></li>
@@ -190,7 +155,6 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		<p >© 2015 New store All Rights Reserved | Design by  <a href="http://w3layouts.com/" target="_blank">W3layouts</a> </p>
 		</div>
 		</div>
-
 </body>
 </html>
 			
