@@ -4,28 +4,13 @@ session_start();
 
 include "conn.php";
 
-if (isset($_POST['delete'])) {
-unset($_SESSION['cart'][$_POST['delete']]);
-header("Refresh: 0");
-}
-
-
-if (isset($_POST['post'], $_POST['id'])) {
-
-$sql2 = "INSERT INTO orders(member_id, total_price) VALUES ('$_POST[id]', '$_POST[post]')";
-$sql3 = "INSERT INTO orders_details(order_id, product_id, product_quantity) VALUES ('$_SESSION[order_id]', $_SESSION[product_id]',$_SESSION[product_quantity]')";
-
-$result2 = mysqli_query($con, $sql2);
-$result3 = mysqli_quety($con, $sql3);
-}
-$success = "Your order have been confirmed!";
 
 
 ?>
 <!DOCTYPE html>
 <html>
 <head>
-<title>CART: TPM Bookstore</title>
+<title>ADMIN ORDER: TPM Bookstore</title>
 <link href="css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 <script src="js/jquery.min.js"></script>
@@ -148,9 +133,6 @@ $row1 = mysqli_fetch_array($result4);
 			
 			 
 			 <div class="clearfix"></div>
-			 <center>
-			 <h3 style="color:green;margin-top:25px;"><?php if (isset($success)) echo $success; ?></h3>
-			 </center>
 			<form method="post">
 			 <div class="total-item" style="margin-top:50px;">
 
@@ -159,10 +141,6 @@ $row1 = mysqli_fetch_array($result4);
 				 <input type="hidden" name="post" value="<?php echo $total1; ?>"/>
 				 <input type="hidden" name="cars" value="<?php echo $_POST['cars']?>" />
 				 <input type="hidden" name="submit">
-				 <div class="pay" style="width:100%;">
-				 <input type="submit" name="submit" style="width:100%;background: #EF5F21;padding: 0.4em 1em;color: #fff; font-size: 1.2em;transition:0.5s all;display:block;border: none;outline: none;"value="Check my purhchased"></div>
-				 <input type="hidden" name="submit" value="<script>window.print();</script>">
-				 <input type="submit" name ="sbumit" value="Print" style="width:250px;float:right;margin-top:50px;margin-bottom:50px;">
 				 </div>
 			</div>
 			</form>
@@ -174,30 +152,7 @@ $row1 = mysqli_fetch_array($result4);
 	 </div>
 
 
-<!--//footer-->
-<div class="footer">
-				<div class="container">
-			<div class="footer-top-at">
-			
-				<div class="col-md-4 amet-sed">
-				<h4>MORE INFO</h4>
-				<ul class="nav-bottom">
-						<li><a href="index.php">Home</a></li>
-						<li><a href="activity.php">Activity</a></li>
-						<li><a href="order.php">Order</a></li>
-						<li><a href="products.php">Product</a></li>
-						<li><a href="profile.php">Profile</a></li>	
-					</ul>	
-					
-			</div>		
-								<div class="clearfix"> </div>
-			</div>
-		</div>
-		<div class="footer-class">
-		<p >© 2018 TPM Bookstore </p>
-		</div>
-		</div>
-		
+		<script>window.print();</script>	
 </body>
 
 </html>

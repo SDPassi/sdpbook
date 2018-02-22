@@ -44,17 +44,17 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 						<li ><a href="logout.php"  ><?php echo($_SESSION['login_user']); ?></a></li>
 					<?php else: ?>
 						<li ><a href="login.php"  >Login</a></li>
-						<li><a  href="register.php"  >Register</a></li>
+						
 					<?php endif; ?>
 
 					</ul>
 					<div class="cart box_1">
 						<a href="checkout.php">
 						<h3> <div class="total">
-							<span class="simpleCart_total"></span> (<span id="simpleCart_quantity" class="simpleCart_quantity"></span> items)</div>
-							<img src="images/cart.png" alt=""/></h3>
+							</div>
+							</h3>
 						</a>
-						<p><a href="javascript:;" class="simpleCart_empty">Empty Cart</a></p>
+					
 
 					</div>
 					<div class="clearfix"> </div>
@@ -69,7 +69,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				</div>
 		  <div class=" h_menu4">
 			<ul class="memenu skyblue">
-				<li class="active grid"><a class="color8" href="admin_index.php">Main</a></li>
+				<li class="active grid"><a class="color2" href="admin_index.php" style="color:black;">Main</a></li>
 				<li><a class="color4" href="admin_stock.php">Stock</a></li>	
 				<li><a class="color1" href="admin_order.php">Order</a></li>
 				<li class="grid"><a class="color2" href="admin_report.php">Report</a></li>
