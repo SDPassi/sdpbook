@@ -164,27 +164,46 @@ $total += $subtotal;
 if (isset($_SESSION['login_user'])) {
 $sql1 = "SELECT * FROM member WHERE email = '$_SESSION[login_user]'";
 
-$result2 = mysqli_query($con, $sql1);
 
-$row1 = mysqli_fetch_array($result2);
+$result4 = mysqli_query($con, $sql1);
+
+
+
+$row1 = mysqli_fetch_array($result4);
 }
 
 ?> 
 		  <div class="col-md-3 cart-total" style="width:100%;">
 		  
+		  <br>
 						 <div class="price-details">
-						
+				 <h3>Personal Details</h3>		 
+				 
+				 <span>Name:</span>
+				 <span>Email:</span>
+				 <br>
+				 <span class="details"><b><?php echo $row1['name'] ?></b></span>
+				 <span class="details"><b><?php echo $row1['email'] ?></b></span>
+				
+				 <span>Contact Number:</span>
+				 <span>Shipping Address:</span>
+				 <br>
+				 <span class="total1"><b><?php echo $row1['phone'] ?></b></span>
+				 <span class="total1"><b><?php echo $row1['address'] ?></b></span>
+
+	
+ 					<br><br>
+				
 		   <div class="clearfix"></div>				 
 			 </div>	
 			 <br>
 			 <div class="price-details">
-			  <h2>Price Details</h2>
-			  <br>
+			  <h3>Price Details</h3>
 			 	<span class="last_price">
-			 	<span><h3 style="font-size:large;">TOTAL: RM <?php $total1 = $total -$_POST['cars'];echo $total1; ?></h3></span>
+			 	<span><h6>TOTAL: RM <?php $total1 = $total -$_POST['cars'];echo $total1; ?></h6></span>
 			 	<br>
 			 	<br>
-			 	<span><h3 style="color:green;font-size:large;">DELIVERY: FREE</h3></span>
+			 	<span><h6 style="color:green;">DELIVERY: FREE</h6></span>
 
 			 	</span>	
 			 <div class="clearfix"> </div>
@@ -192,18 +211,26 @@ $row1 = mysqli_fetch_array($result2);
 			
 			 
 			 <div class="clearfix"></div>
-						 
-			<form method="post" action="insertdata.php">
+			 <center>
+			 <h3 style="color:green;margin-top:25px;"><?php if (isset($success)) echo $success; ?></h3>
+			 </center>
+			<form method="post">
 			 <div class="total-item" style="margin-top:50px;">
-			 	<input type="hidden" name="post" value="<?php echo $total1; ?>"/>
-				<input type="hidden" name="cars" value="<?php echo $_POST['cars']?>" />				 
-				<div class="order">
+
+				 <div class="order">
+				 <input type="hidden" name="id" value="<?php echo $row1['ID']; ?>"/>
+				 <input type="hidden" name="post" value="<?php echo $total1; ?>"/>
+				 <input type="hidden" name="cars" value="<?php echo $_POST['cars']?>" />
 				 <input type="hidden" name="submit">
-				 <input type="submit" name="submit" value="Review &amp; Pay" style="width:100%;background: #EF5F21;padding: 0.4em 1em;color: #fff; font-size: 1.2em;transition:0.5s all;display:block;border: none;outline: none;"></div>
+				 <div class="pay" style="width:100%;">
+				 <input type="submit" name="submit" style="width:100%;background: #EF5F21;padding: 0.4em 1em;color: #fff; font-size: 1.2em;transition:0.5s all;display:block;border: none;outline: none;"value="Check my purhchased"></div>
+				 <input type="hidden" name="submit" value="<script>window.print();</script>">
+				 <input type="submit" name ="sbumit" value="Print" style="width:250px;float:right;margin-top:50px;margin-bottom:50px;">
+				 </div>
 			</div>
 			</form>
 
-			</div>
+			</div>   
 		
 			<div class="clearfix"> </div>
 	 </div>

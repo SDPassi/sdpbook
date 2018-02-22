@@ -84,11 +84,9 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 					<div class="cart box_1">
 						<a href="cart.php">
 						<h3> <div class="total">
-							<span class="simpleCart_total"></span> (<span id="simpleCart_quantity" class="simpleCart_quantity"></span> items)</div>
+							</div>
 							<img src="images/cart.png" alt=""/></h3>
 						</a>
-						<p><a href="javascript:;" class="simpleCart_empty">Empty Cart</a></p>
-
 					</div>
 					<div class="clearfix"> </div>
 			</div>
@@ -102,7 +100,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				</div>
 		  <div class=" h_menu4">
 			<ul class="memenu skyblue">
-				<li class="active grid"><a class="color8" href="index.php">Home</a></li>
+				<li class="active grid"><a class="color8" href="index.php" style="color:black;">Home</a></li>
 				<li><a class="color4" href="products.php">Product</a></li>	
 				<li><a class="color1" href="activity.php">Activity</a></li>
 				<li class="grid"><a class="color2" href="order.php">Order</a></li>

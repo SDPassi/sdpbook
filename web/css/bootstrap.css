@@ -5,6 +5,15 @@
  */
 
 /*! normalize.css v3.0.2 | MIT License | git.io/normalize */
+
+
+
+
+
+
+
+
+
 html {
   font-family: sans-serif;
   -webkit-text-size-adjust: 100%;
@@ -128,6 +137,17 @@ select {
 button, html input[type=button], input[type=reset], input[type=submit] {
   -webkit-appearance: button;
   cursor: pointer;
+      background: #EF5F21;
+    padding: 0.4em 1em;
+    color: #fff;
+    font-size: 1.2em;
+    transition: 0.5s all;
+    -webkit-transition: 0.5s all;
+    -moz-transition: 0.5s all;
+    -o-transition: 0.5s all;
+    display: inline-block;
+    border: none;
+    outline: none;
 }
 button[disabled],
 html input[disabled] {

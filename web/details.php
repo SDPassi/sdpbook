@@ -16,8 +16,14 @@ if(isset($_POST['book_id'],$_POST['quantity'])){
 		}
 				
 	echo '<script text="text/javascript">
-	alert("1 item added to cart!")
+	alert("Items added to cart!")
 	</script>';
+}
+
+if (isset($_POST['submit1'])){
+$sqlr = "INSERT INTO feedback(product_id,member_id,comment,rating) VALUES ('$_POST[productid]','$_POST[id]','$_POST[comment]','$_POST[ratings]')";
+
+$result23 = mysqli_query($con,$sqlr);
 
 }
 
@@ -81,12 +87,13 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 
 					<div class="cart box_1">
 						<a href="cart.php">
-						<h3> <div class="total">
-							<span class="simpleCart_total"></span> (<span id="simpleCart_quantity" class="simpleCart_quantity"></span> items)</div>
-							<img src="images/cart.png" alt=""/></h3>
+						<h3><div class="total">
+														</div>
+							<a href="cart.php" style="padding-right:15px;"><img src="images/cart.png" alt=""/></a>
+							</h3>
 						</a>
-				<p><a href="javascript:;" class="simpleCart_empty">Empty Cart</a></p>
 
+				
 					</div>
 					<div class="clearfix"> </div>
 			</div>
@@ -102,11 +109,10 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				</div>
 		  <div class=" h_menu4">
 					<ul class="memenu skyblue">
-					   <li class="active grid"><a class="color8" href="index.php">Home</a></li>	
+					   <li class="active grid"><a class="color2" href="index.php">Home</a></li>	
+					   <li><a class="color4" href="products.php">Product</a></li>	
 				      <li><a class="color1" href="activity.php">Activity</a></li>
-				    <li class="grid"><a class="color2" href="order.php">Order</a></li>
-				<li><a class="color4" href="products.php">Product</a> 	
-				<li><a class="color6" href="profile.php">Profile</a></li>
+				<li><a class="color6" href="profile.php">My Account</a></li>
 			  </ul> 
 			</div>
 				
@@ -143,22 +149,14 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		</script>
 <!---->
 		
-										<div class="product-go">
-<div class=" per1">
-
-				<a href="#" ><img class="img-responsive" src="images/pro.jpg" alt="">
-				<div class="six1">
-									</div></a>
-			</div>
-				</div>
-				<div class="col-md-9 product-price1">
+<div class="col-md-9 product-price1">
 
 	
 		<div class="col-md-5 single-top">	
 	</div>
 
 					</div>	
-					<div class="descrip" style="width:50%;">
+					<div class="descrip">
 						<div class="single-para ">
 						
 						
@@ -177,134 +175,128 @@ $sql = "SELECT * FROM inventory WHERE product_id = '$_GET[book_id]'";
 $row = mysqli_query($con, $sql);
 $productshow = mysqli_fetch_array($row);
 	
-	echo'<div class = "prod" style="width:100%;float:left;margin-left:20px;margin-bottom:100px;">
-		 	
-				<img src = images/'.$productshow['product_image'].'.jpg>					
-				<h3 style="padding-bottom:10px;padding-top:10px;">'.$productshow['product_name'].'</h3>
-				<p>'.$productshow['product_description'].'</p>
-					<a href="" class="item_add" ><p class="number item_price" style="width:300px;"><i> </i>RM'.$productshow['product_price'].'</p></a>
+	echo'		<div class="details-item" style="width: 100%;float:left;">
+					<div class="details-item-1">
+					
+					<img  src="images/'.$productshow['product_image'].'.jpg" class="img-responsive" alt="" style="float: left; width:300px;padding-right:50px;">
 					<br>
+						<h5 style="border:none;padding-left:50px;font-size:18px;color:black;">'.$productshow['product_name'].'</h5>
+						<br>
+						<h4 style="border:none;padding-left:50px;font-size:14px;">Price : RM '.$productshow['product_price'].'</h4>
+						</div>	
 						
-				<form action ="" method ="post">
-		<input onclick = "atc(-1)" type = "button" value = "-" style="width:25px;">
-			<input style="width:50px;" id = "quantity" name = "quantity" type = "text" value = "1">
-		<input onclick = "atc(1)" type = "button" value = "+" style="width:25px;">
-		<input type="hidden" name="book_id" value="'.$productshow['product_id'].'">
-					<input style = "width:25px;" name = "quantity" type = "hidden" value = "1"/>
-					<input type = "submit" value = "Add To Cart" style = width:185px;>
+						<br>
+						<br>
+						<br>
+						<br>
+						<br>
+						<div class="details-atc" style="margin-bottom:100px;">
+				<form action="" method="post" style="float:left;">
+					<input onclick = "atc(-1)" type = "button" value = "-" style="width:25px;padding-right:20px;padding-left:13px;">
+					
+					<input style="width:50px;padding-left:18px;padding-top:8px;padding-bottom:5px;" id = "quantity" name = "quantity" type = "text" value = "1" >
+					
+					<input onclick = "atc(1)" type = "button" value = "+" style="width:25px;padding-right:23px;padding-left:13px;">
+					
+					<input type="hidden" name="book_id" value="'.$productshow['product_id'].'">
+					
+					<input type = "submit" value = "Add To Cart" style = width:180px;>
+					
+				</form>					
+					</div>
+					
 		
-			</form>
-
-			
-		</div>';
+					<div class="details-description">
+					<p style="font-size:14px;width:100%;"><h5>Description</h5> <br>'.$productshow['product_description'].'</p>
+					</div>
+				<br>
+					
+			 	</div>		
+			 </div>';
 	
-
-
-?>
+	?>
 								
 						
-						</div>
-					</div>
-				<div class="clearfix"> </div>
-			<!---->
+<?php
+$sqlp = "SELECT * FROM member WHERE email = '$_SESSION[login_user]'";
+$result22 = mysqli_query($con,$sqlp);
+$row10 = mysqli_fetch_array($result22);
+?>
+				<!---->
+<form method="post" >
+
 					<div class="cd-tabs">
 			<nav>
 				<ul class="cd-tabs-navigation">
-					<li><a data-content="fashion"  href="#0">Description </a></li>
-					<li><a data-content="cinema" href="#0" >Addtional Informatioan</a></li>
-					<li><a data-content="television" href="#0" class="selected ">Reviews (1)</a></li>
+					<li><a data-content="fashion"  href="#0">Comments</a></li>
+					<li><a data-content="television" href="#0" class="selected ">Reviews</a></li>
+					
 					
 				</ul> 
 			</nav>
 	<ul class="cd-tabs-content">
 		<li data-content="fashion" >
 		<div class="facts">
-									  <p > There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in the middle of text. All the Lorem Ipsum generators on the Internet tend to repeat predefined chunks as necessary, making this the first true generator on the Internet. It uses a dictionary of over 200 Latin words, combined </p>
-										<ul>
-											<li>Research</li>
-											<li>Design and Development</li>
-											<li>Porting and Optimization</li>
-											<li>System integration</li>
-											<li>Verification, Validation and Testing</li>
-											<li>Maintenance and Support</li>
-										</ul>         
-							        </div>
+		<textarea style="width:100%;padding:55px;" name="comment"></textarea>
+		<div class="memrate">	
+		</div>
+		<br>
+					<input type="hidden" name="id" value="<?php echo $row10['ID']; ?>">
+					<input type="hidden" name="productid" value="<?php echo $_GET['book_id']; ?>">
+					<select class="star-footer" name="ratings">
+						<option value="1">1 (Most Worst)</option>
+						<option value="2">2 (Worst)</option>
+						<option value="3">3 (Bad)</option>
+						<option value="4">4 (Below moderate)</option>
+						<option value="5">5 (Moderate)</option>
+						<option value="6">6 (Over moderate)</option>
+						<option value="7">7 (Good)</option>
+						<option value="8">8 (Better)</option>
+						<option value="9">9 (Best)</option>
+						<option value="10">10 (Superb)</option>
+						</select>
+						<br>
+						<br>
+		<input type="submit" value="submit" name="submit1">
+		
+
+
+		</div>
 
 </li>
-<li data-content="cinema" >
-		<div class="facts1">
-					
-						<div class="color"><p>Color</p>
-							<span >Blue, Black, Red</span>
-							<div class="clearfix"></div>
-						</div>
-						<div class="color">
-							<p>Size</p>
-							<span >S, M, L, XL</span>
-							<div class="clearfix"></div>
-						</div>
-					        
-			 </div>
 
-</li>
+
 <li data-content="television" class="selected">
 	<div class="comments-top-top">
 				<div class="top-comment-left">
-					<img class="img-responsive" src="images/co.png" alt="">
+					
 				</div>
 				<div class="top-comment-right">
-					<h6><a href="#">Hendri</a> - September 3, 2014</h6>
-					<ul class="star-footer">
-										<li><a href="#"><i> </i></a></li>
-										<li><a href="#"><i> </i></a></li>
-										<li><a href="#"><i> </i></a></li>
-										<li><a href="#"><i> </i></a></li>
-										<li><a href="#"><i> </i></a></li>
-									</ul>
-									<p>Wow nice!</p>
+				
+<?php 
+$sql1 = "SELECT * FROM feedback INNER JOIN member ON feedback.member_id = member.ID";
+$result1 = mysqli_query($con,$sql1);
+while($row1 = mysqli_fetch_array($result1)){
+
+
+?>			
+				<p><?php echo $_SESSION['login_user']; ?> - <?php echo $row1['date']?></p>
+					<p><?php echo $row1['comment'];?></p>
+					<p><?php echo $row1['rating'];?></p>
+				
+				<?php }?>
 				</div>
 				<div class="clearfix"> </div>
-				<a class="add-re" href="#">ADD REVIEW</a>
+				
 			</div>
 
 </li>
-<div class="clearfix"></div>
+
 	</ul> 
 </div> 
+</form>
 		<div class=" bottom-product">
-					<div class="col-md-4 bottom-cd simpleCart_shelfItem">
-						<div class="product-at ">
-							<a href="#"><img class="img-responsive" src="images/pi3.jpg" alt="">
-							<div class="pro-grid">
-										<span class="buy-in">Buy Now</span>
-							</div>
-						</a>	
-						</div>
-						<p class="tun">It is a long established fact that a reader</p>
-						<a href="#" class="item_add"><p class="number item_price"><i> </i>$500.00</p></a>						
-					</div>
-					<div class="col-md-4 bottom-cd simpleCart_shelfItem">
-						<div class="product-at ">
-							<a href="#"><img class="img-responsive" src="images/pi1.jpg" alt="">
-							<div class="pro-grid">
-										<span class="buy-in">Buy Now</span>
-							</div>
-						</a>	
-						</div>
-						<p class="tun">It is a long established fact that a reader</p>
-<a href="#" class="item_add"><p class="number item_price"><i> </i>$500.00</p></a>					</div>
-					<div class="col-md-4 bottom-cd simpleCart_shelfItem">
-						<div class="product-at ">
-							<a href="#"><img class="img-responsive" src="images/pi4.jpg" alt="">
-							<div class="pro-grid">
-										<span class="buy-in">Buy Now</span>
-							</div>
-						</a>	
-						</div>
-						<p class="tun">It is a long established fact that a reader</p>
-<a href="#" class="item_add"><p class="number item_price"><i> </i>$500.00</p></a>					</div>
-					<div class="clearfix"> </div>
-				</div>
+															</div>
 </div>
 
 		<div class="clearfix"> </div>
@@ -312,8 +304,8 @@ $productshow = mysqli_fetch_array($row);
 		
 <!--//content-->
 <div class="footer">
-				<div class="container">
-			<div class="footer-top-at">
+	<div class="container">
+		<div class="footer-top-at">
 			
 				<div class="col-md-4 amet-sed">
 				<h4>MORE INFO</h4>
@@ -325,14 +317,14 @@ $productshow = mysqli_fetch_array($row);
 						<li><a href="profile.php">Profile</a></li>	
 					</ul>	
 					
-			</div>		
-								<div class="clearfix"> </div>
-			</div>
+				</div>		
+											</div>
 		</div>
 		<div class="footer-class">
-		<p >© 2015 New store All Rights Reserved | Design by  <a href="http://w3layouts.com/" target="_blank">W3layouts</a> </p>
+		<p >© 2018 TPM Bookstore   </p>
 		</div>
 		</div>
+		
 </body>
 </html>
 			
