@@ -60,14 +60,11 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 					<ul>
 					<?php if (isset($_SESSION['login_user'])): ?>
 						<li class="dropdown"><a href="#"><?php echo($_SESSION['login_user']); ?></a>
-						<div class="dropdown-content">
-							<a href="order.php">My Purchase</a>
-							<a href="logout.php">Logout</a>
-						
-						</div>
-						
-						</li>
-						
+							<div class="dropdown-content">
+								<a href="order.php">My Purchase</a>
+								<a href="logout.php">Logout</a>
+							</div>
+						</li>	
 					<?php else: ?>
 						<li><a href="login.php">Login</a></li>
 						<li><a href="register.php">Register</a></li>
@@ -91,7 +88,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		<div class="container">
 			<div class="head-top">
 				<div class="logo">
-					<a href="index.php"><img src="images/bookicon.png" style="width:10%;height:10%" alt="">TPM Bookstore</a>	
+					<a href="index.php"><img src="images/bookicon.png" style="width:10%;height:10%" alt="">A&C Online Shop</a>	
 				</div>
 		  <div class=" h_menu4">
 				<ul class="memenu skyblue">
@@ -150,10 +147,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 						<div class="slideimg" style="margin-left: 620px;">
 							<img src ="images/27.jpg" alt="">
 						</div>
-						</div>
-						
-						
-					
+						</div>			
 				</li>
 				<li>
 						<div class="banner-text" style="width: 100%; overflow: hidden;">
@@ -225,11 +219,16 @@ for ($i = 0;$productshow = mysqli_fetch_array($row);$i++) {
 				<h4>MORE INFO</h4>
 				<ul class="nav-bottom">
 						<li><a href="index.php">Home</a></li>
-						<li><a href="activity.php">Activity</a></li>
-						<li><a href="order.php">Order</a></li>
 						<li><a href="products.php">Product</a></li>
+					<?php if (isset($_SESSION['login_user'])): ?>
+						<li><a href="activity.php">Activity</a></li>
 						<li><a href="profile.php">Profile</a></li>	
-					</ul>	
+					<?php else: ?>
+						<li style="display: none"><a href="activity.php">Activity</a></li>
+						<li style="display: none"><a href="profile.php">Profile</a></li>	
+					<?php endif; ?>
+						
+				</ul>	
 					
 			</div>		
 								<div class="clearfix"> </div>

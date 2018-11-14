@@ -108,7 +108,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 
 			<form action="admin_update.php" method="post">	
 			<tr>
-			<td><?php echo $activity['name'] ?>
+			<td><a href= index.php><?php echo $activity['name'] ?></a>
 			<input type="hidden" name="member_name" value="<?php echo $activity['name'] ?>"/></td>
 			<td><?php echo $activity['product_name'] ?></td>
 			<td><?php echo $activity['product_quantity']?> </td>
