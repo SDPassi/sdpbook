@@ -5,15 +5,12 @@ session_start();
 include "conn.php";
 
 
-}
-
 
 ?>
-
 <!DOCTYPE html>
 <html>
 <head>
-<title>LOGIN: TPM Bookstore</title>
+<title>ADMIN ORDER: TPM Bookstore</title>
 <link href="css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 <script src="js/jquery.min.js"></script>
@@ -36,69 +33,56 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <script src="js/simpleCart.min.js"> </script>
 </head>
 <body>
-<!--header-->
-<div class="header">
-	<div class="header-top">
-		<div class="container">
-			<div class="search">
-					<form action="" method="post">
-						<input type="text" value="Search " onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Search';}">
-						<input type="submit" value="Go">
-					</form>
-			</div>
-			<div class="header-left">		
-					<ul>
-						<?php if (isset($_SESSION['login_user'])): ?>
-						<li ><a href="login.php"  ><?php echo($_SESSION['login_user']); ?></a></li>
-					<?php else: ?>
-						<li ><a href="login.php"  >Login</a></li>
-						<li><a  href="register.php"  >Register</a></li>
-					<?php endif; ?>
-					</ul>
-					
-					<div class="cart box_1">
-						<a href="cart.php">
-						<h3> <div class="total">
-							</div>
-							<img src="images/cart.png" alt=""/></h3>
-						</a>
-					</div>
-					<div class="clearfix"> </div>
-			</div>
-				<div class="clearfix"> </div>
-		</div>
-		</div>
-		<div class="container">
-			<div class="head-top">
-				<div class="logo">
-					<a href="index.php"><img src="images/bookicon.png" style="width:10%;height:10%" alt="">TPM Bookstore</a>	
-				</div>
-		  <div class=" h_menu4">
-			<ul class="memenu skyblue">
-				<li class="active grid"><a class="color8" href="index.php">Home</a></li>
-				<li><a class="color4" href="products.php">Product</a></li>	
-				<li><a class="color1" href="activity.php">Activity</a></li>
-				<li class="grid"><a class="color2" href="order.php">Order</a></li>
-				<li><a class="color6" href="contact.php">Profile</a></li>
-			</ul> 
-		  </div>
-				
-				<div class="clearfix"> </div>
-		</div>
-		</div>
-
-	</div>
-
-	
-<!--content-->
-
+<!--content-->	
+<div class="cart">
 <div class="container">
-		<div class="account">
-		<h1>INVOICE</h1>
-		<div class="account-pass">
-		<div class="col-md-8 account-top" style="margin-left:200px;">
+	<div class="check">	 
+			 <h1>Order Summary</h1>
+		 <div class="col-md-9 cart-items" style="background-color:white;">
+			
+			 <div class="cart-header">
+				
+				 <div class="cart-sec simpleCart_shelfItem">
+<?php
+if(isset($_SESSION['cart'])){
+$total = 0;
+foreach($_SESSION['cart'] as $book_id => $carts){
+$sql = "SELECT * FROM inventory WHERE product_id = $book_id";
+
+
+$result1 = mysqli_query($con, $sql);
+while($row = mysqli_fetch_array($result1)) {
+
+$subtotal = $carts * $row['product_price'] ;
+$total += $subtotal;
+				
+				echo '<div class="cart-item cyc" style="width: 100%; border-bottom: groove;margin-top:40px;margin-bottom:30px;">
+					   <div style="float: left;padding-left:100px;padding-bottom:100px;" class="cart-item-info">
+						<h3>'.$row['product_name'].'<span>RM '.$subtotal.'</span></h3>
+						<ul class="qty">
+							<li><p>Qty : '.$carts.'</p></li>
+							<br>
+							<br>
+						</ul>
+						<br>
+		        </div>	
+			 </div> ';		
+	}
 		
-		<?php
+}
+}
+
+?>
+</div>
+</div>
+</div>
+</div>
+
+
+
+				<br>	
+				
+<?php
 if (isset($_SESSION['login_user'])) {
 $sql1 = "SELECT * FROM member WHERE email = '$_SESSION[login_user]'";
 
@@ -129,38 +113,47 @@ $row1 = mysqli_fetch_array($result4);
 				 <span class="total1"><b><?php echo $row1['phone'] ?></b></span>
 				 <span class="total1"><b><?php echo $row1['address'] ?></b></span>
 
+	
+ 					<br><br>
+				
+		   <div class="clearfix"></div>				 
+			 </div>	
+			 <br>
+			 <div class="price-details">
+			  <h3>Price Details</h3>
+			 	<span class="last_price">
+			 	<span><h6>TOTAL: RM <?php $total1 = $total -$_POST['cars'];echo $total1; ?></h6></span>
+			 	<br>
+			 	<br>
+			 	<span><h6 style="color:green;">DELIVERY: FREE</h6></span>
 
-		
-				</div>
-	<div class="clearfix"> </div>
-	</div>
-	</div>
-
-</div>
-
-<!--//content-->
-<div class="footer">
-				<div class="container">
-			<div class="footer-top-at">
+			 	</span>	
+			 <div class="clearfix"> </div>
+			 </div>
 			
-				<div class="col-md-4 amet-sed">
-				<h4>MORE INFO</h4>
-				<ul class="nav-bottom">
-						<li><a href="index.php">Home</a></li>
-						<li><a href="activity.php">Activity</a></li>
-						<li><a href="order.php">Order</a></li>
-						<li><a href="products.php">Product</a></li>
-						<li><a href="profile.php">Profile</a></li>	
-					</ul>	
-					
-			</div>		
-								<div class="clearfix"> </div>
+			 
+			 <div class="clearfix"></div>
+			<form method="post">
+			 <div class="total-item" style="margin-top:50px;">
+
+				 <div class="order">
+				 <input type="hidden" name="id" value="<?php echo $row1['ID']; ?>"/>
+				 <input type="hidden" name="post" value="<?php echo $total1; ?>"/>
+				 <input type="hidden" name="cars" value="<?php echo $_POST['cars']?>" />
+				 <input type="hidden" name="submit">
+				 </div>
 			</div>
-		</div>
-		<div class="footer-class">
-		<p >© 2015 New store All Rights Reserved | Design by  <a href="http://w3layouts.com/" target="_blank">W3layouts</a> </p>
-		</div>
-		</div>
+			</form>
+
+			</div>   
+		
+			<div class="clearfix"> </div>
+	 </div>
+	 </div>
+
+
+		<script>window.print();</script>	
 </body>
+
 </html>
 			

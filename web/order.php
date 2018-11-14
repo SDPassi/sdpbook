@@ -166,7 +166,7 @@ while($activity = mysqli_fetch_array($result)){
 		
 		</table>
 		<form action="invoice.php" method="post">
-		<input type="submit" name="submit" value="print">
+		<input type="submit" name="submit" value="print" style="float:right;">
 		</form>
 		</div>
 		
