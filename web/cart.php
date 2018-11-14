@@ -87,8 +87,14 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 					<ul class="memenu skyblue">
 					  <li class="active grid"><a class="color2" href="index.php" style="color:black;">Home</a></li>	
 					   <li><a class="color4" href="products.php">Product</a></li>	
-				      <li><a class="color1" href="activity.php">Activity</a></li>
-				<li><a class="color6" href="profile.php">My Account</a></li>
+				      <?php if (isset($_SESSION['login_user'])): ?>
+				      	<li><a class="color1" href="activity.php">Activity</a></li>
+					  	<li><a class="color6" href="profile.php">My Account</a></li>
+					<?php else: ?>
+					 	<li><a class="color1" style="display: none" href="activity.php">Activity</a></li>
+					 	<li><a class="color6" style="display: none" href="profile.php">My Account</a></li>
+					<?php endif; ?> 	
+
 			  </ul> 
 			</div>
 				

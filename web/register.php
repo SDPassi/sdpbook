@@ -92,14 +92,13 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 
 					</ul>
 					<div class="cart box_1">
-						<a href="checkout.php">
+						<a href="cart.php">
 						<h3> <div class="total">
-							<span class="simpleCart_total"></span> (<span id="simpleCart_quantity" class="simpleCart_quantity"></span> items)</div>
+							</div>
 							<img src="images/cart.png" alt=""/></h3>
 						</a>
-												<p><a href="javascript:;" class="simpleCart_empty">Empty Cart</a></p>
-
 					</div>
+
 					<div class="clearfix"> </div>
 			</div>
 				<div class="clearfix"> </div>
@@ -112,12 +111,15 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				</div>
 		  <div class=" h_menu4">
 					<ul class="memenu skyblue">
-					   <li class="active grid"><a class="color8" href="index.php" style="color:black;">Home</a></li>	
-				     <li><a class="color1" href="activity.php">Activity</a></li>
-				     <li class="grid"><a class="color2" href="order.php">Order</a></li>
-					<li><a class="color4" href="products.php">Product</a> 	
-			    </li>					
-				<li><a class="color6" href="profile.php">Profile</a></li>
+					  <li class="active grid"><a class="color8" href="index.php" style="color:black;">Home</a></li>
+				<li><a class="color4" href="products.php">Product</a></li>	
+					<?php if (isset($_SESSION['login_user'])): ?>
+				      	<li><a class="color1" href="activity.php">Activity</a></li>
+					  	<li><a class="color6" href="profile.php">My Account</a></li>
+					<?php else: ?>
+					 	<li><a class="color1" style="display: none" href="activity.php">Activity</a></li>
+					 	<li><a class="color6" style="display: none" href="profile.php">My Account</a></li>
+					<?php endif; ?> 	
 			  </ul> 
 			</div>
 				
