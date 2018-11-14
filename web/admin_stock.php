@@ -44,12 +44,22 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 						<li ><a href="admin_profile.php"  ><?php echo($_SESSION['login_user']); ?><a href="logout.php">(LOGOUT)</a></li>
 						
 					<?php else: ?>
-						<li><a href="admin_login.php">Login</a></li>
-					
+						<li ><a href="login.php"  >Login</a></li>
+						
 					<?php endif; ?>
 
 					</ul>
-					<div class="clearfix"> </div>
+					<div class="cart box_1">
+						<a href="checkout.php">
+						<h3> <div class="total">
+							</div>
+							</h3>
+						</a>
+					
+
+					</div>
+
+						<div class="clearfix"> </div>
 			</div>
 				<div class="clearfix"> </div>
 		</div>
@@ -61,7 +71,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				</div>
 		  <div class=" h_menu4">
 			<ul class="memenu skyblue">
-				<li class="active grid"><a class="color8" href="admin_index.php">Main</a></li>
+				<li class="active grid"><a class="color2" href="admin_index.php" style="color:black;">Main</a></li>
 				<li><a class="color4" href="admin_stock.php">Stock</a></li>	
 				<li><a class="color1" href="admin_order.php">Order</a></li>
 				<li class="grid"><a class="color2" href="admin_report.php">Report</a></li>
