@@ -5,7 +5,7 @@ include("conn.php");
 <!DOCTYPE html>
 <html>
 <head>
-<title>REPORT: TPM Bookstore</title>
+<title>REPORT: A&C Online Shop</title>
 <link href="css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 <script src="js/jquery.min.js"></script>
@@ -41,26 +41,17 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			<div class="header-left">		
 					<ul>
 						<?php if (isset($_SESSION['login_user'])): ?>
-
-						<li ><a href="logout.php"  ><?php echo($_SESSION['login_user']); ?></a></li>
-					<?php else: ?>
-						<li ><a href="login.php"  >Login</a></li>
+						<li ><a href="admin_profile.php"  ><?php echo($_SESSION['login_user']); ?><a href="logout.php">(LOGOUT)</a></li>
 						
+					<?php else: ?>
+						<li><a href="admin_login.php">Login</a></li>
+					
 					<?php endif; ?>
 
 					</ul>
 
 					
-					<div class="cart box_1">
-						<a href="checkout.php">
-						<h3> <div class="total">
-							</div>
-						</h3>
-						</a>
-						
-
-					</div>
-					
+										
 					<div class="clearfix"> </div>
 			</div>
 				<div class="clearfix"> </div>
@@ -69,7 +60,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		<div class="container">
 			<div class="head-top">
 				<div class="logo">
-					<a href="admin_index.php"><img src="images/bookicon.png" style="width:10%;height:10%" alt="">Admin</a>	
+					<a href="admin_index.php" style="color:black;text-decoration:none"><img src="images/cdlogo.png" style="width:10%;height:10%" alt="" >Admin</a>	
 				</div>
 		  <div class=" h_menu4">
 			<ul class="memenu skyblue">

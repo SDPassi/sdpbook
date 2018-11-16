@@ -32,7 +32,7 @@ window.location.replace ("admin_index.php");
 <!DOCTYPE html>
 <html>
 <head>
-<title>PROFILE : TPM Bookstore</title>
+<title>PROFILE : A&C Online Shop</title>
 <link href="css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
 <!-- self add query-->
 <script type="text/javascript">
@@ -100,7 +100,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		<div class="container">
 			<div class="head-top">
 				<div class="logo">
-					<a href="admin_index.php"><img src="images/bookicon.png" style="width:10%;height:10%" alt="">Admin</a>	
+					<a href="admin_index.php" style="color:black;text-decoration:none"><img src="images/cdlogo.png" style="width:10%;height:10%" alt="" >Admin</a>	
 				</div>
 		  <div class=" h_menu4">
 			<ul class="memenu skyblue">

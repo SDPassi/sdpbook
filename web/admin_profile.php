@@ -32,7 +32,7 @@ $row = mysqli_fetch_array ($result);
 <!DOCTYPE html>
 <html>
 <head>
-<title>PROFILE : TPM Bookstore</title>
+<title>PROFILE : A&C Online Shop</title>
 <link href="css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
 <!-- self add query-->
 <script type="text/javascript">
@@ -79,18 +79,13 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			<div class="header-left">		
 					<ul>
 						<?php if (isset($_SESSION['login_user'])): ?>
+						<li ><a href="admin_profile.php"  ><?php echo($_SESSION['login_user']); ?><a href="logout.php">(LOGOUT)</a></li>
 						
-						<li class="dropdown"><a href="#"><?php echo($_SESSION['login_user']); ?></a>
-						<div class="dropdown-content">
-							<a href="logout.php">Logout</a>
-						
-						</div>
-						
-						</li>
-
 					<?php else: ?>
-						<li ><a href="admin_login.php"  >Admin Login</a></li>
+						<li ><a href="login.php"  >Login</a></li>
+						
 					<?php endif; ?>
+
 					</ul>
 				<div class="clearfix"> </div>
 			</div>
@@ -100,7 +95,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		<div class="container">
 			<div class="head-top">
 				<div class="logo">
-					<a href="admin_index.php"><img src="images/bookicon.png" style="width:10%;height:10%" alt="">Admin</a>	
+					<a href="admin_index.php" style="color:black;text-decoration:none"><img src="images/cdlogo.png" style="width:10%;height:10%" alt="" >Admin</a>	
 				</div>
 		  <div class=" h_menu4">
 			<ul class="memenu skyblue">
@@ -123,19 +118,19 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			
 			<div class="container">
 				<h1>Your Profile</h1>
-				<form method="post">
+				<form action="admin_updateprofile.php" method="post">
 			<div class="col-md-6 register-top-grid"style="margin-left:270px;">
 					<div>
 						<span>Name</span>
-						<input name="name" type="text" value="<?php echo $row['admin_name']?>" required="required"> 
+						<input name="admin_name" type="text" value="<?php echo $row['admin_name']?>" required="required"> 
 					 </div>
 					 <div>
 						<span>Phone Number</span>
-						<input name="num" type="tel" value="<?php echo $row['admin_phone']?>" required="required"> 
+						<input name="admin_phone" type="tel" value="<?php echo $row['admin_phone']?>" required="required"> 
 					 </div>
 					 <div>
 						 <span>Email Address</span>
-						 <input name="email" type="email" value="<?php echo $row['admin_email']?>" required="required"> 
+						 <input name="admin_email" type="email" value="<?php echo $row['admin_email']?>" required="required"> 
 					 </div>
 					 	<div class="send">
 							<input type="submit" value="Update" style="float:right;">

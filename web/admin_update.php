@@ -11,6 +11,8 @@ WHERE member_id='$_POST[memberid]'";
 
 $result=mysqli_query($con,$sql);
 
+//ajax//
+
 echo'<script text="text/javascript">
 alert("Order Status updated!");
 window.location.replace ("admin_index.php");

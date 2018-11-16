@@ -58,19 +58,14 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			</div>
 			<div class="header-left">		
 					<ul>
-					<?php if (isset($_SESSION['login_user'])): ?>
-						<li class="dropdown"><a href="#"><?php echo($_SESSION['login_user']); ?></a>
-						<div class="dropdown-content">
-							
-							<a href="logout.php">Logout</a>
-						
-						</div>
-						
-						</li>
+						<?php if (isset($_SESSION['login_user'])): ?>
+						<li ><a href="admin_profile.php"  ><?php echo($_SESSION['login_user']); ?><a href="logout.php">(LOGOUT)</a></li>
 						
 					<?php else: ?>
-						<li><a href="admin_login.php">Login</a></li>
+						<li ><a href="login.php"  >Login</a></li>
+						
 					<?php endif; ?>
+
 					</ul>
 			<div class="clearfix"> </div>
 			</div>
@@ -80,7 +75,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		<div class="container">
 			<div class="head-top">
 				<div class="logo">
-					<a href="admin_index.php"><img src="images/bookicon.png" style="width:10%;height:10%" alt="">Admin</a>	
+					<a href="admin_index.php" style="color:black;text-decoration:none"><img src="images/cdlogo.png" style="width:10%;height:10%" alt="" >Admin</a>	
 				</div>
 		  <div class=" h_menu4">
 			<ul class="memenu skyblue">

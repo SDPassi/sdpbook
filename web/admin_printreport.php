@@ -5,7 +5,7 @@ include("conn.php");
 <!DOCTYPE html>
 <html>
 <head>
-<title>STOCK: TPM Bookstore</title>
+<title>STOCK: A&C Online Shop</title>
 <link href="css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 <script src="js/jquery.min.js"></script>
