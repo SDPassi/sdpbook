@@ -98,6 +98,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			<th>Quantity </th>
 			<th>Price(RM) </th>
 			<th>Product Image</th>
+			
 		</tr>
 		
 		</thead>

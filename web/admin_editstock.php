@@ -92,7 +92,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			<th>Description</th>
 			<th>Quantity </th>
 			<th>Price(RM) </th>
-			
+			<th>Product Image</th>
+			<th></th>
 		</tr>
 		
 		<?php
@@ -113,6 +114,13 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			<td><input name="productdescription" value="<?php echo $order['product_description'] ?>"/></td>
 			<td><input name="productquantity" value="<?php echo $order['product_quantity']?>"/></td>
 			<td><input name="productprice" value="<?php echo $order['product_price']?>"/></td>
+			<td><input name="productimage" value="<?php echo $order['product_image']?>"/></td>
+			<td>
+				<div class="send">
+							
+					<input type="submit" value="Update Stock " style="float:right;margin-left:10px;">			
+				</div>	
+			</td>
 			</tr>
 			
 			
@@ -124,10 +132,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		
 		
 		</table>
-		<div class="send">
-							
-							<input type="submit" value="Update Stock " style="float:right;margin-left:10px;">			
-		</div>	
+		
 		</form>
 		
 		<!--add stock-->
