@@ -88,11 +88,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		<div class="container">
 			<div class="head-top">
 				<div class="logo">
-<<<<<<< HEAD
-					<a href="index.php" style="color:black;text-decoration:none"><img src="images/cdlogo.png" style="width:10%;height:10%" alt="">A&C Online Shop</a>
-=======
-					<a href="index.php"><img src="images/bookicon.png" style="width:10%;height:10%" alt="">A&C Online Shop</a>	
->>>>>>> e53f9aebdba4744b98228a273e59731659182009
+		<a href="index.php" style="color:black;text-decoration:none"><img src="images/cdlogo.png" style="width:10%;height:10%" alt="">A&C Online Shop</a>
 				</div>
 		  <div class=" h_menu4">
 				<ul class="memenu skyblue">
