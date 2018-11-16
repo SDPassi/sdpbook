@@ -85,7 +85,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			</div>
 			<div class="header-left">		
 					<ul>
-						<li ><a href="login.php"  >Login</a></li>
+						<li><a href="login.php"  >Login</a></li>
 						<li><a  href="register.php"  >Register</a></li>
 						<li>
 </li>
@@ -155,7 +155,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 					</div>
 					<div>
 						<span>Confirm Password</span>
-							<input name="cpsw"  id="pass2" onchange="checkEqualPassword(document.getElementById('pass1'), this);" type="password" min="4" required="required">
+							<input name="cpsw"  id="pass2" onchange="checkEqualPassword(document.getElementById('pass1')), this);" type="password" min="4" required="required">
 					</div>
 					<div>
 						<span>Address</span>
