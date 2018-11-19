@@ -151,11 +151,11 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 					 </div>
 					 <div>
 						<span>Password</span>
-							<input name="psw"  id="pass1" onchange="checkEqualPassword(this, document.getElementById('pass2'));" type="password" min="4" required="required" >
+							<input name="psw" id="pass1" onchange="checkEqualPassword(this, document.getElementById('pass2'));" type="password" min="4" required="required" >
 					</div>
 					<div>
 						<span>Confirm Password</span>
-							<input name="cpsw"  id="pass2" onchange="checkEqualPassword(document.getElementById('pass1')), this);" type="password" min="4" required="required">
+							<input name="cpsw" id="pass2" onchange="checkEqualPassword(document.getElementById('pass1'), this);" type="password" min="4" required="required">
 					</div>
 					<div>
 						<span>Address</span>

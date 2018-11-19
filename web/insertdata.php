@@ -81,7 +81,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 						<h3><div class="total">
 							</div>
 							<a href="cart.php" style="padding-right:15px;"><img src="images/cart.png" alt=""/></a>
-							<a href="javascript:;" class="simpleCart_empty" style="color:white;">(Empty Cart)</a></h3>
+							</h3>
 						</a>
 												
 					</div>
