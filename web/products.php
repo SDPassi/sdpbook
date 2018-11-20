@@ -115,10 +115,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 					<li class="active grid"><a class="color2" href="index.php" style="color:black;">Home</a></li>	
 					<li><a class="color4" href="products.php">Product</a></li>	
 				    <?php if (isset($_SESSION['login_user'])): ?>
-				      	<li><a class="color1" href="activity.php">Activity</a></li>
 					  	<li><a class="color6" href="profile.php">My Account</a></li>
 					<?php else: ?>
-					 	<li><a class="color1" style="display: none" href="activity.php">Activity</a></li>
 					 	<li><a class="color6" style="display: none" href="profile.php">My Account</a></li>
 					<?php endif; ?> 	
 
@@ -204,27 +202,34 @@ for ($i = 0;$productshow = mysqli_fetch_array($row);$i++) {
 
 <!--//content-->
 <div class="footer">
-				<div class="container">
-			<div class="footer-top-at">
+	<div class="container">
+		<div class="footer-top-at">
 			
-				<div class="col-md-4 amet-sed">
+			<div class="col-md-4 amet-sed">
 				<h4>MORE INFO</h4>
 				<ul class="nav-bottom">
 						<li><a href="index.php">Home</a></li>
-						<li><a href="activity.php">Activity</a></li>
-						<li><a href="order.php">Order</a></li>
 						<li><a href="products.php">Product</a></li>
-						<li><a href="profile.php">Profile</a></li>	
+					<?php if (isset($_SESSION['login_user'])): ?>
+						<li><a href="order.php">Order</a></li>
+						<li><a href="profile.php">My Account</a></li>	
+					<?php else: ?>
+						<li style="display: none"><a href="order.php">Order</a></li>
+						<li style="display: none"><a href="profile.php">My Account</a></li>	
+					<?php endif; ?>
 					</ul>	
 					
 			</div>		
 								<div class="clearfix"> </div>
-			</div>
 		</div>
-		<div class="footer-class">
-		<p >© 2018 TPM Bookstore</p>
-		</div>
-		</div>
+	</div>
+	
+	<div class="footer-class">
+		<p >© 2018 A&C Online Shop</p>
+	</div>
+	
+</div>
+
 </body>
 </html>
 						

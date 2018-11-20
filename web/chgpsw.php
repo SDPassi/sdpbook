@@ -110,15 +110,14 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		<div class="container">
 			<div class="head-top">
 				<div class="logo">
-					<a href="index.html"><img src="images/bookicon.png" style="width:10%;height:10%" alt="">TPM Bookstore</a>	
+			<a href="index.php" style="color:black;text-decoration:none;"><img src="images/cdlogo.png" style="width:10%;height:10%" alt="">A&C Online Shop</a>
 				</div>
 		  <div class=" h_menu4">
 					<ul class="memenu skyblue">
-					   <li class="active grid"><a class="color8" href="index.php" style="color:black;">Home</a></li>	
-				      <li><a class="color1" href="activity.php">Activity</a></li>
-					<li><a class="color4" href="products.php">Product</a> 	
+						<li class="active grid"><a class="color8" href="index.php" style="color:black;">Home</a></li>	
+						<li><a class="color4" href="products.php">Product</a> 	
 			    </li>		
-				<li><a class="color6" href="profile.php">Profile</a></li>
+						<li><a class="color6" href="profile.php">My Account</a></li>
 			  </ul> 
 			</div>
 				
@@ -137,7 +136,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				<form method="post">
 			<div class="col-md-6 register-top-grid"style="margin-left:270px;">
 					 <div>
-						<span>Password</span>
+						<span style="margin-top:20px;">Password</span>
 						<input name="opsw"  id="oldpassword" type="password" value="" min="4" required="required" >
 					 </div>
 					 
@@ -170,13 +169,18 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			<div class="footer-top-at">
 			
 				<div class="col-md-4 amet-sed">
-				<h4>ADMIN</h4>
+				<h4>More Info</h4>
 				<ul class="nav-bottom">
-						<li><a href="admin_index.php">Home</a></li>
-						<li><a href="admin_stock.php">Stock</a></li>
-						<li><a href="admin_order.php">Order</a></li>
-						<li><a href="admin_.php">Report</a></li>
-						<li><a href="admin_profile.php">Profile</a></li>	
+						<li><a href="index.php">Home</a></li>
+						<li><a href="products.php">Product</a></li>
+					<?php if (isset($_SESSION['login_user'])): ?>
+						<li><a href="order.php">Order</a></li>
+						<li><a href="profile.php">My Account</a></li>	
+					<?php else: ?>
+						<li style="display: none"><a href="order.php">Order</a></li>
+						<li style="display: none"><a href="profile.php">My Account</a></li>	
+					<?php endif; ?>
+
 					</ul>	
 					
 			</div>		
@@ -184,7 +188,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			</div>
 		</div>
 		<div class="footer-class">
-		<p >© 2015 New store All Rights Reserved | Design by  <a href="http://w3layouts.com/" target="_blank">W3layouts</a> </p>
+		<p>© 2018 A&C Online Shop </p>
 		</div>
 		</div>
 

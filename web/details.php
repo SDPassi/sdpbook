@@ -105,15 +105,19 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		<div class="container">
 			<div class="head-top">
 				<div class="logo">
-					<a href="index.php"><img src="images/bookicon.png" style="width:10%;height:10%" alt="">TPM Bookstore</a>	
+			<a href="index.php" style="color:black;text-decoration:none;"><img src="images/cdlogo.png" style="width:10%;height:10%" alt="">A&C Online Shop</a>
 				</div>
 		  <div class=" h_menu4">
 					<ul class="memenu skyblue">
 					   <li class="active grid"><a class="color2" href="index.php">Home</a></li>	
-					   <li><a class="color4" href="products.php">Product</a></li>	
-				      <li><a class="color1" href="activity.php">Activity</a></li>
-				<li><a class="color6" href="profile.php">My Account</a></li>
-			  </ul> 
+					   <li><a class="color4" href="products.php">Product</a></li>
+					<?php if (isset($_SESSION['login_user'])): ?>
+					  	<li><a class="color6" href="profile.php">My Account</a></li>
+					<?php else: ?>
+					 	<li><a class="color6" style="display: none" href="profile.php">My Account</a></li>
+					<?php endif; ?> 			  
+					
+				</ul> 
 			</div>
 				
 				<div class="clearfix"> </div>
@@ -153,7 +157,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 
 	
 		<div class="col-md-5 single-top">	
-	</div>
+			</div>
 
 					</div>	
 					<div class="descrip">
@@ -201,39 +205,32 @@ $productshow = mysqli_fetch_array($row);
 					<input type="hidden" name="book_id" value="'.$productshow['product_id'].'">
 					
 					<input type = "submit" value = "Add To Cart" style = width:180px;>
-					
 				</form>					
 					</div>
-					
-		
 					<div class="details-description">
 					<p style="font-size:14px;width:100%;"><h5>Description</h5> <br>'.$productshow['product_description'].'</p>
 					</div>
 				<br>
-					
 			 	</div>		
 			 </div>';
-	
-	?>
-								
-						
-<?php
+	?>				
+<!--<?php
 $sqlp = "SELECT * FROM member WHERE email = '$_SESSION[login_user]'";
 $result22 = mysqli_query($con,$sqlp);
 $row10 = mysqli_fetch_array($result22);
-?>
+?>-->
 				<!---->
-<form method="post" >
+<!-- <form method="post" >
 
 					<div class="cd-tabs">
-			<nav>
+			<!--<nav>
 				<ul class="cd-tabs-navigation">
 					<li><a data-content="fashion"  href="#0">Comments</a></li>
 					<li><a data-content="television" href="#0" class="selected ">Reviews</a></li>
 					
 					
 				</ul> 
-			</nav>
+			</nav> 
 	<ul class="cd-tabs-content">
 		<li data-content="fashion" >
 		<div class="facts">
@@ -294,9 +291,10 @@ while($row1 = mysqli_fetch_array($result1)){
 
 	</ul> 
 </div> 
-</form>
-		<div class=" bottom-product">
-															</div>
+</form> -->
+		
+		<div class=" bottom-product"> </div>
+		</div>
 </div>
 
 		<div class="clearfix"> </div>
@@ -304,26 +302,31 @@ while($row1 = mysqli_fetch_array($result1)){
 		
 <!--//content-->
 <div class="footer">
+
 	<div class="container">
 		<div class="footer-top-at">
 			
 				<div class="col-md-4 amet-sed">
-				<h4>MORE INFO</h4>
-				<ul class="nav-bottom">
+					<h4>MORE INFO</h4>
+					<ul class="nav-bottom">
 						<li><a href="index.php">Home</a></li>
-						<li><a href="activity.php">Activity</a></li>
-						<li><a href="order.php">Order</a></li>
 						<li><a href="products.php">Product</a></li>
-						<li><a href="profile.php">Profile</a></li>	
-					</ul>	
-					
-				</div>		
-											</div>
+					<?php if (isset($_SESSION['login_user'])): ?>
+						<li><a href="order.php">Order</a></li>
+						<li><a href="profile.php">My Account</a></li>	
+					<?php else: ?>
+						<li style="display: none"><a href="order.php">Order</a></li>
+						<li style="display: none"><a href="profile.php">My Account</a></li>	
+					<?php endif; ?>
+					</ul>		
+				</div>
+			</div>
 		</div>
-		<div class="footer-class">
-		<p >© 2018 TPM Bookstore   </p>
-		</div>
-		</div>
+
+	<div class="footer-class">
+		<p >© 2018 A&C Online Shop</p>
+	</div>
+</div>
 		
 </body>
 </html>

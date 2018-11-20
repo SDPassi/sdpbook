@@ -145,11 +145,9 @@ $total += $subtotal;
 						<br>
 		        </div>	
 			 </div> ';		
-	}
-		
+	}	
 }
 }
-
 ?>
 </div>
 </div>
@@ -257,7 +255,7 @@ $row1 = mysqli_fetch_array($result4);
 			</div>
 		</div>
 		<div class="footer-class">
-		<p >© 2018 TPM Bookstore </p>
+		<p >© 2018 A&C Online Shop </p>
 		</div>
 		</div>
 		

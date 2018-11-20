@@ -90,13 +90,12 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		<div class="container">
 			<div class="head-top">
 				<div class="logo">
-					<a href="index.php"><img src="images/bookicon.png" style="width:10%;height:10%" alt="">TPM Bookstore</a>	
+				<a href="index.php" style="color:black;text-decoration:none;"><img src="images/cdlogo.png" style="width:10%;height:10%" alt="">A&C Online Shop</a>	
 				</div>
 		  <div class=" h_menu4">
 					<ul class="memenu skyblue">
 					  <li class="active grid"><a class="color2" href="index.php" style="color:black;">Home</a></li>	
 					   <li><a class="color4" href="products.php">Product</a></li>	
-				      <li><a class="color1" href="activity.php">Activity</a></li>
 				<li><a class="color6" href="profile.php">My Account</a></li>
 			  </ul> 
 			</div>
@@ -183,10 +182,14 @@ while($activity = mysqli_fetch_array($result)){
 				<h4>MORE INFO</h4>
 				<ul class="nav-bottom">
 						<li><a href="index.php">Home</a></li>
-						<li><a href="activity.php">Activity</a></li>
-						<li><a href="order.php">Order</a></li>
 						<li><a href="products.php">Product</a></li>
-						<li><a href="profile.php">Profile</a></li>	
+					<?php if (isset($_SESSION['login_user'])): ?>
+						<li><a href="order.php">Order</a></li>
+						<li><a href="profile.php">My Account</a></li>	
+					<?php else: ?>
+						<li style="display: none"><a href="order.php">Order</a></li>
+						<li style="display: none"><a href="profile.php">My Account</a></li>	
+					<?php endif; ?>
 					</ul>	
 					
 			</div>		
@@ -194,7 +197,7 @@ while($activity = mysqli_fetch_array($result)){
 			</div>
 		</div>
 		<div class="footer-class">
-		<p >© 2018 TPM Bookstore  </p>
+		<p >© 2018 A&C Online Shop </p>
 		</div>
 		</div>
 </body>

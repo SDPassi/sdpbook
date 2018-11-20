@@ -53,12 +53,9 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 						<li class="dropdown"><a href="#"><?php echo($_SESSION['login_user']); ?></a>
 						<div class="dropdown-content">
 							<a href="order.php">My Purchase</a>
-							<a href="logout.php">Logout</a>
-						
+							<a href="logout.php">Logout</a>	
 						</div>
-						
 						</li>
-						
 					<?php else: ?>
 						<li><a href="login.php">Login</a></li>
 						<li><a href="register.php">Register</a></li>
@@ -168,7 +165,7 @@ $total += $subtotal;
 
 				  	<select name="cars" onchange="document.getElementById('total').innerHTML = parseFloat(document.getElementById('total-original').innerHTML) - this.value;">
  						<option value="0">NONE</option>
-    					<option value="10"  <?php if($total<100){echo "disabled";}else{} ?>>100 points (RM 10)</option>		
+    					<option value="10" <?php if($total<100){echo "disabled";}else{} ?>>100 points (RM 10)</option>		
    				 		<option value="20" <?php if($total<200){echo "disabled";}else{} ?>>200 points (RM 20)</option>
    				 		<option value="30" <?php if($total<300){echo "disabled";}else{} ?>>300 points (RM 30)</option>
    				 		<option value="40" <?php if($total<400){echo "disabled";}else{} ?>>400 points (RM 40)</option>
@@ -211,10 +208,14 @@ $total += $subtotal;
 				<h4>MORE INFO</h4>
 				<ul class="nav-bottom">
 						<li><a href="index.php">Home</a></li>
-						<li><a href="activity.php">Activity</a></li>
+						<li><a href="products.php">Products</a></li>
+					<?php if (isset($_SESSION['login_user'])): ?>
 						<li><a href="order.php">Order</a></li>
-						<li><a href="products.php">Product</a></li>
-						<li><a href="profile.php">Profile</a></li>	
+						<li><a href="profile.php">My Account</a></li>	
+					<?php else: ?>
+						<li style="display: none"><a href="order.php">Order</a></li>
+						<li style="display: none"><a href="profile.php">My Account</a></li>	
+					<?php endif; ?>
 					</ul>	
 					
 			</div>		
@@ -222,7 +223,7 @@ $total += $subtotal;
 			</div>
 		</div>
 		<div class="footer-class">
-		<p >© 2018 TPM Bookstore </p>
+		<p >© 2018 A&C Online Shop</p>
 		</div>
 		</div>
 		
