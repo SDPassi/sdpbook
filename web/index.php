@@ -128,13 +128,13 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 					
 						<div class="banner-text" style="width: 100%; overflow: hidden;">
 						<div class="slidetxt" style="width: 600px; float: left;">
-							<h3>WJSN</h3>
+							<h3>Cosmic Girls</h3>
 								<p>South Korean-Chinese girl group formed by Starship Entertainment and Yuehua Entertainment. The group debuted on February 25, 2016 with the extended play Would You Like? and with twelve members: Seola, Xuanyi, Bona, Exy, Soobin, Luda, Dawon, Eunseo, Cheng Xiao, Meiqi, Yeoreum and Dayoung. In July 2016, Cosmic Girls added a thirteenth member, Yeonjung, to the group.</p>
 									<a href="products.php">Learn More</a>
 						</div>
 						
 						<div class="slideimg" style="margin-left: 620px;">
-							<img src ="images/13a.jpg" alt="">
+							<img src ="images/wjsn.jpg_large" alt="">
 						</div>
 						</div>
 		
@@ -148,19 +148,19 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 									<a href="products.php">Learn More</a>
 						</div>
 						<div class="slideimg" style="margin-left: 620px;">
-							<img src ="images/27a.jpg" alt="">
+							<img src ="images/BTS.jpg" alt="">
 						</div>
 						</div>			
 				</li>
 				<li>
 						<div class="banner-text" style="width: 100%; overflow: hidden;">
 						<div class="slidetxt" style="width: 600px; float: left;">
-							<h3>Rocket Girls</h3>
+							<h3>Rocket Girls 101</h3>
 								<p>an eleven-member Chinese idol girl group formed by Tencent through the 2018 reality show Produce 101 China on Tencent Video. They made their debut on 23 June 2018. The members participated as trainees in the show Produce 101 before debuting as members of Rocket Girls 101 on 23 June. The group includes members, Meng Meiqi and Wu Xuanyi, Yang Chaoyue, Duan Aojuan, Yamy, Lai Meiyun, Zhang Zining, Sunnee, Li Ziting, Fu Jing and Xu Mengjie.</p>
 									<a href="products.php">Learn More</a>
 						</div>	
 						<div class="slideimg" style="margin-left: 620px;">
-							<img src ="images/28a.jpg" alt="">
+							<img src ="images/101.jpeg" alt="">
 						</div>
 						</div>
 					
@@ -176,7 +176,7 @@ Xue was born on 17 July 1983 in Shanghai, China.</p>
 									<a href="products.php">Learn More</a>
 						</div>	
 						<div class="slideimg" style="margin-left: 620px;">
-							<img src ="images/b6.jpg" alt="">
+							<img src ="images/joker.jpg" alt="">
 						</div>
 						</div>
 					
@@ -191,7 +191,7 @@ Xue was born on 17 July 1983 in Shanghai, China.</p>
 									<a href="products.php">Learn More</a>
 						</div>	
 						<div class="slideimg" style="margin-left: 620px;">
-							<img src ="images/b7.jpg" alt="">
+							<img src ="images/lay.jpg" alt="">
 						</div>
 						</div>
 					
