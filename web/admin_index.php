@@ -114,13 +114,13 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 					
 						<div class="banner-text" style="width: 100%; overflow: hidden;">
 						<div class="slidetxt" style="width: 600px; float: left;">
-							<h3>Books are the knowledge source from the ansions </h3>
-								<p>Diverse of books have been kept safely from 2000 years ago by human ancester as books are the equipment that ancestor records their experience and used to share to the new generation.</p>
-								
+							<h3>Cosmic Girls</h3>
+								<p>South Korean-Chinese girl group formed by Starship Entertainment and Yuehua Entertainment. The group debuted on February 25, 2016 with the extended play Would You Like? and with twelve members: Seola, Xuanyi, Bona, Exy, Soobin, Luda, Dawon, Eunseo, Cheng Xiao, Meiqi, Yeoreum and Dayoung. In July 2016, Cosmic Girls added a thirteenth member, Yeonjung, to the group.</p>
+									<a href="products.php">Learn More</a>
 						</div>
 						
 						<div class="slideimg" style="margin-left: 620px;">
-							<img src ="images/13.jpg" alt="">
+							<img src ="images/wjsn.jpg_large" alt="">
 						</div>
 						</div>
 		
@@ -129,30 +129,61 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 					
 						<div class="banner-text" style="width: 100%; overflow: hidden;">
 						<div class="slidetxt" style="width: 600px; float: left;">
-							<h3>There are many variations of books that all human</h3>
-								<p>Consists of medication books for medic, education books such as geogoly, history, physics and programming books that helps programmer to improve themselves.</p>
-															</div>
+							<h3>BTS</h3>
+								<p>also known as the Bangtan Boys, is a seven-member South Korean boy band formed by Big Hit Entertainment. The name subsequently became a backronym for Beyond The Scene. On June 12, 2013, they performed the song "No More Dream" from their initial album 2 Cool 4 Skool [4] to commemorate their debut on June 13, 2013.[5] They won several New Artist of the Year awards for the track "No More Dream", including at the 2013 Melon Music Awards and Golden Disc Awards and the 2014 Seoul Music Awards.</p>
+									<a href="products.php">Learn More</a>
+						</div>
 						<div class="slideimg" style="margin-left: 620px;">
-							<img src ="images/27.jpg" alt="">
+							<img src ="images/BTS.jpg" alt="">
 						</div>
-						</div>
-						
-						
-					
+						</div>			
 				</li>
 				<li>
 						<div class="banner-text" style="width: 100%; overflow: hidden;">
 						<div class="slidetxt" style="width: 600px; float: left;">
-							<h3>Knowledge is important to human and the new generation world</h3>
-								<p>Humans will gain more knowledge from the books and this will improve the quality of this new generation of IT.</p>
-									
+							<h3>Rocket Girls 101</h3>
+								<p>an eleven-member Chinese idol girl group formed by Tencent through the 2018 reality show Produce 101 China on Tencent Video. They made their debut on 23 June 2018. The members participated as trainees in the show Produce 101 before debuting as members of Rocket Girls 101 on 23 June. The group includes members, Meng Meiqi and Wu Xuanyi, Yang Chaoyue, Duan Aojuan, Yamy, Lai Meiyun, Zhang Zining, Sunnee, Li Ziting, Fu Jing and Xu Mengjie.</p>
+									<a href="products.php">Learn More</a>
 						</div>	
 						<div class="slideimg" style="margin-left: 620px;">
-							<img src ="images/28.jpg" alt="">
+							<img src ="images/101.jpeg" alt="">
 						</div>
 						</div>
 					
 				</li>
+				
+				<li>
+						<div class="banner-text" style="width: 100%; overflow: hidden;">
+						<div class="slidetxt" style="width: 600px; float: left;">
+							<h3>Joker Xue</h3>
+								<p>formerly known as Jacky Xue, is a Chinese singer, songwriter, record producer, actor, and television host. songwriter, record producer, actor, and television host.
+This section does not cite any sources. Please help improve this section by adding citations to reliable sources. Unsourced material may be challenged and removed. (November 2018) (Learn how and when to remove this template message)
+Xue was born on 17 July 1983 in Shanghai, China.</p>
+									<a href="products.php">Learn More</a>
+						</div>	
+						<div class="slideimg" style="margin-left: 620px;">
+							<img src ="images/joker.jpg" alt="">
+						</div>
+						</div>
+					
+				</li>
+				
+				<li>
+						<div class="banner-text" style="width: 100%; overflow: hidden;">
+						<div class="slidetxt" style="width: 600px; float: left;">
+							<h3>LAY</h3>
+								<p>Known professionally as Lay (Korean: 레이), is a Chinese singer, songwriter, dancer, and actor. He is a member of the South Korean-Chinese boy group Exo and its sub-unit Exo-M.[3] He was first known after participating in the Chinese TV talent show Star Academy in 2005.
+								In April 25, a personal studio was established for Lay's solo activities in China. In September 2015, he released his autobiography titled Standing Firm at 24, which broke several online book records. In July 2016, Lay was appointed by the Communist Youth League of China (CYLC) of Changsha as a publicity ambassador.</p>
+									<a href="products.php">Learn More</a>
+						</div>	
+						<div class="slideimg" style="margin-left: 620px;">
+							<img src ="images/lay.jpg" alt="">
+						</div>
+						</div>
+					
+				</li>
+
+
 			</ul>
 		</div>
 

@@ -26,6 +26,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <script type="text/javascript" src="js/memenu.js"></script>
 <script>$(document).ready(function(){$(".memenu").memenu();});</script>
 <script src="js/simpleCart.min.js"> </script>
+ <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
@@ -93,15 +94,15 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			<th>Product Image</th>
 			<th></th>
 		</tr>	
-		<?php
-				 
- 				$result = mysqli_query($con,"SELECT * FROM inventory");
- 				while($order = mysqli_fetch_array($result)){
-		?>
+		
 		
 		</thead>		
 		<tbody>
-		
+			<?php
+				 
+ 				$result = mysqli_query($con,"SELECT * FROM inventory");
+ 				while($order = mysqli_fetch_array($result)){
+			?>
 			<!-- <form action="" method="post"> -->
 			<tr id="<?php echo $order['product_id']; ?>">
 				<td data-target="productid" id="productid"><?php echo $order['product_id'] ?></td>
@@ -161,8 +162,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
           					</div>							        				
           				</div>
         				<div class="modal-footer">
-        					<button type="button" class="btn btn-default pull-right">Done</button>
-          					<button type="button" class="btn"  data-dismiss="modal">Close</button>
+        					<button type="button" class="btn btn-default pull-left">Done</button>
+          					<button type="button" class="btn btn-default pull-right"  data-dismiss="modal">Close</button>
         				</div>
       					</div>
       
@@ -203,11 +204,12 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		//append value in input fields
 		 $(document).on('click','a[data-role=update]',function()
 		{
-			var id = $(this).data('product_id');
-			var productname = $('#'+ product_id).children('td[data-target=productname]').text();
-			var productquantity = $('#'+ product_id).children('td[data-target=productquantity]').text();
-			var productprice = $('#'+ product_id).children('td[data-target=productprice]').text();
-			var productimage = $('#'+ product_id).children('td[data-target=productimage]').text();
+			
+			var id = $(this).data('id');
+			var productname = $('#'+ id).children('td[data-target=productname]').text();
+			var productquantity = $('#'+ id).children('td[data-target=productquantity]').text();
+			var productprice = $('#'+ id).children('td[data-target=productprice]').text();
+			var productimage = $('#'+ id).children('td[data-target=productimage]').text();
 			
 			$('#productname').val(productname);
 			$('#productquantity').val(productquantity);
