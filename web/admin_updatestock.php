@@ -18,10 +18,8 @@ product_image='$_POST[productimage]'
 WHERE product_id='$_POST[productid]'"; 
 $result=mysqli_query($con,$sql);
 
-echo'<script text="text/javascript">
-alert("Stock updated!");
-window.location.replace ("admin_stock.php");
-</script>';
+echo 'data updated';
+;
 
 }
 

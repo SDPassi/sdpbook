@@ -26,9 +26,10 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <script type="text/javascript" src="js/memenu.js"></script>
 <script>$(document).ready(function(){$(".memenu").memenu();});</script>
 <script src="js/simpleCart.min.js"> </script>
- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+ <link rel="stylesheet" href="bootstrap.min.css">
+
+<!--  <script src="jquery.min.js"></script> -->
+<script src="bootstrap.min.js"></script>
 
 </head>
 <body>
@@ -87,8 +88,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		<table class="activity-table">
 		<thead>
 		<tr class="activity-table-main">
-			<th>ID </th>
 			<th>Product </th>
+			<th>Description</th>
 			<th>Quantity </th>
 			<th>Price</th>
 			<th>Product Image</th>
@@ -103,18 +104,17 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
  				$result = mysqli_query($con,"SELECT * FROM inventory");
  				while($order = mysqli_fetch_array($result)){
 			?>
-			<!-- <form action="" method="post"> -->
-			<tr id="<?php echo $order['product_id']; ?>">
-				<td data-target="productid" id="productid"><?php echo $order['product_id'] ?></td>
-				<td data-target="productname" id="productname"><?php echo $order['product_name'] ?></td>
-				<td data-target="productquantity" id="productquantity"><?php echo $order['product_quantity']?> </td>
-				<td data-target="productprice" id="productprice"><?php echo $order['product_price']?> </td>
-				<td data-target="productimage" id="productimage"><?php echo $order['product_image']?> </td>
+				<tr id="<?php echo $order['product_id']; ?>">
+				<td data-target="productname" ><?php echo $order['product_name'] ?></td>				
+				<td data-target="productdescription" ><?php echo $order['product_description']?> </td>
+				<td data-target="productquantity" ><?php echo $order['product_quantity']?> </td>
+				<td data-target="productprice" ><?php echo $order['product_price']?> </td>
+				<td data-target="productimage"><?php echo $order['product_image']?> </td>
 				<td>
 				<a href="#" data-role="update" data-id="<?php echo $order['product_id'];?>" >Modify</a>	
 				</td>
 			</tr>
-			<!-- </form> -->	
+			
 					
 		<?php }?> 
 
@@ -136,33 +136,32 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 
                 			</div>
         				<div class="modal-body">
-        					<div class="StockUpdate">
+        					
+        					<div class="form-group">
           						<span>Product Name</span>
+          					     <input type="text" id="productname" class="form-control">	
           					</div>
-          					<div>	
-          						<input type="text" id="productname" class="stockudp">	
+          					<div class="form-group">
+          						<span>Product Description</span>
+          					     <input type="text" id="productdescription" class="form-control">	
           					</div>
-          					<div class="StockUpdate">
-          						<span>Quantity</span>
-          					</div>	
-          					<div>	
-          						<input type="text" id="productquantity" class="stockudp">	
+
+          					<div class="form-group">
+          						<span>Quantity</span>	
+          						<input type="text" id="productquantity" class="form-control">	
           					</div>
-          					<div class="StockUpdate">
+          					<div class="form-group">
           						<span>Price</span>
+          					    <input type="text" id="productprice" class="form-control">	
           					</div>
-          					<div>	
-          						<input type="text" id="productprice" class="stockudp">	
+          					<div class="form-group">
+          						<span>Image</span>	
+          						<input type="text" id="productimage" class="form-control">	
           					</div>
-          					<div class="StockUpdate">
-          						<span>Image</span>
-          					</div>
-          					<div>	
-          						<input type="text" id="productimage" class="stockudp">	
-          					</div>							        				
+          					<input type="hidden" id="productid" class="form-control">							        				
           				</div>
         				<div class="modal-footer">
-        					<button type="button" class="btn btn-default pull-left">Done</button>
+        					<button id="modify" type="button" class="btn btn-default pull-left">Done</button>
           					<button type="button" class="btn btn-default pull-right"  data-dismiss="modal">Close</button>
         				</div>
       					</div>
@@ -206,17 +205,46 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		{
 			
 			var id = $(this).data('id');
-			var productname = $('#'+ id).children('td[data-target=productname]').text();
-			var productquantity = $('#'+ id).children('td[data-target=productquantity]').text();
-			var productprice = $('#'+ id).children('td[data-target=productprice]').text();
-			var productimage = $('#'+ id).children('td[data-target=productimage]').text();
+			var productname = $('#'+id).children('td[data-target=productname]').text();
+			var productdescription = $('#'+id).children('td[data-target=productdescription]').text();
+			var productquantity = $('#'+id).children('td[data-target=productquantity]').text();
+			var productprice = $('#'+id).children('td[data-target=productprice]').text();
+			var productimage = $('#'+id).children('td[data-target=productimage]').text();
 			
 			$('#productname').val(productname);
+			$('#productdescription').val(productdescription);
 			$('#productquantity').val(productquantity);
 			$('#productprice').val(productprice);
 			$('#productimage').val(productimage);
 			$('#myModal').modal('toggle');
-					
+			
+		//now create event to get data from fields and update in database 
+
+			$('#modify').click(function(){
+          	var id  = $('#productid').val(); 
+         	var productname =  $('#productname').val();
+         	var productdescription =  $('#productdescription').val();
+         	var productquantity =  $('#productquantity').val();
+          	var productprice =   $('#productprice').val();
+          	var productimage = $('#productimage').val();
+
+          $.ajax({
+              url      : 'ajax_admin.php',
+              method   : 'post', 
+              data     : {productname : productname , productdescription: productdescription , productquantity: productquantity , productprice : productprice , productimage : productimage, id: id},
+              success  : function(response){
+                            // now update user record in table 
+                            $('#productname').val(productname);
+                            $('#productdescription').val(productdescription);
+							$('#productquantity').val(productquantity);
+							$('#productprice').val(productprice);
+							$('#productimage').val(productimage);
+							$('#myModal').modal('toggle');
+
+                         }
+          });
+       });
+		
 		})
 	});
 
