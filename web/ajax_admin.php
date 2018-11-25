@@ -1,24 +1,18 @@
 <?php
 include("conn.php");
 
-if(isset($_POST['id'])){
+if(isset($_POST['productimage'])){
 	
-	$product_name = $_POST['productname'];
-	$product_description = $_POST['productdescription'];
-	$product_quantity = $_POST['productquantity'];
-	$product_price = $_POST['productprice'];
-	$product_image = $_POST['productimage']
-	$product_id = $_POST['productid'];
+	$productname = $_POST['productname'];
+	$productdescription = $_POST['productdescription'];
+	$productquantity = $_POST['productquantity'];
+	$productprice = $_POST['productprice'];
+	$productimage = $_POST['productimage'];
+	$id = $_POST['id'];
 
 	//  query to update data 
 	 
-	$result  = mysqli_query($con , "UPDATE inventory SET 
-	productname='$product_name' , 
-	productdescription='$product_description' , 
-	productquantity = '$product_quantity', 
-	productprice = '$product_price', 
-	productimage = '$product_image',
-	WHERE productid='$product_id'");
+	$result  = mysqli_query($con , "UPDATE inventory SET product_name='$productname' , product_description='$productdescription' , product_quantity = '$productquantity', product_price = '$productprice', product_image = '$productimage',WHERE id='$id'");
 	
 	if($result){
 		echo 'data updated';

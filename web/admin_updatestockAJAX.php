@@ -221,7 +221,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		//now create event to get data from fields and update in database 
 
 			$('#modify').click(function(){
-          	var id  = $('#productid').val(); 
+          	var productid  = $('#productid').val(); 
          	var productname =  $('#productname').val();
          	var productdescription =  $('#productdescription').val();
          	var productquantity =  $('#productquantity').val();
@@ -234,12 +234,14 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
               data     : {productname : productname , productdescription: productdescription , productquantity: productquantity , productprice : productprice , productimage : productimage, id: id},
               success  : function(response){
                             // now update user record in table 
-                            $('#productname').val(productname);
-                            $('#productdescription').val(productdescription);
-							$('#productquantity').val(productquantity);
-							$('#productprice').val(productprice);
-							$('#productimage').val(productimage);
-							$('#myModal').modal('toggle');
+                            $('#'+id).children('td[data-target=productname]').text(productname);
+                            $('#'+id).children('td[data-target=productdescription]').text(productdescription);
+                            $('#'+id).children('td[data-target=productquantity]').text(productquantity);            
+                            $('#'+id).children('td[data-target=productprice]').text(productprice);
+                            $('#'+id).children('td[data-target=productimage]').text(productimage);
+                            $('#myModal').modal('toggle');
+							
+							
 
                          }
           });
