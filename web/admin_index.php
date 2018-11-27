@@ -62,7 +62,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 						<li ><a href="admin_profile.php"  ><?php echo($_SESSION['login_user']); ?><a href="logout.php">(LOGOUT)</a></li>
 						
 					<?php else: ?>
-						<li ><a href="login.php"  >Login</a></li>
+						<li ><a href="admin_login.php"  >Login</a></li>
 						
 					<?php endif; ?>
 

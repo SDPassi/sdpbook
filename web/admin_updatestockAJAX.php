@@ -24,12 +24,10 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <!-- start menu -->
 <link href="css/memenu.css" rel="stylesheet" type="text/css" media="all" />
 <script type="text/javascript" src="js/memenu.js"></script>
-<script>$(document).ready(function(){$(".memenu").memenu();});</script>
+<script>$(document).ready(function(){$(".memenu").memenu();});</script> 
 <script src="js/simpleCart.min.js"> </script>
 <link rel="stylesheet" href="bootstrap.min.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-
-<!--  <script src="jquery.min.js"></script> -->
 <script src="bootstrap.min.js"></script>
 
 </head>
@@ -241,8 +239,16 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                             $('#'+id).children('td[data-target=productprice]').text(productprice);
                             $('#'+id).children('td[data-target=productimage]').text(productimage);
                             $('#myModal').modal('toggle');
+<<<<<<< HEAD
 							alert(id);
                 }
+=======
+							//alert(id);
+							
+							
+
+                         }
+>>>>>>> 5089160346f102fa6538db4e98bcf4b52996d2b6
           });
        });
 		
