@@ -193,7 +193,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			</div>
 		</div>
 		<div class="footer-class">
-		<p >© 2015 New store All Rights Reserved | Design by  <a href="http://w3layouts.com/" target="_blank">W3layouts</a> </p>
+		<p >© 2018 A&C Online Shop	</p>
 		</div>
 		</div>
 </body>
@@ -228,7 +228,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
          	var productquantity =  $('#productquantity').val();
           	var productprice =   $('#productprice').val();
           	var productimage = $('#productimage').val();
-
+			alert(productprice);
           $.ajax({
               url      : 'ajax_admin.php',
               method   : 'post', 
@@ -241,11 +241,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                             $('#'+id).children('td[data-target=productprice]').text(productprice);
                             $('#'+id).children('td[data-target=productimage]').text(productimage);
                             $('#myModal').modal('toggle');
-							alert('Data Updated');
-							
-							
-
-                         }
+							alert(id);
+                }
           });
        });
 		

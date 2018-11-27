@@ -14,7 +14,7 @@ header("Refresh: 0");
 <!DOCTYPE html>
 <html>
 <head>
-<title>CART: TPM Bookstore</title>
+<title>CART: A&C Online Shop</title>
 <link href="css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 <script src="js/jquery.min.js"></script>
