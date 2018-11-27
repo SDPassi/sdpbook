@@ -16,7 +16,8 @@ product_price='$_POST[productprice]',
 product_image='$_POST[productimage]'
 
 WHERE product_id='$_POST[productid]'"; 
-$result=mysqli_query($con,$sql);
+
+$result = mysqli_query($con,$sql);
 
 echo 'data updated';
 ;
