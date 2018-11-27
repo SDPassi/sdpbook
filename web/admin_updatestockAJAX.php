@@ -1,9 +1,6 @@
 <?php
 session_start();
-
-include "conn.php";
-
-
+include("conn.php");
 ?>
 <!DOCTYPE html>
 <html>
@@ -29,7 +26,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <script type="text/javascript" src="js/memenu.js"></script>
 <script>$(document).ready(function(){$(".memenu").memenu();});</script>
 <script src="js/simpleCart.min.js"> </script>
- <link rel="stylesheet" href="bootstrap.min.css">
+<link rel="stylesheet" href="bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
 <!--  <script src="jquery.min.js"></script> -->
 <script src="bootstrap.min.js"></script>
@@ -128,11 +126,10 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <!--BoostStrap-->
 				
   					<!-- Modal -->
-  						<div class="modal fade" id="myModal" role="dialog" method = "post">
+  						<div class="modal fade" id="myModal" role="dialog">
     						<div class="modal-dialog">
     
      				<!-- Modal content-->
-					
       					<div class="modal-content">
         					<div class="modal-header">
          						 <button type="button" class="close" data-dismiss="modal">&times;</button>
@@ -162,20 +159,16 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
           						<span>Image</span>	
           						<input type="text" id="productimage" class="form-control">	
           					</div>
-          					<input type="hidden" id="id" class="form-control">							        				
+          					<input type="hidden" id="productid" class="form-control">							        				
           				</div>
-					
         				<div class="modal-footer">
-        					<button type="submit" id="modify" class="btn btn-default pull-left">Done</button>	
+        					<button id="modify" type="button" class="btn btn-default pull-left">Done</button>
           					<button type="button" class="btn btn-default pull-right"  data-dismiss="modal">Close</button>
         				</div>
-				
       					</div>
-				
       
     						</div>
-  					
-</div>						
+  						</div>		
 </div>
 </div>
 		
@@ -224,13 +217,12 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			$('#productquantity').val(productquantity);
 			$('#productprice').val(productprice);
 			$('#productimage').val(productimage);
-			$('#id').val(id);
 			$('#myModal').modal('toggle');
 			
 		//now create event to get data from fields and update in database 
 
 			$('#modify').click(function(){
-          	var id  = $('#id').val(); 
+          	var productid  = $('#productid').val(); 
          	var productname =  $('#productname').val();
          	var productdescription =  $('#productdescription').val();
          	var productquantity =  $('#productquantity').val();
@@ -240,20 +232,16 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
           $.ajax({
               url      : 'ajax_admin.php',
               method   : 'post', 
-              data     : {productname : productname , productdescription: productdescription , productquantity: productquantity , productprice : productprice , productimage : productimage, id : id},
+              data     : {productname : productname , productdescription: productdescription , productquantity: productquantity , productprice : productprice , productimage : productimage, id: id},
               success  : function(response){
-                            // now update user record in table
-			
+                            // now update user record in table 
                             $('#'+id).children('td[data-target=productname]').text(productname);
                             $('#'+id).children('td[data-target=productdescription]').text(productdescription);
                             $('#'+id).children('td[data-target=productquantity]').text(productquantity);            
                             $('#'+id).children('td[data-target=productprice]').text(productprice);
                             $('#'+id).children('td[data-target=productimage]').text(productimage);
-							alert(id);
-							alert(productname);
                             $('#myModal').modal('toggle');
 							
-							window.location.replace("ajx_admin.php");
 							
 
                          }
