@@ -32,7 +32,7 @@ $row = mysqli_fetch_array ($result);
 <!DOCTYPE html>
 <html>
 <head>
-<title>PROFILE: A&C Online Shop</title>
+<title>MY ACCOUNT: A&C Online Shop</title>
 <link href="css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
 <!-- self add query-->
 <script type="text/javascript">
@@ -132,7 +132,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <div class="contact">
 			
 			<div class="container">
-				<h1>Your Profile</h1>
+				<h1>My Account</h1>
 				<form method="post">
 			<div class="col-md-6 register-top-grid"style="margin-left:270px;">
 					<div>
@@ -156,16 +156,11 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 					 <div class="send">
 							<input type="submit" value="Update" style="float:right;">
 							<a href="chgpsw.php">Change Password</a>
-		 
 						</div>	
-		 
 					 </div>
 					</form>
-				
 								<div class="clearfix"> </div>
-			
 				</div>
-		
 	</div>
 <!--//content-->
 <div class="footer">

@@ -37,7 +37,7 @@ if(isset($_POST['book_id'],$_POST['quantity'])){
 <!DOCTYPE html>
 <html>
 <head>
-<title>HOME: A&C Online Shop</title>
+<title>PRODUCT: A&C Online Shop</title>
 <link href="css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 <script src="js/jquery.min.js"></script>
@@ -134,12 +134,13 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		<div class="product">
 			<div class="container">
 														
-				
+				<h1 style="margin-left:500px;font-color:black;"><b>Products</b></h1>
 
 				
 
 <div class="product" style="width:100%; margin:auto; overflow:auto;">
 	<div class="productflow" style="display:block;">
+	
 <?php
 $sql = "SELECT * FROM inventory";
 $row = mysqli_query($con, $sql);
