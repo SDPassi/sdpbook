@@ -32,7 +32,7 @@ $result23 = mysqli_query($con,$sqlr);
 <!DOCTYPE html>
 <html>
 <head>
-<title>New Store A Ecommerce Category Flat Bootstarp Resposive Website Template | Signle :: w3layouts</title>
+<title>A&C Online Shop</title>
 <link href="css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 <script src="js/jquery.min.js"></script>
