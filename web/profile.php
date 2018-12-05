@@ -35,7 +35,7 @@ $row = mysqli_fetch_array ($result);
 <title>MY ACCOUNT: A&C Online Shop</title>
 <link href="css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
 <!-- self add query-->
-<script type="text/javascript">
+<!-- <script type="text/javascript">
 	function checkEqualPassword(input1, input2) {
     if (input1.value !== input2.value) {
         input2.setCustomValidity('Passwords does not match.');
@@ -44,7 +44,7 @@ $row = mysqli_fetch_array ($result);
         input2.setCustomValidity('');
     }
 }
-</script>
+</script> -->
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 <script src="js/jquery.min.js"></script>
 <!-- Custom Theme files -->
@@ -132,34 +132,107 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <div class="contact">
 			
 			<div class="container">
-				<h1>My Account</h1>
-				<form method="post">
+				<h1>MY ACCOUNT</h1>
+				
+				<table class="activity-table">
+		<thead>
+		<tr class="activity-table-main">
+			<th>Name </th>
+			<th>Phone Number</th>
+			<th>Email Address </th>
+			<th>Address</th>
+			<th></th>
+		</tr>	
+		
+		
+		</thead>		
+		<tbody>
+			
+				<tr id="<?php echo $row['ID']; ?>">
+				<td data-target="name" ><?php echo $row['name'] ?></td>				
+				<td data-target="num" ><?php echo $row['phone']?> </td>
+				<td data-target="email" ><?php echo $row['email']?> </td>
+				<td data-target="address" ><?php echo $row['address']?> </td>
+				<td>
+				<a href="#" data-role="update" data-id="<?php echo $row['ID'];?>" >Modify</a>	
+				</td>
+			</tr>
+			
+					
+	
+
+		</tbody>
+		
+
+		</table>
+				<!-- <form method="post">
 			<div class="col-md-6 register-top-grid"style="margin-left:270px;">
 					<div>
 						<span>Name</span>
-						<input name="name" type="text" value="<?php echo $row['name']?>" required="required"> 
+						<input id="name" name="name" type="text" value="<?php echo $row['name']?>" required="required"> 
 					 </div>
 					 <div>
 						<span>Phone Number</span>
-						<input name="num" type="tel" value="<?php echo $row['phone']?>" required="required"> 
+						<input id="num" name="num" type="tel" value="<?php echo $row['phone']?>" required="required"> 
 					 </div>
 					 <div>
 						 <span>Email Address</span>
-						 <input name="email" type="email" value="<?php echo $row['email']?>" required="required"> 
+						 <input id="email" name="email" type="email" value="<?php echo $row['email']?>" required="required"> 
 					 </div>
 					 <div>
 						<span>Address</span>
-						<input name="address" type="text" value="<?php echo $row['address']?>" required="required"> 
+						<input id="address" name="address" type="text" value="<?php echo $row['address']?>" required="required"> 
 						
 						
 					 </div>
 					 <div class="send">
-							<input type="submit" value="Update" style="float:right;">
+							 <input id="id"type="submit" value="Update" style="float:right;"> 
 							<a href="chgpsw.php">Change Password</a>
 						</div>	
 					 </div>
 					</form>
-								<div class="clearfix"> </div>
+								<div class="clearfix"> </div> -->
+								
+					<!--BoostStrap-->
+				
+  					<!-- Modal -->
+  					<div class="modal fade" id="myModal" role="dialog">
+    						<div class="modal-dialog">
+    
+     				<!-- Modal content-->
+      					 <div class="modal-content">
+        					<div class="modal-header">
+         						 <button type="button" class="close" data-dismiss="modal">&times;</button>
+         						 <h4 class="modal-title">Modify Stock</h4>
+
+                			</div>
+        				<div class="modal-body">
+        					
+        					<div class="form-group">
+          						<span>Name</span>
+          					     <input type="text" id="productname" class="form-control">	
+          					</div>
+          					<div class="form-group">
+          						<span>Phone Number</span>
+          					     <input type="text" id="productdescription" class="form-control">	
+          					</div>
+
+          					<div class="form-group">
+          						<span>Email Address</span>	
+          						<input type="text" id="productquantity" class="form-control">	
+          					</div>
+          					<div class="form-group">
+          						<span>Address</span>
+          					    <input type="text" id="productprice" class="form-control">	
+          					</div>						        				
+          				</div>
+        				<div class="modal-footer">
+        					<button id="modify" type="button" class="btn btn-default pull-left">Update</button>
+          					<button type="button" class="btn btn-default pull-right"  data-dismiss="modal">Close</button>
+        				</div>
+      					</div>
+    						</div>
+  						</div>									
 				</div>
 	</div>
 <!--//content-->
@@ -190,5 +263,55 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		</div>
 		</div>
 </body>
+
+<script>
+	$(document).ready(function()
+	{
+		//append value in input fields
+		 $(document).on('click','a[data-role=update]',function()
+		{
+			
+			var id = $(this).data('id');
+			var name = $('#'+id).children('td[data-target=name]').text();
+			var num = $('#'+id).children('td[data-target=num]').text();
+			var email = $('#'+id).children('td[data-target=email]').text();
+			var address = $('#'+id).children('td[data-target=address]').text();
+			
+			$('#name').val('name');
+			$('#num').val('num');
+			$('#email').val('email');
+			$('#address').val('address');
+			$('#myModal').modal('toggle');
+		//now create event to get data from fields and update in database 
+
+			$('#modify').click(function(){
+          	var name  = $('#name').val(); 
+         	var num =  $('#num').val();
+         	var email =  $('#email').val();
+         	var address =  $('#address').val();
+			alert(name);
+          $.ajax({
+              url      : 'profile.php',
+              method   : 'post', 
+              data     : {name : name , num : num , email : email , address : address, id: id},
+              success  : function(response){
+                            // now update user record in table 
+                            $('#'+id).children('td[data-target=name]').text(name);
+                            $('#'+id).children('td[data-target=num]').text(num);
+                            $('#'+id).children('td[data-target=email]').text(email);            
+                            $('#'+id).children('td[data-target=address]').text(address);
+							$('#myModal').modal('toggle');
+							alert(id);
+                }
+          });
+       });
+		
+		})
+	});
+
+</script>
+
+
+
 </html>
 			

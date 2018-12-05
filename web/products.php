@@ -134,7 +134,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		<div class="product">
 			<div class="container">
 														
-				<h1 style="margin-left:500px;font-color:black;"><b>Products</b></h1>
+				<h1 style="margin-left:500px;font-color:black;"><b>PRODUCTS</b></h1>
 
 				
 
