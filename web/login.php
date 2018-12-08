@@ -123,7 +123,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <!--content-->
 <div class="container">
 		<div class="account">
-		<h1>Login to your account</h1>
+		<h1>LOGIN TO YOUR ACCOUNT</h1>
 		<div class="account-pass">
 		<div class="col-md-8 account-top" style="margin-left:200px;">
 		<center>

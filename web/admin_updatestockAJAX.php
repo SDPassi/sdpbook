@@ -24,10 +24,12 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <!-- start menu -->
 <link href="css/memenu.css" rel="stylesheet" type="text/css" media="all" />
 <script type="text/javascript" src="js/memenu.js"></script>
-<script>$(document).ready(function(){$(".memenu").memenu();});</script> 
+<script>$(document).ready(function(){$(".memenu").memenu();});</script>
 <script src="js/simpleCart.min.js"> </script>
 <link rel="stylesheet" href="bootstrap.min.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+<!--  <script src="jquery.min.js"></script> -->
 <script src="bootstrap.min.js"></script>
 
 </head>
@@ -191,7 +193,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			</div>
 		</div>
 		<div class="footer-class">
-		<p >© 2015 New store All Rights Reserved | Design by  <a href="http://w3layouts.com/" target="_blank">W3layouts</a> </p>
+		<p >© 2018 A&C Online Shop	</p>
 		</div>
 		</div>
 </body>
@@ -226,7 +228,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
          	var productquantity =  $('#productquantity').val();
           	var productprice =   $('#productprice').val();
           	var productimage = $('#productimage').val();
-
+			alert(productprice);
           $.ajax({
               url      : 'ajax_admin.php',
               method   : 'post', 
@@ -239,11 +241,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                             $('#'+id).children('td[data-target=productprice]').text(productprice);
                             $('#'+id).children('td[data-target=productimage]').text(productimage);
                             $('#myModal').modal('toggle');
-							//alert(id);
-							
-							
-
-                         }
+							alert(id);
+                }
           });
        });
 		

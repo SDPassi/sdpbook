@@ -9,7 +9,7 @@ include("conn.php")
 <!DOCTYPE html>
 <html>
 <head>
-<title>PROFILE : TPM Bookstore</title>
+<title>ORDER: A&C Online Shop</title>
 <link href="css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
 <!-- self add query-->
 <script type="text/javascript">

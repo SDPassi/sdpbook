@@ -32,7 +32,7 @@ window.location.replace ("index.php");
 <!DOCTYPE html>
 <html>
 <head>
-<title>PROFILE : TPM Bookstore</title>
+<title>CHANGE PASSWORD: A&C Online Shop</title>
 <link href="css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
 <!-- self add query-->
 <script type="text/javascript">

@@ -38,7 +38,7 @@ window.location.replace ("login.php");
 <!DOCTYPE html>
 <html>
 <head>
-<title>REGISTER: TPM Bookstore</title>
+<title>REGISTER: A&C Online Shop</title>
 <link href="css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
 
 <script type="text/javascript">
@@ -133,7 +133,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <!--content-->
 <div class=" container">
 <div class=" register" >
-	<h1>Create an account</h1>
+	<h1>CREATE AN ACCOUNT</h1>
 		  	  <form action="" method="post"> 
 				 <div class="col-md-6 register-top-grid"style="margin-left:270px;">
 					<h3>Personal information</h3>
