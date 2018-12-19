@@ -106,8 +106,9 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				while($activity = mysqli_fetch_array($result)){
 	?>
 
-			<form action="admin_update.php" method="post">	
 			<tr>
+			<input type="hidden" id="orderid" class="form-control">			
+			<input type="hidden" name="member_name" value="<?php echo $activity['name'] ?>"/>
 			<td><a href= index.php><?php echo $activity['name'] ?></a>
 			<input type="hidden" name="member_name" value="<?php echo $activity['name'] ?>"/></td>
 			<td><?php echo $activity['product_name'] ?></td>
@@ -115,7 +116,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			<td><?php echo $activity['product_price']?> </td>
 			<td><?php echo $activity['payment_date']?> </td>
 			<td>
-				<select name="status">
+				<select name="status" id="status">
 						<option value="Current"><?php echo $activity['orders_status']?></option>
 						<option value="Processing">Processing</option>
 						<option value="Successful">Successful</option>
@@ -126,14 +127,14 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		
  			</td>
  			<td><div class="activity-button">
-							<input type="submit" value="Update Order">
+							<input id="update" type="submit" value="Update Order">
 							
 						
 								 
 						</div></td>
  			
 			</tr>
-				</form>		
+					
 		<?php }?> 
 
 		</tbody>
@@ -180,5 +181,37 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		</div>
 		</div>
 </body>
+<script>
+	$(document).ready(function()
+	{			
+		//now create event to get data from fields and update in database 
+
+			$('#update').click(function(){
+          	var orderid = $('#orderid').val(); 
+         	var status =  $('#status').val();
+         	alert(productprice);
+          $.ajax({
+              url      : 'ajax_admin.php',
+              method   : 'post', 
+              data     : {productname : productname , status : status, id: id},
+              success  : function(response){
+                            // now update user record in table 
+                            $('#'+id).children('td[data-target=productname]').text(productname);
+                            $('#'+id).children('td[data-target=productdescription]').text(productdescription);
+                            $('#'+id).children('td[data-target=productquantity]').text(productquantity);            
+                            $('#'+id).children('td[data-target=productprice]').text(productprice);
+                            $('#'+id).children('td[data-target=productimage]').text(productimage);
+                            $('#myModal').modal('toggle');
+							alert(id);
+                }
+          });
+       });
+		
+		})
+	});
+
+</script>
+
+
 </html>
 			
