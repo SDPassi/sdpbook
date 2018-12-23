@@ -45,6 +45,7 @@ $row = mysqli_fetch_array ($result);
     }
 }
 </script> -->
+<link href="css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 <script src="js/jquery.min.js"></script>
 <!-- Custom Theme files -->
@@ -64,6 +65,9 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <script type="text/javascript" src="js/memenu.js"></script>
 <script>$(document).ready(function(){$(".memenu").memenu();});</script>
 <script src="js/simpleCart.min.js"> </script>
+<link rel="stylesheet" href="bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="bootstrap.min.js"></script>
 </head>
 <body>
 <!--header-->
@@ -148,91 +152,69 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		</thead>		
 		<tbody>
 			
-				<tr id="<?php echo $row['ID']; ?>">
-				<td data-target="name" ><?php echo $row['name'] ?></td>				
-				<td data-target="num" ><?php echo $row['phone']?> </td>
-				<td data-target="email" ><?php echo $row['email']?> </td>
-				<td data-target="address" ><?php echo $row['address']?> </td>
+			<?php	 
+ 				$r = mysqli_query($con,"SELECT * FROM member WHERE email = '$_SESSION[login_user]'");
+ 				while($member = mysqli_fetch_array($r)){
+			?>
+				<tr id="<?php echo $member['ID']; ?>">
+				<td data-target="name" ><?php echo $member['name'] ?></td>				
+				<td data-target="phone" ><?php echo $member['phone']?> </td>
+				<td data-target="email" ><?php echo $member['email']?> </td>
+				<td data-target="address" ><?php echo $member['address']?> </td>
 				<td>
-				<a href="#" data-role="update" data-id="<?php echo $row['ID'];?>" >Modify</a>	
+				<a href="#" data-role="update" data-id="<?php echo $member['ID'];?>" >Modify</a>	
 				</td>
-			</tr>
+			</tr>		
+			<?php }?> 
 			
-					
-	
-
 		</tbody>
 		
 
 		</table>
-				<!-- <form method="post">
-			<div class="col-md-6 register-top-grid"style="margin-left:270px;">
-					<div>
-						<span>Name</span>
-						<input id="name" name="name" type="text" value="<?php echo $row['name']?>" required="required"> 
-					 </div>
-					 <div>
-						<span>Phone Number</span>
-						<input id="num" name="num" type="tel" value="<?php echo $row['phone']?>" required="required"> 
-					 </div>
-					 <div>
-						 <span>Email Address</span>
-						 <input id="email" name="email" type="email" value="<?php echo $row['email']?>" required="required"> 
-					 </div>
-					 <div>
-						<span>Address</span>
-						<input id="address" name="address" type="text" value="<?php echo $row['address']?>" required="required"> 
-						
-						
-					 </div>
-					 <div class="send">
-							 <input id="id"type="submit" value="Update" style="float:right;"> 
-							<a href="chgpsw.php">Change Password</a>
-						</div>	
-					 </div>
-					</form>
-								<div class="clearfix"> </div> -->
+			
 								
 					<!--BoostStrap-->
 				
   					<!-- Modal -->
-  					<div class="modal fade" id="myModal" role="dialog">
+  						<div class="modal fade" id="myModal" role="dialog">
     						<div class="modal-dialog">
     
      				<!-- Modal content-->
-      					 <div class="modal-content">
+      					<div class="modal-content">
         					<div class="modal-header">
          						 <button type="button" class="close" data-dismiss="modal">&times;</button>
-         						 <h4 class="modal-title">Modify Stock</h4>
+         						 <h4 class="modal-title">Modify Profile</h4>
 
                 			</div>
         				<div class="modal-body">
         					
         					<div class="form-group">
           						<span>Name</span>
-          					     <input type="text" id="productname" class="form-control">	
+          					     <input type="text" id="name" class="form-control">	
           					</div>
           					<div class="form-group">
-          						<span>Phone Number</span>
-          					     <input type="text" id="productdescription" class="form-control">	
+          						<span>Phone</span>
+          					     <input type="text" id="phone" class="form-control">	
           					</div>
 
           					<div class="form-group">
-          						<span>Email Address</span>	
-          						<input type="text" id="productquantity" class="form-control">	
+          						<span>Email</span>	
+          						<input type="text" id="email" class="form-control">	
           					</div>
           					<div class="form-group">
           						<span>Address</span>
-          					    <input type="text" id="productprice" class="form-control">	
-          					</div>						        				
+          					    <input type="text" id="address" class="form-control">	
+          					</div>
+          					<input type="hidden" id="id" class="form-control">							        				
           				</div>
         				<div class="modal-footer">
-        					<button id="modify" type="button" class="btn btn-default pull-left">Update</button>
+        					<button id="modify" type="button" class="btn btn-default pull-left">Done</button>
           					<button type="button" class="btn btn-default pull-right"  data-dismiss="modal">Close</button>
         				</div>
       					</div>
+      
     						</div>
-  						</div>									
+  						</div>								
 				</div>
 	</div>
 <!--//content-->
@@ -273,35 +255,37 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			
 			var id = $(this).data('id');
 			var name = $('#'+id).children('td[data-target=name]').text();
-			var num = $('#'+id).children('td[data-target=num]').text();
+			var phone = $('#'+id).children('td[data-target=phone]').text();
 			var email = $('#'+id).children('td[data-target=email]').text();
 			var address = $('#'+id).children('td[data-target=address]').text();
 			
-			$('#name').val('name');
-			$('#num').val('num');
-			$('#email').val('email');
-			$('#address').val('address');
+			$('#name').val(name);
+			$('#phone').val(phone);
+			$('#email').val(email);
+			$('#address').val(address);
 			$('#myModal').modal('toggle');
+			
 		//now create event to get data from fields and update in database 
 
 			$('#modify').click(function(){
-          	var name  = $('#name').val(); 
-         	var num =  $('#num').val();
+          	var id  = $('#id').val(); 
+         	var name =  $('#name').val();
+         	var phone =  $('#phone').val();
          	var email =  $('#email').val();
-         	var address =  $('#address').val();
-			alert(name);
+          	var address =   $('#address').val();
+			
           $.ajax({
-              url      : 'profile.php',
+              url      : 'ajax_updateprofile.php',
               method   : 'post', 
-              data     : {name : name , num : num , email : email , address : address, id: id},
+              data     : {name : name , phone : phone , email : email , address : address, id : id},
               success  : function(response){
                             // now update user record in table 
                             $('#'+id).children('td[data-target=name]').text(name);
-                            $('#'+id).children('td[data-target=num]').text(num);
+                            $('#'+id).children('td[data-target=phone]').text(phone);
                             $('#'+id).children('td[data-target=email]').text(email);            
                             $('#'+id).children('td[data-target=address]').text(address);
-							$('#myModal').modal('toggle');
-							alert(id);
+                            $('#myModal').modal('toggle');
+							alert(name);
                 }
           });
        });
@@ -309,9 +293,36 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		})
 	});
 
+
 </script>
 
-
+	<!-- <form method="post">
+			<div class="col-md-6 register-top-grid"style="margin-left:270px;">
+					<div>
+						<span>Name</span>
+						<input id="name" name="name" type="text" value="<?php echo $row['name']?>" required="required"> 
+					 </div>
+					 <div>
+						<span>Phone Number</span>
+						<input id="num" name="num" type="tel" value="<?php echo $row['phone']?>" required="required"> 
+					 </div>
+					 <div>
+						 <span>Email Address</span>
+						 <input id="email" name="email" type="email" value="<?php echo $row['email']?>" required="required"> 
+					 </div>
+					 <div>
+						<span>Address</span>
+						<input id="address" name="address" type="text" value="<?php echo $row['address']?>" required="required"> 
+						
+						
+					 </div>
+					 <div class="send">
+							 <input id="id"type="submit" value="Update" style="float:right;"> 
+							<a href="chgpsw.php">Change Password</a>
+						</div>	
+					 </div>
+					</form>
+								<div class="clearfix"> </div> -->
 
 </html>
 			
