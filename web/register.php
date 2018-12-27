@@ -4,7 +4,7 @@ session_start();
 
 include("conn.php");
 
-if (isset($_POST['name'],$_POST['num'],$_POST['email'],$_POST['psw'],$_POST['address'])) { 
+/* if (isset($_POST['name'],$_POST['num'],$_POST['email'],$_POST['psw'],$_POST['address'])) { 
 $npassword = password_hash($_POST['psw'],PASSWORD_DEFAULT);
 
 $check = mysqli_query($con, "SELECT email,name FROM member WHERE email = '".$_POST['email']."' and name ='". $_POST['name']."'");
@@ -29,7 +29,7 @@ window.location.replace ("login.php");
 </script>';
 }
 
-}
+}*/
 
 
 ?>
@@ -71,6 +71,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <script type="text/javascript" src="js/memenu.js"></script>
 <script>$(document).ready(function(){$(".memenu").memenu();});</script>
 <script src="js/simpleCart.min.js"> </script>
+<script src="../jquery.min.js"></script>
 </head>
 <body>
 <!--header-->
@@ -139,32 +140,34 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 					<h3>Personal information</h3>
 					 <div>
 						<span>Name</span>
-							<input name="name" type="text" required="required"> 
+							<input id="name" name="name" type="text" required="required"> 
 					 </div>
 					 <div>
 						<span>Phone Number</span>
-							<input name="num" type="tel" required="required"> 
+							<input id="phone" name="num" type="tel" required="required"> 
 					 </div>
 					 <div>
 						 <span>Email Address</span>
-						 	<input name="email" type="email" required="required"> 
+						 	<input id="email" name="email" type="email" required="required"> 
+							<span id="msg"></span>
 					 </div>
 					 <div>
 						<span>Password</span>
-							<input name="psw" id="pass1" onchange="checkEqualPassword(this, document.getElementById('pass2'));" type="password" min="4" required="required" >
+							<input id="password" name="psw" id="pass1" onchange="checkEqualPassword(this, document.getElementById('pass2'));" type="password" min="4" required="required" >
 					</div>
 					<div>
 						<span>Confirm Password</span>
 							<input name="cpsw" id="pass2" onchange="checkEqualPassword(document.getElementById('pass1'), this);" type="password" min="4" required="required">
-					</div>
+					</div> 
 					<div>
 						<span>Address</span>
-						<input name="address" type="text" required="required"> 
+						<input id="address" name="address" type="text" required="required"> 
 					 </div>
 		 
-					 <input type="submit" value="Register">
+					 <input type="submit" id="reg" value="Register">
 					 <input type="reset" value="Reset" style="float:right;">		 
 					 </div>							 
+					 <div id="error_msg"></div>
 							
 							
 					<div class="clearfix"> </div>
@@ -196,9 +199,79 @@ mysqli_close($con);
 			</div>
 		</div>
 		<div class="footer-class">
-		<p >© 2015 New store All Rights Reserved | Design by  <a href="http://w3layouts.com/" target="_blank">W3layouts</a> </p>
+		<p >© 2018 A&C Online Shop</p>
 		</div>
 		</div>
 </body>
+
+<script>
+$('document').ready(function(){
+	var email_state = false;
+	
+	$('#email').blur(function(){
+	var email = $('#email').val();
+	if (email == ''){
+		email_state = false;
+		return;
+	}
+	$.ajax({
+		url: 'process.php',
+		type: 'post',
+		data: {
+			'email_check' : 1,
+			'email' : email,	
+		},
+		success: function(response){
+			if (response == 'not_available') {
+			email_state = false;
+			$('#msg').text("Email already exist!");
+			}else if (response == 'available') {
+				email_state = true;
+				$('#msg').text("");
+			}
+		}
+		
+	});
+	});
+	
+	$('#reg').click( function (){
+		var name = $('#name').val();
+		var phone = $('#phone').val();
+		var email = $('#email').val();
+		var password = $('#password').val();
+		var address = $('#address').val();
+		if (email_state == false) {
+				$('#error_msg').text("Fix the errors first");
+		}else{
+				$('#error_msg').text("");
+				
+				//proceed with form submission
+				
+				$.ajax({
+					url: 'process.php',
+					type: 'post',
+					data: {
+							'save' : 1,
+							'name' : name,
+							'phone' : phone,
+							'email' : email,
+							'password' : password,
+							'address' : address,
+					},
+					
+					success: function(response){
+							alert(response);
+							$('#name').val('');
+							$('#phone').val('');
+							$('#email').val('');
+							$('#password').val('');
+							$('#address').val('');
+					}
+		});
+		}
+	});
+});
+</script>
+
 </html>
 			

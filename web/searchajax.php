@@ -62,7 +62,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 						<input type="text" value="" name="search1" >
 						<input type="submit" value="Go" name="go">
 					</form>
-				</div>
+			</div>
 			<div class="header-left">		
 					<ul>
 						<?php if (isset($_SESSION['login_user'])): ?>
@@ -119,13 +119,19 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <h2 style="color:black;padding:28px;text-align:left">Search Result</h2>
  
 <?php
-if(isset($_GET['search1'])){ 
+if(isset($_POST['proceed'])){ 
          
-        $search =($_GET['search1']);
-
+        $album =($_POST['search']);
         $result = mysqli_query($con,"SELECT * FROM inventory WHERE (product_name LIKE '%".$search."%') OR (product_description LIKE '%".$search."%')");
-             
-                if($search_result = mysqli_fetch_array ($result))
+        while($show = mysqli_fetch_array($result))
+        {
+        	     ?>
+        	     <a onclick='insert("<?php echo $show['product_name'];?>")'>
+        	     <?php echo $show['product_name'];?>
+        	     </a>   
+        
+        }     
+                if($search_result = mysqli_fetch_array ($show))
                 {
                            echo '<div class="container" style="width:;float:left;">
    								<a href=details.php?book_id="products/'.$search_result['product_id'].'">
@@ -190,48 +196,6 @@ if(isset($_GET['search1'])){
 		<p >© 2018 A&C Online Shop </p>
 		</div>
 		</div>
-<script>
-	$('document').ready(function(){
-		$("#search").keyup(function(){
-		var album = $('#search').val();
-		if (album == ""){
-			$("display").html("");
-		}
-		else{
-			$.ajax({
-				type: "post",
-				url: "ajax_result.php",
-				data: {
-					proceed:1,
-					search: album
-				},
-				success: function(respond){
-					$("#display").html(respond).show();
-					$('#test').hide();
-				}
-			});
-		}
-	});
-	$("btnSearch").click(function(){
-		var album = $('#search').val();
-		$.ajax({
-			type: "post",
-			url: "ajax_result.php",
-			data:{
-				ok:1,
-				search: album
-				},
-			success: function(respond){
-				$("#test").html(respond).show();
-			}
-			});
-		});
-	});
-function insert(data){
-	$('#search').val(data);
-	$('#display').hide();
-}										
-</script>			
 </body>
 </html>
 			
