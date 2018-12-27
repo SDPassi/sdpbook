@@ -44,6 +44,12 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <script type="text/javascript" src="js/memenu.js"></script>
 <script>$(document).ready(function(){$(".memenu").memenu();});</script>
 <script src="js/simpleCart.min.js"> </script>
+<style>
+a:hover{
+	cursor: pointer;
+	background-color: aqua;
+}
+</style>
 </head>
 <body>
 <!--header-->
@@ -51,9 +57,13 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 	<div class="header-top">
 		<div class="container">
 			<div class="search">
-						<input type="text" id="search" placeholder="Search Here" >
-						<input type="button" id="btnSearch" value="Go" >
-							</div>
+			<form action="search.php">
+				<input type="text" id="search" placeholder="Search Here" /> 
+				<input type="submit" id="btnSearch" value="Search"/>
+			</form>					
+			<div id="display"></div>
+			<div id="test"></div>					
+			</div>
 			<div class="header-left">		
 					<ul>
 					<?php if (isset($_SESSION['login_user'])): ?>
@@ -273,19 +283,18 @@ for ($i = 0;$productshow = mysqli_fetch_array($row);$i++) {
 		</div>
 		</div>
 		</div>
-<!-- script -->
 <script>
-$('document').ready(function){
-	$("#search").keyup(function(){
-	var name = $('#search').val();
-	if (name == ""){
-		$("#display").html("");
-	}
-	else{
+	$('document').ready(function(){
+		$("#search").keyup(function(){
+		var album = $('#search').val();
+		if (album == ""){
+			$("display").html("");
+		}
+		else{
 			$.ajax({
-				type:"Post",
-				url: "search1.php",
-				data:{
+				type: "post",
+				url: "ajax_result.php",
+				data: {
 					proceed:1,
 					search: album
 				},
@@ -295,26 +304,27 @@ $('document').ready(function){
 				}
 			});
 		}
-});
-$("#btnSearch").click(function(){
-	var album = $('#search').val();
-	$.ajax({
-		type:"POST",
-		url: "search.php",
-		data:{
-			ok:1,
-			search: ablum
-			},
-		success: function(respond){
-			$("#test").html(respond).show();
-		}
+	});
+	$("btnSearch").click(function(){
+		var album = $('#search').val();
+		$.ajax({
+			type: "post",
+			url: "ajax_result.php",
+			data:{
+				ok:1,
+				search: album
+				},
+			success: function(respond){
+				$("#test").html(respond).show();
+			}
+			});
 		});
-	});	
-});
+	});
 function insert(data){
 	$('#search').val(data);
 	$('#display').hide();
-}
+}										
 </script>		
 </body>
 </html>
+			

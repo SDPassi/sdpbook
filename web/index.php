@@ -44,6 +44,12 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <script type="text/javascript" src="js/memenu.js"></script>
 <script>$(document).ready(function(){$(".memenu").memenu();});</script>
 <script src="js/simpleCart.min.js"> </script>
+<style>
+a:hover{
+	cursor: pointer;
+	background-color: aqua;
+}
+</style>
 </head>
 <body>
 <!--header-->
@@ -51,10 +57,12 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 	<div class="header-top">
 		<div class="container">
 			<div class="search">
-					<form action="search.php" method="get">
-						<input type="text" value="" name="search1" >
-						<input type="submit" value="Go" name="go">
-					</form>
+			<form action="search.php">
+				<input type="text" id="search" placeholder="Search Here" /> 
+				<input type="submit" id="btnSearch" value="Search"/>
+			</form>					
+			<div id="display"></div>
+			<div id="test"></div>					
 			</div>
 			<div class="header-left">		
 					<ul>
@@ -275,6 +283,48 @@ for ($i = 0;$productshow = mysqli_fetch_array($row);$i++) {
 		</div>
 		</div>
 		</div>
+<script>
+	$('document').ready(function(){
+		$("#search").keyup(function(){
+		var album = $('#search').val();
+		if (album == ""){
+			$("display").html("");
+		}
+		else{
+			$.ajax({
+				type: "post",
+				url: "ajax_result.php",
+				data: {
+					proceed:1,
+					search: album
+				},
+				success: function(respond){
+					$("#display").html(respond).show();
+					$('#test').hide();
+				}
+			});
+		}
+	});
+	$("btnSearch").click(function(){
+		var album = $('#search').val();
+		$.ajax({
+			type: "post",
+			url: "ajax_result.php",
+			data:{
+				ok:1,
+				search: album
+				},
+			success: function(respond){
+				$("#test").html(respond).show();
+			}
+			});
+		});
+	});
+function insert(data){
+	$('#search').val(data);
+	$('#display').hide();
+}										
+</script>		
 </body>
 </html>
 			

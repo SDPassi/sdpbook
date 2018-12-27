@@ -62,7 +62,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 						<input type="text" value="" name="search1" >
 						<input type="submit" value="Go" name="go">
 					</form>
-			</div>
+				</div>
 			<div class="header-left">		
 					<ul>
 						<?php if (isset($_SESSION['login_user'])): ?>
@@ -189,6 +189,48 @@ if(isset($_GET['search1'])){
 		<p >© 2018 A&C Online Shop </p>
 		</div>
 		</div>
+<script>
+	$('document').ready(function(){
+		$("#search").keyup(function(){
+		var album = $('#search').val();
+		if (album == ""){
+			$("display").html("");
+		}
+		else{
+			$.ajax({
+				type: "post",
+				url: "ajax_result.php",
+				data: {
+					proceed:1,
+					search: album
+				},
+				success: function(respond){
+					$("#display").html(respond).show();
+					$('#test').hide();
+				}
+			});
+		}
+	});
+	$("btnSearch").click(function(){
+		var album = $('#search').val();
+		$.ajax({
+			type: "post",
+			url: "ajax_result.php",
+			data:{
+				ok:1,
+				search: album
+				},
+			success: function(respond){
+				$("#test").html(respond).show();
+			}
+			});
+		});
+	});
+function insert(data){
+	$('#search').val(data);
+	$('#display').hide();
+}										
+</script>			
 </body>
 </html>
 			
