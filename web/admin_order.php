@@ -26,7 +26,12 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <script type="text/javascript" src="js/memenu.js"></script>
 <script>$(document).ready(function(){$(".memenu").memenu();});</script>
 <script src="js/simpleCart.min.js"> </script>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<link rel="stylesheet" href="bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+<!--  <script src="jquery.min.js"></script> -->
+<script src="bootstrap.min.js"></script>
+
 </head>
 <body>
 <!--header-->
@@ -114,29 +119,80 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				<td data-target="orderquantity" ><?php echo $activity['order_quantity']?> </td>
 				<td data-target="productprice" ><?php echo $activity['product_price']?> </td>
 				<td data-target="paymentdate"><?php echo $activity['payment_date']?> </td>
-				<td>
-				<form>
-				<select name="status" id="status" >
-						<option value="Current"><?php echo $activity['orders_status']?></option>
-						<option value="Processing">Processing</option>
-						<option value="Successful">Successful</option>
-						<option value="Cancel">Cancel</option>
-						<input type="hidden" name="memberid" value="<?php echo $activity['member_id'] ?>"/>
-				</select>
-				<input type="text" class="form-control" id="statusupd" name="statusupd" disabled>
- 				</form>
- 				</td>
-				 		<td><div class="activity-button">
-						<button id="udp" type="button">Update Status</button>	
-						</div></td>
+				<td data-target="status"><?php echo $activity['orders_status']?> </td>
+				<td>						
+				<a href="#" data-role="updorders" data-id="<?php echo $activity['order_id'];?>" >Update</a>	
+
+				</td>
  			
 			</tr>
 					
 		<?php }?> 
-
+			
 		</tbody>
-	
 		</table>
+<!--BoostStrap-->
+				
+  					<!-- Modal -->
+  						<div class="modal fade" id="myModal" role="dialog">
+    						<div class="modal-dialog">
+    
+     				<!-- Modal content-->
+      					<div class="modal-content">
+        					<div class="modal-header">
+         						 <button type="button" class="close" data-dismiss="modal">&times;</button>
+         						 <h4 class="modal-title">Update Order</h4>
+
+                			</div>
+        				<div class="modal-body">
+        					
+        					<div class="form-group">
+          						<span>Member Name</span>
+          					     <input type="text" id="membername" class="form-control" disabled="disabled">	
+          					</div>
+          					<div class="form-group">
+          						<span>Product Name</span>
+          					     <input type="text" id="productname" class="form-control" disabled="disabled">	
+          					</div>
+
+          					<div class="form-group">
+          						<span>Order Quantity</span>	
+          						<input type="text" id="orderquantity" class="form-control" disabled="disabled">	
+          					</div>
+          					<div class="form-group">
+          						<span>Price</span>
+          					    <input type="text" id="productprice" class="form-control" disabled="disabled">	
+          					</div>
+          					<div class="form-group">
+          						<span>Payment Date</span>	
+          						<input type="text" id="paymentdate" class="form-control" disabled="disabled">	
+          					</div>
+          					<div class="form-group">
+          						<span>Order Status</span>
+          						<select id="stat"  >
+									<option value="Processing">Processing</option>
+									<option value="Successful">Successful</option>
+									<option value="Cancel">Cancel</option>
+						
+								</select> 
+          						<input type="text" id="status" class="form-control"  disabled="disabled" >	
+          						
+							</div>
+							
+          					<input type="hidden" id="orderid" class="form-control">							        				
+          				</div>
+          				
+        				<div class="modal-footer">
+        					<button id="modify" type="button" class="btn btn-default pull-left">Done</button>
+          					<button type="button" class="btn btn-default pull-right"  data-dismiss="modal">Close</button>
+        				</div>
+      					</div>
+      
+    						</div>
+  						</div>		
+
+
+		
 		
 		<div class="activity-button">
 		<form action="admin_printorder.php">
@@ -178,39 +234,66 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		</div>
 		</div>
 </body>
-<script>
-	$(document).ready(function()
-	{			
+<script type="text/javascript">
+         $('#stat').change(function () {
+            var option_value = $(this).val();
+            $('#status').val(option_value);
+        });
+        
+$(document).ready(function()
+	{
+		//append value in input fields
+		 $(document).on('click','a[data-role=updorders]',function()
+		{
+			
+			var id = $(this).data('id');
+			var membername = $('#'+id).children('td[data-target=membername]').text();
+			var productname = $('#'+id).children('td[data-target=productname]').text();
+			var orderquantity = $('#'+id).children('td[data-target=orderquantity]').text();
+			var productprice = $('#'+id).children('td[data-target=productprice]').text();
+			var paymentdate = $('#'+id).children('td[data-target=paymentdate]').text();
+			var status = $('#'+id).children('td[data-target=status]').text();
+			$('#membername').val(membername);
+			$('#productname').val(productname);
+			$('#orderquantity').val(orderquantity);
+			$('#productprice').val(productprice);
+			$('#paymentdate').val(paymentdate);
+			$('#status').val(status);
+			$('#myModal').modal('toggle');
+			
 		//now create event to get data from fields and update in database 
 
+			$('#modify').click(function(){
+          	var orderid  = $('#orderid').val(); 
+         	var membername =  $('#membername').val();
+         	var productname =  $('#productname').val();
+         	var orderquantity =  $('#orderquantity').val();
+          	var productprice =   $('#productprice').val();
+          	var paymentdate = $('#paymentdate').val();
+			var status = $('#status').val();
 			
-			$('#udp').click(function(){
-          	//var orderid = $('#orderid').val(); 
-         	var status =  $('#status').val();
-         	alert(status);
-         	$.ajax({
+          $.ajax({
               url      : 'ajax_orders.php',
               method   : 'post', 
-              data     : {status : status, id: id},
+              data     : {membername : membername , productname: productname , orderquantity: orderquantity , productprice : productprice , paymentdate : paymentdate, status : status, id: id},
               success  : function(response){
                             // now update user record in table 
+                            $('#'+id).children('td[data-target=membername]').text(membername);
+                            $('#'+id).children('td[data-target=productname]').text(productname);
+                            $('#'+id).children('td[data-target=orderquantity]').text(orderquantity);            
+                            $('#'+id).children('td[data-target=productprice]').text(productprice);
+                            $('#'+id).children('td[data-target=paymentdate]').text(paymentdate);
                             $('#'+id).children('td[data-target=status]').text(status);
-                        }
+                            $('#myModal').modal('toggle');
+							//alert(id);
+                }
           });
        });
 		
 		})
-	
-		
 	});
-
+		        
 </script>
-<script type="text/javascript">
-         $('#status').change(function () {
-            var option_value = $(this).val();
-            $('#statusudp').val(option_value);
-        });
-    </script>
 
 </html>
 			
