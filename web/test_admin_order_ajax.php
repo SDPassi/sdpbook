@@ -26,7 +26,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <script type="text/javascript" src="js/memenu.js"></script>
 <script>$(document).ready(function(){$(".memenu").memenu();});</script>
 <script src="js/simpleCart.min.js"> </script>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script src="jquery.min.js"></script>
 </head>
 <body>
 <!--header-->
@@ -116,26 +116,26 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				<td data-target="paymentdate"><?php echo $activity['payment_date']?> </td>
 				<td>
 				<form>
-				<select name="status" id="status" >
-						<option value="Current"><?php echo $activity['orders_status']?></option>
+				<select id="status" name="status" >
+						<option value="Default" disabled>-----</option>
 						<option value="Processing">Processing</option>
 						<option value="Successful">Successful</option>
 						<option value="Cancel">Cancel</option>
-						<input type="hidden" name="memberid" value="<?php echo $activity['member_id'] ?>"/>
+						
 				</select>
-				<input type="text" class="form-control" id="statusupd" name="statusupd" disabled>
+				<input type="text" class="form-control" id="stat" name="stat" value="<?php echo $activity['orders_status']?>" disabled>
  				</form>
  				</td>
 				 		<td><div class="activity-button">
 						<button id="udp" type="button">Update Status</button>	
-						</div></td>
+						</div>
+						</td>
  			
 			</tr>
 					
 		<?php }?> 
-
+			
 		</tbody>
-	
 		</table>
 		
 		<div class="activity-button">
@@ -178,39 +178,12 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		</div>
 		</div>
 </body>
-<script>
-	$(document).ready(function()
-	{			
-		//now create event to get data from fields and update in database 
-
-			
-			$('#udp').click(function(){
-          	//var orderid = $('#orderid').val(); 
-         	var status =  $('#status').val();
-         	alert(status);
-         	$.ajax({
-              url      : 'ajax_orders.php',
-              method   : 'post', 
-              data     : {status : status, id: id},
-              success  : function(response){
-                            // now update user record in table 
-                            $('#'+id).children('td[data-target=status]').text(status);
-                        }
-          });
-       });
-		
-		})
-	
-		
-	});
-
-</script>
 <script type="text/javascript">
          $('#status').change(function () {
             var option_value = $(this).val();
-            $('#statusudp').val(option_value);
+            $('#stat').val(option_value);
         });
-    </script>
+</script>
 
 </html>
 			
