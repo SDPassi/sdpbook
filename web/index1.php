@@ -23,7 +23,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 <!DOCTYPE html>
 <html>
 <head>
-<title>HOME:A&C Online Shop</title>
+<title>HOME: A&C Online Shop</title>
 <link href="css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 <script src="js/jquery.min.js"></script>
@@ -44,6 +44,12 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <script type="text/javascript" src="js/memenu.js"></script>
 <script>$(document).ready(function(){$(".memenu").memenu();});</script>
 <script src="js/simpleCart.min.js"> </script>
+<style>
+a:hover{
+	cursor: pointer;
+	background-color: aqua;
+}
+</style>
 </head>
 <body>
 <!--header-->
@@ -51,23 +57,38 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 	<div class="header-top">
 		<div class="container">
 			<div class="search">
-					<form action="search.php" method="get">
-						<input type="text" value="" name="search1" >
-						<input type="submit" value="Go" name="go">
-					</form>
+			<form action="search.php">
+				<input type="text" id="search" placeholder="Search Here" /> 
+				<input type="submit" id="btnSearch" value="Search"/>
+			</form>					
+			<div id="display"></div>
+			<div id="test"></div>					
 			</div>
 			<div class="header-left">		
 					<ul>
-						<?php if (isset($_SESSION['login_user'])): ?>
-						<li ><a href="admin_profile.php"  ><?php echo($_SESSION['login_user']); ?><a href="logout.php">(LOGOUT)</a></li>
-						
+					<?php if (isset($_SESSION['login_user'])): ?>
+						<li class="dropdown"><a href="#"><?php echo($_SESSION['login_user']); ?></a>
+							<div class="dropdown-content">
+								<a href="order.php">My Purchase</a>
+								<a href="logout.php">Logout</a>
+							</div>
+						</li>	
 					<?php else: ?>
-						<li ><a href="admin_login.php"  >Login</a></li>
-						
+						<li><a href="login.php">Login</a></li>
+						<li><a href="register.php">Register</a></li>
 					<?php endif; ?>
-
 					</ul>
-			<div class="clearfix"> </div>
+					<div class="cart box_1">
+						<a href="cart.php">
+						<h3><div class="total">
+							</div>
+							<a href="cart.php" style="padding-right:15px;"><img src="images/cart.png" alt=""/></a>
+							</h3>
+						</a>
+						
+
+					</div>
+					<div class="clearfix"> </div>
 			</div>
 				<div class="clearfix"> </div>
 		</div>
@@ -75,20 +96,22 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		<div class="container">
 			<div class="head-top">
 				<div class="logo">
-					<a href="admin_index.php" style="color:black;text-decoration:none"><img src="images/cdlogo.png" style="width:10%;height:10%" alt="" >Admin</a>	
+		<a href="index.php" style="color:black;text-decoration:none;"><img src="images/cdlogo.png" style="width:10%;height:10%" alt="">A&C Online Shop</a>
 				</div>
 		  <div class=" h_menu4">
-			<ul class="memenu skyblue">
-				<li class="active grid"><a class="color2" href="admin_index.php" style="color:black;">Main</a></li>
-				<li><a class="color4" href="admin_stock.php">Stock</a></li>	
-				<li><a class="color1" href="admin_order.php">Order</a></li>
-				<li><a class="color6" href="admin_profile.php">Profile</a></li>
-			</ul> 
-		  </div>
+				<ul class="memenu skyblue">
+					  	<li class="active grid"><a class="color2" href="index.php" style="color:black;">Home</a></li>	
+					   	<li><a class="color4" href="products.php">Product</a></li>	
+					<?php if (isset($_SESSION['login_user'])): ?>
+					  	<li><a class="color6" href="profile.php">My Account</a></li>
+					<?php else: ?>
+					 	<li><a class="color6" style="display: none" href="profile.php">My Account</a></li>
+					<?php endif; ?> 	
+			  </ul> 
+			</div>
 				
-				
+				<div class="clearfix"> </div>
 		</div>
-		<div class="clearfix"> </div>
 		</div>
 
 	</div>
@@ -192,34 +215,116 @@ Xue was born on 17 July 1983 in Shanghai, China.</p>
 <!--content-->
 <div class="content">
 	<div class="container">
-				
-	<div class="clearfix"> </div>
-	</div>
+	<div class="content-top">
+		<h1>New Arrival</h1>
+		<div class="grid-in">
 	
-	<!----->
-						<!---->
-</div>
+		<?php
+$sql = "SELECT * FROM inventory";
+$row = mysqli_query($con, $sql);
+for ($i = 0;$productshow = mysqli_fetch_array($row);$i++) {
+	
+	echo'<div class = "prod" style="width:30%;border:1px solid black;float:left;margin-left:30px;margin-bottom:100px;">
+		 	<center>
+
+				<a href="details.php?book_id='.$productshow['product_id'].'"><img src = images/'.$productshow['product_image'].'.jpg></a>
+					<p style="padding-bottom:10px;padding-top:10px;">'.$productshow['product_name'].'</p>
+					<a href="#" class="item_add"><p class="number item_price"><i> </i>RM'.$productshow['product_price'].'</p></a>
+					<br>
+		
+				<form action = "products.php" method = "post" style="margin-bottom:20px;">
+					<input type="hidden" name="book_id" value="'.$productshow['product_id'].'">
+					<input style = "width:25px;" name = "quantity" type = "hidden" value = "1"/>
+					<input type = "submit" value = "Add To Cart" style = width:185px;>
+				</form>
+			</center>
+		</div>';
+	
+}
+
+?>
+
+						
+		<div class="clearfix"> </div>
+		</div>
+		
+		
+			
+
+								
+		
+	</div>
+		</div>
 <div class="footer">
 				<div class="container">
 			<div class="footer-top-at">
 			
 				<div class="col-md-4 amet-sed">
-				<h4>ADMIN</h4>
+				<h4>MORE INFO</h4>
 				<ul class="nav-bottom">
-						<li><a href="admin_index.php">Home</a></li>
-						<li><a href="admin_stock.php">Stock</a></li>
-						<li><a href="admin_order.php">Order</a></li>
-						<li><a href="admin_.php">Report</a></li>
-						<li><a href="admin_profile.php">Profile</a></li>	
-					</ul>	
+						<li><a href="index.php">Home</a></li>
+						<li><a href="products.php">Product</a></li>
+					<?php if (isset($_SESSION['login_user'])): ?>
+						<li><a href="order.php">Order</a></li>
+						<li><a href="profile.php">Profile</a></li>	
+					<?php else: ?>
+						<li style="display: none"><a href="order.php">Order</a></li>
+						<li style="display: none"><a href="profile.php">My Account</a></li>	
+					<?php endif; ?>
+						
+				</ul>	
+					
 			</div>		
 								<div class="clearfix"> </div>
 			</div>
 		</div>
 		<div class="footer-class">
-		<p >© 2015 New store All Rights Reserved | Design by  <a href="http://w3layouts.com/" target="_blank">W3layouts</a> </p>
+		<p >© 2018 A&C Online Shop </p>
 		</div>
 		</div>
+		</div>
+<script>
+	$('document').ready(function(){
+		$("#search").keyup(function(){
+		var album = $('#search').val();
+		if (album == ""){
+			$("display").html("");
+		}
+		else{
+			$.ajax({
+				type: "post",
+				url: "ajax_result.php",
+				data: {
+					proceed:1,
+					search: album
+				},
+				success: function(respond){
+					$("#display").html(respond).show();
+					$('#test').hide();
+				}
+			});
+		}
+	});
+	$("btnSearch").click(function(){
+		var album = $('#search').val();
+		$.ajax({
+			type: "post",
+			url: "ajax_result.php",
+			data:{
+				ok:1,
+				search: album
+				},
+			success: function(respond){
+				$("#test").html(respond).show();
+			}
+			});
+		});
+	});
+function insert(data){
+	$('#search').val(data);
+	$('#display').hide();
+}										
+</script>		
 </body>
 </html>
 			

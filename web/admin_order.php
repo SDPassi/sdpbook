@@ -26,6 +26,12 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <script type="text/javascript" src="js/memenu.js"></script>
 <script>$(document).ready(function(){$(".memenu").memenu();});</script>
 <script src="js/simpleCart.min.js"> </script>
+<link rel="stylesheet" href="bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+<!--  <script src="jquery.min.js"></script> -->
+<script src="bootstrap.min.js"></script>
+
 </head>
 <body>
 <!--header-->
@@ -65,7 +71,6 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				<li class="active grid"><a class="color2" href="admin_index.php" style="color:black;">Main</a></li>
 				<li><a class="color4" href="admin_stock.php">Stock</a></li>	
 				<li><a class="color1" href="admin_order.php">Order</a></li>
-				<li class="grid"><a class="color2" href="admin_report.php">Report</a></li>
 				<li><a class="color6" href="admin_profile.php">Profile</a></li>
 			</ul> 
 		  </div>
@@ -105,40 +110,88 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
  				INNER JOIN inventory ON orders_details.product_id = inventory.product_id");
 				while($activity = mysqli_fetch_array($result)){
 	?>
+	
+			<input type="hidden" id="orderid" >		
+			<tr id="<?php echo $activity['order_id']; ?>">
+				<td data-target="membername" ><?php echo $activity['name'] ?></td>				
+				<td data-target="productname" ><?php echo $activity['product_name']?> </td>
+				<td data-target="orderquantity" ><?php echo $activity['order_quantity']?> </td>
+				<td data-target="productprice" ><?php echo $activity['product_price']?> </td>
+				<td data-target="paymentdate"><?php echo $activity['payment_date']?> </td>
+				<td data-target="status"><?php echo $activity['orders_status']?> </td>
+				<td>						
+				<a href="#" data-role="updorders" data-id="<?php echo $activity['order_id'];?>" >Update</a>	
 
-			<form action="admin_update.php" method="post">	
-			<tr>
-			<td><a href= index.php><?php echo $activity['name'] ?></a>
-			<input type="hidden" name="member_name" value="<?php echo $activity['name'] ?>"/></td>
-			<td><?php echo $activity['product_name'] ?></td>
-			<td><?php echo $activity['product_quantity']?> </td>
-			<td><?php echo $activity['product_price']?> </td>
-			<td><?php echo $activity['payment_date']?> </td>
-			<td>
-				<select name="status">
-						<option value="Current"><?php echo $activity['orders_status']?></option>
-						<option value="Processing">Processing</option>
-						<option value="Successful">Successful</option>
-						<option value="Cancel">Cancel</option>
-						<input type="hidden" name="memberid" value="<?php echo $activity['member_id'] ?>"/>
-				</select>
-				
-		
- 			</td>
- 			<td><div class="activity-button">
-							<input type="submit" value="Update Order">
-							
-						
-								 
-						</div></td>
+				</td>
  			
 			</tr>
-				</form>		
+					
 		<?php }?> 
-
+			
 		</tbody>
-	
 		</table>
+<!--BoostStrap-->
+				
+  					<!-- Modal -->
+  						<div class="modal fade" id="myModal" role="dialog">
+    						<div class="modal-dialog">
+    
+     				<!-- Modal content-->
+      					<div class="modal-content">
+        					<div class="modal-header">
+         						 <button type="button" class="close" data-dismiss="modal">&times;</button>
+         						 <h4 class="modal-title">Update Order</h4>
+
+                			</div>
+        				<div class="modal-body">
+        					
+        					<div class="form-group">
+          						<span>Member Name</span>
+          					     <input type="text" id="membername" class="form-control" disabled="disabled">	
+          					</div>
+          					<div class="form-group">
+          						<span>Product Name</span>
+          					     <input type="text" id="productname" class="form-control" disabled="disabled">	
+          					</div>
+
+          					<div class="form-group">
+          						<span>Order Quantity</span>	
+          						<input type="text" id="orderquantity" class="form-control" disabled="disabled">	
+          					</div>
+          					<div class="form-group">
+          						<span>Price</span>
+          					    <input type="text" id="productprice" class="form-control" disabled="disabled">	
+          					</div>
+          					<div class="form-group">
+          						<span>Payment Date</span>	
+          						<input type="text" id="paymentdate" class="form-control" disabled="disabled">	
+          					</div>
+          					<div class="form-group">
+          						<span>Order Status</span>
+          						<select id="stat"  >
+									<option value="Processing">Processing</option>
+									<option value="Successful">Successful</option>
+									<option value="Cancel">Cancel</option>
+						
+								</select> 
+          						<input type="text" id="status" class="form-control"  disabled="disabled" >	
+          						
+							</div>
+							
+          					<input type="hidden" id="orderid" class="form-control">							        				
+          				</div>
+          				
+        				<div class="modal-footer">
+        					<button id="modify" type="button" class="btn btn-default pull-left">Done</button>
+          					<button type="button" class="btn btn-default pull-right"  data-dismiss="modal">Close</button>
+        				</div>
+      					</div>
+      
+    						</div>
+  						</div>		
+
+
+		
 		
 		<div class="activity-button">
 		<form action="admin_printorder.php">
@@ -166,7 +219,6 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 						<li><a href="admin_index.php">Home</a></li>
 						<li><a href="admin_stock.php">Stock</a></li>
 						<li><a href="admin_order.php">Order</a></li>
-						<li><a href="admin_.php">Report</a></li>
 						<li><a href="admin_profile.php">Profile</a></li>	
 					</ul>	
 	
@@ -180,5 +232,66 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		</div>
 		</div>
 </body>
+<script type="text/javascript">
+         $('#stat').change(function () {
+            var option_value = $(this).val();
+            $('#status').val(option_value);
+        });
+        
+$(document).ready(function()
+	{
+		//append value in input fields
+		 $(document).on('click','a[data-role=updorders]',function()
+		{
+			
+			var id = $(this).data('id');
+			var membername = $('#'+id).children('td[data-target=membername]').text();
+			var productname = $('#'+id).children('td[data-target=productname]').text();
+			var orderquantity = $('#'+id).children('td[data-target=orderquantity]').text();
+			var productprice = $('#'+id).children('td[data-target=productprice]').text();
+			var paymentdate = $('#'+id).children('td[data-target=paymentdate]').text();
+			var status = $('#'+id).children('td[data-target=status]').text();
+			$('#membername').val(membername);
+			$('#productname').val(productname);
+			$('#orderquantity').val(orderquantity);
+			$('#productprice').val(productprice);
+			$('#paymentdate').val(paymentdate);
+			$('#status').val(status);
+			$('#myModal').modal('toggle');
+			
+		//now create event to get data from fields and update in database 
+
+			$('#modify').click(function(){
+          	var orderid  = $('#orderid').val(); 
+         	var membername =  $('#membername').val();
+         	var productname =  $('#productname').val();
+         	var orderquantity =  $('#orderquantity').val();
+          	var productprice =   $('#productprice').val();
+          	var paymentdate = $('#paymentdate').val();
+			var status = $('#status').val();
+			
+          $.ajax({
+              url      : 'ajax_orders.php',
+              method   : 'post', 
+              data     : {membername : membername , productname: productname , orderquantity: orderquantity , productprice : productprice , paymentdate : paymentdate, status : status, id: id},
+              success  : function(response){
+                            // now update user record in table 
+                            $('#'+id).children('td[data-target=membername]').text(membername);
+                            $('#'+id).children('td[data-target=productname]').text(productname);
+                            $('#'+id).children('td[data-target=orderquantity]').text(orderquantity);            
+                            $('#'+id).children('td[data-target=productprice]').text(productprice);
+                            $('#'+id).children('td[data-target=paymentdate]').text(paymentdate);
+                            $('#'+id).children('td[data-target=status]').text(status);
+                            $('#myModal').modal('toggle');
+							//alert(id);
+                }
+          });
+       });
+		
+		})
+	});
+		        
+</script>
+
 </html>
 			

@@ -70,6 +70,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			<ul class="memenu skyblue">
 				<li class="active grid"><a class="color2" href="admin_index.php" style="color:black;">Main</a></li>
 				<li><a class="color4" href="admin_stock.php">Stock</a></li>	
+				<li><a class="color1" href="admin_order.php">Order</a></li>
 				<li><a class="color6" href="admin_profile.php">Profile</a></li>
 			</ul> 
 		  </div>
@@ -181,6 +182,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				<ul class="nav-bottom">
 						<li><a href="admin_index.php">Home</a></li>
 						<li><a href="admin_stock.php">Stock</a></li>
+						<li><a href="admin_order.php">Order</a></li>
+						<li><a href="admin_.php">Report</a></li>
 						<li><a href="admin_profile.php">Profile</a></li>	
 					</ul>	
 					
@@ -224,7 +227,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
          	var productquantity =  $('#productquantity').val();
           	var productprice =   $('#productprice').val();
           	var productimage = $('#productimage').val();
-			alert(productprice);
+			//alert(productprice);
           $.ajax({
               url      : 'ajax_admin.php',
               method   : 'post', 
@@ -237,7 +240,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                             $('#'+id).children('td[data-target=productprice]').text(productprice);
                             $('#'+id).children('td[data-target=productimage]').text(productimage);
                             $('#myModal').modal('toggle');
-							alert(id);
+							//alert(id);
                 }
           });
        });
