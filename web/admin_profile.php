@@ -101,8 +101,6 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			<ul class="memenu skyblue">
 				<li class="active grid"><a class="color2" href="admin_index.php" style="color:black;">Main</a></li>
 				<li><a class="color4" href="admin_stock.php">Stock</a></li>	
-				<li><a class="color1" href="admin_order.php">Order</a></li>
-				<li class="grid"><a class="color2" href="admin_report.php">Report</a></li>
 				<li><a class="color6" href="admin_profile.php">Profile</a></li>
 			</ul> 
 		  </div>
@@ -156,8 +154,6 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				<ul class="nav-bottom">
 						<li><a href="admin_index.php">Home</a></li>
 						<li><a href="admin_stock.php">Stock</a></li>
-						<li><a href="admin_order.php">Order</a></li>
-						<li><a href="admin_.php">Report</a></li>
 						<li><a href="admin_profile.php">Profile</a></li>	
 					</ul>	
 					

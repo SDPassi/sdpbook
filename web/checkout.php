@@ -63,7 +63,6 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 						<?php if (isset($_SESSION['login_user'])): ?>
 						<li class="dropdown"><a href="#"><?php echo($_SESSION['login_user']); ?></a>
 						<div class="dropdown-content">
-							<a href="order.php">My Purchase</a>
 							<a href="logout.php">Logout</a>
 						
 						</div>
@@ -81,7 +80,6 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 						<h3><div class="total">
 							</div>
 							<a href="cart.php" style="padding-right:15px;"><img src="images/cart.png" alt=""/></a>
-							<a href="javascript:;" class="simpleCart_empty" style="color:white;">(Empty Cart)</a></h3>
 						</a>
 												
 					</div>
@@ -98,7 +96,6 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 					<ul class="memenu skyblue">
 					   <li class="active grid"><a class="color2" href="index.php" style="color:black;">Home</a></li>	
 					   <li><a class="color4" href="products.php">Product</a></li>	
-				      <li><a class="color1" href="activity.php">Activity</a></li>
 				<li><a class="color6" href="profile.php">My Account</a></li>
 			  </ul> 
 			</div>

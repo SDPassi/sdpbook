@@ -63,7 +63,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <!-- start menu -->
 <link href="css/memenu.css" rel="stylesheet" type="text/css" media="all" />
 <script type="text/javascript" src="js/memenu.js"></script>
-<script>$(document).ready(function(){$(".memenu").memenu();});</script>
+
 <script src="js/simpleCart.min.js"> </script>
 <link rel="stylesheet" href="bootstrap.min.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
@@ -86,7 +86,6 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 						
 						<li class="dropdown"><a href="#"><?php echo($_SESSION['login_user']); ?></a>
 						<div class="dropdown-content">
-							<a href="order.php">My Purchase</a>
 							<a href="logout.php">Logout</a>
 						
 						</div>
@@ -140,11 +139,14 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				
 				<table class="activity-table">
 		<thead>
-		<tr class="activity-table-main">
+		
+		 <tr class="activity-table-main">
 			<th>Name </th>
 			<th>Phone Number</th>
 			<th>Email Address </th>
 			<th>Address</th>
+			<th>Modify</th>
+			<th>Change Password</th>
 			<th></th>
 		</tr>	
 		
@@ -162,7 +164,11 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				<td data-target="email" ><?php echo $member['email']?> </td>
 				<td data-target="address" ><?php echo $member['address']?> </td>
 				<td>
-				<a href="#" data-role="update" data-id="<?php echo $member['ID'];?>" >Modify</a>	
+				<a href="#" data-role="update" data-id="<?php echo $member['ID'];?>">Modify</a>
+								
+				</td>
+				<td>
+				<a href="chgpsw.php">Change Password</a>
 				</td>
 			</tr>		
 			<?php }?> 
@@ -170,9 +176,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		</tbody>
 		
 
-		</table>
-			
-								
+		</table>				
 					<!--BoostStrap-->
 				
   					<!-- Modal -->
@@ -205,7 +209,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
           						<span>Address</span>
           					    <input type="text" id="address" class="form-control">	
           					</div>
-          					<input type="hidden" id="id" class="form-control">							        				
+          					<input type="hidden" id="ID" class="form-control">							        				
           				</div>
         				<div class="modal-footer">
         					<button id="modify" type="button" class="btn btn-default pull-left">Done</button>
@@ -214,9 +218,9 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
       					</div>
       
     						</div>
-  						</div>								
-				</div>
-	</div>
+  						</div>		
+</div>
+</div>
 <!--//content-->
 <div class="footer">
 				<div class="container">
@@ -277,7 +281,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
           $.ajax({
               url      : 'ajax_updateprofile.php',
               method   : 'post', 
-              data     : {name : name , phone : phone , email : email , address : address, id : id},
+              data     : {name : name , phone : phone , email : email , address : address, ID : id},
               success  : function(response){
                             // now update user record in table 
                             $('#'+id).children('td[data-target=name]').text(name);
@@ -285,7 +289,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                             $('#'+id).children('td[data-target=email]').text(email);            
                             $('#'+id).children('td[data-target=address]').text(address);
                             $('#myModal').modal('toggle');
-							alert(name);
+							alert(ID);
                 }
           });
        });
