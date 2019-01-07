@@ -135,42 +135,41 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <div class=" container">
 <div class=" register" >
 	<h1>CREATE AN ACCOUNT</h1>
-		  	  <form action="" method="post"> 
+		  	  <form > 
 				 <div class="col-md-6 register-top-grid"style="margin-left:270px;">
 					<h3>Personal information</h3>
 					 <div>
-						<span>Name</span>
-							<input id="name" name="name" type="text" required="required"> 
+						
+							<input type="text" placeholder="Name" id="name"  required="required"> 
 					 </div>
 					 <div>
-						<span>Phone Number</span>
-							<input id="phone" name="num" type="tel" required="required"> 
+						
+							<input type="tel" placeholder="Phone" id="phone" required="required"> 
 					 </div>
 					 <div>
-						 <span>Email Address</span>
-						 	<input id="email" placeholder="Email" name="email" type="email" required="required"> 
+						 
+						 	<input type="email" placeholder="Email" id="email" > 
 							<span id="msg"></span>
 					 </div>
 					 <div>
-						<span>Password</span>
-							<input id="password" name="psw"  onchange="checkEqualPassword(this, document.getElementById('pass2'));" type="password" min="4" required="required" >
+						
+							<input type="password" placeholder="Password" id="password" onchange="checkEqualPassword(this, document.getElementById('pass2'));"  min="4" required="required" >
 					</div>
 					<div>
-						<span>Confirm Password</span>
-							<input name="cpsw" id="pass2" onchange="checkEqualPassword(document.getElementById('password'), this);" type="password" min="4" required="required">
+						
+							<input type="password" placeholder="Confirm Password" id="pass2" onchange="checkEqualPassword(document.getElementById('password'), this);"  min="4" required="required">
 					</div> 
 					<div>
-						<span>Address</span>
-						<input id="address" name="address" type="text" required="required"> 
+					
+						<input type="text"  placeholder="Address" id="address" required="required"> 
 					 </div>
-		 
-					 <input type="submit" id="reg" value="Register">
+					
+					 <button type="button" id="reg" >Register</button>
 					 <input type="reset" value="Reset" style="float:right;">		 
 					 </div>							 
 					 <div id="error_msg"></div>
 							
-							
-					<div class="clearfix"> </div>
+					
 				</form>
 			</div>
 </div>
@@ -209,7 +208,7 @@ $('document').ready(function(){
 	var email_state = false;
 	
 	$('#email').blur(function(){
-	var email = $('#email').val();
+	var emailAdd = $('#email').val();
 	if (emailAdd == ''){
 		email_state = false;
 		return;
@@ -219,12 +218,12 @@ $('document').ready(function(){
 		type: 'post',
 		data: {
 			'email_check' : 1,
-			'email' : email,	
+			'email' : emailAdd,	
 		},
 		success: function(response){
 			if (response == 'not_available') {
 			email_state = false;
-			$('#msg').text("Email already exist!");
+			$('#msg').text("Email already exist!!");
 			}else if (response == 'available') {
 				email_state = true;
 				$('#msg').text("");
@@ -237,11 +236,11 @@ $('document').ready(function(){
 	$('#reg').click( function (){
 		var name = $('#name').val();
 		var phone = $('#phone').val();
-		var email = $('#email').val();
+		var emailAdd = $('#email').val();
 		var password = $('#password').val();
 		var address = $('#address').val();
 		if (email_state == false) {
-				$('#error_msg').text("Fix the errors first");
+				$('#error_msg').text('Fix the errors first');
 		}else{
 				$('#error_msg').text("");
 				
@@ -254,7 +253,7 @@ $('document').ready(function(){
 							'save' : 1,
 							'name' : name,
 							'phone' : phone,
-							'email' : email,
+							'email' : emailAdd,
 							'password' : password,
 							'address' : address,
 					},

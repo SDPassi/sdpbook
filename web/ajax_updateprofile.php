@@ -2,23 +2,22 @@
 
 session_start();
 
-include ("conn.php");
+include "conn.php";
 
 if (isset($_SESSION['login_user'])) { 
 
-	$name = $_POST['name']
-	$phone = $_POST['phone']
-	$email = $_POST['email']
-	$address = $_POST['address']
+	$name = $_POST['name'];
+	$phone = $_POST['phone'];
+	$email = $_POST['email'];
+	$address = $_POST['address'];
+	$id = $_POST['id'];
 
-$sql = 
-
-"UPDATE member SET 
+$sql = "UPDATE member SET 
 name = '$name', 
 phone = '$phone', 
 email = '$email', 
-address = '$address' 
-WHERE email = '$_SESSION[login_user]'";
+address = '$address'
+WHERE ID = '$id'";
 
 $result = mysqli_query($con,$sql);
 

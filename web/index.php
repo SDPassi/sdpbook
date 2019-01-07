@@ -69,6 +69,7 @@ a:hover{
 					<?php if (isset($_SESSION['login_user'])): ?>
 						<li class="dropdown"><a href="#"><?php echo($_SESSION['login_user']); ?></a>
 							<div class="dropdown-content">
+								<a href="order.php">My Purchase</a>
 								<a href="logout.php">Logout</a>
 							</div>
 						</li>	
