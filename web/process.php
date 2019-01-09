@@ -1,4 +1,4 @@
-<?php>
+<?php
 
 session_start();
 
@@ -14,7 +14,7 @@ if (isset($_POST['id'])) {
 	$address = $_POST['address'];
 	$id = $_POST['id'];
 	
-	$query = "INSERT INTO member (name, phone, email, password, address) VALUES ('$name', '$phone', '$email', '"md5.($password)."', '$address')";
+	$query = "INSERT INTO member (name, phone, email, password, address) VALUES ('$name', '$phone', '$email', '".md5($password)."', '$address')";
 	$result = mysqli_query($con, $query);
 	echo 'Registered successfully!';
 	exit();

@@ -32,6 +32,33 @@ else {
 
 }
 
+if (isset($_POST['name'],$_POST['phone'],$_POST['email'],$_POST['password'],$_POST['address'])) { 
+$npassword = password_hash($_POST['password'],PASSWORD_DEFAULT);
+
+$check = mysqli_query($con, "SELECT email,name FROM member WHERE email = '".$_POST['email']."' and name ='". $_POST['name']."'");
+$checkrows = mysqli_num_rows($check);
+
+if ($checkrows > 0){
+echo '<script text="text/javascript">
+alert("Member exists!")
+</script>';
+}
+
+else{
+$sql = "INSERT INTO member(name, phone, email, password, address) VALUES ('$_POST[name]', '$_POST[num]','$_POST[email]','$npassword','$_POST[address]')";
+
+$result = mysqli_query($con,$sql);
+
+mysqli_close($con);
+
+echo'<script text="text/javascript">
+alert("You have successfully registered!")
+window.location.replace ("loginAjax.php");
+</script>';
+}
+
+} 
+
 
 ?>
 
@@ -166,35 +193,37 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
           <h4 class="modal-title">Register</h4>
         </div>
         <div class="modal-body">
-          <div class="form-group">
+        <form method="post" id="insert_form">         
+        
           			<span>Name</span>
-          			<input type="text" id="name" class="form-control">	
-          </div>
-          <div class="form-group">
-          			<span>Phone</span>
-          			<input type="tel" id="phone" class="form-control">	
-          </div>
-
-          <div class="form-group">
-          			<span>Email</span>	
-          			<input type="email" id="email" class="form-control">
-					
-          </div>
-          <div class="form-group">
-          			<span>Password</span>
-          			<input type="password" id="password" class="form-control">	
-          </div>
-		  <div class="form-group">
-          			<span>Address</span>
-          			<input type="text" id="address" class="form-control">	
-          </div>
+          			<input type="text" name="name" id="name" class="form-control" required="required">	
           
+        
+          			<span>Phone</span>
+          			<input type="tel" name="phone" id="phone" class="form-control" required="required">	
+        
+
+          
+          			<span>Email</span>	
+          			<input type="email" name="email" id="email" class="form-control"  required="required">
+					
+          
+        
+          			<span>Password</span>
+          			<input type="password" name="password" id="password" class="form-control" required="required">	
+         
+		  
+          			<span>Address</span>
+          			<input type="text"  name="address" id="address" class="form-control" required="required">	
+         
+                  <input type="submit" name="insert" id="insert" value="Register" class="btn btn-success" />    
+         </form> 
         </div>
         <div class="modal-footer">
-                <button id="reg" type="button" class="btn btn-default pull-left">Register</button>
-          		<button type="button" class="btn btn-default pull-right"  data-dismiss="modal">Close</button>
+                     		
+               <button type="button" class="btn btn-default pull-right"  data-dismiss="modal">Close</button>
         </div>
-			<input type="hidden" id="memberid" class="form-control">	`	
+		
       </div>
       
     </div>
@@ -224,34 +253,47 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		</div>
 </body>
 <script>
-$('document').ready(function()
-	{	
-			//now create event to get data from fields and update in database 
-			$('#reg').click(function(){
-			var memberid = $('#memberid').val();	
-          	var name  = $('#name').val(); 
-         	var phone =  $('#phone').val();
-         	var email =  $('#email').val();
-         	var password =  $('#password').val();
-          	var address =   $('#address').val();
-
-			$.ajax({
-					url: 'process.php',
-					type: 'post',
-					data: {name : name,phone : phone,email : email,password : password,address : address,id : id,},
-					
-					success: function(response){
-							alert(response);
-							$('#name').val('');
-							$('#phone').val('');
-							$('#email').val('');
-							$('#password').val('');
-							$('#address').val('');
-					}
-		});
-	});
-});    	
-
+// $(document).ready(function(){
+// $('#insert_form').on("submit", function(event)
+ //{  
+    // $.ajax
+     //({  
+    //	url:'insertdataAjax.php',  
+    //	method:'POST',  
+    	//data: { save : 1 , name : name , phone: phone , email: email , password : password , address : address, id: id},
+    //	data:$('#insert_form').serialize(),    
+     //	beforeSend:function()
+     	//{  
+     	//$('#insert').val("Inserting");  
+     	//},  
+    	//success:function(data)
+    	//{  
+     	//$('#insert_form')[0].reset();  
+     	//$('#myModal').modal('hide'); 
+     	//$('#insert').val("Register"); 
+     	//}  
+   	 //});
+   //}  
+  //});  
+$(document).ready(function(){
+ $('#insert_form').on("submit", function(event){  
+  event.preventDefault();  
+     $.ajax({  
+    url:"insertAjax.php",  
+    method:"POST",  
+    data:$('#insert_form').serialize(),  
+    beforeSend:function(){  
+     $('#insert').val("Registering");  
+    },  
+    success:function(data){  
+     $('#insert_form')[0].reset();  
+     $('#myModal').modal('hide');  
+     $('#insert').val("Register");  
+     
+   });  
+  }  
+ });
+  
 
 </script>
 </html>
