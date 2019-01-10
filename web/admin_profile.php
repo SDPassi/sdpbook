@@ -82,12 +82,12 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 						<li ><a href="admin_profile.php"  ><?php echo($_SESSION['login_user']); ?><a href="logout.php">(LOGOUT)</a></li>
 						
 					<?php else: ?>
-						<li ><a href="login.php"  >Login</a></li>
+						<li ><a href="admin_login.php"  >Login</a></li>
 						
 					<?php endif; ?>
 
 					</ul>
-				<div class="clearfix"> </div>
+			<div class="clearfix"> </div>
 			</div>
 				<div class="clearfix"> </div>
 		</div>
@@ -105,8 +105,10 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				<li><a class="color6" href="admin_profile.php">Profile</a></li>
 			</ul> 
 		  </div>
-				<div class="clearfix"> </div>
+				
+				
 		</div>
+		<div class="clearfix"> </div>
 		</div>
 
 	</div>
@@ -133,13 +135,14 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 					 </div>
 					 	<div class="send">
 							<input type="submit" value="Update" style="float:right;">
-							<a href="admin_chgpsw.php">Change Password</a>
+							<a href="admin_chgpsw.php">Change Password</a> <br>
+							<a href='admin_customerprofile.php'>Modify Customer Account</a>
 		 
 						</div>	
 		 
 					 </div>
 					</form>
-				
+					
 								<div class="clearfix"> </div>
 			
 				</div>

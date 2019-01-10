@@ -4,7 +4,7 @@ session_start();
 
 include("conn.php");
 
-/* if (isset($_POST['name'],$_POST['num'],$_POST['email'],$_POST['psw'],$_POST['address'])) { 
+ if (isset($_POST['name'],$_POST['num'],$_POST['email'],$_POST['psw'],$_POST['address'])) { 
 $npassword = password_hash($_POST['psw'],PASSWORD_DEFAULT);
 
 $check = mysqli_query($con, "SELECT email,name FROM member WHERE email = '".$_POST['email']."' and name ='". $_POST['name']."'");
@@ -29,7 +29,7 @@ window.location.replace ("login.php");
 </script>';
 }
 
-}*/
+}
 
 
 ?>
@@ -204,74 +204,7 @@ mysqli_close($con);
 		</div>
 </body>
 
-<script>
-$('document').ready(function(){
-	var email_state = false;
-	
-	$('#email').blur(function(){
-	var email = $('#email').val();
-	if (emailAdd == ''){
-		email_state = false;
-		return;
-	}
-	$.ajax({
-		url: 'process.php',
-		type: 'post',
-		data: {
-			'email_check' : 1,
-			'email' : email,	
-		},
-		success: function(response){
-			if (response == 'not_available') {
-			email_state = false;
-			$('#msg').text("Email already exist!");
-			}else if (response == 'available') {
-				email_state = true;
-				$('#msg').text("");
-			}
-		}
-		
-	});
-	});
-	
-	$('#reg').click( function (){
-		var name = $('#name').val();
-		var phone = $('#phone').val();
-		var email = $('#email').val();
-		var password = $('#password').val();
-		var address = $('#address').val();
-		if (email_state == false) {
-				$('#error_msg').text("Fix the errors first");
-		}else{
-				$('#error_msg').text("");
-				
-				//proceed with form submission
-				
-				$.ajax({
-					url: 'process.php',
-					type: 'post',
-					data: {
-							'save' : 1,
-							'name' : name,
-							'phone' : phone,
-							'email' : email,
-							'password' : password,
-							'address' : address,
-					},
-					
-					success: function(response){
-							alert(response);
-							$('#name').val('');
-							$('#phone').val('');
-							$('#email').val('');
-							$('#password').val('');
-							$('#address').val('');
-					}
-		});
-		}
-	});
-});
-</script>
+
 
 </html>
 			
